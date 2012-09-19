@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagnetBoy", "MagnetBoy\MagnetBoy\MagnetBoy.csproj", "{268F1493-4D83-47B3-B9D3-A8A608233D4C}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "MagnetBoyContent", "MagnetBoy\MagnetBoyContent\MagnetBoyContent.contentproj", "{7E9653DB-17E4-4991-B27E-C53FB4934C59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{268F1493-4D83-47B3-B9D3-A8A608233D4C}.Debug|x86.ActiveCfg = Debug|x86
+		{268F1493-4D83-47B3-B9D3-A8A608233D4C}.Debug|x86.Build.0 = Debug|x86
+		{268F1493-4D83-47B3-B9D3-A8A608233D4C}.Release|x86.ActiveCfg = Release|x86
+		{268F1493-4D83-47B3-B9D3-A8A608233D4C}.Release|x86.Build.0 = Release|x86
+		{7E9653DB-17E4-4991-B27E-C53FB4934C59}.Debug|x86.ActiveCfg = Debug|x86
+		{7E9653DB-17E4-4991-B27E-C53FB4934C59}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
