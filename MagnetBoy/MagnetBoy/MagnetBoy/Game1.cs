@@ -21,6 +21,8 @@ namespace MagnetBoy
 
         public static Texture2D globalTestWalrus = null;
 
+        Entity test = null;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -36,6 +38,8 @@ namespace MagnetBoy
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            test = new Entity(400, 200);
 
             base.Initialize();
         }
@@ -88,6 +92,8 @@ namespace MagnetBoy
             spriteBatch.Begin();
 
             //draw your entity classes in here
+
+            test.draw(spriteBatch);
 
             spriteBatch.End();
 
