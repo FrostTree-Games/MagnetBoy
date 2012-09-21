@@ -13,12 +13,24 @@ namespace MagnetBoy
     {
         //sexy class data for our game entity goes here
 
-        virtual void update(GameTime currentTime)
+        float horizontal_pos = 0.0f;
+        float vertical_pos = 0.0f;
+
+        float width = 0.0f;
+        float height = 0.0f;
+
+        public Entity(float initialx, float initialy)
+        {
+            horizontal_pos = initialx;
+            vertical_pos = initialy;
+        }
+
+        public virtual void update(GameTime currentTime)
         {
             return;
         }
 
-        virtual void draw(SpriteBatch sb)
+        public virtual void draw(SpriteBatch sb)
         {
             return;
         }
