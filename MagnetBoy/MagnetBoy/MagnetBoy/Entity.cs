@@ -32,7 +32,7 @@ namespace MagnetBoy
 
         public virtual void draw(SpriteBatch sb)
         {
-            return;
+            sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.White);
         }
     }
 }

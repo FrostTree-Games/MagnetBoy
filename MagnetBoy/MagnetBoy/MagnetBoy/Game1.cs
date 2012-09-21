@@ -19,6 +19,8 @@ namespace MagnetBoy
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public static Texture2D globalTestWalrus = null;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -47,8 +49,7 @@ namespace MagnetBoy
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
-            // TODO: use this.Content to load your game content here
+            globalTestWalrus = this.Content.Load<Texture2D>("walrus");
         }
 
         /// <summary>
@@ -84,7 +85,11 @@ namespace MagnetBoy
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            //draw your entity classes in here
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
