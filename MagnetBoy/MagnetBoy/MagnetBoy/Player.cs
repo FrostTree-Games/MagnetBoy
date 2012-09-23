@@ -31,7 +31,7 @@ namespace MagnetBoy
 
         public override void update(GameTime currentTime)
         {
-            double delta = currentTime.TotalGameTime.Milliseconds - last_update;
+            double delta = currentTime.ElapsedGameTime.Milliseconds;
             KeyboardState ks = Keyboard.GetState();
 
             if (ks.IsKeyDown(Keys.Right))
@@ -45,9 +45,6 @@ namespace MagnetBoy
                 
             horizontal_pos += (float)(((velocity.X)*delta) + (0.5)*(Math.Pow(delta,2.0))*acceleration.X);
             vertical_pos += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * acceleration.Y);
-            
-            //This should be last command before update
-            last_update = currentTime.TotalGameTime.Milliseconds;
         }
 
         public override void draw(SpriteBatch sb)

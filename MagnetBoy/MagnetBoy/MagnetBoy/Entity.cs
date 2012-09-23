@@ -21,8 +21,6 @@ namespace MagnetBoy
 
         protected Vector2 velocity;
         protected Vector2 acceleration;
-
-        protected double last_update = 0.0;
         
         public Entity()
         {
