@@ -36,7 +36,7 @@ namespace MagnetBoy
 
             if (ks.IsKeyDown(Keys.Right))
             {
-                velocity.X = 1.0f;
+                velocity.X = 0.1f;
             }
             else
             {

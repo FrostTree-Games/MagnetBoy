@@ -77,7 +77,7 @@ namespace MagnetBoy
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            test2.update(gameTime);
 
             base.Update(gameTime);
         }
