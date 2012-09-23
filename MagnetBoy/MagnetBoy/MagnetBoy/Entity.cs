@@ -13,12 +13,23 @@ namespace MagnetBoy
     {
         //sexy class data for our game entity goes here
 
-        float horizontal_pos = 0.0f;
-        float vertical_pos = 0.0f;
+        protected float horizontal_pos = 0.0f;
+        protected float vertical_pos = 0.0f;
 
-        float width = 0.0f;
-        float height = 0.0f;
+        protected float width = 0.0f;
+        protected float height = 0.0f;
 
+        protected Vector2 velocity;
+        protected Vector2 acceleration;
+
+        protected double last_update = 0.0;
+        
+        public Entity()
+        {
+            horizontal_pos = 0.0f;
+            vertical_pos = 0.0f;
+        }
+        
         public Entity(float initialx, float initialy)
         {
             horizontal_pos = initialx;

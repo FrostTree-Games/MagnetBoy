@@ -22,6 +22,7 @@ namespace MagnetBoy
         public static Texture2D globalTestWalrus = null;
 
         Entity test = null;
+        Entity test2 = null;
 
         public Game1()
         {
@@ -40,7 +41,7 @@ namespace MagnetBoy
             // TODO: Add your initialization logic here
 
             test = new Entity(400, 200);
-
+            test2 = new Player(300, 250);
             base.Initialize();
         }
 
@@ -94,7 +95,7 @@ namespace MagnetBoy
             //draw your entity classes in here
 
             test.draw(spriteBatch);
-
+            test2.draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
