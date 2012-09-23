@@ -38,9 +38,26 @@ namespace MagnetBoy
             {
                 velocity.X = 0.1f;
             }
+            else if (ks.IsKeyDown(Keys.Left))
+            {
+                velocity.X = -0.1f;
+            }
             else
             {
                 velocity.X = 0.0f;
+            }
+
+            if (ks.IsKeyDown(Keys.Up))
+            {
+                velocity.Y = -0.1f;
+            }
+            else if (ks.IsKeyDown(Keys.Down))
+            {
+                velocity.Y = 0.1f;
+            }
+            else
+            {
+                velocity.Y = 0.0f;
             }
                 
             horizontal_pos += (float)(((velocity.X)*delta) + (0.5)*(Math.Pow(delta,2.0))*acceleration.X);
