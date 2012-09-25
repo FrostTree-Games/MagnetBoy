@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test tileset" tilewidth="32" tileheight="32">
+  <image source="terribleTileSheet.png" width="96" height="160"/>
+ </tileset>
+ <layer name="test layer" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJy9Vu0OwiAQw23KdOre/22FZCRNBa43iST9sYxd76OFLSGE5Q/YEl6E5/HuMYhjDd/rLuaQEU9y7BDLyuFsHcj17uTQAtZpceCaEyZxL9d5TbgIuHX2MrfVywiw9mGek4NDAeeRtVfmNh81j9A81oEzzXrgmSuetDTEumn1quSl6gzjqRxeLWM8z8zjSQ7OrcVR5lDzdW8Vz+N3mYPP0y34Yyu8RV8cP+tb8b3l9VIP97Hmn9gA95rnXuNo+VPl6J0pKz3/Au77aI6abpjDuncscHzsvddzyuLZqneUB56zXfnnsPABXbwKTw==
+  </data>
+ </layer>
+</map>
