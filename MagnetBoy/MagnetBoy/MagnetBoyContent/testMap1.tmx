@@ -2,6 +2,16 @@
 <map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test tileset" tilewidth="32" tileheight="32">
   <image source="terribleTileSheet.png" width="96" height="160"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="test layer" width="25" height="25">
   <data encoding="base64" compression="zlib">

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using FuncWorks.XNA.XTiled;
 
 namespace MagnetBoy
 {
@@ -23,6 +24,9 @@ namespace MagnetBoy
 
         Entity test = null;
         Entity test2 = null;
+
+        Rectangle mapView;
+        public static Map map = null; //this shouldn't be public/static, but for now we need a way of referencing it in an Entity
 
         public Game1()
         {
@@ -40,9 +44,12 @@ namespace MagnetBoy
         {
             // TODO: Add your initialization logic here
 
-            test = new Entity(400, 200);
-            test2 = new Player(300, 250);
+            test = new Entity(400, 400);
+            test2 = new Player(96, 96);
+
             base.Initialize();
+
+            mapView = graphics.GraphicsDevice.Viewport.Bounds;
         }
 
         /// <summary>
@@ -55,6 +62,20 @@ namespace MagnetBoy
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
+
+            map = Content.Load<Map>("testMap1");
+
+            foreach (TileLayer layer in map.TileLayers)
+            {
+                foreach (TileData[] a in layer.Tiles)
+                {
+                    foreach (TileData tile in a)
+                    {
+                        Console.WriteLine("{0}", tile);
+                    }
+                }
+            }
+
         }
 
         /// <summary>
@@ -92,7 +113,7 @@ namespace MagnetBoy
 
             spriteBatch.Begin();
 
-            //draw your entity classes in here
+            map.Draw(spriteBatch, mapView);
 
             test.draw(spriteBatch);
             test2.draw(spriteBatch);
