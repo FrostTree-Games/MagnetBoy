@@ -45,7 +45,7 @@ namespace MagnetBoy
             // TODO: Add your initialization logic here
 
             test = new Entity(400, 400);
-            test2 = new Player(96, 96);
+            test2 = new Player(128, 128);
 
             base.Initialize();
 
@@ -64,15 +64,6 @@ namespace MagnetBoy
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
 
             map = Content.Load<Map>("testMap1");
-
-            foreach (TileLayer layer in map.TileLayers)
-            {
-                foreach (KeyValuePair<string, Property> p in layer.Properties)
-                {
-                    Console.WriteLine("{0} {1}", p.Key, p.Value.AsInt32);
-                }
-            }
-
         }
 
         /// <summary>
