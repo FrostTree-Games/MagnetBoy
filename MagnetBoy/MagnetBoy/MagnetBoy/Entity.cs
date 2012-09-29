@@ -71,6 +71,7 @@ namespace MagnetBoy
 
                 if (isSolid == true)
                 {
+                    // vertical map check
                     if (delta.Y - vertical_pos < -0.0001)
                     {
                         int i;
@@ -89,7 +90,7 @@ namespace MagnetBoy
                     else if (delta.Y - vertical_pos > 0.0001)
                     {
                         int i;
-                        for (i = ((int)(delta.Y + width)) / checkMap.TileHeight; i < checkMap.Height; i++)
+                        for (i = ((int)(delta.Y + height)) / checkMap.TileHeight; i < checkMap.Height; i++)
                         {
                             if (layer.Tiles[((int)horizontal_pos) / checkMap.TileWidth][i] != null || layer.Tiles[((int)(horizontal_pos + width)) / checkMap.TileWidth][i] != null)
                             {
@@ -109,7 +110,33 @@ namespace MagnetBoy
                         delta.Y = Math.Min(delta.Y, (i - 1) * checkMap.TileHeight);
                     }
 
+                    // horizontal map check
+                    if (delta.X - horizontal_pos < -0.0001)
+                    {
+                        int i;
+                        for (i = ((int)delta.X) / checkMap.TileWidth; i >= 0; i--)
+                        {
+                            if (layer.Tiles[i][((int)vertical_pos) / checkMap.TileHeight] != null || layer.Tiles[i][((int)(vertical_pos + height)) / checkMap.TileHeight] != null)
+                            {
+                                break;
+                            }
+                        }
 
+                        delta.X = Math.Max(delta.X, (i + 1) * checkMap.TileWidth);
+                    }
+                    else if (delta.X - horizontal_pos > 0.0001)
+                    {
+                        int i;
+                        for (i = ((int)(delta.X + width)) / checkMap.TileWidth; i < checkMap.Width; i++)
+                        {
+                            if (layer.Tiles[i][((int)vertical_pos) / checkMap.TileHeight] != null || layer.Tiles[i][((int)(vertical_pos + height)) / checkMap.TileHeight] != null)
+                            {
+                                break;
+                            }
+                        }
+
+                        delta.X = Math.Min(delta.X, (i - 1) * checkMap.TileWidth);
+                    }
                 }
             }
         }
