@@ -34,6 +34,8 @@ namespace MagnetBoy
             double delta = currentTime.ElapsedGameTime.Milliseconds;
             KeyboardState ks = Keyboard.GetState();
 
+            Vector2 step = new Vector2(horizontal_pos, vertical_pos);
+
             if (ks.IsKeyDown(Keys.Right))
             {
                 velocity.X = 0.1f;
@@ -60,8 +62,13 @@ namespace MagnetBoy
                 velocity.Y = 0.0f;
             }
                 
-            horizontal_pos += (float)(((velocity.X)*delta) + (0.5)*(Math.Pow(delta,2.0))*acceleration.X);
-            vertical_pos += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * acceleration.Y);
+            step.X += (float)(((velocity.X)*delta) + (0.5)*(Math.Pow(delta,2.0))*acceleration.X);
+            step.Y += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * acceleration.Y);
+
+            checkForWalls(Game1.map, ref step);
+
+            horizontal_pos = step.X;
+            vertical_pos = step.Y;
         }
 
         public override void draw(SpriteBatch sb)

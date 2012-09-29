@@ -67,12 +67,9 @@ namespace MagnetBoy
 
             foreach (TileLayer layer in map.TileLayers)
             {
-                foreach (TileData[] a in layer.Tiles)
+                foreach (KeyValuePair<string, Property> p in layer.Properties)
                 {
-                    foreach (TileData tile in a)
-                    {
-                        Console.WriteLine("{0}", tile);
-                    }
+                    Console.WriteLine("{0} {1}", p.Key, p.Value.AsInt32);
                 }
             }
 
