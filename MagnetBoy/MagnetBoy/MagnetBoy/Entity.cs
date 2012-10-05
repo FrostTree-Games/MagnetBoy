@@ -17,8 +17,8 @@ namespace MagnetBoy
         protected float horizontal_pos = 0.0f;
         protected float vertical_pos = 0.0f;
 
-        protected float width = 0.0f;
-        protected float height = 0.0f;
+        protected float width = 29.5f;
+        protected float height = 29.5f;
 
         protected Vector2 velocity;
         protected Vector2 acceleration;
