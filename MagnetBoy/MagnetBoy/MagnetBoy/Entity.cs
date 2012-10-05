@@ -17,8 +17,8 @@ namespace MagnetBoy
         protected float horizontal_pos = 0.0f;
         protected float vertical_pos = 0.0f;
 
-        protected float width = 0.0f;
-        protected float height = 0.0f;
+        protected float width = 32.0f;
+        protected float height = 32.0f;
 
         protected Vector2 velocity;
         protected Vector2 acceleration;
@@ -49,15 +49,10 @@ namespace MagnetBoy
 
         public bool hitTest(ref Entity other)
         {
-            if( horizontal_pos > other.horizontal_pos + other.width || horizontal_pos + width < other.horizontal_pos || vertical_pos > other.vertical_pos + other.height || vertical_pos + height < other.vertical_pos)
-            {
+            if( horizontal_pos < other.horizontal_pos + other.width && horizontal_pos + width > other.horizontal_pos && vertical_pos < other.vertical_pos + other.height && vertical_pos + height > other.vertical_pos)
                 return false;
-            }
             else
-            {
                 return true;
-            }
-            
         }
 
         // pass a map and a vector stating where you'd like to move to
