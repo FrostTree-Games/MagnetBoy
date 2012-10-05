@@ -47,6 +47,11 @@ namespace MagnetBoy
             sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.White);
         }
 
+        public bool hitTest(ref Entity other)
+        {
+            return false;
+        }
+
         // pass a map and a vector stating where you'd like to move to
         // this method checks against nearby walls and prevents you from overdoing boundaries
         // this method modifies step
