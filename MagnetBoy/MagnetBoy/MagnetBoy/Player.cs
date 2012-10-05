@@ -30,6 +30,8 @@ namespace MagnetBoy
 
             velocity = Vector2.Zero;
             acceleration = Vector2.Zero;
+
+            acceleration.Y = 0.001f;
         }
 
         public override void update(GameTime currentTime)
@@ -37,36 +39,46 @@ namespace MagnetBoy
             double delta = currentTime.ElapsedGameTime.Milliseconds;
             KeyboardState ks = Keyboard.GetState();
 
+            Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);
 
             if (ks.IsKeyDown(Keys.Right))
             {
-                velocity.X = 0.1f;
+                if (velocity.X < 0.1f)
+                {
+                    keyAcceleration.X = 0.001f;
+                }
             }
             else if (ks.IsKeyDown(Keys.Left))
             {
-                velocity.X = -0.1f;
+                if (velocity.X > -0.1f)
+                {
+                    keyAcceleration.X = -0.001f;
+                }
             }
             else
             {
-                velocity.X = 0.0f;
+                if (Math.Abs(velocity.X) > 0.01 && onTheGround)
+                {
+                    velocity.X = 0.0f;
+                }
             }
 
             if (ks.IsKeyDown(Keys.Up))
             {
-                velocity.Y = -0.1f;
+                if (onTheGround)
+                {
+                    velocity.Y = -0.5f;
+                }
             }
-            else if (ks.IsKeyDown(Keys.Down))
-            {
-                velocity.Y = 0.1f;
-            }
-            else
-            {
-                velocity.Y = 0.0f;
-            }
-                
-            step.X += (float)(((velocity.X)*delta) + (0.5)*(Math.Pow(delta,2.0))*acceleration.X);
-            step.Y += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * acceleration.Y);
+
+            Vector2 finalAcceleration = acceleration + keyAcceleration;
+
+            velocity.X += (float)(finalAcceleration.X * delta);
+            velocity.Y += (float)(finalAcceleration.Y * delta);
+
+            step.X += (float)(((velocity.X) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.X);
+            step.Y += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.Y);
 
             checkForWalls(Game1.map, ref step);
 

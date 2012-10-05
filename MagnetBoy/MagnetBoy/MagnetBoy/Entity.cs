@@ -84,45 +84,6 @@ namespace MagnetBoy
 
                 if (isSolid == true)
                 {
-                    // vertical map check
-                    if (delta.Y - vertical_pos < -0.0001)
-                    {
-                        int i;
-                        for (i = ((int)delta.Y) / checkMap.TileHeight; i >= 0; i--)
-                        {
-                            if (layer.Tiles[((int)horizontal_pos) / checkMap.TileWidth][i] != null || layer.Tiles[((int)(horizontal_pos + width)) / checkMap.TileWidth][i] != null)
-                            {
-                                break;
-                            }
-                        }
-
-                        onTheGround = false;
-
-                        delta.Y = Math.Max(delta.Y, (i + 1) * checkMap.TileHeight);
-                    }
-                    else if (delta.Y - vertical_pos > 0.0001)
-                    {
-                        int i;
-                        for (i = ((int)(delta.Y + height)) / checkMap.TileHeight; i < checkMap.Height; i++)
-                        {
-                            if (layer.Tiles[((int)horizontal_pos) / checkMap.TileWidth][i] != null || layer.Tiles[((int)(horizontal_pos + width)) / checkMap.TileWidth][i] != null)
-                            {
-                                break;
-                            }
-                        }
-
-                        if ((i - 1) * 16 < delta.Y)
-                        {
-                            onTheGround = true;
-                        }
-                        else
-                        {
-                            onTheGround = false;
-                        }
-
-                        delta.Y = Math.Min(delta.Y, (i - 1) * checkMap.TileHeight);
-                    }
-
                     // horizontal map check
                     if (delta.X - horizontal_pos < -0.0001)
                     {
@@ -133,6 +94,11 @@ namespace MagnetBoy
                             {
                                 break;
                             }
+                        }
+
+                        if ((i + 1) * checkMap.TileWidth > delta.X)
+                        {
+                            velocity.X = 0.0f;
                         }
 
                         delta.X = Math.Max(delta.X, (i + 1) * checkMap.TileWidth);
@@ -148,7 +114,62 @@ namespace MagnetBoy
                             }
                         }
 
+                        if ((i + 1) * checkMap.TileWidth < delta.X)
+                        {
+                            velocity.X = 0.0f;
+                        }
+
                         delta.X = Math.Min(delta.X, (i - 1) * checkMap.TileWidth);
+                    }
+
+                    // vertical map check
+                    if (delta.Y - vertical_pos < -0.0001)
+                    {
+                        int i;
+                        for (i = ((int)delta.Y) / checkMap.TileHeight; i >= 0; i--)
+                        {
+                            if (layer.Tiles[((int)horizontal_pos) / checkMap.TileWidth][i] != null || layer.Tiles[((int)(horizontal_pos + width)) / checkMap.TileWidth][i] != null)
+                            {
+                                onTheGround = false;
+
+                                break;
+                            }
+                        }
+
+                        if ((i + 1) * checkMap.TileHeight > delta.Y)
+                        {
+                            velocity.Y = 0.0f;
+                        }
+
+                        delta.Y = Math.Max(delta.Y, (i + 1) * checkMap.TileHeight);
+                    }
+                    else if (delta.Y - vertical_pos > 0.0001)
+                    {
+                        int i;
+                        for (i = ((int)(delta.Y + height)) / checkMap.TileHeight; i < checkMap.Height; i++)
+                        {
+                            if (layer.Tiles[((int)horizontal_pos) / checkMap.TileWidth][i] != null || layer.Tiles[((int)(horizontal_pos + width)) / checkMap.TileWidth][i] != null)
+                            {
+                                break;
+                            }
+                        }
+
+                        if ((i - 1) * checkMap.TileHeight < delta.Y)
+                        {
+                            onTheGround = true;
+                        }
+                        else
+                        {
+                            onTheGround = false;
+                        }
+
+                        //if ((i + 1) * checkMap.TileHeight < delta.Y)
+                        if (Math.Min(delta.Y, (i - 1) * checkMap.TileHeight) < delta.Y)
+                        {
+                            velocity.Y = 0.0f;
+                        }
+
+                        delta.Y = Math.Min(delta.Y, (i - 1) * checkMap.TileHeight);
                     }
                 }
             }
