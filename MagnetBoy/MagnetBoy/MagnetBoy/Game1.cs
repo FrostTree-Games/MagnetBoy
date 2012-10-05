@@ -44,7 +44,7 @@ namespace MagnetBoy
         {
             // TODO: Add your initialization logic here
 
-            test = new Entity(400, 400);
+            test = new Entity(160, 160);
             test2 = new Player(128, 128);
 
             base.Initialize();
@@ -87,6 +87,9 @@ namespace MagnetBoy
                 this.Exit();
 
             test2.update(gameTime);
+
+            if (test2.hitTest(ref test))
+                Console.WriteLine("HARRO");
 
             base.Update(gameTime);
         }
