@@ -17,6 +17,14 @@ namespace MagnetBoy
         protected float horizontal_pos = 0.0f;
         protected float vertical_pos = 0.0f;
 
+        public Vector2 Position
+        {
+            get
+            {
+                return new Vector2(horizontal_pos, vertical_pos);
+            }
+        }
+
         protected float width = 29.5f;
         protected float height = 29.5f;
 

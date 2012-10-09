@@ -25,6 +25,8 @@ namespace MagnetBoy
         Entity test = null;
         Entity test2 = null;
 
+        Camera testCam = null;
+
         Rectangle mapView;
         public static Map map = null; //this shouldn't be public/static, but for now we need a way of referencing it in an Entity
 
@@ -46,6 +48,9 @@ namespace MagnetBoy
 
             test = new Entity(170, 170);
             test2 = new Player(128, 128);
+
+            testCam = new Camera();
+            testCam.setNewFocus(ref test2);
 
             base.Initialize();
 
@@ -100,11 +105,20 @@ namespace MagnetBoy
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            Matrix mx = new Matrix();
+            Rectangle rx = new Rectangle();
+            testCam.getDrawTranslation(ref mx, ref mapView, ref map);
+            testCam.getDrawRectangle(ref rx, ref mapView, ref map);
+
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
+            map.Draw(spriteBatch, rx);
+            spriteBatch.End();
 
-            map.Draw(spriteBatch, mapView);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, mx);
+
+            //map.Draw(spriteBatch, mapView);
 
             test.draw(spriteBatch);
             test2.draw(spriteBatch);

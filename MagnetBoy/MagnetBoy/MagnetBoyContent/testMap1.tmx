@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="30" height="25" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test tileset" tilewidth="32" tileheight="32">
   <properties>
    <property name="solid" value="1"/>
@@ -16,12 +16,12 @@
    </properties>
   </tile>
  </tileset>
- <layer name="test layer" width="25" height="25">
+ <layer name="test layer" width="30" height="25">
   <properties>
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJy9lY0OgyAMhLvNDZlO3/9tJ8lIyLcWLLqRXNCE9vpzlEFEhj9g2vAyMG8IOB8KDMYeYDeKvaLB0dpps4eDcdMPvz15rGLXsYbZkUfvigc4bhsuCq4ncpS2Zb3v4DmDg31N+l8+Z1KuD3CkGLT8NZS2lm6STthzz520NMRasFaMy6uz6ODo1XLyV+v5U75z6eFgbFYeuQ+L+FaeBaVdVOKfxO97D2/WF/1bd7kF3vWcD+uo3Z9ggLVm3zUOzb+HozZTRvwffVPZ+zM5NN2Qo/c9yqD/sva/eKPYW8/c7ZnPLVj68eANGRkKFQ==
+   eJzFltEOgiEIha0ss6ze/23TCzZ2AgWsxXb2d6F+Ikcsp5Tyn3TveihqXQXGF6asfIswD3VNelSFu/qumFYu5odr4+/dfF9Jr8FMbTPfaNQvc09dB0HHH3P5erx+Z2DP6kM1iHDRO+MuPp1rjL1KZyfpouQbPTNrH9HODbmaD3DvfP9ef1dhjsVXu/dqMNBXK+4tfeYc4eJ+PflSXa2+pKA7w+cNLuakMb08y15m/RKZMy9qwn5FMTtvXpfBlHwuiY+hHuDpl8SVmFau1i8tXD7G0zsazEN/ebiRvid508Llb4jH29I9GqHVLdqfLLFiet+jyLsVkeV/YURvKBwLtA==
   </data>
  </layer>
 </map>
