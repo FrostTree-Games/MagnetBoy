@@ -61,7 +61,7 @@ namespace MagnetBoy
             }
             else if (ks.IsKeyDown(Keys.Left))
             {
-                currentAnimation = "walkLeft";
+                currentAnimation = "wilson";
 
                 if (velocity.X > -0.1f)
                 {

@@ -143,14 +143,24 @@ namespace MagnetBoy
                 return;
             }
 
-            try
+            if (!anims.ContainsKey(animation))
+            {
+                sb.Draw(Game1.globalTestWalrus, position, Color.White);
+                return;
+            }
+            else
+            {
+                am = anims[animation];
+            }
+
+            /*try
             {
                 am = anims[animation];
             }
             catch (KeyNotFoundException)
             {
                 return;
-            }
+            } */
 
             int actualFrame = frame % am.frameCount;
 
