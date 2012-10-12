@@ -63,14 +63,32 @@ namespace MagnetBoy
             a.frameSpeed = 100;
             anims.Add("walkRight", a);
 
-            Animation b = new Animation();
-            b.initalX = 288;
-            b.initalY = 32;
-            b.frameWidth = 32;
-            b.frameHeight = 32;
-            b.frameCount = 3;
-            b.frameSpeed = 100;
-            anims.Add("walkLeft", b);
+            a = new Animation();
+            a.initalX = 288;
+            a.initalY = 32;
+            a.frameWidth = 32;
+            a.frameHeight = 32;
+            a.frameCount = 3;
+            a.frameSpeed = 100;
+            anims.Add("walkLeft", a);
+
+            a = new Animation();
+            a.initalX = 320;
+            a.initalY = 64;
+            a.frameWidth = 32;
+            a.frameHeight = 32;
+            a.frameCount = 1;
+            a.frameSpeed = 100;
+            anims.Add("standingRight", a);
+
+            a = new Animation();
+            a.initalX = 320;
+            a.initalY = 32;
+            a.frameWidth = 32;
+            a.frameHeight = 32;
+            a.frameCount = 1;
+            a.frameSpeed = 100;
+            anims.Add("standingLeft", a);
         }
 
         // stolen from http://stackoverflow.com/questions/8331494/crop-texture2d-spritesheet
@@ -152,15 +170,6 @@ namespace MagnetBoy
             {
                 am = anims[animation];
             }
-
-            /*try
-            {
-                am = anims[animation];
-            }
-            catch (KeyNotFoundException)
-            {
-                return;
-            } */
 
             int actualFrame = frame % am.frameCount;
 

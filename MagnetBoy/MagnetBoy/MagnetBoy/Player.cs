@@ -61,7 +61,7 @@ namespace MagnetBoy
             }
             else if (ks.IsKeyDown(Keys.Left))
             {
-                currentAnimation = "wilson";
+                currentAnimation = "walkLeft";
 
                 if (velocity.X > -0.1f)
                 {
@@ -73,6 +73,15 @@ namespace MagnetBoy
                 if (Math.Abs(velocity.X) > 0.01 && onTheGround)
                 {
                     velocity.X = 0.0f;
+                }
+
+                if (currentAnimation == "walkRight")
+                {
+                    currentAnimation = "standingRight";
+                }
+                else if (currentAnimation == "walkLeft")
+                {
+                    currentAnimation = "standingLeft";
                 }
             }
 
