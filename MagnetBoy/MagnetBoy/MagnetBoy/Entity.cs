@@ -12,7 +12,13 @@ namespace MagnetBoy
 {
     class Entity
     {
-        //sexy class data for our game entity goes here
+        // enumeration for magnetic polarity of objects
+        public enum Polarity
+        {
+            Neutral,
+            Positive,
+            Negative
+        }
 
         protected float horizontal_pos = 0.0f;
         protected float vertical_pos = 0.0f;
