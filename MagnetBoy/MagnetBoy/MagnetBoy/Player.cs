@@ -11,6 +11,10 @@ namespace MagnetBoy
 {
     class Player: Entity
     {
+        string currentAnimation = null;
+        int currentFrame = 0;
+        double lastFrameIncrement = 0;
+
         public Player()
         {
             horizontal_pos = 0.0f;
@@ -18,6 +22,8 @@ namespace MagnetBoy
 
             velocity = Vector2.Zero;
             acceleration = Vector2.Zero;
+
+            currentAnimation = "walkRight";
         }
 
         public Player(float initialx, float initialy)
@@ -32,6 +38,8 @@ namespace MagnetBoy
             acceleration = Vector2.Zero;
 
             acceleration.Y = 0.001f;
+
+            currentAnimation = "walkRight";
         }
 
         public override void update(GameTime currentTime)
@@ -44,6 +52,8 @@ namespace MagnetBoy
 
             if (ks.IsKeyDown(Keys.Right))
             {
+                currentAnimation = "walkRight";
+
                 if (velocity.X < 0.1f)
                 {
                     keyAcceleration.X = 0.001f;
@@ -51,6 +61,8 @@ namespace MagnetBoy
             }
             else if (ks.IsKeyDown(Keys.Left))
             {
+                currentAnimation = "walkLeft";
+
                 if (velocity.X > -0.1f)
                 {
                     keyAcceleration.X = -0.001f;
@@ -84,11 +96,29 @@ namespace MagnetBoy
 
             horizontal_pos = step.X;
             vertical_pos = step.Y;
+
+            // if the last frame time hasn't been set, set it now
+            if (lastFrameIncrement == 0)
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            // update the current frame if needed
+            if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > sheet.getAnimationSpeed(currentAnimation))
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                currentFrame = (currentFrame + 1) % sheet.getAnimationFrameCount(currentAnimation);
+            }
         }
 
         public override void draw(SpriteBatch sb)
         {
-            sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.Yellow);
+            if (sheet != null)
+            {
+                sheet.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+            }
+            //sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.Yellow);
         }
     }
 }

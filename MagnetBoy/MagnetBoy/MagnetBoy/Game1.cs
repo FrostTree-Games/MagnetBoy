@@ -21,6 +21,9 @@ namespace MagnetBoy
         SpriteBatch spriteBatch;
 
         public static Texture2D globalTestWalrus = null;
+        Texture2D testSheet = null; // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
+
+        FrameSheet testAnimation = null;
 
         Entity test = null;
         Entity test2 = null;
@@ -44,8 +47,6 @@ namespace MagnetBoy
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             test = new Entity(170, 170);
             test2 = new Player(128, 128);
 
@@ -67,6 +68,10 @@ namespace MagnetBoy
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
+            testSheet = this.Content.Load<Texture2D>("actor3");
+
+            testAnimation = new FrameSheet(ref testSheet);
+            test2.setSheet(ref testAnimation);
 
             map = Content.Load<Map>("testMap1");
         }
@@ -93,9 +98,6 @@ namespace MagnetBoy
 
             test2.update(gameTime);
 
-            if (test2.hitTest(ref test) == true)
-                Console.WriteLine("HARRO");
-
             base.Update(gameTime);
         }
 
@@ -112,14 +114,13 @@ namespace MagnetBoy
 
             GraphicsDevice.Clear(Color.Black);
 
+            // draw map
             spriteBatch.Begin();
             map.Draw(spriteBatch, rx);
             spriteBatch.End();
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, mx);
-
-            //map.Draw(spriteBatch, mapView);
-
+            // draw sprites
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, mx);
             test.draw(spriteBatch);
             test2.draw(spriteBatch);
             spriteBatch.End();
