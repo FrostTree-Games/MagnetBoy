@@ -17,6 +17,8 @@ namespace MagnetBoy
 
         public Player()
         {
+            creation();
+
             horizontal_pos = 0.0f;
             vertical_pos = 0.0f;
 
@@ -28,6 +30,8 @@ namespace MagnetBoy
 
         public Player(float initialx, float initialy)
         {
+            creation();
+
             horizontal_pos = initialx;
             vertical_pos = initialy;
 
@@ -46,6 +50,14 @@ namespace MagnetBoy
         {
             double delta = currentTime.ElapsedGameTime.Milliseconds;
             KeyboardState ks = Keyboard.GetState();
+
+            for (int i = 0; i < globalEntityList.Count; i++)
+            {
+                if (globalEntityList[i] != this && hitTest(globalEntityList[i]))
+                {
+                    Console.WriteLine("harro");
+                }
+            }
 
             Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);

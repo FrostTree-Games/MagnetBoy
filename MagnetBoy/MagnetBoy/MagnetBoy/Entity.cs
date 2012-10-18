@@ -20,6 +20,8 @@ namespace MagnetBoy
             Negative
         }
 
+        protected static List<Entity> globalEntityList = null;
+
         protected float horizontal_pos = 0.0f;
         protected float vertical_pos = 0.0f;
 
@@ -43,14 +45,37 @@ namespace MagnetBoy
         
         public Entity()
         {
+            creation();
+
             horizontal_pos = 0.0f;
             vertical_pos = 0.0f;
         }
         
         public Entity(float initialx, float initialy)
         {
+            creation();
+
             horizontal_pos = initialx;
             vertical_pos = initialy;
+        }
+
+        // must be called in the entity constructor
+        protected void creation()
+        {
+            if (globalEntityList == null)
+            {
+                globalEntityList = new List<Entity>();
+            }
+
+            globalEntityList.Add(this);
+        }
+
+        public void death()
+        {
+            if (globalEntityList != null)
+            {
+                globalEntityList.Remove(this);
+            }
         }
 
         public virtual void update(GameTime currentTime)
@@ -68,7 +93,7 @@ namespace MagnetBoy
             sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.White);
         }
 
-        public bool hitTest(ref Entity other)
+        public bool hitTest(Entity other)
         {
             if( horizontal_pos > other.horizontal_pos + other.width || horizontal_pos + width < other.horizontal_pos || vertical_pos > other.vertical_pos + other.height || vertical_pos + height < other.vertical_pos)
             {

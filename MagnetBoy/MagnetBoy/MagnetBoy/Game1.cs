@@ -83,6 +83,12 @@ namespace MagnetBoy
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+
+            test.death();
+            test2.death();
+
+            test = null;
+            test2 = null;
         }
 
         /// <summary>
