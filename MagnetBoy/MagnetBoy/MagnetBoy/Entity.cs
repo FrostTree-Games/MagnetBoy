@@ -36,6 +36,17 @@ namespace MagnetBoy
         protected float width = 29.5f;
         protected float height = 29.5f;
 
+        protected Polarity pole = Polarity.Neutral;
+        protected float magneticMoment = 0.0f;
+
+        public KeyValuePair<Polarity, float> MagneticValue
+        {
+            get
+            {
+                return new KeyValuePair<Polarity, float>(pole, magneticMoment);
+            }
+        }
+
         protected Vector2 velocity;
         protected Vector2 acceleration;
 

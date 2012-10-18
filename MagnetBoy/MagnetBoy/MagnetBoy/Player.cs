@@ -25,6 +25,8 @@ namespace MagnetBoy
             velocity = Vector2.Zero;
             acceleration = Vector2.Zero;
 
+            acceleration.Y = 0.001f;
+
             currentAnimation = "walkRight";
         }
 
@@ -51,13 +53,11 @@ namespace MagnetBoy
             double delta = currentTime.ElapsedGameTime.Milliseconds;
             KeyboardState ks = Keyboard.GetState();
 
-            for (int i = 0; i < globalEntityList.Count; i++)
-            {
-                if (globalEntityList[i] != this && hitTest(globalEntityList[i]))
-                {
-                    Console.WriteLine("harro");
-                }
-            }
+            //reset the acceleration vector and recompute it
+            acceleration = Vector2.Zero;
+            acceleration.Y = 0.001f;
+
+            //we need to compute magnetism here and add it to acceleration
 
             Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);
