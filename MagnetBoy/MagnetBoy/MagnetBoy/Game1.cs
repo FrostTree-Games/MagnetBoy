@@ -21,6 +21,8 @@ namespace MagnetBoy
         SpriteBatch spriteBatch;
 
         public static Texture2D globalTestWalrus = null;
+        public static Texture2D globalTestPositive = null;
+        public static Texture2D globalTestNegative = null;
         Texture2D testSheet = null; // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
 
         FrameSheet testAnimation = null;
@@ -47,7 +49,7 @@ namespace MagnetBoy
         /// </summary>
         protected override void Initialize()
         {
-            test = new Entity(170, 170);
+            test = new WallMagnet(170, 170, Entity.Polarity.Positive);
             test2 = new Player(128, 128);
 
             testCam = new Camera();
@@ -68,6 +70,8 @@ namespace MagnetBoy
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
+            globalTestPositive = this.Content.Load<Texture2D>("posTest");
+            globalTestNegative = this.Content.Load<Texture2D>("negTest");
             testSheet = this.Content.Load<Texture2D>("actor3");
 
             testAnimation = new FrameSheet(ref testSheet);
