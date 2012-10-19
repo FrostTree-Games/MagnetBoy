@@ -57,11 +57,10 @@ namespace MagnetBoy
         public Entity()
         {
             creation();
-
             horizontal_pos = 0.0f;
             vertical_pos = 0.0f;
         }
-        
+
         public Entity(float initialx, float initialy)
         {
             creation();
