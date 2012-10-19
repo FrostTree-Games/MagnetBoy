@@ -15,7 +15,7 @@ namespace MagnetBoy
         {
             pole = newPolarity;
 
-            magneticMoment = 0.5f;
+            magneticMoment = 1.5f;
 
             horizontal_pos = initialx;
             vertical_pos = initialy;

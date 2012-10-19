@@ -49,7 +49,7 @@ namespace MagnetBoy
         /// </summary>
         protected override void Initialize()
         {
-            test = new WallMagnet(170, 170, Entity.Polarity.Positive);
+            test = new WallMagnet(196, 196, Entity.Polarity.Positive);
             test2 = new Player(128, 128);
 
             testCam = new Camera();
