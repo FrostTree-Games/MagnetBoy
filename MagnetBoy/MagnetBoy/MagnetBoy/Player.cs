@@ -45,6 +45,9 @@ namespace MagnetBoy
 
             acceleration.Y = 0.001f;
 
+            pole = Polarity.Neutral;
+            magneticMoment = 0.5f;
+
             currentAnimation = "walkRight";
         }
 
@@ -53,11 +56,50 @@ namespace MagnetBoy
             double delta = currentTime.ElapsedGameTime.Milliseconds;
             KeyboardState ks = Keyboard.GetState();
 
+            if (ks.IsKeyDown(Keys.X))
+            {
+                pole = Polarity.Positive;
+            }
+            else if (ks.IsKeyDown(Keys.C))
+            {
+                pole = Polarity.Negative;
+            }
+            else
+            {
+                pole = Polarity.Neutral;
+            }
+
+
             //reset the acceleration vector and recompute it
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
 
             //we need to compute magnetism here and add it to acceleration
+            foreach (Entity q2 in globalEntityList)
+            {
+                if (q2 == this)
+                {
+                    continue;
+                }
+
+                if (pole != Polarity.Neutral && q2.MagneticValue.Key != Polarity.Neutral)
+                {
+                    double distance = Math.Sqrt(Math.Pow(q2.Position.X - horizontal_pos, 2) + Math.Pow(q2.Position.Y - vertical_pos, 2));
+                    double force = (magneticMoment * q2.MagneticValue.Value)/(4 * Math.PI * Math.Pow(distance, 2));
+                    double angle = Math.Atan2(q2.Position.X - horizontal_pos, vertical_pos - q2.Position.Y);
+
+                    angle = (angle + (Math.PI / 2)) % (Math.PI * 2);
+
+                    if (pole != q2.MagneticValue.Key)
+                    {
+                        angle += Math.PI;
+                    }
+
+                    Vector2 newForce = new Vector2((float)(force * Math.Cos(angle)) * 100, (float)(force * Math.Sin(angle)) * 100);
+
+                    acceleration += newForce;
+                }
+            }
 
             
 
