@@ -25,6 +25,8 @@ namespace MagnetBoy
             velocity = Vector2.Zero;
             acceleration = Vector2.Zero;
 
+            acceleration.Y = 0.001f;
+
             currentAnimation = "walkRight";
         }
 
@@ -51,11 +53,39 @@ namespace MagnetBoy
             double delta = currentTime.ElapsedGameTime.Milliseconds;
             KeyboardState ks = Keyboard.GetState();
 
-            for (int i = 0; i < globalEntityList.Count; i++)
+            //reset the acceleration vector and recompute it
+            acceleration = Vector2.Zero;
+            acceleration.Y = 0.001f;
+
+            //we need to compute magnetism here and add it to acceleration
+
+            foreach( Entity q2 in globalEntityList )
             {
-                if (globalEntityList[i] != this && hitTest(globalEntityList[i]))
+                Vector2 magnetForce = Vector2.Zero;
+                float Force = 0.0f;
+                float angle = 0.0f;
+
+                float distance = (float)(Math.Sqrt( Math.Pow((horizontal_pos - q2.Position.X), 2.0) + Math.Pow((vertical_pos - q2.Position.Y), 2.0)));
+
+                angle = (float)(Math.Acos(( (horizontal_pos * q2.Position.X) + (vertical_pos * q2.Position.Y) )/( (Math.Sqrt( (Math.Pow(horizontal_pos, 2.0) + Math.Pow(vertical_pos, 2.0))) )*(Math.Sqrt( (Math.Pow(q2.Position.X, 2.0) + Math.Pow(q2.Position.Y, 2.0)))) )));
+
+                Force = (float)((q2.MagneticValue.Value * magneticMoment) / (4 * Math.PI * Math.Pow(distance, 2.0)));
+
+                magnetForce.X= (float)(Force * Math.Cos(angle));
+                magnetForce.Y= (float)(Force * Math.Sin(angle));
+
+                if (q2.MagneticValue.Key == Polarity.Positive && MagneticValue.Key== Polarity.Negative || q2.MagneticValue.Key == Polarity.Negative && MagneticValue.Key == Polarity.Positive)
                 {
-                    Console.WriteLine("harro");
+                    //attract
+                    acceleration.X += magnetForce.X;
+                    acceleration.Y += magnetForce.Y;
+                    
+                }
+                else if (q2.MagneticValue.Key == Polarity.Positive && MagneticValue.Key == Polarity.Positive || q2.MagneticValue.Key == Polarity.Negative && MagneticValue.Key == Polarity.Negative)
+                {
+                    //repel
+                    acceleration.X -= magnetForce.X;
+                    acceleration.Y -= magnetForce.Y;
                 }
             }
 
