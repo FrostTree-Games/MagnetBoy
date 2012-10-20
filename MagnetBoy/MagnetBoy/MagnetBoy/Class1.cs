@@ -52,20 +52,6 @@ namespace MagnetBoy
             double delta = currentTime.ElapsedGameTime.Milliseconds;
             KeyboardState ks = Keyboard.GetState();
 
-            if (ks.IsKeyDown(Keys.X))
-            {
-                pole = Polarity.Positive;
-            }
-            else if (ks.IsKeyDown(Keys.C))
-            {
-                pole = Polarity.Negative;
-            }
-            else
-            {
-                pole = Polarity.Neutral;
-            }
-
-
             //reset the acceleration vector and recompute it
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
