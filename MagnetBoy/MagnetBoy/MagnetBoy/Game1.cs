@@ -29,6 +29,7 @@ namespace MagnetBoy
 
         Entity test = null;
         Entity test2 = null;
+        Entity test3 = null;
 
         Camera testCam = null;
 
@@ -51,6 +52,7 @@ namespace MagnetBoy
         {
             test = new WallMagnet(196, 196, Entity.Polarity.Positive);
             test2 = new Player(128, 128);
+            test3 = new Enemy(150, 150);
 
             testCam = new Camera();
             testCam.setNewFocus(ref test2);
@@ -76,7 +78,7 @@ namespace MagnetBoy
 
             testAnimation = new FrameSheet(ref testSheet);
             test2.setSheet(ref testAnimation);
-
+            
             map = Content.Load<Map>("testMap1");
         }
 
@@ -90,6 +92,7 @@ namespace MagnetBoy
 
             test.death();
             test2.death();
+            test3.death();
 
             test = null;
             test2 = null;
@@ -107,6 +110,7 @@ namespace MagnetBoy
                 this.Exit();
 
             test2.update(gameTime);
+            test3.update(gameTime);
 
             base.Update(gameTime);
         }
@@ -133,6 +137,7 @@ namespace MagnetBoy
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, mx);
             test.draw(spriteBatch);
             test2.draw(spriteBatch);
+            test3.draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

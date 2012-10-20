@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FrameSheet.cs" />
     <Compile Include="Player.cs" />
