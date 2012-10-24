@@ -27,6 +27,8 @@ namespace MagnetBoy
 
         FrameSheet testAnimation = null;
 
+        public static Random gameRandom = null;
+
         Entity test = null;
         Entity test2 = null;
         Entity test3 = null;
@@ -50,12 +52,14 @@ namespace MagnetBoy
         /// </summary>
         protected override void Initialize()
         {
-            test = new WallMagnet(196, 196, Entity.Polarity.Positive);
+            test = new Entity(196, 196);
             test2 = new Player(128, 128);
-            test3 = new Enemy(150, 150);
+            test3 = new WalkingEnemy(321, 196);
 
             testCam = new Camera();
             testCam.setNewFocus(ref test2);
+
+            gameRandom = new Random();
 
             base.Initialize();
 
@@ -109,6 +113,7 @@ namespace MagnetBoy
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            test.update(gameTime);
             test2.update(gameTime);
             test3.update(gameTime);
 

@@ -170,7 +170,7 @@ namespace MagnetBoy
                             }
                         }
 
-                        if ((i + 1) * checkMap.TileWidth < delta.X)
+                        if ((i) * checkMap.TileWidth < delta.X + width)
                         {
                             velocity.X = 0.0f;
                         }
