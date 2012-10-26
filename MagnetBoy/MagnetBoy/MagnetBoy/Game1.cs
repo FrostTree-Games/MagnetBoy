@@ -87,7 +87,20 @@ namespace MagnetBoy
                 {
                     switch (obj.Name)
                     {
-                        //
+                        case "wm_pos":
+                            testList.Add(new WallMagnet(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Positive));
+                            break;
+                        case "wm_neg":
+                            testList.Add(new WallMagnet(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Negative));
+                            break;
+                        case "walker_pos":
+                            testList.Add(new WalkingEnemy(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Positive));
+                            break;
+                        case "walker_neg":
+                            testList.Add(new WalkingEnemy(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Negative));
+                            break;
+                        default:
+                            break;
                     }
                 }
             }

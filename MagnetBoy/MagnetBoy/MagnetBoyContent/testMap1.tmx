@@ -21,7 +21,14 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1tEKgCAMBdDZLJL+/38jaBBayXVrQji49KDbqacViSh2yEr+lYY73OF2dcMlnq6m0vkMYKZsDoP9FsVGc/5uyl7yNMXdQLNl3+YmsoMtTKqcWZkaV2O2ulozlSOrLt/cQ3L0L4ArPdp/xqeS8/nlzheVv5v2+5Ds92MD8Q==
+   eJzt1tEKgCAMBdCZFkn//7/Rw2BIibvX9MXB3pwHp+CSiKQJecr4yMtd7nKnusHkSJcJdYMzt2Kf6Kzvcd4I1LAuYrIualo3DTStezlN5L99c1t73cO0bkufUZNxGRN1WTMDrr5b1HzqD4erNezM+BXq7pU1f0R53t4zcu3Ob1gABJM=
   </data>
  </layer>
+ <objectgroup name="test object" width="30" height="25">
+  <object name="wm_pos" x="608" y="384" width="32" height="32"/>
+  <object name="wm_pos" x="736" y="384" width="32" height="32"/>
+  <object name="wm_pos" x="864" y="384" width="32" height="32"/>
+  <object name="wm_pos" x="800" y="384" width="32" height="32"/>
+  <object name="wm_pos" x="672" y="384" width="32" height="32"/>
+ </objectgroup>
 </map>
