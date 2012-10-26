@@ -75,18 +75,24 @@ namespace MagnetBoy
 
             testList = new List<Entity>();
 
-            Entity testPlayer = new Player(196, 196);
-            testList.Add(testPlayer);
+            testCam = new Camera();
 
-            //testList.Add(new WallMagnet(196, 196, Entity.Polarity.Positive));
-            //testList.Add(new WalkingEnemy(321, 196));
+            testAnimation = new FrameSheet(ref testSheet);
 
             foreach (ObjectLayer layer in map.ObjectLayers)
             {
                 foreach (MapObject obj in layer.MapObjects)
                 {
+                    Entity en = null;
+
                     switch (obj.Name)
                     {
+                        case "player":
+                            en = new Player(obj.Bounds.X, obj.Bounds.Y);
+                            testList.Add(en);
+                            testCam.setNewFocus(ref en);
+                            en.setSheet(ref testAnimation);
+                            break;
                         case "wm_pos":
                             testList.Add(new WallMagnet(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Positive));
                             break;
@@ -105,11 +111,6 @@ namespace MagnetBoy
                 }
             }
 
-            testCam = new Camera();
-            testCam.setNewFocus(ref testPlayer);
-
-            testAnimation = new FrameSheet(ref testSheet);
-            testPlayer.setSheet(ref testAnimation);
         }
 
         /// <summary>
