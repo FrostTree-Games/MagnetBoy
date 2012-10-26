@@ -38,8 +38,6 @@ namespace MagnetBoy
 
         protected override void enemyUpdate(GameTime currentTime)
         {
-            Console.WriteLine("{0}", velocity.X);
-
             if (walkSwitchTimer == 0)
             {
                 walkSwitchTimer = currentTime.TotalGameTime.TotalMilliseconds;
