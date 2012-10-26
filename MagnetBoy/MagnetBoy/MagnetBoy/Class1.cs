@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MagnetBoy
 {
-    class Enemy: Entity
+    abstract class Enemy: Entity
     {
         string currentAnimation = null;
         int currentFrame = 0;
@@ -56,7 +56,7 @@ namespace MagnetBoy
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
 
-            //we need to compute magnetism here and add it to acceleration
+            enemyUpdate(currentTime);
             
             foreach (Entity q2 in globalEntityList)
             {
@@ -99,6 +99,8 @@ namespace MagnetBoy
             horizontal_pos = step.X;
             vertical_pos = step.Y;
         }
+
+        protected abstract void enemyUpdate(GameTime currentTime);
 
         public override void draw(SpriteBatch sb)
         {

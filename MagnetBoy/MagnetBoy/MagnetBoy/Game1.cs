@@ -27,9 +27,9 @@ namespace MagnetBoy
 
         FrameSheet testAnimation = null;
 
-        Entity test = null;
-        Entity test2 = null;
-        Entity test3 = null;
+        public static Random gameRandom = null;
+
+        List<Entity> testList = null;
 
         Camera testCam = null;
 
@@ -50,12 +50,7 @@ namespace MagnetBoy
         /// </summary>
         protected override void Initialize()
         {
-            test = new WallMagnet(196, 196, Entity.Polarity.Positive);
-            test2 = new Player(128, 128);
-            test3 = new Enemy(150, 150);
-
-            testCam = new Camera();
-            testCam.setNewFocus(ref test2);
+            gameRandom = new Random();
 
             base.Initialize();
 
@@ -76,10 +71,32 @@ namespace MagnetBoy
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
             testSheet = this.Content.Load<Texture2D>("actor3");
 
-            testAnimation = new FrameSheet(ref testSheet);
-            test2.setSheet(ref testAnimation);
-            
             map = Content.Load<Map>("testMap1");
+
+            testList = new List<Entity>();
+
+            Entity testPlayer = new Player(196, 196);
+            testList.Add(testPlayer);
+
+            //testList.Add(new WallMagnet(196, 196, Entity.Polarity.Positive));
+            //testList.Add(new WalkingEnemy(321, 196));
+
+            foreach (ObjectLayer layer in map.ObjectLayers)
+            {
+                foreach (MapObject obj in layer.MapObjects)
+                {
+                    switch (obj.Name)
+                    {
+                        //
+                    }
+                }
+            }
+
+            testCam = new Camera();
+            testCam.setNewFocus(ref testPlayer);
+
+            testAnimation = new FrameSheet(ref testSheet);
+            testPlayer.setSheet(ref testAnimation);
         }
 
         /// <summary>
@@ -88,14 +105,10 @@ namespace MagnetBoy
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
-
-            test.death();
-            test2.death();
-            test3.death();
-
-            test = null;
-            test2 = null;
+            foreach (Entity a in testList)
+            {
+                a.death();
+            }
         }
 
         /// <summary>
@@ -109,8 +122,10 @@ namespace MagnetBoy
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            test2.update(gameTime);
-            test3.update(gameTime);
+            foreach (Entity a in testList)
+            {
+                a.update(gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -135,9 +150,12 @@ namespace MagnetBoy
 
             // draw sprites
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, mx);
-            test.draw(spriteBatch);
-            test2.draw(spriteBatch);
-            test3.draw(spriteBatch);
+
+            foreach (Entity a in testList)
+            {
+                a.draw(spriteBatch);
+            }
+
             spriteBatch.End();
 
             base.Draw(gameTime);
