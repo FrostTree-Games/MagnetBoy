@@ -79,7 +79,8 @@ namespace MagnetBoy
             testList.Add(testPlayer);
 
             //testList.Add(new WallMagnet(196, 196, Entity.Polarity.Positive));
-            //testList.Add(new WalkingEnemy(321, 196));
+            testList.Add(new JumpingEnemy(321, 196));
+            testList.Add(new WalkingEnemy(100, 196));
 
             foreach (ObjectLayer layer in map.ObjectLayers)
             {
