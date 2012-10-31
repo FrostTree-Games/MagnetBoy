@@ -16,7 +16,7 @@ namespace MagnetBoy
 
         const float walkerSpeed = 0.09f;
         
-        public WalkingEnemy(float initialx, float initialy)
+        public WalkingEnemy(float initialx, float initialy, Polarity newPole)
         {
             creation();
 
@@ -32,7 +32,7 @@ namespace MagnetBoy
             acceleration.X = 0.1f;
             acceleration.Y = 0.001f;
 
-            pole = Polarity.Positive;
+            pole = newPole;
             magneticMoment = 0.5f;
         }
 
