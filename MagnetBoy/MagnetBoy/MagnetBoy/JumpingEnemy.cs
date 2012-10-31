@@ -70,7 +70,7 @@ namespace MagnetBoy
 
                 if( Game1.gameRandom.Next() % 30 == 0 )
                 {
-                    velocity.Y = -0.5f;
+                    velocity.Y = -0.4f;
                 }
             }
         }
