@@ -103,6 +103,39 @@ namespace MagnetBoy
             sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.White);
         }
 
+        protected Vector2 computeMagneticForce()
+        {
+            Vector2 acceleration = Vector2.Zero;
+
+            foreach (Entity q2 in globalEntityList)
+            {
+                if (q2 == this)
+                {
+                    continue;
+                }
+
+                if (pole != Polarity.Neutral && q2.MagneticValue.Key != Polarity.Neutral)
+                {
+                    double distance = Math.Sqrt(Math.Pow(q2.Position.X - horizontal_pos, 2) + Math.Pow(q2.Position.Y - vertical_pos, 2));
+                    double force = (magneticMoment * q2.MagneticValue.Value) / (4 * Math.PI * Math.Pow(distance, 2));
+                    double angle = Math.Atan2(q2.Position.X - horizontal_pos, vertical_pos - q2.Position.Y);
+
+                    angle = (angle + (Math.PI / 2)) % (Math.PI * 2);
+
+                    if (pole != q2.MagneticValue.Key)
+                    {
+                        angle += Math.PI;
+                    }
+
+                    Vector2 newForce = new Vector2((float)(force * Math.Cos(angle)) * 100, (float)(force * Math.Sin(angle)) * 100);
+
+                    acceleration += newForce;
+                }
+            }
+
+            return acceleration;
+        }
+
         public bool hitTest(Entity other)
         {
             if( horizontal_pos > other.horizontal_pos + other.width || horizontal_pos + width < other.horizontal_pos || vertical_pos > other.vertical_pos + other.height || vertical_pos + height < other.vertical_pos)
