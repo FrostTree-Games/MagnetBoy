@@ -19,6 +19,8 @@ namespace MagnetBoy
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
+
+            solid = true;
         }
 
         public override void update(GameTime currentTime)

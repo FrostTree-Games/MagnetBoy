@@ -50,6 +50,15 @@ namespace MagnetBoy
         protected Vector2 velocity;
         protected Vector2 acceleration;
 
+        protected Boolean solid = false;
+        public Boolean IsSolid
+        {
+            get
+            {
+                return solid;
+            }
+        }
+
         protected bool onTheGround = false;
 
         protected FrameSheet sheet = null;
@@ -146,7 +155,65 @@ namespace MagnetBoy
             {
                 return true;
             }
-            
+        }
+
+        public Boolean checkForSolidObjects(ref Vector2 step)
+        {
+            Boolean hitY = false;
+            Boolean hitX = false;
+
+            foreach (Entity en in globalEntityList)
+            {
+                if (en == this)
+                {
+                    continue;
+                }
+
+                if (en.IsSolid && hitTest(en))
+                {
+                    if (en.Position.Y + en.height > vertical_pos && en.Position.Y < vertical_pos)
+                    {
+                        step.Y = Math.Max(en.Position.Y + en.height + 1, vertical_pos);
+
+                        hitY = true;
+                    }
+                    else if (en.Position.Y < vertical_pos + height && en.Position.Y > vertical_pos)
+                    {
+                        step.Y = en.Position.Y - height - 1;
+
+                        onTheGround = true;
+
+                        hitY = true;
+                    }
+
+                    if (!hitY)
+                    {
+                        if (en.Position.X + en.width > horizontal_pos && en.Position.X < horizontal_pos)
+                        {
+                            step.X = Math.Max(en.Position.X + en.width + 1, horizontal_pos);
+
+                            hitX = true;
+                        }
+                        else if (en.Position.X < horizontal_pos + width && en.Position.X > horizontal_pos)
+                        {
+                            step.X = en.Position.X - width - 1;
+
+                            hitX = true;
+                        }
+                    }
+                }
+
+                if (hitY)
+                {
+                    velocity.Y = 0;
+                }
+                if (hitX)
+                {
+                    velocity.X = 0;
+                }
+            }
+
+            return hitY || hitX;
         }
 
         // pass a map and a vector stating where you'd like to move to

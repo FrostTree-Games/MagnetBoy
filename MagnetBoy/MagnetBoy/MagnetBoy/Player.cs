@@ -27,6 +27,8 @@ namespace MagnetBoy
 
             acceleration.Y = 0.001f;
 
+            solid = true;
+
             currentAnimation = "walkRight";
         }
 
@@ -47,6 +49,8 @@ namespace MagnetBoy
 
             pole = Polarity.Neutral;
             magneticMoment = 0.5f;
+
+            solid = true;
 
             currentAnimation = "walkRight";
         }
@@ -131,6 +135,7 @@ namespace MagnetBoy
             step.Y += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.Y);
 
             checkForWalls(Game1.map, ref step);
+            checkForSolidObjects(ref step);
 
             horizontal_pos = step.X;
             vertical_pos = step.Y;
