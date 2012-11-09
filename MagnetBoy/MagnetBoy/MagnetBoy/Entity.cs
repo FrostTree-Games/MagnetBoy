@@ -171,6 +171,42 @@ namespace MagnetBoy
 
                 if (en.IsSolid && hitTest(en))
                 {
+                    float deltaX = 0.0f;
+                    float deltaY = 0.0f;
+
+                    if (en.Position.Y + en.height > vertical_pos && en.Position.Y < vertical_pos)
+                    {
+                        deltaY += (en.Position.Y + en.height) - vertical_pos;
+                    }
+                    else if (en.Position.Y < vertical_pos + height && en.Position.Y > vertical_pos)
+                    {
+                        deltaY += en.Position.Y - (vertical_pos + height);
+
+                        onTheGround = true;
+                    }
+
+                    if (en.Position.X + en.width > horizontal_pos && en.Position.X < horizontal_pos)
+                    {
+                        deltaX += (en.Position.X + en.width) - horizontal_pos;
+                    }
+                    else if (en.Position.X < horizontal_pos + width && en.Position.X > horizontal_pos)
+                    {
+                        deltaX += en.Position.X - (horizontal_pos + width);
+                    }
+
+                    if (Math.Abs(horizontal_pos - en.Position.X) < Math.Abs(vertical_pos - en.Position.Y))
+                    {
+                        step.Y += deltaY * 1.1f;
+
+                        hitY = true;
+                    }
+                    else
+                    {
+                        step.X += deltaX * 1.1f;
+
+                        hitX = true;
+                    }
+
                     /*
                     if (en.Position.Y + en.height > vertical_pos && en.Position.Y < vertical_pos)
                     {
