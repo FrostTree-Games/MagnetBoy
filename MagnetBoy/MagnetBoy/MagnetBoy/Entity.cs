@@ -206,39 +206,6 @@ namespace MagnetBoy
 
                         hitX = true;
                     }
-
-                    /*
-                    if (en.Position.Y + en.height > vertical_pos && en.Position.Y < vertical_pos)
-                    {
-                        step.Y = Math.Max(en.Position.Y + en.height + 1, vertical_pos);
-
-                        hitY = true;
-                    }
-                    else if (en.Position.Y < vertical_pos + height && en.Position.Y > vertical_pos)
-                    {
-                        step.Y = en.Position.Y - height - 1;
-
-                        onTheGround = true;
-
-                        hitY = true;
-                    }
-
-                    if (!hitY)
-                    {
-                        if (en.Position.X + en.width > horizontal_pos && en.Position.X < horizontal_pos)
-                        {
-                            step.X = Math.Max(en.Position.X + en.width + 1, horizontal_pos);
-
-                            hitX = true;
-                        }
-                        else if (en.Position.X < horizontal_pos + width && en.Position.X > horizontal_pos)
-                        {
-                            step.X = en.Position.X - width - 1;
-
-                            hitX = true;
-                        }
-                    }
-                    */
                 }
 
                 if (hitY)
