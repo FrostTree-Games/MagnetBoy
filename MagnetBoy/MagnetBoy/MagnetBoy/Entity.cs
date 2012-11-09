@@ -171,6 +171,7 @@ namespace MagnetBoy
 
                 if (en.IsSolid && hitTest(en))
                 {
+                    /*
                     if (en.Position.Y + en.height > vertical_pos && en.Position.Y < vertical_pos)
                     {
                         step.Y = Math.Max(en.Position.Y + en.height + 1, vertical_pos);
@@ -201,6 +202,7 @@ namespace MagnetBoy
                             hitX = true;
                         }
                     }
+                    */
                 }
 
                 if (hitY)
