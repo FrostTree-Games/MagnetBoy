@@ -35,7 +35,7 @@ namespace MagnetBoy
             pole = newPole;
             magneticMoment = 0.5f;
 
-            solid = true;
+            solid = false;
         }
 
         protected override void enemyUpdate(GameTime currentTime)
@@ -43,6 +43,17 @@ namespace MagnetBoy
             if (walkSwitchTimer == 0)
             {
                 walkSwitchTimer = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            foreach (Entity en in globalEntityList)
+            {
+                if (en is Player)
+                {
+                    if (hitTest(en))
+                    {
+                        ((Player)en).knockBack(new Vector2(en.Position.X - horizontal_pos, en.Position.Y - vertical_pos), currentTime.TotalGameTime.TotalMilliseconds);
+                    }
+                }
             }
 
             if (onTheGround)

@@ -15,7 +15,7 @@ namespace MagnetBoy
         int currentFrame = 0;
         double lastFrameIncrement = 0;
 
-        private const float knockBackForce = 1.0f;
+        private const float knockBackForce = 0.003f;
         private Boolean isKnockedBack = false;
         private double knockBackStartTime = 0;
         private Vector2 knockBackAccel = Vector2.Zero;
@@ -78,17 +78,31 @@ namespace MagnetBoy
                 pole = Polarity.Neutral;
             }
 
-
             //reset the acceleration vector and recompute it
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
 
             acceleration = acceleration + computeMagneticForce();
 
+            if (isKnockedBack)
+            {
+                acceleration = acceleration + knockBackAccel;
+
+                if (!onTheGround)
+                {
+                    knockBackAccel = Vector2.Zero;
+                }
+
+                if (currentTime.TotalGameTime.TotalMilliseconds - knockBackStartTime > 500)
+                {
+                    isKnockedBack = false;
+                }
+            }
+
             Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);
 
-            if (ks.IsKeyDown(Keys.Right))
+            if (ks.IsKeyDown(Keys.Right) && !isKnockedBack)
             {
                 currentAnimation = "playerWalkRight";
 
@@ -97,7 +111,7 @@ namespace MagnetBoy
                     keyAcceleration.X = 0.001f;
                 }
             }
-            else if (ks.IsKeyDown(Keys.Left))
+            else if (ks.IsKeyDown(Keys.Left) && !isKnockedBack)
             {
                 currentAnimation = "playerWalkLeft";
 
@@ -165,16 +179,29 @@ namespace MagnetBoy
             AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
         }
 
-        public void knockBack(Vector2 direction)
+        public void knockBack(Vector2 direction, double hitTime)
         {
             if (isKnockedBack)
             {
                 return;
             }
 
-            isKnockedBack = false;
+            isKnockedBack = true;
+            knockBackStartTime = hitTime;
 
-            //
+            if (onTheGround)
+            {
+                if (direction.X > 0)
+                {
+                    direction.X *= 1.2f;
+                }
+
+                knockBackAccel = Vector2.Multiply(Vector2.Normalize(direction), knockBackForce);
+            }
+            else
+            {
+                knockBackAccel = Vector2.Zero;
+            }
         }
     }
 }
