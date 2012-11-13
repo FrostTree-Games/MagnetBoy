@@ -15,6 +15,11 @@ namespace MagnetBoy
         int currentFrame = 0;
         double lastFrameIncrement = 0;
 
+        private const float knockBackForce = 1.0f;
+        private Boolean isKnockedBack = false;
+        private double knockBackStartTime = 0;
+        private Vector2 knockBackAccel = Vector2.Zero;
+
         public Player()
         {
             creation();
@@ -29,7 +34,7 @@ namespace MagnetBoy
 
             solid = true;
 
-            currentAnimation = "walkRight";
+            currentAnimation = "playerWalkRight";
         }
 
         public Player(float initialx, float initialy)
@@ -52,7 +57,7 @@ namespace MagnetBoy
 
             solid = true;
 
-            currentAnimation = "walkRight";
+            currentAnimation = "playerWalkRight";
         }
 
         public override void update(GameTime currentTime)
@@ -85,7 +90,7 @@ namespace MagnetBoy
 
             if (ks.IsKeyDown(Keys.Right))
             {
-                currentAnimation = "walkRight";
+                currentAnimation = "playerWalkRight";
 
                 if (velocity.X < 0.1f)
                 {
@@ -94,7 +99,7 @@ namespace MagnetBoy
             }
             else if (ks.IsKeyDown(Keys.Left))
             {
-                currentAnimation = "walkLeft";
+                currentAnimation = "playerWalkLeft";
 
                 if (velocity.X > -0.1f)
                 {
@@ -108,13 +113,13 @@ namespace MagnetBoy
                     velocity.X = 0.0f;
                 }
 
-                if (currentAnimation == "walkRight")
+                if (currentAnimation == "playerWalkRight")
                 {
-                    currentAnimation = "standingRight";
+                    currentAnimation = "playerIdleRight";
                 }
-                else if (currentAnimation == "walkLeft")
+                else if (currentAnimation == "playerWalkLeft")
                 {
-                    currentAnimation = "standingLeft";
+                    currentAnimation = "playerIdleLeft";
                 }
             }
 
@@ -158,6 +163,18 @@ namespace MagnetBoy
         public override void draw(SpriteBatch sb)
         {
             AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+        }
+
+        public void knockBack(Vector2 direction)
+        {
+            if (isKnockedBack)
+            {
+                return;
+            }
+
+            isKnockedBack = false;
+
+            //
         }
     }
 }

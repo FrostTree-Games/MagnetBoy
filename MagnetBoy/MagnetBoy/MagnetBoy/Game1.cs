@@ -68,6 +68,8 @@ namespace MagnetBoy
             aFac = new AnimationFactory(this.Content);
             aFac.pushSheet("actor3"); // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
             aFac.pushAnimation("actor3Anims");
+            aFac.pushSheet("playerSheet");
+            aFac.pushAnimation("playerAnims");
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");

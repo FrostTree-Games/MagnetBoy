@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>playerWalkRight</name>
+      <sheetName>playerSheet</sheetName>
+      <sheet Type="System.String">playerWalkRight</sheet>
+      <initalX>0</initalX>
+      <initalY>32</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>10</frameSpeed>
+    </Item>
+    
+    <Item>
+      <name>playerWalkLeft</name>
+      <sheetName>playerSheet</sheetName>
+      <sheet Type="System.String">playerWalkLeft</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>10</frameSpeed>
+    </Item>
+    
+    
+    <Item>
+      <name>playerIdleRight</name>
+      <sheetName>playerSheet</sheetName>
+      <sheet Type="System.String">playerIdleRight</sheet>
+      <initalX>0</initalX>
+      <initalY>96</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+    
+    <Item>
+      <name>playerIdleLeft</name>
+      <sheetName>playerSheet</sheetName>
+      <sheet Type="System.String">playerIdleRight</sheet>
+      <initalX>0</initalX>
+      <initalY>64</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+  </Asset>
+</XnaContent>

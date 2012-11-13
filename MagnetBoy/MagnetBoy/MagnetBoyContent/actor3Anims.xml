@@ -24,7 +24,7 @@
       <frameSpeed>100</frameSpeed>
     </Item>
     <Item>
-      <name>standingRight</name>
+      <name>idleRight</name>
       <sheetName>actor3</sheetName>
       <sheet Type="System.String">foo</sheet>
       <initalX>320</initalX>
@@ -35,7 +35,7 @@
       <frameSpeed>100</frameSpeed>
     </Item>
     <Item>
-      <name>standingLeft</name>
+      <name>idleLeft</name>
       <sheetName>actor3</sheetName>
       <sheet Type="System.String">foo</sheet>
       <initalX>320</initalX>
