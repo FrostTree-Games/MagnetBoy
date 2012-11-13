@@ -51,7 +51,14 @@ namespace MagnetBoy
                 {
                     if (hitTest(en))
                     {
-                        ((Player)en).knockBack(new Vector2(en.Position.X - horizontal_pos, en.Position.Y - vertical_pos), currentTime.TotalGameTime.TotalMilliseconds);
+                        if (en.Position.X - horizontal_pos < 0)
+                        {
+                            ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                        }
+                        else
+                        {
+                            ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                        }
                     }
                 }
             }

@@ -15,7 +15,7 @@ namespace MagnetBoy
         int currentFrame = 0;
         double lastFrameIncrement = 0;
 
-        private const float knockBackForce = 0.003f;
+        private const float knockBackForce = 0.015f;
         private Boolean isKnockedBack = false;
         private double knockBackStartTime = 0;
         private Vector2 knockBackAccel = Vector2.Zero;
@@ -189,19 +189,12 @@ namespace MagnetBoy
             isKnockedBack = true;
             knockBackStartTime = hitTime;
 
-            if (onTheGround)
+            if (direction.X > 0)
             {
-                if (direction.X > 0)
-                {
-                    direction.X *= 1.2f;
-                }
+                direction.X *= 1.2f;
+            }
 
-                knockBackAccel = Vector2.Multiply(Vector2.Normalize(direction), knockBackForce);
-            }
-            else
-            {
-                knockBackAccel = Vector2.Zero;
-            }
+            knockBackAccel = Vector2.Multiply(Vector2.Normalize(direction), knockBackForce);
         }
     }
 }
