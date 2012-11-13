@@ -21,15 +21,15 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1s0KgCAQBODt37B6/8dNIUHEQ7GzE5EDc6nLh4yRiIgP3YndQkdlY5xwsyq8zf08zc1Nc3PT3Nz83T2FdkbtM+9wPZtBblRq/yJH9h5xzqnMjZTu5QPuuJFyH1o3ei+11DaidXul6c79zM8asXMnvDNPQbktvi1MN8tu4X7rjiLc1nZLt2UR7hNeGQoR
+   eJztl4sKgzAMRbO5udk9/P+/XYoWQllJ0sRsgoFLQag95lkTADxQr0A9URdUWtce5b13iLWJnF10cMdx7y1PLPol922n3Ie/eRtQJ9TZibuXXcOdmcf1LEuMovOEnvcP3FdYYs9pJPuke2g+DeQ9lt5tleRe82742YM5MWoxUyaJ0Tlp7ScS7lo9zKWmqR+25OZiX5g0tbElt8anc+P7uPu3B3NdY9o80JhHfRbuyFnvdY/Na+7Hltmt5bb8M9RximL39Hcku9ecr59JZ3ivvvVErT4QOQ44
   </data>
  </layer>
  <objectgroup name="test object" width="46" height="23">
-  <object name="player" x="128" y="167" width="34" height="31"/>
-  <object name="walker_pos" x="352" y="288" width="19" height="19"/>
-  <object name="wm_pos" x="608" y="96" width="32" height="32"/>
-  <object name="wm_pos" x="640" y="96" width="32" height="32"/>
-  <object name="wm_pos" x="672" y="96" width="32" height="32"/>
+  <object name="player" x="704" y="608" width="34" height="31"/>
+  <object name="walker_neg" x="224" y="192" width="19" height="19"/>
+  <object name="wm_pos" x="384" y="576" width="32" height="32"/>
+  <object name="wm_pos" x="416" y="576" width="32" height="32"/>
+  <object name="wm_pos" x="448" y="576" width="32" height="32"/>
   <object name="wm_pos" x="704" y="96" width="32" height="32"/>
   <object name="wm_pos" x="736" y="96" width="32" height="32"/>
   <object name="wm_pos" x="768" y="96" width="32" height="32"/>
