@@ -158,7 +158,7 @@ namespace MagnetBoy
             testCam.getDrawTranslation(ref mx, ref mapView, ref map);
             testCam.getDrawRectangle(ref rx, ref mapView, ref map);
 
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.Gray);
 
             // draw map
             spriteBatch.Begin();
