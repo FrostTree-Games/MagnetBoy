@@ -115,7 +115,7 @@
   <ItemGroup>
     <Compile Include="AnimationFactory.cs" />
     <Compile Include="Camera.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
