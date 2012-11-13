@@ -60,8 +60,6 @@ namespace MagnetBoy
         }
 
         protected bool onTheGround = false;
-
-        protected FrameSheet sheet = null;
         
         public Entity()
         {
@@ -100,11 +98,6 @@ namespace MagnetBoy
         public virtual void update(GameTime currentTime)
         {
             return;
-        }
-
-        public void setSheet(ref FrameSheet fs)
-        {
-            sheet = fs;
         }
 
         public virtual void draw(SpriteBatch sb)

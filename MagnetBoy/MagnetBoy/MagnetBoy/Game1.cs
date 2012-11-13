@@ -23,9 +23,8 @@ namespace MagnetBoy
         public static Texture2D globalTestWalrus = null;
         public static Texture2D globalTestPositive = null;
         public static Texture2D globalTestNegative = null;
-        Texture2D testSheet = null; // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
 
-        FrameSheet testAnimation = null;
+        private AnimationFactory aFac = null;
 
         public static Random gameRandom = null;
 
@@ -66,18 +65,21 @@ namespace MagnetBoy
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            aFac = new AnimationFactory(this.Content);
+            aFac.pushSheet("actor3"); // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
+            aFac.pushAnimation("actor3Anims");
+
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
-            testSheet = this.Content.Load<Texture2D>("actor3");
 
             map = Content.Load<Map>("testMap1");
+
+            //MagnetBoyDataTypes.Animation testAnim = Content.Load<MagnetBoyDataTypes.Animation>("testAnimation");
 
             testList = new List<Entity>();
 
             testCam = new Camera();
-
-            testAnimation = new FrameSheet(ref testSheet);
 
             foreach (ObjectLayer layer in map.ObjectLayers)
             {
@@ -91,7 +93,6 @@ namespace MagnetBoy
                             en = new Player(obj.Bounds.X, obj.Bounds.Y);
                             testList.Add(en);
                             testCam.setNewFocus(ref en);
-                            en.setSheet(ref testAnimation);
                             break;
                         case "wm_pos":
                             testList.Add(new WallMagnet(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Positive));

@@ -147,21 +147,17 @@ namespace MagnetBoy
             }
 
             // update the current frame if needed
-            if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > sheet.getAnimationSpeed(currentAnimation))
+            if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
             {
                 lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
 
-                currentFrame = (currentFrame + 1) % sheet.getAnimationFrameCount(currentAnimation);
+                currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
             }
         }
 
         public override void draw(SpriteBatch sb)
         {
-            if (sheet != null)
-            {
-                sheet.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
-            }
-            //sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.Yellow);
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
         }
     }
 }
