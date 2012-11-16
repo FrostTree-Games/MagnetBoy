@@ -35,7 +35,7 @@ namespace MagnetBoy
             pole = newPole;
             magneticMoment = 0.5f;
 
-            solid = true;
+            solid = false;
         }
 
         protected override void enemyUpdate(GameTime currentTime)
