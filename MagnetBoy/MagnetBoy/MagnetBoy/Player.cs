@@ -15,10 +15,9 @@ namespace MagnetBoy
         int currentFrame = 0;
         double lastFrameIncrement = 0;
 
-        private const float knockBackForce = 0.015f;
+        private const float knockBackForce = 0.5f;
         private Boolean isKnockedBack = false;
         private double knockBackStartTime = 0;
-        private Vector2 knockBackAccel = Vector2.Zero;
 
         public Player()
         {
@@ -86,13 +85,6 @@ namespace MagnetBoy
 
             if (isKnockedBack)
             {
-                acceleration = acceleration + knockBackAccel;
-
-                if (!onTheGround)
-                {
-                    knockBackAccel = Vector2.Zero;
-                }
-
                 if (currentTime.TotalGameTime.TotalMilliseconds - knockBackStartTime > 500)
                 {
                     isKnockedBack = false;
@@ -191,10 +183,21 @@ namespace MagnetBoy
 
             if (direction.X > 0)
             {
-                direction.X *= 1.2f;
+                velocity.X = 0.5f;
+            }
+            else
+            {
+                velocity.X = -0.5f;
             }
 
-            knockBackAccel = Vector2.Multiply(Vector2.Normalize(direction), knockBackForce);
+            if (direction.Y > 0)
+            {
+                velocity.Y = 0.5f;
+            }
+            else
+            {
+                velocity.Y = -0.5f;
+            }
         }
     }
 }
