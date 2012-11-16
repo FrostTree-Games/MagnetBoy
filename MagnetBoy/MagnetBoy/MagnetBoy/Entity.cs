@@ -157,7 +157,12 @@ namespace MagnetBoy
 
             foreach (Entity en in globalEntityList)
             {
-                if (en == this)
+                if (en == this || en is Player)
+                {
+                    continue;
+                }
+
+                if (this is Player && en is Enemy)
                 {
                     continue;
                 }

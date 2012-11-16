@@ -181,22 +181,24 @@ namespace MagnetBoy
             isKnockedBack = true;
             knockBackStartTime = hitTime;
 
+            onTheGround = false;
+
             if (direction.X > 0)
             {
-                velocity.X = 0.5f;
+                velocity.X = 0.25f;
             }
             else
             {
-                velocity.X = -0.5f;
+                velocity.X = -0.25f;
             }
 
             if (direction.Y > 0)
             {
-                velocity.Y = 0.5f;
+                velocity.Y = 0.35f;
             }
             else
             {
-                velocity.Y = -0.5f;
+                velocity.Y = -0.35f;
             }
         }
     }
