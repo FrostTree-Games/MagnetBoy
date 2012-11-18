@@ -10,7 +10,7 @@ using FuncWorks.XNA.XTiled;
 
 namespace MagnetBoy
 {
-    class Entity
+    public class Entity
     {
         // enumeration for magnetic polarity of objects
         public enum Polarity
@@ -22,7 +22,7 @@ namespace MagnetBoy
 
         protected static List<Entity> globalEntityList = null;
 
-        protected float horizontal_pos = 0.0f;
+        public float horizontal_pos = 0.0f;
         protected float vertical_pos = 0.0f;
 
         public Vector2 Position
@@ -30,6 +30,14 @@ namespace MagnetBoy
             get
             {
                 return new Vector2(horizontal_pos, vertical_pos);
+            }
+        }
+
+        public Vector2 HitBox
+        {
+            get
+            {
+                return new Vector2(width, height);
             }
         }
 
@@ -49,6 +57,7 @@ namespace MagnetBoy
 
         protected Vector2 velocity;
         protected Vector2 acceleration;
+        protected Vector2 conveyer;
 
         protected Boolean solid = false;
         public Boolean IsSolid
@@ -148,6 +157,11 @@ namespace MagnetBoy
             {
                 return true;
             }
+        }
+
+        public void convey(Vector2 step)
+        {
+            conveyer = step;
         }
 
         public Boolean checkForSolidObjects(ref Vector2 step)
