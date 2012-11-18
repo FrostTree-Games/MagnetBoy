@@ -43,7 +43,6 @@ namespace MagnetBoy
                     }
                 }
             }
-
             if (parent.onTheGround)
             {
                 if (Math.Abs(parent.velocity.X) < 0.01f)

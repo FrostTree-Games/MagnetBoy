@@ -48,6 +48,7 @@ namespace MagnetBoy
             magneticMoment = 0.5f;
 
             list = new List<Attribute>();
+            list.Add(new Walk(this));
 
         }
 
