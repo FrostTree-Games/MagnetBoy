@@ -74,7 +74,7 @@ namespace MagnetBoy
 
             foreach (Entity en in globalEntityList)
             {
-                if (Math.Abs(vertical_pos - (en.Position.Y + en.HitBox.Y)) < 1.0f && (en.Position.X + (en.HitBox.X / 2) > horizontal_pos && en.Position.X + (en.HitBox.X / 2) < horizontal_pos + width))
+                if (Math.Abs(vertical_pos - (en.Position.Y + en.HitBox.Y)) < 1.0f && (en.Position.X + en.HitBox.X > horizontal_pos && en.Position.X < horizontal_pos + width))
                 {
                     en.convey(new Vector2(0.5f, 0.0f));
                 }

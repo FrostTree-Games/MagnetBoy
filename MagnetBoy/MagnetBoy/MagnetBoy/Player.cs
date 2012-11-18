@@ -152,7 +152,10 @@ namespace MagnetBoy
             horizontal_pos = step.X;
             vertical_pos = step.Y;
 
-            conveyer = Vector2.Zero;
+            if (onTheGround)
+            {
+                conveyer = Vector2.Zero;
+            }
 
             // if the last frame time hasn't been set, set it now
             if (lastFrameIncrement == 0)
