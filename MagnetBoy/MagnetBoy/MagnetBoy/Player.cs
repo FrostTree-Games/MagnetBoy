@@ -28,6 +28,7 @@ namespace MagnetBoy
 
             velocity = Vector2.Zero;
             acceleration = Vector2.Zero;
+            conveyer = Vector2.Zero;
 
             acceleration.Y = 0.001f;
 
@@ -142,14 +143,19 @@ namespace MagnetBoy
             velocity.X += (float)(finalAcceleration.X * delta);
             velocity.Y += (float)(finalAcceleration.Y * delta);
 
-            step.X += (float)(((velocity.X) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.X);
-            step.Y += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.Y);
+            step.X += (float)((((velocity.X + conveyer.X)) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.X);
+            step.Y += (float)((((velocity.Y + conveyer.Y)) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.Y);
 
             checkForWalls(Game1.map, ref step);
             checkForSolidObjects(ref step);
 
             horizontal_pos = step.X;
             vertical_pos = step.Y;
+
+            if (onTheGround)
+            {
+                conveyer = Vector2.Zero;
+            }
 
             // if the last frame time hasn't been set, set it now
             if (lastFrameIncrement == 0)

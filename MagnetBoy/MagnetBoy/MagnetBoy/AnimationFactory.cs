@@ -148,6 +148,11 @@ namespace MagnetBoy
 
             Rectangle rf = new Rectangle(am.initalX + (actualFrame * am.frameWidth), am.initalY, am.frameWidth, am.frameHeight);
 
+            if (rf.X < 0)
+            {
+                rf.X = 0;
+            }
+
             sb.Draw((Texture2D)am.sheet, position, rf, Color.White);
         }
     }

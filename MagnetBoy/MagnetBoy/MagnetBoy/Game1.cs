@@ -67,9 +67,12 @@ namespace MagnetBoy
 
             aFac = new AnimationFactory(this.Content);
             aFac.pushSheet("actor3"); // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
-            aFac.pushAnimation("actor3Anims");
             aFac.pushSheet("playerSheet");
+            aFac.pushSheet("conveyer");
+
+            aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
+            aFac.pushAnimation("conveyerAnims");
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
@@ -103,14 +106,22 @@ namespace MagnetBoy
                             testList.Add(new WallMagnet(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Negative));
                             break;
                         case "walker_pos":
-                            testList.Add(new WalkingEnemy(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Positive));
+                            testList.Add(new Enemy(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         case "walker_neg":
-                            en = new Enemy((float)(obj.Bounds.X), (float)(obj.Bounds.Y));
-                            testList.Add(en);
+                            testList.Add(new Enemy(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         case "jumper_pos":
                             testList.Add(new JumpingEnemy(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        case "factory_conveyer_left":
+                            testList.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Left));
+                            break;
+                        case "factory_conveyer_mid":
+                            testList.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Mid));
+                            break;
+                        case "factory_conveyer_right":
+                            testList.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Right));
                             break;
                         default:
                             break;
