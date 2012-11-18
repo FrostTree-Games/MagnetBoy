@@ -106,7 +106,8 @@ namespace MagnetBoy
                             testList.Add(new WalkingEnemy(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Positive));
                             break;
                         case "walker_neg":
-                            testList.Add(new WalkingEnemy(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Negative));
+                            en = new Enemy((float)(obj.Bounds.X), (float)(obj.Bounds.Y));
+                            testList.Add(en);
                             break;
                         case "jumper_pos":
                             testList.Add(new JumpingEnemy(obj.Bounds.X, obj.Bounds.Y));

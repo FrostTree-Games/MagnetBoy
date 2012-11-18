@@ -9,11 +9,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MagnetBoy
 {
-    abstract class Enemy: Entity
+    class Enemy: Entity
     {
         string currentAnimation = null;
         int currentFrame = 0;
         double lastFrameIncrement = 0;
+        public static List<Attribute> list = null;
 
         public Enemy()
         {
@@ -45,6 +46,9 @@ namespace MagnetBoy
 
             pole = Polarity.Positive;
             magneticMoment = 0.5f;
+
+            list = new List<Attribute>();
+
         }
 
         public override void update(GameTime currentTime)
@@ -56,7 +60,10 @@ namespace MagnetBoy
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
 
-            enemyUpdate(currentTime);
+            foreach( Attribute n in list)
+            {
+                n.update(this, currentTime);
+            }
 
             acceleration = acceleration + computeMagneticForce();
             
@@ -80,11 +87,19 @@ namespace MagnetBoy
             vertical_pos = step.Y;
         }
 
-        protected abstract void enemyUpdate(GameTime currentTime);
+        protected virtual void enemyUpdate(GameTime currentTime)
+        {
+            return;
+        }
 
         public override void draw(SpriteBatch sb)
         {
             sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.Yellow);
+        }
+
+        public void addAttribute(Attribute attr)
+        {
+            list.Add(new Walk(this));
         }
     }
 }

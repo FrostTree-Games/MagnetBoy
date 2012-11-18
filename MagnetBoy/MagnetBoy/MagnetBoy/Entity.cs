@@ -20,7 +20,7 @@ namespace MagnetBoy
             Negative
         }
 
-        protected static List<Entity> globalEntityList = null;
+        public static List<Entity> globalEntityList = null;
 
         protected float horizontal_pos = 0.0f;
         protected float vertical_pos = 0.0f;
@@ -47,8 +47,8 @@ namespace MagnetBoy
             }
         }
 
-        protected Vector2 velocity;
-        protected Vector2 acceleration;
+        public Vector2 velocity;
+        public Vector2 acceleration;
 
         protected Boolean solid = false;
         public Boolean IsSolid
@@ -59,7 +59,7 @@ namespace MagnetBoy
             }
         }
 
-        protected bool onTheGround = false;
+        public bool onTheGround = false;
         
         public Entity()
         {
