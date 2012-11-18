@@ -44,11 +44,12 @@ namespace MagnetBoy
 
             acceleration.Y = 0.001f;
 
-            pole = Polarity.Positive;
+            pole = Polarity.Neutral;
             magneticMoment = 0.5f;
 
             list = new List<Attribute>();
             list.Add(new Walk(this));
+            list.Add(new Jump(this));
 
         }
 
@@ -61,10 +62,13 @@ namespace MagnetBoy
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
 
+            Console.WriteLine("Before going into attributes" + velocity.X);
             foreach( Attribute n in list)
             {
                 n.update(this, currentTime);
             }
+
+            Console.WriteLine("return from attributes" + velocity.X);
 
             acceleration = acceleration + computeMagneticForce();
             

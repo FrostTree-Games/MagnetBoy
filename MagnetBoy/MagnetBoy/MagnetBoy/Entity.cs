@@ -132,6 +132,8 @@ namespace MagnetBoy
                     Vector2 newForce = new Vector2((float)(force * Math.Cos(angle)) * 100, (float)(force * Math.Sin(angle)) * 100);
 
                     acceleration += newForce;
+                    Console.WriteLine("New X acceleration " + acceleration.X);
+                    Console.WriteLine("New Y acceleration " + acceleration.Y);
                 }
             }
 

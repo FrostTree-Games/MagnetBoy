@@ -65,6 +65,7 @@ namespace MagnetBoy
                 else if (parent.velocity.X > walkerSpeed)
                 {
                     parent.velocity.X = walkerSpeed;
+
                 }
             }
         }
