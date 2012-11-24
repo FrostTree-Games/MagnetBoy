@@ -69,10 +69,12 @@ namespace MagnetBoy
             aFac.pushSheet("actor3"); // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
             aFac.pushSheet("playerSheet");
             aFac.pushSheet("conveyer");
+            aFac.pushSheet("spikes");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
             aFac.pushAnimation("conveyerAnims");
+            aFac.pushAnimation("spikesAnim");
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
@@ -122,6 +124,9 @@ namespace MagnetBoy
                             break;
                         case "factory_conveyer_right":
                             testList.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Right));
+                            break;
+                        case "spikes_up":
+                            testList.Add(new Spikes(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         default:
                             break;
