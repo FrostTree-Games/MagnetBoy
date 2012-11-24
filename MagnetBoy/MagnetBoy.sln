@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagnetBoyContent", "MagnetB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagnetBoyDataTypes", "MagnetBoyDataTypes\MagnetBoyDataTypes.csproj", "{C07FFAD0-ADE3-49B1-A022-6CBE4F7CC8FC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F5907B5F-843F-42E1-8E62-B74DA23167B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
