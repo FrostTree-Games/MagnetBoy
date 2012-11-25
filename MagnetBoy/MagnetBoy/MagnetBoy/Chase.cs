@@ -15,9 +15,13 @@ namespace MagnetBoy
         double walkSwitchTimer = 0;
         bool walkingLeft = false;
         const float walkerSpeed = 0.09f;
+        bool chasePlayer = false;
+
+        private Walk walkState = null;
 
         public Chase(Enemy parent)
         {
+            walkState = new Walk(parent);
         }
 
         public void update(Enemy parent, GameTime currentTime)
@@ -50,39 +54,47 @@ namespace MagnetBoy
                 {
                     if (en is Player)
                     {
-                        if (en.horizontal_pos - parent.horizontal_pos > -20 && en.horizontal_pos - parent.horizontal_pos < 0)
+                        if (en.horizontal_pos - parent.horizontal_pos > -100 && en.horizontal_pos - parent.horizontal_pos < 100 && en.vertical_pos - parent.vertical_pos > -5 && en.vertical_pos - parent.vertical_pos < 5)
                         {
-                            if (parent.velocity.X > 0)
+                            chasePlayer = true;
+                        }
+                        else
+                        {
+                            chasePlayer = false;
+                        }
+
+                        if (chasePlayer == true)
+                        {
+                            if (en.horizontal_pos - parent.horizontal_pos > -500 && en.horizontal_pos - parent.horizontal_pos < -30)
                             {
-                                
+
+                                if (walkingLeft == false)
+                                {
+                                    walkingLeft = true;
+                                }
+
+                                parent.velocity.X = -2 * walkerSpeed;
+                            }
+                            else if (en.horizontal_pos - parent.horizontal_pos > -30 && en.horizontal_pos - parent.horizontal_pos < 30)
+                            {
+                                parent.velocity.X = 0.0f;
+                            }
+                            else if (en.horizontal_pos - parent.horizontal_pos > 30 && en.horizontal_pos - parent.horizontal_pos < 500)
+                            {
+                                if (walkingLeft == true)
+                                {
+                                    walkingLeft = false;
+                                }
+
+                                parent.velocity.X = 2 * walkerSpeed;
                             }
                         }
                     }
-                    else
-                    {
-                        if (Math.Abs(parent.velocity.X) < 0.01f)
-                        {
-                            walkingLeft = !walkingLeft;
-                        }
-
-                        if (walkingLeft && parent.velocity.X > -walkerSpeed)
-                        {
-                            parent.acceleration.X = -0.001f;
-                        }
-                        else if (parent.velocity.X < walkerSpeed)
-                        {
-                            parent.acceleration.X = 0.001f;
-                        }
-                        else if (parent.velocity.X < -walkerSpeed)
-                        {
-                            parent.velocity.X = -walkerSpeed;
-                        }
-                        else if (parent.velocity.X > walkerSpeed)
-                        {
-                            parent.velocity.X = walkerSpeed;
-                        }
-                    }
                 }
+               if( chasePlayer == false)
+               {
+                   walkState.update(parent, currentTime);
+               }
             }
         }
     }

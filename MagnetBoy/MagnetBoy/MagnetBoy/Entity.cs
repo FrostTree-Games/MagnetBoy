@@ -23,7 +23,7 @@ namespace MagnetBoy
         public static List<Entity> globalEntityList = null;
 
         public float horizontal_pos = 0.0f;
-        protected float vertical_pos = 0.0f;
+        public float vertical_pos = 0.0f;
 
         public Vector2 Position
         {
