@@ -20,6 +20,7 @@ namespace MagnetBoy
             Negative
         }
 
+        // singleton list for Entity access
         public static List<Entity> globalEntityList = null;
 
         public float horizontal_pos = 0.0f;
@@ -324,7 +325,7 @@ namespace MagnetBoy
                             if (layer.Tiles[((int)horizontal_pos) / checkMap.TileWidth][i] != null || layer.Tiles[((int)(horizontal_pos + width)) / checkMap.TileWidth][i] != null)
                             {
                                 break;
-                            }
+                            } 
                         }
 
                         if ((i - 1) * checkMap.TileHeight < delta.Y)
