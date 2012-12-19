@@ -20,6 +20,8 @@ namespace MagnetBoy
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        GameInput gameInput = null;
+
         public static Texture2D globalTestWalrus = null;
         public static Texture2D globalTestPositive = null;
         public static Texture2D globalTestNegative = null;
@@ -54,6 +56,8 @@ namespace MagnetBoy
             base.Initialize();
 
             mapView = graphics.GraphicsDevice.Viewport.Bounds;
+
+            gameInput = new GameInput(graphics.GraphicsDevice);
         }
 
         /// <summary>
@@ -158,6 +162,8 @@ namespace MagnetBoy
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+
+            gameInput.update();
 
             foreach (Entity a in testList)
             {

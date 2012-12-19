@@ -120,6 +120,7 @@
     <Compile Include="ConveyerBelt.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="GameInput.cs" />
     <Compile Include="Jump.cs" />
     <Compile Include="JumpingEnemy.cs" />
     <Compile Include="Player.cs" />
