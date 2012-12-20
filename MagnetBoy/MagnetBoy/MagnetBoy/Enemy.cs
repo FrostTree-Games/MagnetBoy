@@ -14,7 +14,7 @@ namespace MagnetBoy
         string currentAnimation = null;
         int currentFrame = 0;
         double lastFrameIncrement = 0;
-        public static List<Attribute> list = null;
+        public List<Attribute> list = null;
 
         public Enemy()
         {
