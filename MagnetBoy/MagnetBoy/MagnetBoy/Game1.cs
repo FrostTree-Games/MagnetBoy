@@ -203,7 +203,7 @@ namespace MagnetBoy
 
             //draw game cursor
             Matrix arrowRotation = Matrix.Identity;
-            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(16.0f, 16.0f, 0.0f));
+            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(-16.0f, -16.0f, 0.0f));
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateRotationZ(((float)(Math.PI / 2))));
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(GameInput.P1MouseDirection.Length() , 0.0f, 0.0f));
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateRotationZ((float)Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X)));

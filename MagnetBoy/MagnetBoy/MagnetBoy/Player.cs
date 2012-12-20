@@ -162,7 +162,9 @@ namespace MagnetBoy
 
                 foreach (Entity en in globalEntityList)
                 {
-                    if (en == this)
+                    double distance = Math.Sqrt(Math.Pow(en.Position.X - horizontal_pos, 2) + Math.Pow(en.Position.Y - vertical_pos, 2));
+
+                    if (en == this || distance > 250)
                     {
                         continue;
                     }
