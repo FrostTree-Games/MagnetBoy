@@ -45,6 +45,21 @@ namespace MagnetBoy
             update();
         }
 
+        public static Boolean P1MouseDown
+        {
+            get
+            {
+                if (mouse.LeftButton == ButtonState.Pressed)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         public void update()
         {
             mouse = Mouse.GetState();

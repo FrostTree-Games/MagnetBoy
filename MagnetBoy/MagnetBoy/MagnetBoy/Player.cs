@@ -19,6 +19,12 @@ namespace MagnetBoy
         private Boolean isKnockedBack = false;
         private double knockBackStartTime = 0;
 
+        // angle of window for direction magnetic force
+        private const double aimWindow = 1.0471975512;
+
+        //these should be removed when publishing final code
+        private Vector2 aLine, bLine;
+
         public Player()
         {
             creation();
@@ -82,6 +88,17 @@ namespace MagnetBoy
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
 
+            // compute cursor spread lines
+            //aLine = GameInput.P1MouseDirectionNormal * 100;
+            //bLine = GameInput.P1MouseDirectionNormal * 120;
+            double directionAngle = Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X);
+            aLine = new Vector2((float)Math.Cos(directionAngle - aimWindow / 2), (float)Math.Sin(directionAngle - aimWindow / 2));
+            bLine = new Vector2((float)Math.Cos(directionAngle + aimWindow / 2), (float)Math.Sin(directionAngle + aimWindow / 2));
+            aLine.Normalize();
+            bLine.Normalize();
+            aLine = aLine * 100;
+            bLine = bLine * 120;
+
             acceleration = acceleration + computeMagneticForce();
 
             if (isKnockedBack)
@@ -138,6 +155,29 @@ namespace MagnetBoy
                 }
             }
 
+            if (GameInput.P1MouseDown == true)
+            {
+                double aAngle = directionAngle - (aimWindow / 2);
+                double bAngle = directionAngle + (aimWindow / 2);
+
+                foreach (Entity en in globalEntityList)
+                {
+                    if (en == this)
+                    {
+                        continue;
+                    }
+
+                    double enAngle = Math.Atan2(en.Position.Y - vertical_pos, en.Position.X - horizontal_pos);
+
+                    if (enAngle > aAngle && enAngle < bAngle)
+                    {
+                        // put magnetic force code here
+
+                        en.velocity.Y += -1;
+                    }
+                }
+            }
+
             Vector2 finalAcceleration = acceleration + keyAcceleration;
 
             velocity.X += (float)(finalAcceleration.X * delta);
@@ -175,6 +215,9 @@ namespace MagnetBoy
         public override void draw(SpriteBatch sb)
         {
             AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+
+            sb.Draw(Game1.globalTestWalrus, Position + aLine, Color.Aqua);
+            sb.Draw(Game1.globalTestWalrus, Position + bLine, Color.Beige);
         }
 
         public void knockBack(Vector2 direction, double hitTime)
