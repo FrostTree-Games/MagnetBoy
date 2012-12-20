@@ -19,6 +19,22 @@ namespace MagnetBoy
         private static MouseState mouse;
         private static Vector2 p1MouseDirection;
 
+        public static Vector2 P1MouseDirection
+        {
+            get
+            {
+                return p1MouseDirection;
+            }
+        }
+
+        public static Vector2 P1MouseDirectionNormal
+        {
+            get
+            {
+                return Vector2.Normalize(p1MouseDirection);
+            }
+        }
+
         public GameInput(GraphicsDevice device)
         {
             if (graphicsDevice == null && device != null)
@@ -33,19 +49,17 @@ namespace MagnetBoy
         {
             mouse = Mouse.GetState();
 
-            if (graphicsDevice.Viewport.Bounds.Contains(new Point(mouse.X + (graphicsDevice.Viewport.Bounds.X / 2), mouse.Y + (graphicsDevice.Viewport.Bounds.Y / 2))))
+            if (graphicsDevice.Viewport.Bounds.Contains(new Point(mouse.X, mouse.Y)))
             {
-                p1MouseDirection.X = mouse.X;
-                p1MouseDirection.Y = mouse.Y;
-
-                p1MouseDirection.Normalize();
+                p1MouseDirection.X = mouse.X - (graphicsDevice.Viewport.Bounds.Width / 2);
+                p1MouseDirection.Y = mouse.Y - (graphicsDevice.Viewport.Bounds.Height / 2);
             }
             else
             {
                 p1MouseDirection = Vector2.Zero;
             }
 
-            Console.WriteLine("{0},{1}", p1MouseDirection.X, p1MouseDirection.Y);
+            Console.WriteLine("{0}", p1MouseDirection);
         }
     }
 }
