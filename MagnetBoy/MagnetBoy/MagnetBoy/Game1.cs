@@ -74,11 +74,13 @@ namespace MagnetBoy
             aFac.pushSheet("playerSheet");
             aFac.pushSheet("conveyer");
             aFac.pushSheet("spikes");
+            aFac.pushSheet("cursorTarget");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
             aFac.pushAnimation("conveyerAnims");
             aFac.pushAnimation("spikesAnim");
+            aFac.pushAnimation("cursorTargetAnims");
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
@@ -193,12 +195,22 @@ namespace MagnetBoy
 
             // draw sprites
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, mx);
-
             foreach (Entity a in testList)
             {
                 a.draw(spriteBatch);
             }
+            spriteBatch.End();
 
+            //draw game cursor
+            Matrix arrowRotation = Matrix.Identity;
+            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(16.0f, 16.0f, 0.0f));
+            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateRotationZ(((float)(Math.PI / 2))));
+            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(GameInput.P1MouseDirection.Length() , 0.0f, 0.0f));
+            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateRotationZ((float)Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X)));
+            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(graphics.GraphicsDevice.Viewport.Bounds.Width / 2, graphics.GraphicsDevice.Viewport.Bounds.Height / 2, 0.0f));
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, arrowRotation);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero);
             spriteBatch.End();
 
             base.Draw(gameTime);
