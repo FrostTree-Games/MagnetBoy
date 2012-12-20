@@ -21,12 +21,19 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlwEKwzAIRV27dWu6rfe/7RQmiHSLic5RqPAJlNi8GqNpAYAF9UjUHXVGlffYI/K9Qa7NYm3WwZ3Hvbc88eif3Nedch/xzufuZbdyj6ghmDsjT2bjvEzuC+pU0aS4R4MPadjwmcBXu7VajOZb7jVP4SPjHMXcI8lkMdknvfUki5lyhPOD3+HlLl9U23tmspwPve4vuJeGmK4fvq92/45g1mesNQ9aLOJ8Mndmz4y6x9JINTyqH1q4Pf8Mep+y2CPjncke1ef1M0vf92irJrbqBeBkDWI=
+   eJztl+EOgjAMhKsICmp8/7d1S2yyLGPedsf84yUXEtjYRyld2czsHvwc6EfwJXj7HHsc595srNZkbfefexx3b57MwaeCGdXu4dyMa/Fm2ffk3NeDuBUqxf3oeLt8rEqj4u1jVXmTcveyOzcy1kD2ycrfudv3HUWeoNwI+wpcV3DPX9ZpFcLN1O5SDuSxRGp5PgblZpmVtSLqZfW+ajG+nvzi2fx+LDf6zlrqIFJPFNwKob2Nqp6ouFGl3Ew/2NqjpPsKw832sfEYa/i5k6OHm/lnyN8Twz41zFXGm2WPLGiuqb7L/Nze/0/NS8O8pbBmq9/1HQul
   </data>
  </layer>
  <objectgroup name="test object" width="46" height="23">
-  <object name="player" x="608" y="192" width="34" height="31"/>
+  <object name="player" x="512" y="608" width="34" height="31"/>
   <object name="walker_neg" x="160" y="256" width="19" height="19"/>
-  <object name="spikes_up" x="768" y="640" width="32" height="32"/>
+  <object name="spikes_up" x="800" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="832" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="896" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="864" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="768" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="736" y="672" width="32" height="32"/>
+  <object name="walker_neg" x="799" y="350" width="19" height="19"/>
+  <object name="walker_neg" x="227" y="606" width="19" height="19"/>
  </objectgroup>
 </map>
