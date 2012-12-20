@@ -21,11 +21,11 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl+EOgjAMhKsICmp8/7d1S2yyLGPedsf84yUXEtjYRyld2czsHvwc6EfwJXj7HHsc595srNZkbfefexx3b57MwaeCGdXu4dyMa/Fm2ffk3NeDuBUqxf3oeLt8rEqj4u1jVXmTcveyOzcy1kD2ycrfudv3HUWeoNwI+wpcV3DPX9ZpFcLN1O5SDuSxRGp5PgblZpmVtSLqZfW+ajG+nvzi2fx+LDf6zlrqIFJPFNwKob2Nqp6ouFGl3Ew/2NqjpPsKw832sfEYa/i5k6OHm/lnyN8Twz41zFXGm2WPLGiuqb7L/Nze/0/NS8O8pbBmq9/1HQul
+   eJztl+sKwyAMhbO1dW23sfd/2yksIBJj9KT+WuBQaL18ajzak4ieUe+JekWtUefvOaJUd6e5cWR9s/7c87hH82SLuglCQmuDuRFp813rFx0fcz8u4vYIaWxXzzcHl/WKWfPNZdGcl7hH2ZnbUpYU9vz9QvI+Z/G545EnVu4We9JR+c7hld9bo58ao8bV4ka8W8qBkkfzOs2fLdwoM+IVEvuH9HtVINxPZoytDG4P5bauWY8PWvzEg9sjrGe/l594cVsj50bug713lPxcQbjRe2x6Jg+/D3KMcCP/DOU6IexLR13P+UbZE4s117z2Zfmu9v+jKXTUC0KfvfoCS6ALrQ==
   </data>
  </layer>
  <objectgroup name="test object" width="46" height="23">
-  <object name="player" x="512" y="608" width="34" height="31"/>
+  <object name="player" x="608" y="192" width="34" height="31"/>
   <object name="walker_neg" x="160" y="256" width="19" height="19"/>
   <object name="spikes_up" x="800" y="672" width="32" height="32"/>
   <object name="spikes_up" x="832" y="672" width="32" height="32"/>

@@ -112,7 +112,7 @@ namespace MagnetBoy
             Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);
 
-            if (ks.IsKeyDown(Keys.Right) && !isKnockedBack)
+            if ((ks.IsKeyDown(Keys.Right) || GameInput.isButtonDown(GameInput.PlayerButton.RightDirection)) && !isKnockedBack)
             {
                 currentAnimation = "playerWalkRight";
 
@@ -121,7 +121,7 @@ namespace MagnetBoy
                     keyAcceleration.X = 0.001f;
                 }
             }
-            else if (ks.IsKeyDown(Keys.Left) && !isKnockedBack)
+            else if ((ks.IsKeyDown(Keys.Left) || GameInput.isButtonDown(GameInput.PlayerButton.LeftDirection)) && !isKnockedBack)
             {
                 currentAnimation = "playerWalkLeft";
 
@@ -147,7 +147,7 @@ namespace MagnetBoy
                 }
             }
 
-            if (ks.IsKeyDown(Keys.Up))
+            if (ks.IsKeyDown(Keys.Up) || GameInput.isButtonDown(GameInput.PlayerButton.Jump))
             {
                 if (onTheGround)
                 {
@@ -155,7 +155,7 @@ namespace MagnetBoy
                 }
             }
 
-            if (GameInput.P1MouseDown == true)
+            if (GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push))
             {
                 double aAngle = directionAngle - (aimWindow / 2);
                 double bAngle = directionAngle + (aimWindow / 2);
