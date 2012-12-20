@@ -173,9 +173,12 @@ namespace MagnetBoy
 
                     if (enAngle > aAngle && enAngle < bAngle)
                     {
-                        // put magnetic force code here
+                        double force = (magneticMoment * en.MagneticValue.Value) / (4 * Math.PI * Math.Pow(distance, 2));
+                        double angle = Math.Atan2(en.Position.X - horizontal_pos, vertical_pos - en.Position.Y);
 
-                        en.velocity.Y += -1;
+                        Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
+
+                        en.velocity += newForce * 10000;
                     }
                 }
             }

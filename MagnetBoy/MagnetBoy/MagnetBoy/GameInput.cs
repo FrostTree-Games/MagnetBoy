@@ -73,8 +73,6 @@ namespace MagnetBoy
             {
                 p1MouseDirection = Vector2.Zero;
             }
-
-            Console.WriteLine("{0}", p1MouseDirection);
         }
     }
 }

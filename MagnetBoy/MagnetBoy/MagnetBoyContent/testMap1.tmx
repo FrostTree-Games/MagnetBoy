@@ -21,16 +21,12 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl4sKgzAMRbO5udk9/P+/XYoWQllJ0sRsgoFLQag95lkTADxQr0A9URdUWtce5b13iLWJnF10cMdx7y1PLPol922n3Ie/eRtQJ9TZibuXXcOdmcf1LEuMovOEnvcP3FdYYs9pJPuke2g+DeQ9lt5tleRe82742YM5MWoxUyaJ0Tlp7ScS7lo9zKWmqR+25OZiX5g0tbElt8anc+P7uPu3B3NdY9o80JhHfRbuyFnvdY/Na+7Hltmt5bb8M9RximL39Hcku9ecr59JZ3ivvvVErT4QOQ44
+   eJztlwEKwzAIRV27dWu6rfe/7RQmiHSLic5RqPAJlNi8GqNpAYAF9UjUHXVGlffYI/K9Qa7NYm3WwZ3Hvbc88eif3Nedch/xzufuZbdyj6ghmDsjT2bjvEzuC+pU0aS4R4MPadjwmcBXu7VajOZb7jVP4SPjHMXcI8lkMdknvfUki5lyhPOD3+HlLl9U23tmspwPve4vuJeGmK4fvq92/45g1mesNQ9aLOJ8Mndmz4y6x9JINTyqH1q4Pf8Mep+y2CPjncke1ef1M0vf92irJrbqBeBkDWI=
   </data>
  </layer>
  <objectgroup name="test object" width="46" height="23">
   <object name="player" x="608" y="192" width="34" height="31"/>
-  <object name="walker_neg" x="644" y="436" width="19" height="19"/>
-  <object name="wm_pos" x="704" y="224" width="32" height="32"/>
-  <object name="wm_pos" x="736" y="224" width="32" height="32"/>
-  <object name="wm_pos" x="768" y="224" width="32" height="32"/>
-  <object name="wm_pos" x="576" y="640" width="32" height="32"/>
-  <object name="spikes_up" x="160" y="320" width="32" height="32"/>
+  <object name="walker_neg" x="160" y="256" width="19" height="19"/>
+  <object name="spikes_up" x="768" y="640" width="32" height="32"/>
  </objectgroup>
 </map>

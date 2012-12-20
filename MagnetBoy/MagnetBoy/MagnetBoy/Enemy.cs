@@ -50,7 +50,7 @@ namespace MagnetBoy
             solid = true;
 
             list = new List<Attribute>();
-            list.Add(new Chase(this));
+            list.Add(new Walk(this));
 
         }
 
