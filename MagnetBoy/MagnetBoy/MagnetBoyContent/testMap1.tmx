@@ -21,16 +21,19 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl4sKgzAMRbO5udk9/P+/XYoWQllJ0sRsgoFLQag95lkTADxQr0A9URdUWtce5b13iLWJnF10cMdx7y1PLPol922n3Ie/eRtQJ9TZibuXXcOdmcf1LEuMovOEnvcP3FdYYs9pJPuke2g+DeQ9lt5tleRe82742YM5MWoxUyaJ0Tlp7ScS7lo9zKWmqR+25OZiX5g0tbElt8anc+P7uPu3B3NdY9o80JhHfRbuyFnvdY/Na+7Hltmt5bb8M9RximL39Hcku9ecr59JZ3ivvvVErT4QOQ44
+   eJztl+sKwyAMhbO1dW23sfd/2yksIBJj9KT+WuBQaL18ajzak4ieUe+JekWtUefvOaJUd6e5cWR9s/7c87hH82SLuglCQmuDuRFp813rFx0fcz8u4vYIaWxXzzcHl/WKWfPNZdGcl7hH2ZnbUpYU9vz9QvI+Z/G545EnVu4We9JR+c7hld9bo58ao8bV4ka8W8qBkkfzOs2fLdwoM+IVEvuH9HtVINxPZoytDG4P5bauWY8PWvzEg9sjrGe/l594cVsj50bug713lPxcQbjRe2x6Jg+/D3KMcCP/DOU6IexLR13P+UbZE4s117z2Zfmu9v+jKXTUC0KfvfoCS6ALrQ==
   </data>
  </layer>
  <objectgroup name="test object" width="46" height="23">
   <object name="player" x="608" y="192" width="34" height="31"/>
-  <object name="walker_neg" x="644" y="436" width="19" height="19"/>
-  <object name="wm_pos" x="704" y="224" width="32" height="32"/>
-  <object name="wm_pos" x="736" y="224" width="32" height="32"/>
-  <object name="wm_pos" x="768" y="224" width="32" height="32"/>
-  <object name="wm_pos" x="576" y="640" width="32" height="32"/>
-  <object name="spikes_up" x="160" y="320" width="32" height="32"/>
+  <object name="walker_neg" x="160" y="256" width="19" height="19"/>
+  <object name="spikes_up" x="800" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="832" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="896" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="864" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="768" y="672" width="32" height="32"/>
+  <object name="spikes_up" x="736" y="672" width="32" height="32"/>
+  <object name="walker_neg" x="799" y="350" width="19" height="19"/>
+  <object name="walker_neg" x="227" y="606" width="19" height="19"/>
  </objectgroup>
 </map>

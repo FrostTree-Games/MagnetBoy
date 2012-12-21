@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using FuncWorks.XNA.XTiled;
 
 namespace MagnetBoy
 {
@@ -18,6 +19,12 @@ namespace MagnetBoy
         private const float knockBackForce = 0.5f;
         private Boolean isKnockedBack = false;
         private double knockBackStartTime = 0;
+
+        // angle of window for direction magnetic force
+        private const double aimWindow = 1.0471975512;
+
+        //these should be removed when publishing final code
+        private Vector2 aLine, bLine;
 
         public Player()
         {
@@ -82,6 +89,17 @@ namespace MagnetBoy
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
 
+            // compute cursor spread lines
+            //aLine = GameInput.P1MouseDirectionNormal * 100;
+            //bLine = GameInput.P1MouseDirectionNormal * 120;
+            double directionAngle = Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X);
+            aLine = new Vector2((float)Math.Cos(directionAngle - aimWindow / 2), (float)Math.Sin(directionAngle - aimWindow / 2));
+            bLine = new Vector2((float)Math.Cos(directionAngle + aimWindow / 2), (float)Math.Sin(directionAngle + aimWindow / 2));
+            aLine.Normalize();
+            bLine.Normalize();
+            aLine = aLine * 100;
+            bLine = bLine * 120;
+
             acceleration = acceleration + computeMagneticForce();
 
             if (isKnockedBack)
@@ -95,7 +113,7 @@ namespace MagnetBoy
             Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);
 
-            if (ks.IsKeyDown(Keys.Right) && !isKnockedBack)
+            if ((ks.IsKeyDown(Keys.Right) || GameInput.isButtonDown(GameInput.PlayerButton.RightDirection)) && !isKnockedBack)
             {
                 currentAnimation = "playerWalkRight";
 
@@ -104,7 +122,7 @@ namespace MagnetBoy
                     keyAcceleration.X = 0.001f;
                 }
             }
-            else if (ks.IsKeyDown(Keys.Left) && !isKnockedBack)
+            else if ((ks.IsKeyDown(Keys.Left) || GameInput.isButtonDown(GameInput.PlayerButton.LeftDirection)) && !isKnockedBack)
             {
                 currentAnimation = "playerWalkLeft";
 
@@ -130,11 +148,96 @@ namespace MagnetBoy
                 }
             }
 
-            if (ks.IsKeyDown(Keys.Up))
+            if (ks.IsKeyDown(Keys.Up) || GameInput.isButtonDown(GameInput.PlayerButton.Jump))
             {
                 if (onTheGround)
                 {
                     velocity.Y = -0.5f;
+                }
+            }
+
+            if (GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push))
+            {
+                double aAngle = directionAngle - (aimWindow / 2);
+                double bAngle = directionAngle + (aimWindow / 2);
+
+                foreach (Entity en in globalEntityList)
+                {
+                    double distance = Math.Sqrt(Math.Pow(en.Position.X - horizontal_pos, 2) + Math.Pow(en.Position.Y - vertical_pos, 2));
+
+                    if (en == this || distance > 250)
+                    {
+                        continue;
+                    }
+
+                    double enAngle = Math.Atan2(en.Position.Y - vertical_pos, en.Position.X - horizontal_pos);
+
+                    if (enAngle > aAngle && enAngle < bAngle)
+                    {
+                        double force = (magneticMoment * en.MagneticValue.Value) / (4 * Math.PI * Math.Pow(distance, 2));
+                        double angle = Math.Atan2(en.Position.X - horizontal_pos, vertical_pos - en.Position.Y);
+
+                        Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
+
+                        en.velocity += newForce * 10000;
+                    }
+                }
+
+                //wall-pushing
+                {
+                    List<Point> closeTiles = new List<Point>();
+
+                    foreach (TileLayer layer in Game1.map.TileLayers)
+                    {
+                        bool isSolid = false;
+
+                        foreach (KeyValuePair<string, Property> p in layer.Properties)
+                        {
+                            if (p.Key.Equals("solid") && p.Value.AsInt32 == 1)
+                            {
+                                isSolid = true;
+                            }
+                        }
+
+                        if (isSolid == true)
+                        {
+                            for (int i = 0; i < layer.Tiles.Length; i++)
+                            {
+                                for (int j = 0; j < layer.Tiles[i].Length; j++)
+                                {
+                                    if (Math.Sqrt(Math.Pow((Game1.map.TileWidth * i) - CenterPosition.X, 2) + Math.Pow((Game1.map.TileHeight * j) - CenterPosition.Y, 2)) < 96)
+                                    {
+                                        if (layer.Tiles[i][j] != null)
+                                        {
+                                            closeTiles.Add(new Point(Game1.map.TileWidth * i + (Game1.map.TileWidth / 2), Game1.map.TileHeight * j + (Game1.map.TileHeight / 2)));
+                                            closeTiles.Add(new Point(Game1.map.TileWidth * i, Game1.map.TileHeight * j));
+                                            closeTiles.Add(new Point((Game1.map.TileWidth * i), (Game1.map.TileHeight * j) + (Game1.map.TileHeight)));
+                                            closeTiles.Add(new Point((Game1.map.TileWidth * i) + (Game1.map.TileWidth), (Game1.map.TileHeight * j)));
+                                            closeTiles.Add(new Point((Game1.map.TileWidth * i) + (Game1.map.TileWidth), (Game1.map.TileHeight * j) + (Game1.map.TileHeight)));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (Point p in closeTiles)
+                    {
+                        double pAngle = Math.Atan2(p.Y - vertical_pos, p.X - horizontal_pos);
+
+                        if (pAngle > aAngle && pAngle < bAngle)
+                        {
+                            double distance = Math.Sqrt(Math.Pow(p.X - Position.X, 2) + Math.Pow(p.Y - Position.Y, 2));
+                            double force = 0.0055;
+                            double angle = Math.Atan2(p.X - horizontal_pos, vertical_pos - p.Y);
+
+                            Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
+
+                            velocity += newForce * -1;
+
+                            Vector2.Clamp(velocity, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
+                        }
+                    }
                 }
             }
 
@@ -175,6 +278,9 @@ namespace MagnetBoy
         public override void draw(SpriteBatch sb)
         {
             AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+
+            sb.Draw(Game1.globalTestWalrus, Position + aLine, Color.Aqua);
+            sb.Draw(Game1.globalTestWalrus, Position + bLine, Color.Beige);
         }
 
         public void knockBack(Vector2 direction, double hitTime)
