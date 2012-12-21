@@ -4,13 +4,13 @@ Content\posTest.xnb
 Content\actor3.xnb
 Content\err.xnb
 Content\playerSheet.xnb
+Content\conveyer.xnb
+Content\spikes.xnb
 Content\testMap1.xnb
 Content\actor3Anims.xnb
 Content\playerAnims.xnb
-Content\testMap1\00.xnb
-Content\conveyer.xnb
 Content\conveyerAnims.xnb
-Content\spikes.xnb
 Content\spikesAnim.xnb
+Content\testMap1\00.xnb
 Content\cursorTarget.xnb
 Content\cursorTargetAnims.xnb

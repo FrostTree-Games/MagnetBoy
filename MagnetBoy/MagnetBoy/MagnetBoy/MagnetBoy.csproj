@@ -115,8 +115,11 @@
   <ItemGroup>
     <Compile Include="AnimationFactory.cs" />
     <Compile Include="Attribute.cs" />
+    <Compile Include="bulletPool.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Chase.cs" />
+    <Compile Include="climbChaser.cs" />
+    <Compile Include="climbWall.cs" />
     <Compile Include="ConveyerBelt.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
@@ -127,6 +130,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Shooter.cs" />
     <Compile Include="Spikes.cs" />
     <Compile Include="Walk.cs" />
     <Compile Include="WalkingEnemy.cs" />
