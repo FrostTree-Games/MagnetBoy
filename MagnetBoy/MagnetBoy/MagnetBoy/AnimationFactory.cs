@@ -155,5 +155,42 @@ namespace MagnetBoy
 
             sb.Draw((Texture2D)am.sheet, position, rf, Color.White);
         }
+
+        public static void drawAnimationFrame(SpriteBatch sb, string animation, int frame, Vector2 position, Vector2 widthHeight, float rotation)
+        {
+            if (manager == null || sheetLib == null || animLib == null)
+            {
+                return;
+            }
+
+            Animation am = null;
+
+            if (frame < 0 || animation == null)
+            {
+                return;
+            }
+
+            if (!animLib.ContainsKey(animation))
+            {
+                sb.Draw(Game1.globalTestWalrus, position, Color.White);
+                return;
+            }
+            else
+            {
+                am = animLib[animation];
+            }
+
+            int actualFrame = frame % am.frameCount;
+
+            Rectangle rf = new Rectangle(am.initalX + (actualFrame * am.frameWidth), am.initalY, am.frameWidth, am.frameHeight);
+
+            if (rf.X < 0)
+            {
+                rf.X = 0;
+            }
+
+            //sb.Draw((Texture2D)am.sheet, position, rf, Color.White);
+            sb.Draw((Texture2D)am.sheet, new Rectangle((int)(position.X + widthHeight.X / 2), (int)(position.Y + widthHeight.Y / 2), (int)widthHeight.X, (int)widthHeight.Y), rf, Color.White, rotation, new Vector2(widthHeight.X / 2, widthHeight.Y / 2), SpriteEffects.None, 0);
+        }
     }
 }
