@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using FuncWorks.XNA.XTiled;
 
 namespace MagnetBoy
 {
@@ -179,6 +180,63 @@ namespace MagnetBoy
                         Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
 
                         en.velocity += newForce * 10000;
+                    }
+                }
+
+                //wall-pushing
+                {
+                    List<Point> closeTiles = new List<Point>();
+
+                    foreach (TileLayer layer in Game1.map.TileLayers)
+                    {
+                        bool isSolid = false;
+
+                        foreach (KeyValuePair<string, Property> p in layer.Properties)
+                        {
+                            if (p.Key.Equals("solid") && p.Value.AsInt32 == 1)
+                            {
+                                isSolid = true;
+                            }
+                        }
+
+                        if (isSolid == true)
+                        {
+                            for (int i = 0; i < layer.Tiles.Length; i++)
+                            {
+                                for (int j = 0; j < layer.Tiles[i].Length; j++)
+                                {
+                                    if (Math.Sqrt(Math.Pow((Game1.map.TileWidth * i) - CenterPosition.X, 2) + Math.Pow((Game1.map.TileHeight * j) - CenterPosition.Y, 2)) < 96)
+                                    {
+                                        if (layer.Tiles[i][j] != null)
+                                        {
+                                            closeTiles.Add(new Point(Game1.map.TileWidth * i + (Game1.map.TileWidth / 2), Game1.map.TileHeight * j + (Game1.map.TileHeight / 2)));
+                                            closeTiles.Add(new Point(Game1.map.TileWidth * i, Game1.map.TileHeight * j));
+                                            closeTiles.Add(new Point((Game1.map.TileWidth * i), (Game1.map.TileHeight * j) + (Game1.map.TileHeight)));
+                                            closeTiles.Add(new Point((Game1.map.TileWidth * i) + (Game1.map.TileWidth), (Game1.map.TileHeight * j)));
+                                            closeTiles.Add(new Point((Game1.map.TileWidth * i) + (Game1.map.TileWidth), (Game1.map.TileHeight * j) + (Game1.map.TileHeight)));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (Point p in closeTiles)
+                    {
+                        double pAngle = Math.Atan2(p.Y - vertical_pos, p.X - horizontal_pos);
+
+                        if (pAngle > aAngle && pAngle < bAngle)
+                        {
+                            double distance = Math.Sqrt(Math.Pow(p.X - Position.X, 2) + Math.Pow(p.Y - Position.Y, 2));
+                            double force = 0.0055;
+                            double angle = Math.Atan2(p.X - horizontal_pos, vertical_pos - p.Y);
+
+                            Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
+
+                            velocity += newForce * -1;
+
+                            Vector2.Clamp(velocity, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
+                        }
                     }
                 }
             }
