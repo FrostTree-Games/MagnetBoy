@@ -34,6 +34,14 @@ namespace MagnetBoy
             }
         }
 
+        public Vector2 CenterPosition
+        {
+            get
+            {
+                return new Vector2(horizontal_pos + (width / 2), vertical_pos + (height / 2));
+            }
+        }
+
         public Vector2 HitBox
         {
             get
