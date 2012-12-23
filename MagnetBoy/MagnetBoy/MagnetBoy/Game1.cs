@@ -42,6 +42,12 @@ namespace MagnetBoy
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+
+            //this.graphics.PreferredBackBufferWidth = 720;
+            //this.graphics.PreferredBackBufferHeight = 480;
+
+            //this.graphics.IsFullScreen = true;
+
             Content.RootDirectory = "Content";
         }
 

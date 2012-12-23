@@ -179,6 +179,11 @@ namespace MagnetBoy
 
                         Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
 
+                        if (en is Bullet)
+                        {
+                            ((Bullet)en).Direction = (float)(angle - (Math.PI/2));
+                        }
+
                         en.velocity += newForce * 10000;
                     }
                 }
