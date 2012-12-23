@@ -190,7 +190,7 @@ namespace MagnetBoy
 
                 //wall-pushing
                 {
-                    List<Point> closeTiles = new List<Point>();
+                    //List<Point> closeTiles = new List<Point>();
 
                     foreach (TileLayer layer in Game1.map.TileLayers)
                     {
@@ -206,26 +206,58 @@ namespace MagnetBoy
 
                         if (isSolid == true)
                         {
-                            for (int i = 0; i < layer.Tiles.Length; i++)
+                            Vector2 point = CenterPosition;
+                            bool tileFound = false;
+
+                            for (int i = 0; ; i++)
                             {
-                                for (int j = 0; j < layer.Tiles[i].Length; j++)
+                                int r = i * 4;
+                                double xPos = r * Math.Cos(directionAngle);
+                                double yPos = r * Math.Sin(directionAngle);
+
+                                xPos += CenterPosition.X;
+                                yPos += CenterPosition.Y;
+
+                                if (xPos < 0 || yPos < 0 || xPos / Game1.map.TileWidth >= Game1.map.Width || yPos / Game1.map.TileHeight >= Game1.map.Height)
                                 {
-                                    if (Math.Sqrt(Math.Pow((Game1.map.TileWidth * i) - CenterPosition.X, 2) + Math.Pow((Game1.map.TileHeight * j) - CenterPosition.Y, 2)) < 96)
+                                    break;
+                                }
+
+                                Console.WriteLine("{0},{1}", (int)(xPos / Game1.map.TileWidth), (int)(yPos / Game1.map.TileHeight));
+
+                                try
+                                {
+                                    if (layer.Tiles[(int)(xPos / Game1.map.TileWidth)][(int)(yPos / Game1.map.TileHeight)] != null)
                                     {
-                                        if (layer.Tiles[i][j] != null)
-                                        {
-                                            closeTiles.Add(new Point(Game1.map.TileWidth * i + (Game1.map.TileWidth / 2), Game1.map.TileHeight * j + (Game1.map.TileHeight / 2)));
-                                            closeTiles.Add(new Point(Game1.map.TileWidth * i, Game1.map.TileHeight * j));
-                                            closeTiles.Add(new Point((Game1.map.TileWidth * i), (Game1.map.TileHeight * j) + (Game1.map.TileHeight)));
-                                            closeTiles.Add(new Point((Game1.map.TileWidth * i) + (Game1.map.TileWidth), (Game1.map.TileHeight * j)));
-                                            closeTiles.Add(new Point((Game1.map.TileWidth * i) + (Game1.map.TileWidth), (Game1.map.TileHeight * j) + (Game1.map.TileHeight)));
-                                        }
+                                        tileFound = true;
+                                        point.X = (float)xPos;
+                                        point.Y = (float)yPos;
+
+                                        break;
                                     }
                                 }
+                                catch (IndexOutOfRangeException)
+                                {
+                                    break;
+                                }
+                            }
+
+                            if (tileFound)
+                            {
+                                double distance = Math.Sqrt(Math.Pow(point.X - CenterPosition.X, 2) + Math.Pow(point.Y - CenterPosition.Y, 2));
+                                double force = 0.03;
+                                double angle = Math.Atan2(point.X - horizontal_pos, vertical_pos - point.Y);
+
+                                Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
+
+                                velocity += newForce * -1;
+
+                                Vector2.Clamp(velocity, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
                             }
                         }
                     }
 
+                    /*
                     foreach (Point p in closeTiles)
                     {
                         double pAngle = Math.Atan2(p.Y - vertical_pos, p.X - horizontal_pos);
@@ -242,7 +274,7 @@ namespace MagnetBoy
 
                             Vector2.Clamp(velocity, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
                         }
-                    }
+                    } */
                 }
             }
 
