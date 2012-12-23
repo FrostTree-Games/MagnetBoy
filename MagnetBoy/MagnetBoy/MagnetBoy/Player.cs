@@ -245,10 +245,10 @@ namespace MagnetBoy
                             if (tileFound)
                             {
                                 double distance = Math.Sqrt(Math.Pow(point.X - CenterPosition.X, 2) + Math.Pow(point.Y - CenterPosition.Y, 2));
-                                double force = 0.03;
+                                double force = 0.0275;
                                 double angle = Math.Atan2(point.X - horizontal_pos, vertical_pos - point.Y);
 
-                                Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
+                                Vector2 newForce = new Vector2((float)(force * Math.Cos(directionAngle)), (float)(force * Math.Sin(directionAngle)));
 
                                 velocity += newForce * -1;
 
