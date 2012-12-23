@@ -37,6 +37,8 @@ namespace MagnetBoy
         Rectangle mapView;
         public static Map map = null; //this shouldn't be public/static, but for now we need a way of referencing it in an Entity
 
+        public static BulletPool bulletPool;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -89,6 +91,8 @@ namespace MagnetBoy
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
+
+            bulletPool = new BulletPool();
 
             map = Content.Load<Map>("testMap1");
 
@@ -179,6 +183,8 @@ namespace MagnetBoy
                 a.update(gameTime);
             }
 
+            bulletPool.updatePool(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -206,6 +212,9 @@ namespace MagnetBoy
             {
                 a.draw(spriteBatch);
             }
+
+            bulletPool.drawPool(spriteBatch);
+
             spriteBatch.End();
 
             //draw game cursor

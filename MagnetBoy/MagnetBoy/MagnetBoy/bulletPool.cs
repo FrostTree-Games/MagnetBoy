@@ -12,8 +12,8 @@ namespace MagnetBoy
         private const float testBulletVelocity = 0.25f;
 
         private bool inUse = false;
-        private double startTime = 0;
-        private double maxLifeTime = 2500; 
+        private double timePassed = 0;
+        private double maxLifeTime = 500; 
         private float rotation = 0.0f; // 0.0 in rotation is considered to be right-facing, or "EAST"
         private BulletPool.BulletType type;
 
@@ -32,8 +32,10 @@ namespace MagnetBoy
 
         public void add(float newX, float newY, BulletPool.BulletType newType, GameTime entryTime, float direction)
         {
+            creation();
+
             inUse = true;
-            startTime = entryTime.TotalGameTime.Milliseconds;
+            timePassed = 0;
 
             type = newType;
             horizontal_pos = newX;
@@ -58,11 +60,15 @@ namespace MagnetBoy
         {
             double delta = currentTime.ElapsedGameTime.Milliseconds;
 
+            timePassed += delta;
+
             horizontal_pos += (float)(velocity.X * delta);
             vertical_pos += (float)(velocity.Y * delta);
 
-            if (currentTime.TotalGameTime.Milliseconds - startTime > maxLifeTime)
+            if (timePassed > maxLifeTime)
             {
+                death();
+
                 inUse = false;
             }
         }
@@ -81,7 +87,7 @@ namespace MagnetBoy
         }
     }
 
-    class BulletPool
+    public class BulletPool
     {
         public enum BulletType
         {
@@ -102,18 +108,45 @@ namespace MagnetBoy
 
         public void updatePool(GameTime currentTime)
         {
+            int count = 0;
+
             foreach (Bullet b in pool)
             {
-                if (!b.InUse)
+                if (b.InUse)
                 {
-                    //
+                    b.update(currentTime);
+                    count++;
                 }
             }
+
+            //Console.WriteLine("{0}", count);
         }
 
         public void pushBullet(BulletType type, float x, float y, GameTime currentTime, float direction)
         {
-            //
+            for (int i = 0; i < pool.Length; i++)
+            {
+                if (pool[i].InUse)
+                {
+                    continue;
+                }
+                else
+                {
+                    pool[i].add(x, y, type, currentTime, direction);
+                    break;
+                }
+            }
+        }
+
+        public void drawPool(SpriteBatch sb)
+        {
+            foreach (Bullet b in pool)
+            {
+                if (b.InUse)
+                {
+                    b.draw(sb);
+                }
+            }
         }
     }
 }
