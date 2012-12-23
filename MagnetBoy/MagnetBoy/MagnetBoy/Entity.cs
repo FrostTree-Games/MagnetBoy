@@ -81,14 +81,14 @@ namespace MagnetBoy
         
         public Entity()
         {
-            creation();
+            //creation();
             horizontal_pos = 0.0f;
             vertical_pos = 0.0f;
         }
 
         public Entity(float initialx, float initialy)
         {
-            creation();
+            //creation();
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
