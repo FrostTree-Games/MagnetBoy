@@ -223,8 +223,6 @@ namespace MagnetBoy
                                     break;
                                 }
 
-                                Console.WriteLine("{0},{1}", (int)(xPos / Game1.map.TileWidth), (int)(yPos / Game1.map.TileHeight));
-
                                 try
                                 {
                                     if (layer.Tiles[(int)(xPos / Game1.map.TileWidth)][(int)(yPos / Game1.map.TileHeight)] != null)
@@ -245,10 +243,13 @@ namespace MagnetBoy
                             if (tileFound)
                             {
                                 double distance = Math.Sqrt(Math.Pow(point.X - CenterPosition.X, 2) + Math.Pow(point.Y - CenterPosition.Y, 2));
-                                double force = 0.0275;
-                                double angle = Math.Atan2(point.X - horizontal_pos, vertical_pos - point.Y);
+                                //double force = 0.0225;
+                                double force = (magneticMoment * 1050) / (4 * Math.PI * Math.Pow(distance, 2));
+                                double angle = Math.Atan2(point.X - CenterPosition.X, CenterPosition.X - point.Y);
 
                                 Vector2 newForce = new Vector2((float)(force * Math.Cos(directionAngle)), (float)(force * Math.Sin(directionAngle)));
+
+                                Console.WriteLine("Distance: {0} || newForce:{1}", distance, newForce.Length());
 
                                 velocity += newForce * -1;
 
@@ -256,25 +257,6 @@ namespace MagnetBoy
                             }
                         }
                     }
-
-                    /*
-                    foreach (Point p in closeTiles)
-                    {
-                        double pAngle = Math.Atan2(p.Y - vertical_pos, p.X - horizontal_pos);
-
-                        if (pAngle > aAngle && pAngle < bAngle)
-                        {
-                            double distance = Math.Sqrt(Math.Pow(p.X - Position.X, 2) + Math.Pow(p.Y - Position.Y, 2));
-                            double force = 0.0055;
-                            double angle = Math.Atan2(p.X - horizontal_pos, vertical_pos - p.Y);
-
-                            Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
-
-                            velocity += newForce * -1;
-
-                            Vector2.Clamp(velocity, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
-                        }
-                    } */
                 }
             }
 
