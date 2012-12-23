@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="46" height="23" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="73" height="23" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test tileset" tilewidth="32" tileheight="32">
   <properties>
    <property name="solid" value="1"/>
@@ -16,23 +16,31 @@
    </properties>
   </tile>
  </tileset>
- <layer name="test layer" width="46" height="23">
+ <tileset firstgid="16" name="FactoryTileSheet" tilewidth="32" tileheight="32">
+  <image source="FactoryTileSheet.png" width="224" height="160"/>
+ </tileset>
+ <layer name="test layer" width="73" height="23">
   <properties>
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl+sKwyAMhbO1dW23sfd/2yksIBJj9KT+WuBQaL18ajzak4ieUe+JekWtUefvOaJUd6e5cWR9s/7c87hH82SLuglCQmuDuRFp813rFx0fcz8u4vYIaWxXzzcHl/WKWfPNZdGcl7hH2ZnbUpYU9vz9QvI+Z/G545EnVu4We9JR+c7hld9bo58ao8bV4ka8W8qBkkfzOs2fLdwoM+IVEvuH9HtVINxPZoytDG4P5bauWY8PWvzEg9sjrGe/l594cVsj50bug713lPxcQbjRe2x6Jg+/D3KMcCP/DOU6IexLR13P+UbZE4s117z2Zfmu9v+jKXTUC0KfvfoCS6ALrQ==
+   eJztV7sOwjAM9CdAGQosDQsw8Pj/v6OIWqqixs6lqQklJ90Uxb6cncZtiagN8NzzBvAixForO8LgMnldErW65/IIjVMSHFWPNDiqHmlwZOPRs+du4Mnb0/TcjLgV1piMqTWN4/hzzsTcg/kPgTiS176GTlhjMr75Dlm+j76GpT3y66559tZgMQNN6TjS5+5dhTOE+nKOR0j9mkGDRe8hfRRDxlIe+fWrHunaUI8ehN9D6V1zgT1WHsVoyzm7cMx/7yMJHDPlzpfkka8NnYGkmQzxSNtTUh/lzFE9Svfo17/ZtY/yatNyhOaC+0T+Jb7ZCHhPbm1oHWLgEnJaIUVb9SiNc2eH0H9rClG0htrWzhd2320T
   </data>
  </layer>
- <objectgroup name="test object" width="46" height="23">
-  <object name="player" x="288" y="576" width="34" height="31"/>
-  <object name="angrySaw" x="157" y="225" width="19" height="19"/>
-  <object name="spikes_up" x="800" y="672" width="32" height="32"/>
-  <object name="spikes_up" x="832" y="672" width="32" height="32"/>
-  <object name="spikes_up" x="896" y="672" width="32" height="32"/>
-  <object name="spikes_up" x="864" y="672" width="32" height="32"/>
-  <object name="spikes_up" x="768" y="672" width="32" height="32"/>
-  <object name="spikes_up" x="736" y="672" width="32" height="32"/>
-  <object name="angrySaw" x="799" y="350" width="19" height="19"/>
+ <layer name="fakeLayer" width="73" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt0KENACAAwDBOwPH/pxgsmULRJntgYwDAO/PE3Tpx51HzqHnUPGoeNY+aR82j5lHzqHnUPAJ+tQE8IgJ3
+  </data>
+ </layer>
+ <objectgroup name="test object" width="73" height="23">
+  <object name="player" x="195" y="373" width="34" height="31"/>
+  <object name="angrySaw" x="321" y="60" width="19" height="19"/>
+  <object name="spikes_up" x="420" y="103" width="32" height="32"/>
+  <object name="spikes_up" x="452" y="103" width="32" height="32"/>
+  <object name="spikes_up" x="516" y="103" width="32" height="32"/>
+  <object name="spikes_up" x="484" y="103" width="32" height="32"/>
+  <object name="spikes_up" x="1216" y="224" width="32" height="32"/>
+  <object name="spikes_up" x="1184" y="224" width="32" height="32"/>
+  <object name="angrySaw" x="1772" y="651" width="19" height="19"/>
  </objectgroup>
 </map>

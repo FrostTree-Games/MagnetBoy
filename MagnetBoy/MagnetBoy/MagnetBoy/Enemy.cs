@@ -46,8 +46,6 @@ namespace MagnetBoy
             pole = Polarity.Neutral;
             magneticMoment = 0.5f;
 
-            solid = true;
-
             list = new List<Attribute>();
 
         }
@@ -80,10 +78,6 @@ namespace MagnetBoy
             enemyUpdate(currentTime);
 
             checkForWalls(Game1.map, ref step);
-            if (solid)
-            {
-                checkForSolidObjects(ref step);
-            }
 
             horizontal_pos = step.X;
             vertical_pos = step.Y;

@@ -249,8 +249,6 @@ namespace MagnetBoy
 
                                 Vector2 newForce = new Vector2((float)(force * Math.Cos(directionAngle)), (float)(force * Math.Sin(directionAngle)));
 
-                                Console.WriteLine("Distance: {0} || newForce:{1}", distance, newForce.Length());
-
                                 velocity += newForce * -1;
 
                                 Vector2.Clamp(velocity, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
