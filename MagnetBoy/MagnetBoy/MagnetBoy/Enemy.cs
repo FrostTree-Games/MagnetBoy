@@ -5,15 +5,14 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace MagnetBoy
 {
     class Enemy: Entity
     {
-        string currentAnimation = null;
-        int currentFrame = 0;
-        double lastFrameIncrement = 0;
+        protected string currentAnimation = null;
+        protected int currentFrame = 0;
+        protected double lastFrameIncrement = 0;
         public List<Attribute> list = null;
 
         public Enemy()
@@ -50,14 +49,12 @@ namespace MagnetBoy
             solid = true;
 
             list = new List<Attribute>();
-            list.Add(new Walk(this));
 
         }
 
         public override void update(GameTime currentTime)
         {
             double delta = currentTime.ElapsedGameTime.Milliseconds;
-            KeyboardState ks = Keyboard.GetState();
 
             //reset the acceleration vector and recompute it
             acceleration = Vector2.Zero;
@@ -79,6 +76,8 @@ namespace MagnetBoy
 
             step.X += (float)(((velocity.X) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.X);
             step.Y += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.Y);
+
+            enemyUpdate(currentTime);
 
             checkForWalls(Game1.map, ref step);
             if (solid)

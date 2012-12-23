@@ -26,14 +26,14 @@
  </layer>
  <objectgroup name="test object" width="46" height="23">
   <object name="player" x="608" y="192" width="34" height="31"/>
-  <object name="walker_neg" x="160" y="256" width="19" height="19"/>
+  <object name="angrySaw" x="157" y="225" width="19" height="19"/>
   <object name="spikes_up" x="800" y="672" width="32" height="32"/>
   <object name="spikes_up" x="832" y="672" width="32" height="32"/>
   <object name="spikes_up" x="896" y="672" width="32" height="32"/>
   <object name="spikes_up" x="864" y="672" width="32" height="32"/>
   <object name="spikes_up" x="768" y="672" width="32" height="32"/>
   <object name="spikes_up" x="736" y="672" width="32" height="32"/>
-  <object name="walker_neg" x="799" y="350" width="19" height="19"/>
-  <object name="walker_neg" x="227" y="606" width="19" height="19"/>
+  <object name="angrySaw" x="799" y="350" width="19" height="19"/>
+  <object name="angrySaw" x="227" y="606" width="19" height="19"/>
  </objectgroup>
 </map>

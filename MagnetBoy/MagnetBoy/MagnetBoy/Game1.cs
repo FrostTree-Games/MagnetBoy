@@ -76,6 +76,7 @@ namespace MagnetBoy
             aFac.pushSheet("spikes");
             aFac.pushSheet("cursorTarget");
             aFac.pushSheet("testBulletSheet");
+            aFac.pushSheet("angrySawSheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -83,6 +84,7 @@ namespace MagnetBoy
             aFac.pushAnimation("spikesAnim");
             aFac.pushAnimation("cursorTargetAnims");
             aFac.pushAnimation("testBulletAnims");
+            aFac.pushAnimation("angrySaw");
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
@@ -135,6 +137,9 @@ namespace MagnetBoy
                             break;
                         case "spikes_up":
                             testList.Add(new Spikes(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        case "angrySaw":
+                            testList.Add(new AngrySaw(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         default:
                             break;
