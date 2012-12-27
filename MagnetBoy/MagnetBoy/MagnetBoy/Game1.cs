@@ -17,7 +17,7 @@ namespace MagnetBoy
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
+        public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
         GameInput gameInput = null;
@@ -34,7 +34,7 @@ namespace MagnetBoy
 
         Camera testCam = null;
 
-        Rectangle mapView;
+        public static Rectangle mapView;
         public static Map map = null; //this shouldn't be public/static, but for now we need a way of referencing it in an Entity
 
         public static BulletPool bulletPool;

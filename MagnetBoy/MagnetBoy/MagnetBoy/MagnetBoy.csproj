@@ -129,6 +129,7 @@
     <Compile Include="IntervalShoot.cs" />
     <Compile Include="Jump.cs" />
     <Compile Include="JumpingEnemy.cs" />
+    <Compile Include="LevelState.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

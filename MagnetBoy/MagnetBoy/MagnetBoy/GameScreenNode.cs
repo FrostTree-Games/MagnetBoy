@@ -31,17 +31,17 @@ namespace MagnetBoy
         public abstract void draw();
     }
 
-    public interface IState : GameScreenNode
+    public abstract class IState : GameScreenNode
     {
-        public String StateName;
+        //
     }
 
-    public interface ITransition : GameScreenNode
+    public abstract class ITransition : GameScreenNode
     {
         public IState OldState;
         public IState NewState;
 
-        public void enter();
-        public void exit();
+        public abstract void enter();
+        public abstract void exit();
     }
 }

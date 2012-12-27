@@ -35,6 +35,10 @@ namespace MagnetBoy
             {
                 return inUse;
             }
+            set
+            {
+                inUse = value;
+            }
         }
 
         public Bullet()
@@ -111,14 +115,20 @@ namespace MagnetBoy
             Rocket
         }
 
-        private Bullet[] pool = new Bullet[20];
+        private static Bullet[] pool = null;
 
         public BulletPool()
         {
-            for (int i = 0; i < pool.Length; i++)
+            if (pool == null)
             {
-                pool[i] = new Bullet();
+                pool = new Bullet[50];
+
+                for (int i = 0; i < pool.Length; i++)
+                {
+                    pool[i] = new Bullet();
+                }
             }
+            
         }
 
         public void updatePool(GameTime currentTime)
@@ -133,8 +143,6 @@ namespace MagnetBoy
                     count++;
                 }
             }
-
-            //Console.WriteLine("{0}", count);
         }
 
         public void pushBullet(BulletType type, float x, float y, GameTime currentTime, float direction)
@@ -161,6 +169,14 @@ namespace MagnetBoy
                 {
                     b.draw(sb);
                 }
+            }
+        }
+
+        public void clearPool()
+        {
+            foreach (Bullet b in pool)
+            {
+                b.InUse = false;
             }
         }
     }
