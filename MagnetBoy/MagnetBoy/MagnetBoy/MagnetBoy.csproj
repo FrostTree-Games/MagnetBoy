@@ -125,6 +125,7 @@
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="GameInput.cs" />
+    <Compile Include="GameScreenNode.cs" />
     <Compile Include="IntervalShoot.cs" />
     <Compile Include="Jump.cs" />
     <Compile Include="JumpingEnemy.cs" />

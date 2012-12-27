@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 /* The GameScreenNode class is used to contain and organize various "scenes"
  * of the game. A scene is meant to represent a distinct area of content, such
@@ -12,19 +14,18 @@ namespace MagnetBoy
 {
     abstract class GameScreenNode
     {
-        private bool isUpdateable = true;
-        public bool IsUpdateable
+        public bool IsUpdateable { get; set; }
+
+        public virtual void update(GameTime currentTime)
         {
-            get
+            if (!IsUpdateable)
             {
-                return isUpdateable;
+                return;
             }
-            set
-            {
-                isUpdateable = value;
-            }
+
+            doUpdate(currentTime);
         }
 
-
+        protected abstract void doUpdate(GameTime currentTime);
     }
 }
