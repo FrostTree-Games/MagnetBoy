@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MagnetBoy
 {
-    abstract class GameScreenNode
+    public abstract class GameScreenNode
     {
         public bool IsUpdateable { get; set; }
 
@@ -27,5 +27,21 @@ namespace MagnetBoy
         }
 
         protected abstract void doUpdate(GameTime currentTime);
+
+        public abstract void draw();
+    }
+
+    public interface IState : GameScreenNode
+    {
+        public String StateName;
+    }
+
+    public interface ITransition : GameScreenNode
+    {
+        public IState OldState;
+        public IState NewState;
+
+        public void enter();
+        public void exit();
     }
 }
