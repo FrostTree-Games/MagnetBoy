@@ -190,9 +190,7 @@ namespace MagnetBoy
 
                 //wall-pushing
                 {
-                    //List<Point> closeTiles = new List<Point>();
-
-                    foreach (TileLayer layer in Game1.map.TileLayers)
+                    foreach (TileLayer layer in LevelState.CurrentLevel.TileLayers)
                     {
                         bool isSolid = false;
 
@@ -218,14 +216,14 @@ namespace MagnetBoy
                                 xPos += CenterPosition.X;
                                 yPos += CenterPosition.Y;
 
-                                if (xPos < 0 || yPos < 0 || xPos / Game1.map.TileWidth >= Game1.map.Width || yPos / Game1.map.TileHeight >= Game1.map.Height)
+                                if (xPos < 0 || yPos < 0 || xPos / LevelState.CurrentLevel.TileWidth >= LevelState.CurrentLevel.Width || yPos / LevelState.CurrentLevel.TileHeight >= LevelState.CurrentLevel.Height)
                                 {
                                     break;
                                 }
 
                                 try
                                 {
-                                    if (layer.Tiles[(int)(xPos / Game1.map.TileWidth)][(int)(yPos / Game1.map.TileHeight)] != null)
+                                    if (layer.Tiles[(int)(xPos / LevelState.CurrentLevel.TileWidth)][(int)(yPos / LevelState.CurrentLevel.TileHeight)] != null)
                                     {
                                         tileFound = true;
                                         point.X = (float)xPos;
@@ -243,7 +241,6 @@ namespace MagnetBoy
                             if (tileFound)
                             {
                                 double distance = Math.Sqrt(Math.Pow(point.X - CenterPosition.X, 2) + Math.Pow(point.Y - CenterPosition.Y, 2));
-                                //double force = 0.0225;
                                 double force = (magneticMoment * 1050) / (4 * Math.PI * Math.Pow(distance, 2));
                                 double angle = Math.Atan2(point.X - CenterPosition.X, CenterPosition.X - point.Y);
 
@@ -266,7 +263,7 @@ namespace MagnetBoy
             step.X += (float)((((velocity.X + conveyer.X)) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.X);
             step.Y += (float)((((velocity.Y + conveyer.Y)) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.Y);
 
-            checkForWalls(Game1.map, ref step);
+            checkForWalls(LevelState.CurrentLevel, ref step);
             checkForSolidObjects(ref step);
 
             horizontal_pos = step.X;

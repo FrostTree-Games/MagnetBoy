@@ -28,7 +28,7 @@ namespace MagnetBoy
 
         protected abstract void doUpdate(GameTime currentTime);
 
-        public abstract void draw();
+        public abstract void draw(SpriteBatch spriteBatch);
     }
 
     public abstract class IState : GameScreenNode

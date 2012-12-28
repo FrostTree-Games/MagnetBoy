@@ -30,14 +30,9 @@ namespace MagnetBoy
 
         public static Random gameRandom = null;
 
-        List<Entity> testList = null;
-
-        Camera testCam = null;
-
         public static Rectangle mapView;
-        public static Map map = null; //this shouldn't be public/static, but for now we need a way of referencing it in an Entity
 
-        public static BulletPool bulletPool;
+        private IState testLevel = null;
 
         public Game1()
         {
@@ -98,65 +93,7 @@ namespace MagnetBoy
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
 
-            bulletPool = new BulletPool();
-
-            map = Content.Load<Map>("testMap1");
-
-            //MagnetBoyDataTypes.Animation testAnim = Content.Load<MagnetBoyDataTypes.Animation>("testAnimation");
-
-            testList = new List<Entity>();
-
-            testCam = new Camera();
-
-            foreach (ObjectLayer layer in map.ObjectLayers)
-            {
-                foreach (MapObject obj in layer.MapObjects)
-                {
-                    Entity en = null;
-
-                    switch (obj.Name)
-                    {
-                        case "player":
-                            en = new Player(obj.Bounds.X, obj.Bounds.Y);
-                            testList.Add(en);
-                            testCam.setNewFocus(ref en);
-                            break;
-                        case "wm_pos":
-                            testList.Add(new WallMagnet(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Positive));
-                            break;
-                        case "wm_neg":
-                            testList.Add(new WallMagnet(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Negative));
-                            break;
-                        case "walker_pos":
-                            testList.Add(new Enemy(obj.Bounds.X, obj.Bounds.Y));
-                            break;
-                        case "walker_neg":
-                            testList.Add(new Enemy(obj.Bounds.X, obj.Bounds.Y));
-                            break;
-                        case "jumper_pos":
-                            testList.Add(new JumpingEnemy(obj.Bounds.X, obj.Bounds.Y));
-                            break;
-                        case "factory_conveyer_left":
-                            testList.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Left));
-                            break;
-                        case "factory_conveyer_mid":
-                            testList.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Mid));
-                            break;
-                        case "factory_conveyer_right":
-                            testList.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Right));
-                            break;
-                        case "spikes_up":
-                            testList.Add(new Spikes(obj.Bounds.X, obj.Bounds.Y));
-                            break;
-                        case "angrySaw":
-                            testList.Add(new AngrySaw(obj.Bounds.X, obj.Bounds.Y));
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-
+            testLevel = new LevelState(this.Content, "testMap1");
         }
 
         /// <summary>
@@ -165,10 +102,7 @@ namespace MagnetBoy
         /// </summary>
         protected override void UnloadContent()
         {
-            foreach (Entity a in testList)
-            {
-                a.death();
-            }
+            //
         }
 
         /// <summary>
@@ -184,12 +118,7 @@ namespace MagnetBoy
 
             gameInput.update();
 
-            foreach (Entity a in testList)
-            {
-                a.update(gameTime);
-            }
-
-            bulletPool.updatePool(gameTime);
+            testLevel.update(gameTime);
 
             base.Update(gameTime);
         }
@@ -200,40 +129,7 @@ namespace MagnetBoy
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            Matrix mx = new Matrix();
-            Rectangle rx = new Rectangle();
-            testCam.getDrawTranslation(ref mx, ref mapView, ref map);
-            testCam.getDrawRectangle(ref rx, ref mapView, ref map);
-
-            GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.Black, 0.4f));
-
-            // draw map
-            spriteBatch.Begin();
-            map.Draw(spriteBatch, rx);
-            spriteBatch.End();
-
-            // draw sprites
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, mx);
-            foreach (Entity a in testList)
-            {
-                a.draw(spriteBatch);
-            }
-
-            bulletPool.drawPool(spriteBatch);
-
-            spriteBatch.End();
-
-            //draw game cursor
-            Matrix arrowRotation = Matrix.Identity;
-            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(-16.0f, -16.0f, 0.0f));
-            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateRotationZ(((float)(Math.PI / 2))));
-            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(GameInput.P1MouseDirection.Length() , 0.0f, 0.0f));
-            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateRotationZ((float)Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X)));
-            arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(graphics.GraphicsDevice.Viewport.Bounds.Width / 2, graphics.GraphicsDevice.Viewport.Bounds.Height / 2, 0.0f));
-
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, arrowRotation);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero);
-            spriteBatch.End();
+            testLevel.draw(spriteBatch);
 
             base.Draw(gameTime);
         }

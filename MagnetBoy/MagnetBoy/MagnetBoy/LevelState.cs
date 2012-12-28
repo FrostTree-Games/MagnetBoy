@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using FuncWorks.XNA.XTiled;
 
@@ -10,17 +11,87 @@ namespace MagnetBoy
 {
     class LevelState : IState
     {
+        private ContentManager contentManager = null;
+
         private GameInput gameInput = null;
 
         private List<Entity> levelEntities = null;
         private Camera levelCamera = null;
         private BulletPool levelBulletPool = null;
 
-        private Map levelMap = null;
+        private static Map levelMap = null;
 
-        public LevelState(string levelName)
+        public static Map CurrentLevel
         {
-            //
+            get
+            {
+                return levelMap;
+            }
+        }
+
+        public LevelState(ContentManager newManager, string levelName)
+        {
+            contentManager = newManager;
+
+            gameInput = new GameInput(null);
+            levelEntities = new List<Entity>();
+            levelCamera = new Camera();
+            levelBulletPool = new BulletPool();
+
+            levelMap = newManager.Load<Map>(levelName);
+
+            foreach (ObjectLayer layer in levelMap.ObjectLayers)
+            {
+                foreach (MapObject obj in layer.MapObjects)
+                {
+                    Entity en = null;
+
+                    switch (obj.Name)
+                    {
+                        case "player":
+                            en = new Player(obj.Bounds.X, obj.Bounds.Y);
+                            levelEntities.Add(en);
+                            levelCamera.setNewFocus(ref en);
+                            break;
+                        case "wm_pos":
+                            levelEntities.Add(new WallMagnet(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Positive));
+                            break;
+                        case "wm_neg":
+                            levelEntities.Add(new WallMagnet(obj.Bounds.X, obj.Bounds.Y, Entity.Polarity.Negative));
+                            break;
+                        case "walker_pos":
+                            levelEntities.Add(new Enemy(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        case "walker_neg":
+                            levelEntities.Add(new Enemy(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        case "jumper_pos":
+                            levelEntities.Add(new JumpingEnemy(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        case "factory_conveyer_left":
+                            levelEntities.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Left));
+                            break;
+                        case "factory_conveyer_mid":
+                            levelEntities.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Mid));
+                            break;
+                        case "factory_conveyer_right":
+                            levelEntities.Add(new ConveyerBelt(obj.Bounds.X, obj.Bounds.Y, ConveyerBelt.ConveyerSpot.Right));
+                            break;
+                        case "spikes_up":
+                            levelEntities.Add(new Spikes(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        case "angrySaw":
+                            levelEntities.Add(new AngrySaw(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            IsUpdateable = true;
+
+            GC.Collect();
         }
 
         protected override void doUpdate(GameTime currentTime)
@@ -35,10 +106,8 @@ namespace MagnetBoy
             levelBulletPool.updatePool(currentTime);
         }
 
-        public override void draw()
+        public override void draw(SpriteBatch spriteBatch)
         {
-            SpriteBatch spriteBatch = new SpriteBatch(Game1.graphics.GraphicsDevice);
-
             Matrix mx = new Matrix();
             Rectangle rx = new Rectangle();
             levelCamera.getDrawTranslation(ref mx, ref Game1.mapView, ref levelMap);

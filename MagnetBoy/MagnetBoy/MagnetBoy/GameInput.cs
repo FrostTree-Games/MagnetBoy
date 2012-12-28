@@ -53,8 +53,6 @@ namespace MagnetBoy
             {
                 graphicsDevice = device;
             }
-
-            update();
         }
 
         public static Boolean P1MouseDown

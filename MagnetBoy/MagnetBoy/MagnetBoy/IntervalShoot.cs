@@ -34,7 +34,7 @@ namespace MagnetBoy
                     direction += (float)(Math.PI);
                 }
 
-                Game1.bulletPool.pushBullet(bulletType, parent.Position.X, parent.Position.Y, currentTime, direction);
+                BulletPool.pushBullet(bulletType, parent.Position.X, parent.Position.Y, currentTime, direction);
 
                 timeSinceLastShot = 0;
             }

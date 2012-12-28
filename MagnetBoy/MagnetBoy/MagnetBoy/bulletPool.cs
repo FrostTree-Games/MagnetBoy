@@ -145,7 +145,7 @@ namespace MagnetBoy
             }
         }
 
-        public void pushBullet(BulletType type, float x, float y, GameTime currentTime, float direction)
+        public static void pushBullet(BulletType type, float x, float y, GameTime currentTime, float direction)
         {
             for (int i = 0; i < pool.Length; i++)
             {

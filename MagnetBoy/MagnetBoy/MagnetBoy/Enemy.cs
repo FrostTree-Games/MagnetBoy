@@ -77,7 +77,7 @@ namespace MagnetBoy
 
             enemyUpdate(currentTime);
 
-            checkForWalls(Game1.map, ref step);
+            checkForWalls(LevelState.CurrentLevel, ref step);
 
             horizontal_pos = step.X;
             vertical_pos = step.Y;
