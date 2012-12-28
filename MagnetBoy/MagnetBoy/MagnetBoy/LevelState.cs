@@ -83,6 +83,9 @@ namespace MagnetBoy
                         case "angrySaw":
                             levelEntities.Add(new AngrySaw(obj.Bounds.X, obj.Bounds.Y));
                             break;
+                        case "lava":
+                            levelEntities.Add(new Lava(obj.Bounds.X, obj.Bounds.Y));
+                            break;
                         default:
                             break;
                     }
