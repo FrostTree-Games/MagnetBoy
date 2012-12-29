@@ -177,6 +177,7 @@ namespace MagnetBoy
             foreach (Bullet b in pool)
             {
                 b.InUse = false;
+                b.death();
             }
         }
     }

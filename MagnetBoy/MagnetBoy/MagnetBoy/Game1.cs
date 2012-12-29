@@ -32,7 +32,7 @@ namespace MagnetBoy
 
         public static Rectangle mapView;
 
-        private IState testLevel = null;
+        private GameScreenManager screenManager = null;
 
         public Game1()
         {
@@ -93,7 +93,8 @@ namespace MagnetBoy
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
 
-            testLevel = new LevelState(this.Content, "testMap1");
+            screenManager = new GameScreenManager(this.Content);
+            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, "testMap1");
         }
 
         /// <summary>
@@ -118,7 +119,7 @@ namespace MagnetBoy
 
             gameInput.update();
 
-            testLevel.update(gameTime);
+            screenManager.CurrentNode.update(gameTime);
 
             base.Update(gameTime);
         }
@@ -129,9 +130,14 @@ namespace MagnetBoy
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            testLevel.draw(spriteBatch);
+            screenManager.CurrentNode.draw(spriteBatch);
 
             base.Draw(gameTime);
+        }
+
+        public static void changeState(string newState)
+        {
+            return;
         }
     }
 }

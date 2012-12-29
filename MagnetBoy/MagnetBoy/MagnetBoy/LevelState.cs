@@ -29,8 +29,24 @@ namespace MagnetBoy
             }
         }
 
+        private static bool endLevelFlag = false;
+
+        public static Boolean EndLevelFlag
+        {
+            get
+            {
+                return endLevelFlag;
+            }
+            set
+            {
+                endLevelFlag = value;
+            }
+        }
+
         public LevelState(ContentManager newManager, string levelName)
         {
+            EndLevelFlag = false;
+
             contentManager = newManager;
 
             gameInput = new GameInput(null);
@@ -107,6 +123,26 @@ namespace MagnetBoy
             foreach (Entity en in levelEntities)
             {
                 en.update(currentTime);
+
+                if (endLevelFlag == true)
+                {
+                    break;
+                }
+            }
+
+            if (endLevelFlag == true)
+            {
+                foreach (Entity en in levelEntities)
+                {
+                    en.death();
+                }
+
+                levelBulletPool.clearPool();
+
+                Console.WriteLine("pzang!");
+                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, "testMap1");
+
+                return;
             }
 
             levelBulletPool.updatePool(currentTime);
