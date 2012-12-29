@@ -86,6 +86,9 @@ namespace MagnetBoy
                         case "lava":
                             levelEntities.Add(new Lava(obj.Bounds.X, obj.Bounds.Y));
                             break;
+                        case "endLevelFlag":
+                            levelEntities.Add(new EndLevelFlag(obj.Bounds.X, obj.Bounds.Y));
+                            break;
                         default:
                             break;
                     }

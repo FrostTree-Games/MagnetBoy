@@ -24,7 +24,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztWNsOwiAM7SfofJj6sOGDlwcv//93bnEkhFBou4I41+S8jKw9PS3Q0AJAi+Ay4M7ANeJrqeiBZ0ZJ65qQqruWRlw/NZmBVaOUGVg1SpmBMhq9BuwmnLx/mgEbB9vImoW10FoKrv85OVnsmfEPiJ+Y1j6HPrJGWS91D5W8H30OuTXy657qqzFGiRkopNERPnvvFskh1JdzNXLRIdysNRMH7d47J/Ki+Av5yKERtX4l9idXI6ovCRcJN65GT+Dvw9i9xs1TWyMKN83ZBeP8b30UM4wz58yuQSOfG3UGwmY79ztHI2me3+ijEZ2A2xn5vlSNKMDmFgrnXz+zNeuA+czdR+M+kM7CmtwonLG54BGIr3Fmu/FCMWJm/9XkJtnPFDOF4+XktmokB/f9hPqewo3HfRcaDXufknKrHZJaUTV4A5Otbu4=
+   eJztWEkOwyAM9BPa9JC2h4Qeuhy6/P93DWqQEMJgO0BohKW5gLDHgwGLHgB6BLcJTwbuAV9bxQg8U4m0rgmxfU+lEddPTaagaRQzBU2jmCkoo9FnwmHGxVnTTdhZ2AfmDIz55mKw/S/JyeDIjH9C/IS0djmMgTnKfKl3qOT76HLIrZG777G60jFK9EA+jc7wO3uPQA6+ulyqkY0B4Wasmzlwa+8NYf2ukbxc8+Xp85FDI+r+pXxzMM5cjag5cddKuZXQKPSuYWtKaUTh1uoozm0tjbA7uwaNXG7UHgjr7exxjkbSPNeoI41BwO2KjG9VIwqwvoXC+d/v7JT7gPnMXUf6HEh74ZTcKJyx/vLliZ/izrbj+WKEzKxNyU1ynimmCsfLya1pJAf3/4T6n8KNx/0X0ob9T0m51Q7JXlE1+AJRGW2s
   </data>
  </layer>
  <objectgroup name="test object" width="73" height="23">
@@ -39,5 +39,6 @@
   <object name="angrySaw" x="1772" y="651" width="19" height="19"/>
   <object name="lava" x="352" y="456" width="32" height="32"/>
   <object name="lava" x="384" y="456" width="32" height="32"/>
+  <object name="endLevelFlag" x="2016" y="192" width="32" height="32"/>
  </objectgroup>
 </map>
