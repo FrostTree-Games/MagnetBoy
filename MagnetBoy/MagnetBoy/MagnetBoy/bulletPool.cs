@@ -48,7 +48,10 @@ namespace MagnetBoy
 
         public void add(float newX, float newY, BulletPool.BulletType newType, GameTime entryTime, float direction)
         {
-            creation();
+            if (newType == BulletPool.BulletType.TestBullet)
+            {
+                creation();
+            }
 
             inUse = true;
             timePassed = 0;
@@ -66,8 +69,16 @@ namespace MagnetBoy
                     velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
                     rotation = direction;
                     break;
+                case BulletPool.BulletType.LavaBlob:
+                    width = 31.5f;
+                    height = 31.5f;
+                    velocity.X = 0.0f;
+                    velocity.Y = 0.35f;
+                    rotation = (float)(Math.PI/2);
+                    break;
                 default:
                     inUse = false;
+                    death();
                     break;
             }
         }
@@ -78,13 +89,16 @@ namespace MagnetBoy
 
             timePassed += delta;
 
-            velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
-            velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
+            if (type == BulletPool.BulletType.TestBullet)
+            {
+                velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
+                velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
+            }
 
             horizontal_pos += (float)(velocity.X * delta);
             vertical_pos += (float)(velocity.Y * delta);
 
-            if (timePassed > maxLifeTime)
+            if (timePassed > maxLifeTime || LevelState.isSolidMap(Position))
             {
                 death();
 
@@ -111,6 +125,7 @@ namespace MagnetBoy
         public enum BulletType
         {
             TestBullet,
+            LavaBlob,
             Laser,
             Rocket
         }

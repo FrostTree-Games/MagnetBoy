@@ -102,6 +102,9 @@ namespace MagnetBoy
                         case "lava":
                             levelEntities.Add(new Lava(obj.Bounds.X, obj.Bounds.Y));
                             break;
+                        case "lavaDumper":
+                            levelEntities.Add(new LavaDumper(obj.Bounds.X, obj.Bounds.Y));
+                            break;
                         case "endLevelFlag":
                             levelEntities.Add(new EndLevelFlag(obj.Bounds.X, obj.Bounds.Y));
                             break;
@@ -146,6 +149,46 @@ namespace MagnetBoy
             }
 
             levelBulletPool.updatePool(currentTime);
+        }
+
+        public static bool isSolidMap(Vector2 point)
+        {
+            foreach (TileLayer layer in levelMap.TileLayers)
+            {
+                bool isSolid = false;
+
+                foreach (KeyValuePair<string, Property> p in layer.Properties)
+                {
+                    if (p.Key.Equals("solid") && p.Value.AsInt32 == 1)
+                    {
+                        isSolid = true;
+                    }
+                }
+
+                if (isSolid == true)
+                {
+                    int posX = (int)(point.X / levelMap.TileWidth);
+                    int posY = (int)(point.Y / levelMap.TileHeight);
+
+                    try
+                    {
+                        if (layer.Tiles[posX][posY] != null)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return false;
         }
 
         public override void draw(SpriteBatch spriteBatch)

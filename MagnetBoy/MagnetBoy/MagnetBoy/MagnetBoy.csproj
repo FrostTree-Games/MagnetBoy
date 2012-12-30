@@ -132,6 +132,7 @@
     <Compile Include="Jump.cs" />
     <Compile Include="JumpingEnemy.cs" />
     <Compile Include="Lava.cs" />
+    <Compile Include="LavaDumper.cs" />
     <Compile Include="LevelState.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
