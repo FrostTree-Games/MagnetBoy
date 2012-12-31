@@ -26,6 +26,8 @@ namespace MagnetBoy
         public static Texture2D globalTestPositive = null;
         public static Texture2D globalTestNegative = null;
 
+        public static SpriteFont gameFontText = null;
+
         private AnimationFactory aFac = null;
 
         public static Random gameRandom = null;
@@ -71,6 +73,8 @@ namespace MagnetBoy
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            gameFontText = Content.Load<SpriteFont>("testFont");
 
             aFac = new AnimationFactory(this.Content);
             aFac.pushSheet("actor3"); // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html

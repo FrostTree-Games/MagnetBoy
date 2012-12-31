@@ -11,8 +11,6 @@ namespace MagnetBoy
 {
     class Jump : Attribute
     {
-        double walkSwitchTimer = 0;
-        bool walkingLeft = false;
         const float walkerSpeed = 0.09f;
 
         private bool isEnabled = false;

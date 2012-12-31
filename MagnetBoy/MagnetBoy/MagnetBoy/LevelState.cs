@@ -21,6 +21,8 @@ namespace MagnetBoy
 
         private static Map levelMap = null;
 
+        public static float playerStamina = 100.0f;
+
         public static Map CurrentLevel
         {
             get
@@ -228,6 +230,10 @@ namespace MagnetBoy
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, arrowRotation);
             AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero);
+            spriteBatch.End();
+
+            spriteBatch.Begin();
+            spriteBatch.DrawString(Game1.gameFontText, "Stamina: " + LevelState.playerStamina, new Vector2(32, 16), Color.White);
             spriteBatch.End();
         }
     }

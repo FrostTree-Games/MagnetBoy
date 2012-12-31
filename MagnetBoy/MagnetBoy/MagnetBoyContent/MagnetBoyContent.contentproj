@@ -67,6 +67,11 @@
       <Importer>TMXContentImporter</Importer>
       <Processor>TMXContentProcessor</Processor>
     </Compile>
+    <Compile Include="testFont.spritefont">
+      <Name>testFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="negTest.png">

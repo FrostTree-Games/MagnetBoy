@@ -39,6 +39,6 @@
   <object name="endLevelFlag" x="1984" y="192" width="32" height="32"/>
   <object name="lava" x="896" y="288" width="32" height="32"/>
   <object name="lava" x="864" y="288" width="32" height="32"/>
-  <object name="lolrus" x="282" y="143" width="56" height="33"/>
+  <object name="lolrus" x="762" y="558" width="56" height="33"/>
  </objectgroup>
 </map>

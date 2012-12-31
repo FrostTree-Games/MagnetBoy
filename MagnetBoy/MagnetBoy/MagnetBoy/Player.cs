@@ -158,8 +158,14 @@ namespace MagnetBoy
                 }
             }
 
-            if (GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push))
+            if ((GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)) && LevelState.playerStamina > 0.0f)
             {
+                LevelState.playerStamina -= 5.0f;
+                if (LevelState.playerStamina < 0.0f)
+                {
+                    LevelState.playerStamina = 0.0f;
+                }
+
                 isPushing = true;
 
                 double aAngle = directionAngle - (aimWindow / 2);
@@ -169,7 +175,7 @@ namespace MagnetBoy
                 {
                     double distance = Math.Sqrt(Math.Pow(en.Position.X - horizontal_pos, 2) + Math.Pow(en.Position.Y - vertical_pos, 2));
 
-                    if (en == this || distance > 250)
+                    if (en == this || distance > 128)
                     {
                         continue;
                     }
@@ -256,6 +262,17 @@ namespace MagnetBoy
                             }
                         }
                     }
+                }
+            }
+            else if (!(GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)))
+            {
+                isPushing = false;
+
+                LevelState.playerStamina += 2.0f;
+
+                if (LevelState.playerStamina > 100.0f)
+                {
+                    LevelState.playerStamina = 100.0f;
                 }
             }
             else
