@@ -44,8 +44,6 @@ namespace MagnetBoy
 
         public static void switchScreens(GameScreenType newType, string levelName)
         {
-            Console.WriteLine("ping!");
-
             if (manager == null)
             {
                 return;

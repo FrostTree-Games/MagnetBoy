@@ -17,11 +17,13 @@ namespace MagnetBoy
         double lastFrameIncrement = 0;
 
         private const float knockBackForce = 0.5f;
-        private Boolean isKnockedBack = false;
+        private bool isKnockedBack = false;
         private double knockBackStartTime = 0;
 
         // angle of window for direction magnetic force
         private const double aimWindow = 1.0471975512;
+        private bool isPushing = false;
+        private double directionAngle = 0;
 
         //these should be removed when publishing final code
         private Vector2 aLine, bLine;
@@ -92,7 +94,7 @@ namespace MagnetBoy
             // compute cursor spread lines
             //aLine = GameInput.P1MouseDirectionNormal * 100;
             //bLine = GameInput.P1MouseDirectionNormal * 120;
-            double directionAngle = Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X);
+            directionAngle = Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X);
             aLine = new Vector2((float)Math.Cos(directionAngle - aimWindow / 2), (float)Math.Sin(directionAngle - aimWindow / 2));
             bLine = new Vector2((float)Math.Cos(directionAngle + aimWindow / 2), (float)Math.Sin(directionAngle + aimWindow / 2));
             aLine.Normalize();
@@ -158,6 +160,8 @@ namespace MagnetBoy
 
             if (GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push))
             {
+                isPushing = true;
+
                 double aAngle = directionAngle - (aimWindow / 2);
                 double bAngle = directionAngle + (aimWindow / 2);
 
@@ -254,6 +258,10 @@ namespace MagnetBoy
                     }
                 }
             }
+            else
+            {
+                isPushing = false;
+            }
 
             Vector2 finalAcceleration = acceleration + keyAcceleration;
 
@@ -292,6 +300,15 @@ namespace MagnetBoy
         public override void draw(SpriteBatch sb)
         {
             AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+
+            if (isPushing)
+            {
+                Vector2 dirOffset = Position;
+                dirOffset.X -= width * 1.5f;
+                dirOffset.Y -= height/2;
+
+                AnimationFactory.drawAnimationFrame(sb, "pushArrow", 0, dirOffset, new Vector2(128, 64), (float)(directionAngle + Math.PI));
+            }
 
             sb.Draw(Game1.globalTestWalrus, Position + aLine, Color.Aqua);
             sb.Draw(Game1.globalTestWalrus, Position + bLine, Color.Beige);

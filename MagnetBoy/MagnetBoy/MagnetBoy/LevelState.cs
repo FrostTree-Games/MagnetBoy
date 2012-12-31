@@ -142,7 +142,6 @@ namespace MagnetBoy
 
                 levelBulletPool.clearPool();
 
-                Console.WriteLine("pzang!");
                 GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, "testMap1");
 
                 return;

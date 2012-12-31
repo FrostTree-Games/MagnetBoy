@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>pushArrow</name>
+      <sheetName>pushArrow</sheetName>
+      <sheet Type="System.String">foo</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>128</frameWidth>
+      <frameHeight>64</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+  </Asset>
+</XnaContent>

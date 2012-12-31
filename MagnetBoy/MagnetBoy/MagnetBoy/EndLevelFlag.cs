@@ -24,8 +24,6 @@ namespace MagnetBoy
 
         public override void update(GameTime currentTime)
         {
-            bool endLevel = false;
-
             foreach (Entity en in Entity.globalEntityList)
             {
                 if (en is Player)
