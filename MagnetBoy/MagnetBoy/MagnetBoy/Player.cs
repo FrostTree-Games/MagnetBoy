@@ -21,12 +21,9 @@ namespace MagnetBoy
         private double knockBackStartTime = 0;
 
         // angle of window for direction magnetic force
-        private const double aimWindow = 1.0471975512;
+        private const double aimWindow = 1.0471975512 / 1.5;
         private bool isPushing = false;
         private double directionAngle = 0;
-
-        //these should be removed when publishing final code
-        private Vector2 aLine, bLine;
 
         public Player()
         {
@@ -95,12 +92,6 @@ namespace MagnetBoy
             //aLine = GameInput.P1MouseDirectionNormal * 100;
             //bLine = GameInput.P1MouseDirectionNormal * 120;
             directionAngle = Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X);
-            aLine = new Vector2((float)Math.Cos(directionAngle - aimWindow / 2), (float)Math.Sin(directionAngle - aimWindow / 2));
-            bLine = new Vector2((float)Math.Cos(directionAngle + aimWindow / 2), (float)Math.Sin(directionAngle + aimWindow / 2));
-            aLine.Normalize();
-            bLine.Normalize();
-            aLine = aLine * 100;
-            bLine = bLine * 120;
 
             acceleration = acceleration + computeMagneticForce();
 
@@ -326,9 +317,6 @@ namespace MagnetBoy
 
                 AnimationFactory.drawAnimationFrame(sb, "pushArrow", 0, dirOffset, new Vector2(128, 64), (float)(directionAngle + Math.PI));
             }
-
-            sb.Draw(Game1.globalTestWalrus, Position + aLine, Color.Aqua);
-            sb.Draw(Game1.globalTestWalrus, Position + bLine, Color.Beige);
         }
 
         public void knockBack(Vector2 direction, double hitTime)
