@@ -24,7 +24,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmH0LwiAQh+8jrPpjvbFcEBW01ff/dE1IEhmeOuVu2/3gIcrt0EdpzhoAaqE4LwTq/s0ZLNT9mzNYesDXtuHOYDycyBk9D08In4ul/+fkzinyegX0Dri5vU64144CegelqCIwOQ6cPe0xUQwccCDES2zGapSkIfAWQhvhxY1Z2xtit1xxk+LlPbCD/zyJ23xuLxlqLBET/SyrEmus2a1vT28ntf5+pW47a8x9Ibd2Hb3+H7/fbgzGn4uxvYgbt731tKW41VEet0vyjbm1E3OG4zKlDrWjXG7tcXcj7RQxfeX6DhDqNiQx5wo5ziCoHaUSc6Zgvn8C78Oudd/X3Gwhfd83F4wL7LrGovZ8GvbIvBwYjF0QBEEQBEHgyRfMKMgY
+   eJztmX1PAjEMxvsRUP84QIPTRNFE0e//6eQSG5tmL+1dR3snT/KEANuu/W1h3RgAYLi6uz8a9o5vyW7JO74lu6UTtNc2+hggn0i21DgP7yCfi7X/5ljrXtk+gT+DaGyfZ/SlSuDPoJc3CqP2Zz9UvtcoBWAQwRIuWuXG6OmDAzeJnxRcuHBt3zizjWquKVy+zr6Dv3m6srVj+2gwxhqNGveyzcQxerGFAHxqfoX6GYtq6jO2HdhaxNWb6yeJ8ZTha5UDalz/b7+fvRhwjcKW1iKcKyqxPrROsFpn+Iwc2xbvnLy5Upe40rxzuWjucLjnjFPjChfgpTHfW0p5l/hHkzdPKVuJNPcKVncQNXnzLLG9BfmdAr7/FvSRtOXnNS4aGz8fQgCOLbZJ0B7za7U7EA+VV/QW6vOyg/Le4M3Qiq2Xl8bVmi09e0z9r6dUHyyNK2c7p66q1RKacaXy5qZluxR5M1srW29eGrf2Z41LdZSktpPWH//VpXnaBYjtUv4BAq68UQ==
   </data>
  </layer>
  <objectgroup name="test object" width="87" height="28">
@@ -40,5 +40,6 @@
   <object name="lava" x="896" y="288" width="32" height="32"/>
   <object name="lava" x="864" y="288" width="32" height="32"/>
   <object name="lolrus" x="762" y="558" width="56" height="33"/>
+  <object name="lolrus" x="456" y="785" width="56" height="33"/>
  </objectgroup>
 </map>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>bucket</name>
+      <sheetName>bucketSheet</sheetName>
+      <sheet Type="System.String">lolrusSheet</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>16</frameWidth>
+      <frameHeight>16</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+     <Item>
+      <name>bucketExplode</name>
+      <sheetName>bucketSheet</sheetName>
+      <sheet Type="System.String">lolrusSheet</sheet>
+      <initalX>0</initalX>
+      <initalY>16</initalY>
+      <frameWidth>16</frameWidth>
+      <frameHeight>16</frameHeight>
+      <frameCount>20</frameCount>
+      <frameSpeed>75</frameSpeed>
+    </Item>
+
+
+
+  </Asset>
+</XnaContent>

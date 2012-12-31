@@ -15,7 +15,7 @@ namespace MagnetBoy
         public Lolrus(int initalX, int initalY) : base(initalX, initalY)
         {
             list.Add(new Walk(this));
-            list.Add(new IntervalShoot(this, 3000, BulletPool.BulletType.TestBullet));
+            list.Add(new IntervalShoot(this, 3000, BulletPool.BulletType.Bucket));
         }
 
         protected override void enemyUpdate(GameTime currentTime)

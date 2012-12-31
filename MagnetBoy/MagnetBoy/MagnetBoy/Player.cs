@@ -21,7 +21,7 @@ namespace MagnetBoy
         private double knockBackStartTime = 0;
 
         // angle of window for direction magnetic force
-        private const double aimWindow = 1.0471975512 / 1.5;
+        private const double aimWindow = 1.0471975512;
         private bool isPushing = false;
         private double directionAngle = 0;
 
@@ -171,7 +171,7 @@ namespace MagnetBoy
                         continue;
                     }
 
-                    double enAngle = Math.Atan2(en.Position.Y - vertical_pos, en.Position.X - horizontal_pos);
+                    double enAngle = Math.Atan2(en.CenterPosition.Y - vertical_pos, en.CenterPosition.X - horizontal_pos);
 
                     if (enAngle > aAngle && enAngle < bAngle)
                     {

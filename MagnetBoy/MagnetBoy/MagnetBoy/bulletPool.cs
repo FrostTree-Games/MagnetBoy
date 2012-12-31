@@ -17,6 +17,14 @@ namespace MagnetBoy
         private float rotation = 0.0f; // 0.0 in rotation is considered to be right-facing, or "EAST"
         private BulletPool.BulletType type;
 
+        private bool exploding = false;
+        private double explodingTime = 0;
+
+        //animation data
+        string currentAnimation = null;
+        int currentFrame = 0;
+        double lastFrameIncrement = 0;
+
         public float Direction
         {
             get
@@ -48,7 +56,7 @@ namespace MagnetBoy
 
         public void add(float newX, float newY, BulletPool.BulletType newType, GameTime entryTime, float direction)
         {
-            if (newType == BulletPool.BulletType.TestBullet)
+            if (newType == BulletPool.BulletType.TestBullet || newType == BulletPool.BulletType.Bucket)
             {
                 creation();
             }
@@ -59,6 +67,9 @@ namespace MagnetBoy
             type = newType;
             horizontal_pos = newX;
             vertical_pos = newY;
+
+            exploding = false;
+            explodingTime = 0;
 
             switch (newType)
             {
@@ -76,6 +87,16 @@ namespace MagnetBoy
                     velocity.Y = 0.35f;
                     rotation = (float)(Math.PI/2);
                     break;
+                case BulletPool.BulletType.Bucket:
+                    width = 16f;
+                    height = 16f;
+                    velocity.X = (float)(testBulletVelocity * Math.Cos(direction));
+                    velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
+                    rotation = direction;
+                    currentAnimation = "bucket";
+                    currentFrame = 0;
+                    lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    break;
                 default:
                     inUse = false;
                     death();
@@ -89,8 +110,26 @@ namespace MagnetBoy
 
             timePassed += delta;
 
+            // animation
+            if (type == BulletPool.BulletType.Bucket)
+            {
+                // if the last frame time hasn't been set, set it now
+                if (lastFrameIncrement == 0)
+                {
+                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+                }
+
+                // update the current frame if needed
+                if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
+                {
+                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                    currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
+                }
+            }
+
             // redirection
-            if (type == BulletPool.BulletType.TestBullet)
+            if (type == BulletPool.BulletType.TestBullet || (type == BulletPool.BulletType.Bucket && !exploding))
             {
                 velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
                 velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
@@ -121,11 +160,34 @@ namespace MagnetBoy
             horizontal_pos += (float)(velocity.X * delta);
             vertical_pos += (float)(velocity.Y * delta);
 
-            if (timePassed > maxLifeTime || LevelState.isSolidMap(Position))
+            if ((timePassed > maxLifeTime || LevelState.isSolidMap(Position)) && !exploding)
             {
-                death();
+                if (type == BulletPool.BulletType.Bucket)
+                {
+                    exploding = true;
 
-                inUse = false;
+                    velocity.X = 0f;
+                    velocity.Y = 0f;
+
+                    currentFrame = 0;
+                    currentAnimation = "bucketExplode";
+                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+                }
+                else
+                {
+                    death();
+                    inUse = false;
+                }
+            }
+            else if (exploding)
+            {
+                explodingTime += currentTime.ElapsedGameTime.TotalMilliseconds;
+
+                if (explodingTime > AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation))
+                {
+                    death();
+                    inUse = false;
+                }
             }
         }
 
@@ -135,6 +197,9 @@ namespace MagnetBoy
             {
                 case BulletPool.BulletType.TestBullet:
                     AnimationFactory.drawAnimationFrame(sb, "testBullet", 0, Position, HitBox, rotation);
+                    break;
+                case BulletPool.BulletType.Bucket:
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
                     break;
                 default:
                     AnimationFactory.drawAnimationFrame(sb, "testBullet", 0, Position);
@@ -149,8 +214,7 @@ namespace MagnetBoy
         {
             TestBullet,
             LavaBlob,
-            Laser,
-            Rocket
+            Bucket
         }
 
         private static Bullet[] pool = null;

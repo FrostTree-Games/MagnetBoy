@@ -46,7 +46,19 @@ namespace MagnetBoy
                     direction += (float)(Math.PI);
                 }
 
-                BulletPool.pushBullet(bulletType, parent.Position.X, parent.Position.Y, currentTime, direction);
+                Vector2 bulletPosition = parent.Position;
+
+                if (parent is Lolrus)
+                {
+                    bulletPosition.Y += 4;
+
+                    if (parent.velocity.X >= 0.0f)
+                    {
+                        bulletPosition.X += parent.HitBox.X;
+                    }
+                }
+
+                BulletPool.pushBullet(bulletType, bulletPosition.X, bulletPosition.Y, currentTime, direction);
 
                 timeSinceLastShot = 0;
 
