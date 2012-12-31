@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="87" height="28" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test tileset" tilewidth="32" tileheight="32">
+  <properties>
+   <property name="solid" value="1"/>
+  </properties>
+  <image source="terribleTileSheet.png" width="96" height="160"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="16" name="FactoryTileSheet" tilewidth="32" tileheight="32">
+  <image source="FactoryTileSheet.png" width="224" height="160"/>
+ </tileset>
+ <layer name="test layer" width="87" height="28">
+  <properties>
+   <property name="solid" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmH0LgyAQh+8jtO2P2gvNBmMbrPb9v90SJhMJ9Uy5q+4HD4Nshz5KmTUA1EJx3gGo+7dkQqHu35IJZYDw2jY8GIyHEzmj5+EF8XOx9mdO7pyR9yugd8DN7W3Gf+0ooHdQigqByWnk4mnHRDFwwIEYL9hM1ShJS+Athg7hxY1Z2ztit1xxk+LlM3KA/zyJ23xurxlqrBET/S6rEmts2a1vT28ntX6zUbe9NeahkFu7jl7/z9+1O4Px52JqL+LGbe88bSludZTH7Zp8h9zawZzhuMypQ+0ol1t73P1EO0VMX7l+A8S65RhqR6lgzhQw5xAxuN9rbvaQvu9bCsZF6L7Wovb8GpqA+yODsQuCIAiCIAg8+QJS9seU
+  </data>
+ </layer>
+ <objectgroup name="test object" width="87" height="28">
+  <object name="player" x="128" y="192" width="34" height="31"/>
+  <object name="angrySaw" x="1280" y="608" width="19" height="19"/>
+  <object name="lavaDumper" x="848" y="160" width="32" height="32"/>
+  <object name="spikes_up" x="512" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="480" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="1088" y="416" width="32" height="32"/>
+  <object name="lava" x="800" y="288" width="32" height="32"/>
+  <object name="lava" x="832" y="288" width="32" height="32"/>
+  <object name="endLevelFlag" x="1984" y="192" width="32" height="32"/>
+  <object name="lava" x="896" y="288" width="32" height="32"/>
+  <object name="lava" x="864" y="288" width="32" height="32"/>
+ </objectgroup>
+</map>

@@ -96,7 +96,7 @@ namespace MagnetBoy
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
 
             screenManager = new GameScreenManager(this.Content);
-            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, "testMap1");
+            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, "testMap2");
         }
 
         /// <summary>
