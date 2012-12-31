@@ -40,10 +40,10 @@ namespace MagnetBoy
         {
             graphics = new GraphicsDeviceManager(this);
 
-            //this.graphics.PreferredBackBufferWidth = 720;
-            //this.graphics.PreferredBackBufferHeight = 480;
+            //graphics.PreferredBackBufferWidth = 720;
+            //graphics.PreferredBackBufferHeight = 480;
 
-            //this.graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
 
             Content.RootDirectory = "Content";
         }
@@ -85,6 +85,7 @@ namespace MagnetBoy
             aFac.pushSheet("testBulletSheet");
             aFac.pushSheet("angrySawSheet");
             aFac.pushSheet("pushArrow");
+            aFac.pushSheet("lolrusSheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -94,6 +95,7 @@ namespace MagnetBoy
             aFac.pushAnimation("testBulletAnims");
             aFac.pushAnimation("angrySaw");
             aFac.pushAnimation("pushArrowAnims");
+            aFac.pushAnimation("lolrus");
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
