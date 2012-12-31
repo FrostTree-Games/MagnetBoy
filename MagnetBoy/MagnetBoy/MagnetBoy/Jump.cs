@@ -14,8 +14,16 @@ namespace MagnetBoy
         double walkSwitchTimer = 0;
         bool walkingLeft = false;
         const float walkerSpeed = 0.09f;
+
+        private bool isEnabled = false;
+
         public Jump(Enemy parent)
         {
+        }
+
+        public void enableDisable(bool value)
+        {
+            isEnabled = value;
         }
 
         public void update(Enemy parent, GameTime currentTime)

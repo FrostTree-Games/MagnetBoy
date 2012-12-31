@@ -12,5 +12,7 @@ namespace MagnetBoy
     interface Attribute
     {
         void update(Enemy parent, GameTime currentTime);
+
+        void enableDisable(bool value);
     }
 }

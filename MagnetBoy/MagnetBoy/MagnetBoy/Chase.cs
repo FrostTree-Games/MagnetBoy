@@ -17,6 +17,8 @@ namespace MagnetBoy
         const float walkerSpeed = 0.09f;
         bool chasePlayer = false;
 
+        private bool isEnabled = true;
+
         private Walk walkState = null;
 
         public Chase(Enemy parent)
@@ -24,8 +26,18 @@ namespace MagnetBoy
             walkState = new Walk(parent);
         }
 
+        public void enableDisable(bool value)
+        {
+            isEnabled = value;
+        }
+
         public void update(Enemy parent, GameTime currentTime)
         {
+            if (!isEnabled)
+            {
+                return;
+            }
+
             if (walkSwitchTimer == 0)
             {
                 walkSwitchTimer = currentTime.TotalGameTime.TotalMilliseconds;

@@ -108,6 +108,9 @@ namespace MagnetBoy
                         case "endLevelFlag":
                             levelEntities.Add(new EndLevelFlag(obj.Bounds.X, obj.Bounds.Y));
                             break;
+                        case "lolrus":
+                            levelEntities.Add(new Lolrus(obj.Bounds.X, obj.Bounds.Y));
+                            break;
                         default:
                             break;
                     }

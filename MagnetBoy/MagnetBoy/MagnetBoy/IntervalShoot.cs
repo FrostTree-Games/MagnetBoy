@@ -11,6 +11,8 @@ namespace MagnetBoy
         private double interval = 0;
         private BulletPool.BulletType bulletType;
 
+        private bool isEnabled = true;
+
         private double timeSinceLastShot;
 
         public IntervalShoot(Enemy parent, double newInterval, BulletPool.BulletType type)
@@ -21,8 +23,18 @@ namespace MagnetBoy
             timeSinceLastShot = 0;
         }
 
+        public void enableDisable(bool value)
+        {
+            isEnabled = value;
+        }
+
         public void update(Enemy parent, GameTime currentTime)
         {
+            if (!isEnabled)
+            {
+                return;
+            }
+
             timeSinceLastShot += currentTime.ElapsedGameTime.Milliseconds;
 
             if (timeSinceLastShot > interval)
@@ -37,6 +49,11 @@ namespace MagnetBoy
                 BulletPool.pushBullet(bulletType, parent.Position.X, parent.Position.Y, currentTime, direction);
 
                 timeSinceLastShot = 0;
+
+                if (parent is Lolrus)
+                {
+                    ((Lolrus)parent).lolrusFire();
+                }
             }
         }
     }
