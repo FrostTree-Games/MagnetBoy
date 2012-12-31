@@ -24,7 +24,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmetOwzAMhf0IA350G2gEJBhIMHj/p2OVFs1YuditUztTj3Q0dUpd54u1OtkAAMPq5v6q2Dq/Xv0MdQUHefZoDtsT1Gs7+uhgTl7MYSvRuA6fwF+LW/7N0WY76lE4PoA9B29sX2fcixXAnkMrb5i+Qzz2Zz8lxkxRcMDA2qkaT3GRKhWjpQ8LP4/rFwEXqlT9W7D1aG7d1vxz9gNc12llq8eWxlnZ/mcyvss2CnE02YIDRiW/Q36PRZlMfca2AVvteC24fqMcT4SvFlvMYqz/j8t3bwpcvbDFvQjlmssT9wnadZZiW+OdEs3Z0jmuNE9at5IzHOo5cUpcac7WLu178bxz/L0pgD1TDluOJOcKWmcQJQWwZ5piew/1c4WoeP3LuIczlu7XqHBudH8Il7lM7QuXYBsY4+P8auMOyEPhM3oL5XXZQf7dYM1Qi62Ve+OqzRbvPab+15PrD3rjStnO6atKvYQkLlfW3KRse5E1s1tla81L4tr7WeJcH8Xp7bi25uVtnXYOclvKf88VvLI=
+   eJztmulOwzAMgP0IY/wYl0pAgoHEsfd/OpofEZ7lM3W7FmHJQlod1/niHE45AMDhX7v0xWn3OuqHoccV9Ceinj5lqcbmEWwpK+AV4frp6FOWFCUWD9svyBnHJXJySa5VihKrh21E6ji8Q968okyXYrcfdSfoFbIrSszZbKvcB+0982LJfKxcb4HnNcA5syLYTWX7PKFtlnjz627U61GfHG0lrhyzotjdKLFZsT4oz+eWxkXjYOVNgd9cjKz5Xra9PjnfdZx6+Gq5J6mVWxG2Uzj0+qD6DedzivPd5gHHeC88y4ovgy09h3D77CXylmPM5VodI7z2ZcWXwZa2sWyyYo+wjfjJiK/lG86zrbKte9kuwU9GfLgWq+e5xreHLZ1v3LreyxavN3StyWKSyZarcZu/Ne1lNE6cAxqTyN3IcYIfOtbS3UGrRax6o9k1v9L76/MB+NqwxU4Vn+ukOHFbek7w9oH2B9vXteUN4nmWeSfT6nTJn/Ycx+SdV1zbOerjKtE8m6MGtup06XmB2PqHZc7+rFm89XyBfraZcURtLyW1xjmBr8Ys4Gdr1Z9XjO3JaINVs7X6gmOj9SEXOxcr95tU43juWrLudej7LL8D0oPyl/Mt9UPaG+i94CDEGok/Qzm20XPV3DFqe65233pp5dhG1uDWRhsTL39tTLfGlXLsPbNaZwnvN7fIe9fONZqja5EtcN0i261wrRr5rhP57kN5ZL1jK1wt9f5/jjVOf4WHR38AejqiqQ==
   </data>
  </layer>
  <objectgroup name="test object" width="87" height="28">
@@ -33,13 +33,21 @@
   <object name="lavaDumper" x="848" y="160" width="32" height="32"/>
   <object name="spikes_up" x="512" y="608" width="32" height="32"/>
   <object name="spikes_up" x="480" y="608" width="32" height="32"/>
-  <object name="spikes_up" x="1088" y="416" width="32" height="32"/>
+  <object name="spikes_up" x="1088" y="448" width="32" height="32"/>
   <object name="lava" x="800" y="288" width="32" height="32"/>
   <object name="lava" x="832" y="288" width="32" height="32"/>
-  <object name="endLevelFlag" x="1696" y="576" width="32" height="32"/>
+  <object name="endLevelFlag" x="2560" y="576" width="32" height="32"/>
   <object name="lava" x="896" y="288" width="32" height="32"/>
   <object name="lava" x="864" y="288" width="32" height="32"/>
   <object name="lolrus" x="762" y="558" width="56" height="33"/>
   <object name="lolrus" x="456" y="785" width="56" height="33"/>
+  <object name="lavaDumper" x="1872" y="64" width="32" height="32"/>
+  <object name="lavaDumper" x="2032" y="64" width="32" height="32"/>
+  <object name="lava" x="1856" y="608" width="32" height="32"/>
+  <object name="lava" x="1888" y="608" width="32" height="32"/>
+  <object name="lava" x="2016" y="608" width="32" height="32"/>
+  <object name="lava" x="2048" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="128" y="800" width="32" height="32"/>
+  <object name="spikes_up" x="802" y="832" width="32" height="32"/>
  </objectgroup>
 </map>

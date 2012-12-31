@@ -160,7 +160,7 @@ namespace MagnetBoy
             horizontal_pos += (float)(velocity.X * delta);
             vertical_pos += (float)(velocity.Y * delta);
 
-            if ((timePassed > maxLifeTime || LevelState.isSolidMap(Position)) && !exploding)
+            if ((timePassed > maxLifeTime || LevelState.isSolidMap(CenterPosition)) && !exploding)
             {
                 if (type == BulletPool.BulletType.Bucket)
                 {
