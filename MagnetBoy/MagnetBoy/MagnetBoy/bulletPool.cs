@@ -89,10 +89,33 @@ namespace MagnetBoy
 
             timePassed += delta;
 
+            // redirection
             if (type == BulletPool.BulletType.TestBullet)
             {
                 velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
                 velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
+            }
+
+            // damage player
+            if (type == BulletPool.BulletType.TestBullet || type == BulletPool.BulletType.LavaBlob)
+            {
+                foreach (Entity en in globalEntityList)
+                {
+                    if (en is Player)
+                    {
+                        if (hitTest(en))
+                        {
+                            if (en.Position.X - Position.X < 0)
+                            {
+                                ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
+                            else
+                            {
+                                ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
+                        }
+                    }
+                }
             }
 
             horizontal_pos += (float)(velocity.X * delta);
