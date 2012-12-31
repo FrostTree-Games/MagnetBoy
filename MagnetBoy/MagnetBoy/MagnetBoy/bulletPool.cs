@@ -105,7 +105,7 @@ namespace MagnetBoy
                     {
                         if (hitTest(en))
                         {
-                            if (en.Position.X - Position.X < 0)
+                            if (en.CenterPosition.X - CenterPosition.X < 0)
                             {
                                 ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
                             }
