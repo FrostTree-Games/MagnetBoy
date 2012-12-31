@@ -40,10 +40,10 @@ namespace MagnetBoy
         {
             graphics = new GraphicsDeviceManager(this);
 
-            graphics.PreferredBackBufferWidth = 720;
-            graphics.PreferredBackBufferHeight = 480;
+            //graphics.PreferredBackBufferWidth = 720;
+            //graphics.PreferredBackBufferHeight = 480;
 
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
 
             Content.RootDirectory = "Content";
         }
@@ -104,7 +104,7 @@ namespace MagnetBoy
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
 
             screenManager = new GameScreenManager(this.Content);
-            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, "testMap2");
+            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
         }
 
         /// <summary>

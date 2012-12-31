@@ -21,7 +21,8 @@ namespace MagnetBoy
             LeftDirection,
             RightDirection,
             Push,
-            Jump
+            Jump,
+            Confirm
         }
 
         private static GraphicsDevice graphicsDevice = null;
@@ -30,6 +31,7 @@ namespace MagnetBoy
         private static Vector2 p1MouseDirection;
 
         private static GamePadState p1PadState;
+        private static KeyboardState kbdState;
 
         public static Vector2 P1MouseDirection
         {
@@ -75,13 +77,13 @@ namespace MagnetBoy
             switch (button)
             {
                 case PlayerButton.UpDirection:
-                    if (p1PadState.DPad.Up == ButtonState.Pressed || p1PadState.ThumbSticks.Left.Y < -0.01)
+                    if (p1PadState.DPad.Up == ButtonState.Pressed || p1PadState.ThumbSticks.Left.Y > 0.01)
                     {
                         return true;
                     }
                     break;
                 case PlayerButton.DownDirection:
-                    if (p1PadState.DPad.Down == ButtonState.Pressed || p1PadState.ThumbSticks.Left.Y > 0.01)
+                    if (p1PadState.DPad.Down == ButtonState.Pressed || p1PadState.ThumbSticks.Left.Y < -0.01)
                     {
                         return true;
                     }
@@ -110,6 +112,12 @@ namespace MagnetBoy
                         return true;
                     }
                     break;
+                case PlayerButton.Confirm:
+                    if (p1PadState.Buttons.A == ButtonState.Pressed || kbdState.IsKeyDown(Keys.Enter))
+                    {
+                        return true;
+                    }
+                    break;
                 default:
                     return false;
             }
@@ -121,6 +129,7 @@ namespace MagnetBoy
         {
             mouse = Mouse.GetState();
             p1PadState = GamePad.GetState(PlayerIndex.One);
+            kbdState = Keyboard.GetState();
 
             if (graphicsDevice.Viewport.Bounds.Contains(new Point(mouse.X, mouse.Y)))
             {

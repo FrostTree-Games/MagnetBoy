@@ -55,7 +55,14 @@ namespace MagnetBoy
             }
             else if (newType == GameScreenType.Menu)
             {
-                //
+                switch (levelName)
+                {
+                    case "BetaMenu":
+                        currentNode = new BetaMenuState(manager);
+                        break;
+                    default:
+                        break;
+                }
             }
             else
             {

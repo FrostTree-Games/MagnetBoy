@@ -24,7 +24,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmX1PAjEMxvsRUP84QIPTRNFE0e//6eQSG5tmL+1dR3snT/KEANuu/W1h3RgAYLi6uz8a9o5vyW7JO74lu6UTtNc2+hggn0i21DgP7yCfi7X/5ljrXtk+gT+DaGyfZ/SlSuDPoJc3CqP2Zz9UvtcoBWAQwRIuWuXG6OmDAzeJnxRcuHBt3zizjWquKVy+zr6Dv3m6srVj+2gwxhqNGveyzcQxerGFAHxqfoX6GYtq6jO2HdhaxNWb6yeJ8ZTha5UDalz/b7+fvRhwjcKW1iKcKyqxPrROsFpn+Iwc2xbvnLy5Upe40rxzuWjucLjnjFPjChfgpTHfW0p5l/hHkzdPKVuJNPcKVncQNXnzLLG9BfmdAr7/FvSRtOXnNS4aGz8fQgCOLbZJ0B7za7U7EA+VV/QW6vOyg/Le4M3Qiq2Xl8bVmi09e0z9r6dUHyyNK2c7p66q1RKacaXy5qZluxR5M1srW29eGrf2Z41LdZSktpPWH//VpXnaBYjtUv4BAq68UQ==
+   eJztmetOwzAMhf0IA350G2gEJBhIMHj/p2OVFs1YuditUztTj3Q0dUpd54u1OtkAAMPq5v6q2Dq/Xv0MdQUHefZoDtsT1Gs7+uhgTl7MYSvRuA6fwF+LW/7N0WY76lE4PoA9B29sX2fcixXAnkMrb5i+Qzz2Zz8lxkxRcMDA2qkaT3GRKhWjpQ8LP4/rFwEXqlT9W7D1aG7d1vxz9gNc12llq8eWxlnZ/mcyvss2CnE02YIDRiW/Q36PRZlMfca2AVvteC24fqMcT4SvFlvMYqz/j8t3bwpcvbDFvQjlmssT9wnadZZiW+OdEs3Z0jmuNE9at5IzHOo5cUpcac7WLu178bxz/L0pgD1TDluOJOcKWmcQJQWwZ5piew/1c4WoeP3LuIczlu7XqHBudH8Il7lM7QuXYBsY4+P8auMOyEPhM3oL5XXZQf7dYM1Qi62Ve+OqzRbvPab+15PrD3rjStnO6atKvYQkLlfW3KRse5E1s1tla81L4tr7WeJcH8Xp7bi25uVtnXYOclvKf88VvLI=
   </data>
  </layer>
  <objectgroup name="test object" width="87" height="28">
@@ -36,7 +36,7 @@
   <object name="spikes_up" x="1088" y="416" width="32" height="32"/>
   <object name="lava" x="800" y="288" width="32" height="32"/>
   <object name="lava" x="832" y="288" width="32" height="32"/>
-  <object name="endLevelFlag" x="1984" y="192" width="32" height="32"/>
+  <object name="endLevelFlag" x="1696" y="576" width="32" height="32"/>
   <object name="lava" x="896" y="288" width="32" height="32"/>
   <object name="lava" x="864" y="288" width="32" height="32"/>
   <object name="lolrus" x="762" y="558" width="56" height="33"/>

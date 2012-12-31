@@ -116,6 +116,7 @@
     <Compile Include="AngrySaw.cs" />
     <Compile Include="AnimationFactory.cs" />
     <Compile Include="Attribute.cs" />
+    <Compile Include="BetaMenuState.cs" />
     <Compile Include="bulletPool.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Chase.cs" />

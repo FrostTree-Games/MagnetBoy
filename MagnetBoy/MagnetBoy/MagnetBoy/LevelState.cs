@@ -147,7 +147,7 @@ namespace MagnetBoy
 
                 levelBulletPool.clearPool();
 
-                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, "testMap1");
+                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
 
                 return;
             }
