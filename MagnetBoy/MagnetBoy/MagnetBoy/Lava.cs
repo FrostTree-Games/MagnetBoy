@@ -9,6 +9,10 @@ namespace MagnetBoy
 {
     class Lava : Entity
     {
+        protected string currentAnimation = null;
+        protected int currentFrame = 0;
+        protected double lastFrameIncrement = 0;
+
         public Lava(float initialx, float initialy)
         {
             creation();
@@ -21,6 +25,8 @@ namespace MagnetBoy
 
             velocity = Vector2.Zero;
             acceleration = Vector2.Zero;
+
+            currentAnimation = "lavaBottom";
         }
 
         public override void update(GameTime currentTime)
@@ -42,11 +48,19 @@ namespace MagnetBoy
                     }
                 }
             }
+
+            // update the current frame if needed
+            if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
+            }
         }
 
         public override void draw(SpriteBatch sb)
         {
-            base.draw(sb);
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
         }
     }
 }

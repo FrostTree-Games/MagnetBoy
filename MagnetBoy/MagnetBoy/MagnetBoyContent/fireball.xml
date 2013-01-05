@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>fireball</name>
+      <sheetName>fireballSheet</sheetName>
+      <sheet Type="System.String">angrySawWalkRight</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>3</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+    
+
+
+  </Asset>
+</XnaContent>
