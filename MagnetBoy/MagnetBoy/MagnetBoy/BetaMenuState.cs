@@ -27,6 +27,8 @@ namespace MagnetBoy
 
         private GameInput gameInput = null;
 
+        private bool musicPlaying = false;
+
         private bool downPressed = false;
         private bool upPressed = false;
 
@@ -40,6 +42,8 @@ namespace MagnetBoy
 
             levelList = new List<LevelMenuOption>();
 
+            musicPlaying = false;
+
             levelList.Add(new LevelMenuOption("testMap1"));
             levelList.Add(new LevelMenuOption("testMap2"));
             levelList.Add(new LevelMenuOption("climbTest"));
@@ -48,6 +52,13 @@ namespace MagnetBoy
         protected override void doUpdate(GameTime currentTime)
         {
             gameInput.update();
+
+            if (!musicPlaying)
+            {
+                musicPlaying = true;
+
+                AudioFactory.playSong("songs/song2");
+            }
 
             if (GameInput.isButtonDown(GameInput.PlayerButton.DownDirection))
             {

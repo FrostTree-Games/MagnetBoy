@@ -15,6 +15,8 @@ namespace MagnetBoy
 
         private GameInput gameInput = null;
 
+        private bool musicPlaying = false;
+
         private List<Entity> levelEntities = null;
         private Camera levelCamera = null;
         private BulletPool levelBulletPool = null;
@@ -130,6 +132,13 @@ namespace MagnetBoy
         protected override void doUpdate(GameTime currentTime)
         {
             gameInput.update();
+
+            if (!musicPlaying)
+            {
+                musicPlaying = true;
+
+                AudioFactory.playSong("songs/song1");
+            }
 
             foreach (Entity en in levelEntities)
             {

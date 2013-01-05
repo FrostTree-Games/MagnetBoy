@@ -28,7 +28,10 @@ namespace MagnetBoy
 
         public static SpriteFont gameFontText = null;
 
+        public static Song testSong = null;
+
         private AnimationFactory aFac = null;
+        private AudioFactory audFac = null;
 
         public static Random gameRandom = null;
 
@@ -77,6 +80,8 @@ namespace MagnetBoy
             gameFontText = Content.Load<SpriteFont>("testFont");
 
             aFac = new AnimationFactory(this.Content);
+            audFac = new AudioFactory(this.Content);
+
             aFac.pushSheet("actor3"); // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
             aFac.pushSheet("playerSheet");
             aFac.pushSheet("conveyer");
@@ -102,6 +107,9 @@ namespace MagnetBoy
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
+
+            AudioFactory.pushNewSong("songs/song1");
+            AudioFactory.pushNewSong("songs/song2");
 
             screenManager = new GameScreenManager(this.Content);
             GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
