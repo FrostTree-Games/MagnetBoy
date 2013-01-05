@@ -13,6 +13,7 @@ namespace MagnetBoy
         private static ContentManager manager = null;
 
         private static Dictionary<string, Song> bgmLib = null;
+        private static Dictionary<string, SoundEffect> sfxLib = null;
         private static bool initalized = false;
 
         private static string currentSongName = null;
@@ -34,6 +35,7 @@ namespace MagnetBoy
             manager = newManager;
 
             bgmLib = new Dictionary<string, Song>();
+            sfxLib = new Dictionary<string, SoundEffect>();
 
             currentSongName = "";
         }
@@ -63,6 +65,31 @@ namespace MagnetBoy
             }
         }
 
+        public static void pushNewSFX(string sfxName)
+        {
+            SoundEffect s = null;
+
+            try
+            {
+                s = manager.Load<SoundEffect>(sfxName);
+            }
+            catch (ContentLoadException)
+            {
+                Console.WriteLine("(a) Song not loaded" + sfxName);
+                return;
+            }
+
+            if (s != null)
+            {
+                sfxLib.Add(sfxName, s);
+            }
+            else
+            {
+                Console.WriteLine("(b) Song not loaded" + sfxName);
+                return;
+            }
+        }
+
         //stops any other song playing and plays the specified song
         public static void playSong(string songName)
         {
@@ -78,6 +105,16 @@ namespace MagnetBoy
             currentSongName = "";
 
             MediaPlayer.Stop();
+        }
+
+        public static void playSFX(string sfxName)
+        {
+            SoundEffect s = sfxLib[sfxName];
+
+            if (s != null)
+            {
+                s.Play();
+            }
         }
     }
 }
