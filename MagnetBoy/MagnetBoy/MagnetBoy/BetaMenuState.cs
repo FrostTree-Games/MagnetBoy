@@ -67,6 +67,8 @@ namespace MagnetBoy
             {
                 menuOption = (menuOption + 1) % (levelList.Count);
                 downPressed = false;
+
+                AudioFactory.playSFX("sfx/menu");
             }
 
             if (GameInput.isButtonDown(GameInput.PlayerButton.UpDirection))
@@ -81,6 +83,8 @@ namespace MagnetBoy
                     menuOption = levelList.Count - 1;
                 }
                 upPressed = false;
+
+                AudioFactory.playSFX("sfx/menu");
             }
 
             if (GameInput.isButtonDown(GameInput.PlayerButton.Confirm))

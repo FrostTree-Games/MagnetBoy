@@ -110,6 +110,8 @@ namespace MagnetBoy
 
             AudioFactory.pushNewSong("songs/song1");
             AudioFactory.pushNewSong("songs/song2");
+            AudioFactory.pushNewSFX("sfx/menu");
+            AudioFactory.pushNewSFX("sfx/explosion");
 
             screenManager = new GameScreenManager(this.Content);
             GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
