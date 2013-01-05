@@ -84,8 +84,8 @@ namespace MagnetBoy
                     width = 31.5f;
                     height = 31.5f;
                     velocity.X = 0.0f;
-                    velocity.Y = 0.35f;
-                    rotation = (float)(Math.PI/2);
+                    velocity.Y = 0.375f;
+                    currentAnimation = "fireball";
                     break;
                 case BulletPool.BulletType.Bucket:
                     width = 16f;
@@ -111,7 +111,7 @@ namespace MagnetBoy
             timePassed += delta;
 
             // animation
-            if (type == BulletPool.BulletType.Bucket)
+            if (type == BulletPool.BulletType.Bucket || type == BulletPool.BulletType.LavaBlob)
             {
                 // if the last frame time hasn't been set, set it now
                 if (lastFrameIncrement == 0)
@@ -197,6 +197,9 @@ namespace MagnetBoy
             {
                 case BulletPool.BulletType.TestBullet:
                     AnimationFactory.drawAnimationFrame(sb, "testBullet", 0, Position, HitBox, rotation);
+                    break;
+                case BulletPool.BulletType.LavaBlob:
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
                     break;
                 case BulletPool.BulletType.Bucket:
                     AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);

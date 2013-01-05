@@ -9,6 +9,10 @@ namespace MagnetBoy
 {
     class LavaDumper : Entity
     {
+        protected string currentAnimation = "lavaDumper";
+        protected int currentFrame = 0;
+        protected double lastFrameIncrement = 0;
+
         private double interval = 2000; //milliseconds
         private double timeSinceLastInterval = 0;
 
@@ -28,11 +32,22 @@ namespace MagnetBoy
 
                 timeSinceLastInterval = 0;
             }
+
+            // update the current frame if needed
+            if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
+            }
         }
 
         public override void draw(SpriteBatch sb)
         {
-            base.draw(sb);
+            Vector2 newPos = Position;
+            newPos.Y -= 3;
+
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, newPos);
         }
     }
 }
