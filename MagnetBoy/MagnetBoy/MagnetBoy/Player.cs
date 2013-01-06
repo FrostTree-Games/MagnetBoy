@@ -363,6 +363,8 @@ namespace MagnetBoy
             {
                 velocity.Y = -0.35f;
             }
+
+            LevelState.currentPlayerHealth = LevelState.currentPlayerHealth - 1;
         }
     }
 }
