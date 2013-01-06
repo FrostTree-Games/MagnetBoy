@@ -95,6 +95,7 @@ namespace MagnetBoy
             aFac.pushSheet("lavaBottomSheet");
             aFac.pushSheet("fireballSheet");
             aFac.pushSheet("lavaDumperSheet");
+            aFac.pushSheet("shieldGuySheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -109,6 +110,7 @@ namespace MagnetBoy
             aFac.pushAnimation("lavaBottom");
             aFac.pushAnimation("fireball");
             aFac.pushAnimation("lavaDumper");
+            aFac.pushAnimation("shieldGuy");
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
