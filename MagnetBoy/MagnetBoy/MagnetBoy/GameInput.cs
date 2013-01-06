@@ -77,25 +77,25 @@ namespace MagnetBoy
             switch (button)
             {
                 case PlayerButton.UpDirection:
-                    if (p1PadState.DPad.Up == ButtonState.Pressed || p1PadState.ThumbSticks.Left.Y > 0.01)
+                    if (p1PadState.DPad.Up == ButtonState.Pressed || p1PadState.ThumbSticks.Left.Y > 0.01 || kbdState.IsKeyDown(Keys.Up))
                     {
                         return true;
                     }
                     break;
                 case PlayerButton.DownDirection:
-                    if (p1PadState.DPad.Down == ButtonState.Pressed || p1PadState.ThumbSticks.Left.Y < -0.01)
+                    if (p1PadState.DPad.Down == ButtonState.Pressed || p1PadState.ThumbSticks.Left.Y < -0.01 || kbdState.IsKeyDown(Keys.Down))
                     {
                         return true;
                     }
                     break;
                 case PlayerButton.LeftDirection:
-                    if (p1PadState.DPad.Left == ButtonState.Pressed || p1PadState.ThumbSticks.Left.X < -0.01)
+                    if (p1PadState.DPad.Left == ButtonState.Pressed || p1PadState.ThumbSticks.Left.X < -0.01 || kbdState.IsKeyDown(Keys.Left))
                     {
                         return true;
                     }
                     break;
                 case PlayerButton.RightDirection:
-                    if (p1PadState.DPad.Right == ButtonState.Pressed || p1PadState.ThumbSticks.Left.X > 0.01)
+                    if (p1PadState.DPad.Right == ButtonState.Pressed || p1PadState.ThumbSticks.Left.X > 0.01 || kbdState.IsKeyDown(Keys.Right))
                     {
                         return true;
                     }

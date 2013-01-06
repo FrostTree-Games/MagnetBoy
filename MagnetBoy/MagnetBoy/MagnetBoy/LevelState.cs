@@ -15,6 +15,8 @@ namespace MagnetBoy
 
         private GameInput gameInput = null;
 
+        private bool musicPlaying = false;
+
         private List<Entity> levelEntities = null;
         private Camera levelCamera = null;
         private BulletPool levelBulletPool = null;
@@ -22,6 +24,10 @@ namespace MagnetBoy
         private static Map levelMap = null;
 
         public static float playerStamina = 100.0f;
+
+        private Texture2D backgroundTile = null;
+        float backgroundDeltaX = 0.0f;
+        float backgroundDeltaY = 0.0f;
 
         public static Map CurrentLevel
         {
@@ -122,6 +128,10 @@ namespace MagnetBoy
                 }
             }
 
+            backgroundTile = contentManager.Load<Texture2D>("hackTile");
+            backgroundDeltaX = 0.0f;
+            backgroundDeltaY = 0.0f;
+
             IsUpdateable = true;
 
             GC.Collect();
@@ -130,6 +140,13 @@ namespace MagnetBoy
         protected override void doUpdate(GameTime currentTime)
         {
             gameInput.update();
+
+            if (!musicPlaying)
+            {
+                musicPlaying = true;
+
+                AudioFactory.playSong("songs/song1");
+            }
 
             foreach (Entity en in levelEntities)
             {
@@ -156,6 +173,9 @@ namespace MagnetBoy
             }
 
             levelBulletPool.updatePool(currentTime);
+
+            backgroundDeltaX = 0.5f * levelCamera.getFocusPosition().X % backgroundTile.Bounds.Width;
+            backgroundDeltaY = 0.25f * levelCamera.getFocusPosition().Y % backgroundTile.Bounds.Height;
         }
 
         public static bool isSolidMap(Vector2 point)
@@ -206,6 +226,16 @@ namespace MagnetBoy
             levelCamera.getDrawRectangle(ref rx, ref Game1.mapView, ref levelMap);
 
             Game1.graphics.GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.Black, 0.4f));
+
+            spriteBatch.Begin();
+            for (int i = -5; i < (Game1.mapView.Width / backgroundTile.Bounds.Width) + 5; i++)
+            {
+                for (int j = -5; j < (Game1.mapView.Height / backgroundTile.Bounds.Height) + 5; j++)
+                {
+                    spriteBatch.Draw(backgroundTile, new Vector2((i * backgroundTile.Bounds.Width) - backgroundDeltaX, (j * backgroundTile.Bounds.Height) + backgroundDeltaY), Color.White);
+                }
+            }
+            spriteBatch.End();
 
             // draw map
             spriteBatch.Begin();
