@@ -25,6 +25,9 @@ namespace MagnetBoy
 
         public static float playerStamina = 100.0f;
 
+        private static int maxPlayerHealth = 7;
+        public static int currentPlayerHealth = 7;
+
         private Texture2D backgroundTile = null;
         float backgroundDeltaX = 0.0f;
         float backgroundDeltaY = 0.0f;
@@ -235,6 +238,7 @@ namespace MagnetBoy
                     spriteBatch.Draw(backgroundTile, new Vector2((i * backgroundTile.Bounds.Width) - backgroundDeltaX, (j * backgroundTile.Bounds.Height) + backgroundDeltaY), Color.White);
                 }
             }
+
             spriteBatch.End();
 
             // draw map
@@ -251,6 +255,16 @@ namespace MagnetBoy
 
             levelBulletPool.drawPool(spriteBatch);
 
+            spriteBatch.End();
+
+            spriteBatch.Begin();
+            if (currentPlayerHealth <= maxPlayerHealth)
+            {
+                for (int i = 0; i < currentPlayerHealth; i++)
+                {
+                    spriteBatch.Draw(Game1.globalTestWalrus, new Vector2(i * 32, 50), Color.AntiqueWhite);
+                }
+            }
             spriteBatch.End();
 
             //draw game cursor
