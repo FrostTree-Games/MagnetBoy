@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>shieldGuyIdleRight</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+    
+    <Item>
+      <name>shieldGuyIdleLeft</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>32</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>shieldGuyRaiseShieldRight</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>64</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>15</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>shieldGuyRaiseShieldLeft</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>96</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>15</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>shieldGuyRaisedIdleRight</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>128</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>shieldGuyRaisedIdleLeft</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>160</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>shieldGuyShootRight</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>192</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>15</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+     <Item>
+      <name>shieldGuyShootLeft</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>224</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>15</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>shieldGuyLowerShieldRight</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>256</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>15</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>shieldGuyLowerShieldLeft</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>288</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>15</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+  </Asset>
+</XnaContent>
