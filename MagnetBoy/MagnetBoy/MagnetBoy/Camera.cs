@@ -105,5 +105,10 @@ namespace MagnetBoy
 
             rx = new Rectangle((int)cameraX, (int)cameraY, viewPort.Width, viewPort.Height);
         }
+
+        public Vector2 getFocusPosition()
+        {
+            return focusEntity.Position;
+        }
     }
 }

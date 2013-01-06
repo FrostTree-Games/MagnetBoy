@@ -56,7 +56,7 @@ namespace MagnetBoy
             {
                 musicPlaying = true;
 
-                AudioFactory.playSong("songs/song2");
+                AudioFactory.playSong("songs/introTheme");
             }
 
             if (GameInput.isButtonDown(GameInput.PlayerButton.DownDirection))
