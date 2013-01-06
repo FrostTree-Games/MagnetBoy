@@ -12,7 +12,7 @@ namespace MagnetBoy
     {
         public AngrySaw(float initialx, float initialy) : base(initialx, initialy)
         {
-            list.Add(new Walk(this));
+            list.Add(new climbChaser(this));
 
             currentFrame = 0;
             lastFrameIncrement = 0;
@@ -22,11 +22,11 @@ namespace MagnetBoy
         {
             if (Math.Abs(velocity.X) < 0.001)
             {
-                if (velocity.X >= 0)
+                if (velocity.X > 0)
                 {
                     currentAnimation = "angrySawIdleRight";
                 }
-                else
+                else if(velocity.X < 0)
                 {
                     currentAnimation = "angrySawIdleLeft";
                 }

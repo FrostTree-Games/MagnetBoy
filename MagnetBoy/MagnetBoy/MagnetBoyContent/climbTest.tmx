@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="FactoryTileSheet" tilewidth="32" tileheight="32">
+  <image source="FactoryTileSheet.png" width="224" height="160"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <properties>
+   <property name="solid" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bENgDAMRUHTpWWA7L8mIwRQbAjcl6618pQWEQ3gI3qSyobM7Tp0LNRRPR3/6Kjue8N/zLjxVMeVd565v0rHaDru2ZJUNgAAAAAAAGMH5fFGkQ==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="50" height="50">
+  <object name="angrySaw" x="457" y="588"/>
+  <object name="player" x="492" y="458"/>
+  <object name="wallEntity" x="384" y="576" width="32" height="32"/>
+  <object name="wallEntity" x="384" y="544" width="32" height="32"/>
+  <object name="wallEntity" x="384" y="512" width="32" height="32"/>
+  <object name="wallEntity" x="349" y="544" width="32" height="32"/>
+  <object name="wallEntity" x="349" y="512" width="32" height="32"/>
+  <object name="wallEntity" x="349" y="576" width="32" height="32"/>
+  <object name="wallEntity" x="701" y="544" width="32" height="32"/>
+  <object name="wallEntity" x="701" y="512" width="32" height="32"/>
+  <object name="wallEntity" x="701" y="576" width="32" height="32"/>
+ </objectgroup>
+</map>
