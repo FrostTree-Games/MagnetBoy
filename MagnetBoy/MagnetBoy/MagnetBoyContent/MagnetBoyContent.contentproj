@@ -52,6 +52,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="climbTest.tmx">
+      <Name>climbTest</Name>
+      <Importer>TMXContentImporter</Importer>
+      <Processor>TMXContentProcessor</Processor>
+    </Compile>
     <None Include="terribleTileSheet.png">
       <Name>terribleTileSheet</Name>
       <Importer>TextureImporter</Importer>

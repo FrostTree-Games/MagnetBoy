@@ -10,7 +10,7 @@ namespace MagnetBoy
 {
     class Enemy: Entity
     {
-        protected string currentAnimation = null;
+        public string currentAnimation = null;
         protected int currentFrame = 0;
         protected double lastFrameIncrement = 0;
         public List<Attribute> list = null;

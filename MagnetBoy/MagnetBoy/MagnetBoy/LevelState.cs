@@ -119,6 +119,9 @@ namespace MagnetBoy
                         case "lolrus":
                             levelEntities.Add(new Lolrus(obj.Bounds.X, obj.Bounds.Y));
                             break;
+                        case "wallEntity":
+                            levelEntities.Add(new climbWall(obj.Bounds.X, obj.Bounds.Y));
+                            break;
                         default:
                             break;
                     }
