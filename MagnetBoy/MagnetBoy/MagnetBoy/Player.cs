@@ -271,6 +271,23 @@ namespace MagnetBoy
                 isPushing = false;
             }
 
+            //killing enemies
+            foreach (Entity en in globalEntityList)
+            {
+                if (en is Enemy)
+                {
+                    if (hitTest(en))
+                    {
+                        if (!onTheGround && velocity.Y > 0.001f && vertical_pos < en.Position.Y)
+                        {
+                            Console.WriteLine("enemy takes it" + currentTime.TotalGameTime.Milliseconds.ToString());
+
+                            velocity.Y *= -1.1f;
+                        }
+                    }
+                }
+            }
+
             Vector2 finalAcceleration = acceleration + keyAcceleration;
 
             velocity.X += (float)(finalAcceleration.X * delta);
