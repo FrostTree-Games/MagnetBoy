@@ -280,8 +280,6 @@ namespace MagnetBoy
                     {
                         if (!onTheGround && velocity.Y > 0.001f && vertical_pos < en.Position.Y)
                         {
-                            Console.WriteLine("enemy takes it" + currentTime.TotalGameTime.Milliseconds.ToString());
-
                             velocity.Y *= -1.1f;
                         }
                     }
