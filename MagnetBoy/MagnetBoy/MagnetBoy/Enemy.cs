@@ -63,6 +63,24 @@ namespace MagnetBoy
                 n.update(this, currentTime);
             }
 
+            foreach (Entity en in Entity.globalEntityList)
+            {
+                if (en is Player)
+                {
+                    if (hitTest(en))
+                    {
+                        if (en.Position.X - Position.X < 0)
+                        {
+                            ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                        }
+                        else
+                        {
+                            ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                        }
+                    }
+                }
+            }
+
             acceleration = acceleration + computeMagneticForce();
             
             Vector2 keyAcceleration = Vector2.Zero;

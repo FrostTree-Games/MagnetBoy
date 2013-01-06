@@ -12,7 +12,7 @@ namespace MagnetBoy
     {
         public AngrySaw(float initialx, float initialy) : base(initialx, initialy)
         {
-            list.Add(new climbChaser(this));
+            list.Add(new Walk(this));
 
             currentFrame = 0;
             lastFrameIncrement = 0;

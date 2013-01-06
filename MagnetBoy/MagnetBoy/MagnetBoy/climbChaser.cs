@@ -45,21 +45,6 @@ namespace MagnetBoy
 
             foreach (Entity en in Entity.globalEntityList)
             {
-                if (en is Player)
-                {
-                    if (parent.hitTest(en))
-                    {
-                        if (en.Position.X - parent.Position.X < 0)
-                        {
-                            ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
-                        }
-                        else
-                        {
-                            ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
-                        }
-                    }
-                }
-
                 if(isClimbing == true)
                 {
                     parent.acceleration.Y = 0.00f;
