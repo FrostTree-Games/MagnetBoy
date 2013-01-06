@@ -77,6 +77,8 @@ namespace MagnetBoy
                         {
                             ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
                         }
+
+                        LevelState.currentPlayerHealth = LevelState.currentPlayerHealth - 1;
                     }
                 }
             }
