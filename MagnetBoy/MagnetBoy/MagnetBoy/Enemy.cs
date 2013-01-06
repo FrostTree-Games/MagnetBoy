@@ -83,6 +83,11 @@ namespace MagnetBoy
                                 ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
                             }
                         }
+<<<<<<< HEAD
+=======
+
+                        LevelState.currentPlayerHealth = LevelState.currentPlayerHealth - 1;
+>>>>>>> origin/Eric-Temp
                     }
                 }
             }
