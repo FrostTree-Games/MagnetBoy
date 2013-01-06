@@ -8,12 +8,12 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0bENgDAMRUHTpWWA7L8mIwRQbAjcl6618pQWEQ3gI3qSyobM7Tp0LNRRPR3/6Kjue8N/zLjxVMeVd565v0rHaDru2ZJUNgAAAAAAAGMH5fFGkQ==
+   eJzt0csJACEMRdG4czsFTP9tWoLzIQH1PDjbwCU9IjrAJu4klQ2Zu3ToWKijejrO6Kju849/HW9an9xfpWM2Hd+0JJUNAAAAAADA3ADRhkZh
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="50" height="50">
   <object name="angrySaw" x="457" y="588"/>
-  <object name="player" x="492" y="458"/>
+  <object name="player" x="794" y="449"/>
   <object name="wallEntity" x="384" y="576" width="32" height="32"/>
   <object name="wallEntity" x="384" y="544" width="32" height="32"/>
   <object name="wallEntity" x="384" y="512" width="32" height="32"/>
