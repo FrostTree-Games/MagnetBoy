@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -208,5 +209,14 @@ namespace MagnetBoy
         {
             AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
         }
+=======
+using System.Linq;
+using System.Text;
+
+namespace MagnetBoy
+{
+    class ShieldDude
+    {
+>>>>>>> origin/master
     }
 }

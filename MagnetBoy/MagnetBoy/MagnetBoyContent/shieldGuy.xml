@@ -34,7 +34,11 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>15</frameCount>
+<<<<<<< HEAD
       <frameSpeed>20</frameSpeed>
+=======
+      <frameSpeed>50</frameSpeed>
+>>>>>>> origin/master
     </Item>
 
     <Item>
@@ -46,7 +50,11 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>15</frameCount>
+<<<<<<< HEAD
       <frameSpeed>20</frameSpeed>
+=======
+      <frameSpeed>50</frameSpeed>
+>>>>>>> origin/master
     </Item>
 
     <Item>
@@ -106,7 +114,11 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>15</frameCount>
+<<<<<<< HEAD
       <frameSpeed>20</frameSpeed>
+=======
+      <frameSpeed>50</frameSpeed>
+>>>>>>> origin/master
     </Item>
 
     <Item>
@@ -118,7 +130,11 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>15</frameCount>
+<<<<<<< HEAD
       <frameSpeed>20</frameSpeed>
+=======
+      <frameSpeed>50</frameSpeed>
+>>>>>>> origin/master
     </Item>
 
   </Asset>
