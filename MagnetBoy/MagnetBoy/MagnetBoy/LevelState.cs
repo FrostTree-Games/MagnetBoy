@@ -125,6 +125,12 @@ namespace MagnetBoy
                         case "wallEntity":
                             levelEntities.Add(new climbWall(obj.Bounds.X, obj.Bounds.Y));
                             break;
+                        case "shieldDudeRight":
+                            levelEntities.Add(new ShieldDude(obj.Bounds.X, obj.Bounds.Y, true));
+                            break;
+                        case "shieldDudeLeft":
+                            levelEntities.Add(new ShieldDude(obj.Bounds.X, obj.Bounds.Y, false));
+                            break;
                         default:
                             break;
                     }

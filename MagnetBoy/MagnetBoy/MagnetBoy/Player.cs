@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -175,6 +176,24 @@ namespace MagnetBoy
 
                     if (enAngle > aAngle && enAngle < bAngle)
                     {
+                        bool flip = false;
+
+                        if (en is ShieldDude)
+                        {
+                            Vector2 pushDir = new Vector2((float)Math.Cos(directionAngle), (float)Math.Sin(directionAngle));
+                            ShieldDude dude = (ShieldDude)en;
+
+                            pushDir.X *= -1;
+
+                            // geometric property of dot product
+                            double angleBetweenForceAndShield = Math.Acos(Vector2.Dot(dude.ShieldDir, pushDir) / (dude.ShieldDir.Length() * pushDir.Length()));
+
+                            if (angleBetweenForceAndShield < Math.PI / 8)
+                            {
+                                flip = true;
+                            }
+                        }
+
                         double force = (magneticMoment * en.MagneticValue.Value) / (4 * Math.PI * Math.Pow(distance, 2));
                         double angle = Math.Atan2(en.Position.X - horizontal_pos, vertical_pos - en.Position.Y);
 
@@ -185,7 +204,14 @@ namespace MagnetBoy
                             ((Bullet)en).Direction = (float)(angle - (Math.PI/2));
                         }
 
-                        en.velocity += newForce * 10000;
+                        if (flip == false)
+                        {
+                            en.velocity += newForce * 10000;
+                        }
+                        else
+                        {
+                            velocity += Vector2.Negate(newForce) * 10000;
+                        }
                     }
                 }
 
