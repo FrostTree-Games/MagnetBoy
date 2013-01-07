@@ -16,6 +16,8 @@ namespace MagnetBoy
 
             currentFrame = 0;
             lastFrameIncrement = 0;
+
+            removeFromGame = false;
         }
 
         protected override void enemyUpdate(GameTime currentTime)
@@ -58,6 +60,11 @@ namespace MagnetBoy
         public override void draw(SpriteBatch sb)
         {
             AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+        }
+
+        public void dieAnimation()
+        {
+            return;
         }
     }
 }

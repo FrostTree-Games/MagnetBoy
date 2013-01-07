@@ -26,6 +26,8 @@ namespace MagnetBoy
         public float horizontal_pos = 0.0f;
         public float vertical_pos = 0.0f;
 
+        public bool removeFromGame = false;
+
         public Vector2 Position
         {
             get
@@ -107,10 +109,7 @@ namespace MagnetBoy
 
         public void death()
         {
-            if (globalEntityList != null)
-            {
-                globalEntityList.Remove(this);
-            }
+            globalEntityList.RemoveAll(en => en.removeFromGame == true);
         }
 
         public virtual void update(GameTime currentTime)

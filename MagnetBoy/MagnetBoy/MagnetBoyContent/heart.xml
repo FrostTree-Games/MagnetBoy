@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+  
+
+    <Item>
+      <name>heartIdle</name>
+      <sheetName>heartSheet</sheetName>
+      <sheet Type="System.String">spikes</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1000</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>heartAnimation</name>
+      <sheetName>heartSheet</sheetName>
+      <sheet Type="System.String">spikes</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>1000</frameSpeed>
+    </Item>
+
+  </Asset>
+</XnaContent>
