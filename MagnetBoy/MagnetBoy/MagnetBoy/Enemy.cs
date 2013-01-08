@@ -16,7 +16,9 @@ namespace MagnetBoy
         public List<Attribute> list = null;
 
         //dead, as in has been "killed by ingame action", such as the player, spikes, etc.
-        private bool dead = false;
+        public bool dying = false;
+
+        public bool isDead = false;
 
         public Enemy()
         {
@@ -108,6 +110,11 @@ namespace MagnetBoy
         }
 
         protected virtual void enemyUpdate(GameTime currentTime)
+        {
+            return;
+        }
+
+        public void dieAnimation(SpriteBatch sb)
         {
             return;
         }

@@ -25,7 +25,7 @@ namespace MagnetBoy
 
         public static float playerStamina = 100.0f;
 
-        private static int maxPlayerHealth = 7;
+        protected static int maxPlayerHealth = 7;
         public static int currentPlayerHealth = 7;
 
         private Texture2D backgroundTile = null;
@@ -131,6 +131,9 @@ namespace MagnetBoy
                         case "shieldDudeLeft":
                             levelEntities.Add(new ShieldDude(obj.Bounds.X, obj.Bounds.Y, false));
                             break;
+                        case "heartItem":
+                            levelEntities.Add(new HealthItem(obj.Bounds.X, obj.Bounds.Y));
+                            break;
                         default:
                             break;
                     }
@@ -185,6 +188,35 @@ namespace MagnetBoy
 
             backgroundDeltaX = 0.5f * levelCamera.getFocusPosition().X % backgroundTile.Bounds.Width;
             backgroundDeltaY = 0.25f * levelCamera.getFocusPosition().Y % backgroundTile.Bounds.Height;
+
+            levelEntities.RemoveAll(en => en.removeFromGame == true);
+            foreach (Entity en in levelEntities)
+            {
+                en.death();
+                break;
+            }
+
+            /*var removeEntities = from en in levelEntities
+                                 where en.removeFromGame == true
+                                 select en;
+            removeEntities.ToList();
+
+            while (removeEntities != null)
+            {
+                removeEntities.RemoveAll();
+            }*/
+
+            /*foreach (Entity en in levelEntities)
+            {
+                if (levelEntities != null)
+                {
+                    if (en.removeFromGame == true)
+                    {
+                        levelEntities.Remove(en);
+                        //en.death();
+                    }
+                }
+            }*/
         }
 
         public static bool isSolidMap(Vector2 point)
@@ -268,7 +300,7 @@ namespace MagnetBoy
             {
                 for (int i = 0; i < currentPlayerHealth; i++)
                 {
-                    spriteBatch.Draw(Game1.globalTestWalrus, new Vector2(i * 32, 50), Color.AntiqueWhite);
+                    AnimationFactory.drawAnimationFrame(spriteBatch,"heartIdle",0, new Vector2(i*32,50));
                 }
             }
             spriteBatch.End();

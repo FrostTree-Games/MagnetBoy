@@ -307,6 +307,8 @@ namespace MagnetBoy
                         if (!onTheGround && velocity.Y > 0.001f && vertical_pos < en.Position.Y)
                         {
                             velocity.Y *= -1.1f;
+                            en.removeFromGame = true;
+                            //en.death();
                         }
                     }
                 }
