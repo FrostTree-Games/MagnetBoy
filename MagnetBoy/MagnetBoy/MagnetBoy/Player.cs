@@ -26,6 +26,8 @@ namespace MagnetBoy
         private bool isPushing = false;
         private double directionAngle = 0;
 
+        private bool playerBlink = false;
+
         public Player()
         {
             creation();
@@ -100,10 +102,39 @@ namespace MagnetBoy
             {
                 if (currentTime.TotalGameTime.TotalMilliseconds - knockBackStartTime > 500)
                 {
+                    //needs to be changed so that depending on the direction that the player was facing before
+                    currentAnimation = "playerWalkRight";
+
+                    playerBlink = true;
+                    /*******************************************************************************************/
                     isKnockedBack = false;
                 }
             }
 
+            /*Player continues blinking*/
+            if(playerBlink == true)
+            {
+                if (currentTime.TotalGameTime.TotalMilliseconds - delta > 500)
+                {
+                    if (currentTime.TotalGameTime.TotalMilliseconds - delta > 100)
+                    {
+                        if (currentAnimation != null)
+                        {
+                            currentAnimation = null;
+                        }
+                        else
+                        {
+                            currentAnimation = "playerWalkRight";
+                        }
+                    }
+                }
+                else
+                {
+                    playerBlink = false;
+                }
+            }
+            /******************************************************************************/
+            
             Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);
 
@@ -366,6 +397,8 @@ namespace MagnetBoy
         {
             if (isKnockedBack)
             {
+                currentAnimation = "heartIdle";
+                Console.WriteLine("Knocked Back");
                 return;
             }
 
@@ -393,6 +426,7 @@ namespace MagnetBoy
             }
 
             LevelState.currentPlayerHealth = LevelState.currentPlayerHealth - 1;
+            currentAnimation = "heartIdle";
         }
     }
 }
