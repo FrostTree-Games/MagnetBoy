@@ -27,6 +27,8 @@ namespace MagnetBoy
         public float vertical_pos = 0.0f;
 
         public bool removeFromGame = false;
+        public bool deathAnimation = false;
+        public bool deathAnimationSet = false;
 
         public Vector2 Position
         {

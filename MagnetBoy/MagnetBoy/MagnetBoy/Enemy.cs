@@ -17,8 +17,7 @@ namespace MagnetBoy
 
         //dead, as in has been "killed by ingame action", such as the player, spikes, etc.
         public bool dying = false;
-
-        public bool isDead = false;
+        public double deathTimer = 0.0;
 
         public Enemy()
         {
@@ -63,9 +62,12 @@ namespace MagnetBoy
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
 
-            foreach( Attribute n in list)
+            if (!deathAnimation)
             {
-                n.update(this, currentTime);
+                foreach (Attribute n in list)
+                {
+                    n.update(this, currentTime);
+                }
             }
 
             foreach (Entity en in Entity.globalEntityList)

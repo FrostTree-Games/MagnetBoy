@@ -22,26 +22,62 @@ namespace MagnetBoy
 
         protected override void enemyUpdate(GameTime currentTime)
         {
-            if (Math.Abs(velocity.X) < 0.001)
+            if (deathAnimation == true)
             {
-                if (velocity.X > 0)
+                if (deathAnimationSet == false)
                 {
-                    currentAnimation = "angrySawIdleRight";
+                    if (velocity.X < 0.0)
+                    {
+                        lastFrameIncrement = 0.0;
+                        currentFrame = 0;
+                        velocity.X = 0.0f;
+                        currentAnimation = "angrySawDieLeft";
+                        deathAnimationSet = true;
+                    }
+                    else
+                    {
+                        lastFrameIncrement = 0.0;
+                        currentFrame = 0;
+                        velocity.X = 0.0f;
+                        currentAnimation = "angrySawDieRight";
+                        deathAnimationSet = true;
+                    }
                 }
-                else if(velocity.X < 0)
-                {
-                    currentAnimation = "angrySawIdleLeft";
-                }
-            }
-            else if (velocity.X > 0)
-            {
-                currentAnimation = "angrySawWalkLeft";
-            }
-            else if (velocity.X < 0)
-            {
-                currentAnimation = "angrySawWalkRight";
-            }
 
+                
+                if (deathTimer > 500)
+                {
+                    removeFromGame = true;
+                    deathTimer = 0.0;
+                }
+                else
+                {
+                    deathTimer += currentTime.ElapsedGameTime.Milliseconds;
+                }
+            }
+            else
+            {
+                if (Math.Abs(velocity.X) < 0.001)
+                {
+                    if (velocity.X > 0)
+                    {
+                        currentAnimation = "angrySawIdleRight";
+                    }
+                    else if (velocity.X < 0)
+                    {
+                        currentAnimation = "angrySawIdleLeft";
+                    }
+                }
+                else if (velocity.X > 0)
+                {
+                    currentAnimation = "angrySawWalkLeft";
+                }
+                else if (velocity.X < 0)
+                {
+                    currentAnimation = "angrySawWalkRight";
+                }
+
+            }
             // if the last frame time hasn't been set, set it now
             if (lastFrameIncrement == 0)
             {
@@ -55,6 +91,7 @@ namespace MagnetBoy
 
                 currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
             }
+            
         }
 
         public override void draw(SpriteBatch sb)
@@ -64,6 +101,7 @@ namespace MagnetBoy
 
         public void dieAnimation()
         {
+            //AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
             return;
         }
     }
