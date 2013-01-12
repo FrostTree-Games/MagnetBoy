@@ -197,33 +197,12 @@ namespace MagnetBoy
             backgroundDeltaY = 0.25f * levelCamera.getFocusPosition().Y % backgroundTile.Bounds.Height;
 
             levelEntities.RemoveAll(en => en.removeFromGame == true);
+
             foreach (Entity en in levelEntities)
             {
                 en.death();
                 break;
             }
-
-            /*var removeEntities = from en in levelEntities
-                                 where en.removeFromGame == true
-                                 select en;
-            removeEntities.ToList();
-
-            while (removeEntities != null)
-            {
-                removeEntities.RemoveAll();
-            }*/
-
-            /*foreach (Entity en in levelEntities)
-            {
-                if (levelEntities != null)
-                {
-                    if (en.removeFromGame == true)
-                    {
-                        levelEntities.Remove(en);
-                        //en.death();
-                    }
-                }
-            }*/
         }
 
         public static bool isSolidMap(Vector2 point)
