@@ -27,6 +27,8 @@ namespace MagnetBoy
             public Vector2 pos;
             public Vector2 velocity;
             public Vector2 accel;
+
+            public Color color;
         }
 
         private Particle[] pool = null;
@@ -59,6 +61,7 @@ namespace MagnetBoy
                             pool[i].accel.X = (float)(blueSparkAccel * Math.Cos(direction + 0.7 * ((Game1.gameRandom.Next() % 3) - 1)));
                             pool[i].accel.Y = (float)(blueSparkAccel * Math.Sin(direction + 0.7 * ((Game1.gameRandom.Next() % 3) - 1)));
                             pool[i].timeActive = 0;
+                            pool[i].color = Game1.gameRandom.Next() % 2 == 0 ? Color.Cyan : Color.DarkCyan;
                             break;
                         default:
                             break;
@@ -103,7 +106,7 @@ namespace MagnetBoy
                 switch (p.type)
                 {
                     case ParticleType.BlueSpark:
-                        AnimationFactory.drawAnimationFrame(sb, "dansParticle", (int)(p.timeActive / 100) % 2, p.pos - new Vector2(8f, 8f));
+                        AnimationFactory.drawAnimationFrame(sb, "dansParticle", (int)(p.timeActive / 100) % 2, p.pos - new Vector2(8f, 8f), p.color);
                         break;
                     default:
                         break;
