@@ -33,6 +33,10 @@ namespace MagnetBoy
         float backgroundDeltaX = 0.0f;
         float backgroundDeltaY = 0.0f;
 
+        private bool fadingOut = false;
+        private double fadingOutTimer = 0;
+        private const double fadingOutDuration = 1000;
+
         public static Map CurrentLevel
         {
             get
@@ -148,6 +152,9 @@ namespace MagnetBoy
 
             currentPlayerHealth = maxPlayerHealth;
 
+            fadingOut = false;
+            fadingOutTimer = 0;
+
             IsUpdateable = true;
 
             GC.Collect();
@@ -164,35 +171,23 @@ namespace MagnetBoy
                 AudioFactory.playSong("songs/song1");
             }
 
-            foreach (Entity en in levelEntities)
+            if (currentPlayerHealth < 1 && !fadingOut)
             {
-                en.update(currentTime);
+                AudioFactory.stopSong();
 
-                if (endLevelFlag == true)
-                {
-                    break;
-                }
+                AudioFactory.playSFX("sfx/lose");
+
+                fadingOut = true;
             }
 
-            if (currentPlayerHealth < 1)
+            if (fadingOut)
             {
-                foreach (Entity en in levelEntities)
+                fadingOutTimer += currentTime.ElapsedGameTime.Milliseconds;
+
+                if (fadingOutTimer > fadingOutDuration)
                 {
-                    en.removeFromGame = true;
+                    endLevelFlag = true;
                 }
-
-                foreach (Entity en in levelEntities)
-                {
-                    en.death();
-                }
-
-                levelBulletPool.clearPool();
-
-                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
-
-                endLevelFlag = false;
-
-                return;
             }
 
             if (endLevelFlag == true)
@@ -214,6 +209,16 @@ namespace MagnetBoy
                 endLevelFlag = false;
 
                 return;
+            }
+
+            foreach (Entity en in levelEntities)
+            {
+                en.update(currentTime);
+
+                if (endLevelFlag == true)
+                {
+                    break;
+                }
             }
 
             levelBulletPool.updatePool(currentTime);
@@ -334,6 +339,15 @@ namespace MagnetBoy
             spriteBatch.Begin();
             spriteBatch.DrawString(Game1.gameFontText, "Stamina: " + LevelState.playerStamina, new Vector2(32, 16), Color.White);
             spriteBatch.End();
+
+            if (fadingOut)
+            {
+                Matrix stretch = Matrix.CreateScale((float)(Game1.mapView.Width), (float)((fadingOutTimer / fadingOutDuration) * (Game1.mapView.Height)), 1.0f);
+
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, stretch);
+                spriteBatch.Draw(Game1.globalBlackPixel, Vector2.Zero, Color.White);
+                spriteBatch.End();
+            }
         }
     }
 }
