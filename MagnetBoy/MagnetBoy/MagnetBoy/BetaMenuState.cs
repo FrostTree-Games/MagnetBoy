@@ -47,6 +47,7 @@ namespace MagnetBoy
             levelList.Add(new LevelMenuOption("testMap1"));
             levelList.Add(new LevelMenuOption("testMap2"));
             levelList.Add(new LevelMenuOption("climbTest"));
+            levelList.Add(new LevelMenuOption("theLab"));
         }
 
         protected override void doUpdate(GameTime currentTime)

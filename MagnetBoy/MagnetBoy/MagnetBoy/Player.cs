@@ -397,7 +397,6 @@ namespace MagnetBoy
                 if (isKnockedBack)
                 {
                     currentAnimation = "heartIdle";
-                    Console.WriteLine("Knocked Back");
                     return;
                 }
 

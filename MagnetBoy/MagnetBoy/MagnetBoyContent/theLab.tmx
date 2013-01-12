@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="300" height="200" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="FactoryTileSheet" tilewidth="32" tileheight="32">
+  <image source="FactoryTileSheet.png" width="224" height="160"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="300" height="200">
+  <properties>
+   <property name="solid" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt3EFOwzAQBdAAmy5hX+D+twSEKkVR7dqxm7Gj96W3apNMZjFqIruXZVkuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwkFES3QdgfCMmuifAmHI543WBeeUSVUt0T4Ax5RJVS3RPgDGtM0ot0XUAY8olqpbongBjyiWqluieAGPrnZYaonsBjOXZaakpujdAvPelPG+/Xgq8Jo7fU1/LscC5PJpX6xn19/3PAl+Jc+2pr+VY4Fxy8+o2o3qnpK6e5wLOY/0sN1uieweUK3k+2/PsNkui+w+Ue1b2vFcvfR9fan3+6D4D7Y5I6trbd18fBfXWWJ8/us9AuyOSurZ5BdTonXvPdKlrm1dAjVy2cyeV7RqrUuYVUKNmfflfan4/PWJeAa1ya0B7zhTzCughtUag5zXMK2AW5hUwC/MKmMV2Xn0v/3t8nnH+6HsF5pbae3ibWz33NkbfKzCvmv/565Ho+wXmZV4Bszh6XuUS3QtgfLl19Ecmug/A+La/sa5L2d6g653PHh273Ufkv7GAWiVr53Nr7EuPrf0MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7vkBXlVB4Q==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="300" height="200">
+  <object name="endLevelFlag" x="2023" y="1365"/>
+  <object name="endLevelFlag" x="2062" y="1899"/>
+  <object name="player" x="33" y="1411" width="41" height="40"/>
+  <object x="200" y="1431"/>
+ </objectgroup>
+</map>
