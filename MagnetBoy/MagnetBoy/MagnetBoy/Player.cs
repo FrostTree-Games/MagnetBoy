@@ -27,6 +27,8 @@ namespace MagnetBoy
         private double directionAngle = 0;
 
         private bool playerBlink = false;
+        private double playerBlinkTimer = 0.0;
+        private string previousAnimation = null;
 
         public Player()
         {
@@ -102,38 +104,28 @@ namespace MagnetBoy
             {
                 if (currentTime.TotalGameTime.TotalMilliseconds - knockBackStartTime > 500)
                 {
-                    //needs to be changed so that depending on the direction that the player was facing before
-                    currentAnimation = "playerWalkRight";
+                    currentAnimation = previousAnimation;
 
                     playerBlink = true;
-                    /*******************************************************************************************/
+                    playerBlinkTimer = 0;
+
                     isKnockedBack = false;
                 }
             }
 
-            /*Player continues blinking*/
-            if(playerBlink == true)
+            //Player Blink code
+s            if(playerBlink == true)
             {
-                if (currentTime.TotalGameTime.TotalMilliseconds - delta > 500)
+                if (playerBlinkTimer > 2000)
                 {
-                    if (currentTime.TotalGameTime.TotalMilliseconds - delta > 100)
-                    {
-                        if (currentAnimation != null)
-                        {
-                            currentAnimation = null;
-                        }
-                        else
-                        {
-                            currentAnimation = "playerWalkRight";
-                        }
-                    }
+                    playerBlinkTimer = 0.0;
+                    playerBlink = false;
                 }
                 else
                 {
-                    playerBlink = false;
+                    playerBlinkTimer += currentTime.ElapsedGameTime.Milliseconds;
                 }
             }
-            /******************************************************************************/
             
             Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);
@@ -381,7 +373,10 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+            if (!(playerBlink && ((int)(playerBlinkTimer / 100) % 2 == 0)))
+            {
+                AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+            }
 
             if (isPushing)
             {
@@ -395,38 +390,42 @@ namespace MagnetBoy
 
         public void knockBack(Vector2 direction, double hitTime)
         {
-            if (isKnockedBack)
+            if (playerBlink == false)
             {
+                if (isKnockedBack)
+                {
+                    currentAnimation = "heartIdle";
+                    Console.WriteLine("Knocked Back");
+                    return;
+                }
+
+                isKnockedBack = true;
+                knockBackStartTime = hitTime;
+
+                onTheGround = false;
+
+                if (direction.X > 0)
+                {
+                    velocity.X = 0.25f;
+                }
+                else
+                {
+                    velocity.X = -0.25f;
+                }
+
+                if (direction.Y > 0)
+                {
+                    velocity.Y = 0.35f;
+                }
+                else
+                {
+                    velocity.Y = -0.35f;
+                }
+
+                LevelState.currentPlayerHealth = LevelState.currentPlayerHealth - 1;
+                previousAnimation = currentAnimation;
                 currentAnimation = "heartIdle";
-                Console.WriteLine("Knocked Back");
-                return;
             }
-
-            isKnockedBack = true;
-            knockBackStartTime = hitTime;
-
-            onTheGround = false;
-
-            if (direction.X > 0)
-            {
-                velocity.X = 0.25f;
-            }
-            else
-            {
-                velocity.X = -0.25f;
-            }
-
-            if (direction.Y > 0)
-            {
-                velocity.Y = 0.35f;
-            }
-            else
-            {
-                velocity.Y = -0.35f;
-            }
-
-            LevelState.currentPlayerHealth = LevelState.currentPlayerHealth - 1;
-            currentAnimation = "heartIdle";
         }
     }
 }
