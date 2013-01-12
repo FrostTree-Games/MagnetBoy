@@ -114,7 +114,7 @@ namespace MagnetBoy
             }
 
             //Player Blink code
-s            if(playerBlink == true)
+            if(playerBlink == true)
             {
                 if (playerBlinkTimer > 2000)
                 {
