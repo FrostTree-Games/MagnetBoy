@@ -35,7 +35,7 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>1</frameCount>
-      <frameSpeed>50</frameSpeed>
+      <frameSpeed>20</frameSpeed>
     </Item>
     
     <Item>
@@ -47,7 +47,7 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>1</frameCount>
-      <frameSpeed>50</frameSpeed>
+      <frameSpeed>20</frameSpeed>
     </Item>
     <Item>
       <name>lolrusShootRight</name>
@@ -72,6 +72,55 @@
       <frameSpeed>20</frameSpeed>
     </Item>
 
+    <Item>
+      <name>lolrusBurnLeft</name>
+      <sheetName>lolrusSheet</sheetName>
+      <sheet Type="System.String">lolrusSheet</sheet>
+      <initalX>0</initalX>
+      <initalY>192</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>60</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>lolrusBurnRight</name>
+      <sheetName>lolrusSheet</sheetName>
+      <sheet Type="System.String">lolrusSheet</sheet>
+      <initalX>0</initalX>
+      <initalY>224</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>60</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+
+
+    <Item>
+      <name>lolrusCrushLeft</name>
+      <sheetName>lolrusSheet</sheetName>
+      <sheet Type="System.String">lolrusSheet</sheet>
+      <initalX>0</initalX>
+      <initalY>256</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>lolrusCrushRight</name>
+      <sheetName>lolrusSheet</sheetName>
+      <sheet Type="System.String">lolrusSheet</sheet>
+      <initalX>0</initalX>
+      <initalY>288</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
 
 
   </Asset>
