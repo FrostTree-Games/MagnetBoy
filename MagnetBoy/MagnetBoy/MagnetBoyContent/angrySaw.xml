@@ -4,7 +4,7 @@
     <Item>
       <name>angrySawWalkRight</name>
       <sheetName>angrySawSheet</sheetName>
-      <sheet Type="System.String">foo</sheet>
+      <sheet Type="System.String">angrySawWalkRight</sheet>
       <initalX>0</initalX>
       <initalY>0</initalY>
       <frameWidth>32</frameWidth>
@@ -12,11 +12,11 @@
       <frameCount>40</frameCount>
       <frameSpeed>50</frameSpeed>
     </Item>
-    
+
     <Item>
       <name>angrySawWalkLeft</name>
       <sheetName>angrySawSheet</sheetName>
-      <sheet Type="System.String">foo</sheet>
+      <sheet Type="System.String">angrySawWalkLeft</sheet>
       <initalX>0</initalX>
       <initalY>32</initalY>
       <frameWidth>32</frameWidth>
@@ -24,12 +24,12 @@
       <frameCount>40</frameCount>
       <frameSpeed>50</frameSpeed>
     </Item>
-    
-    
+
+
     <Item>
       <name>angrySawIdleRight</name>
       <sheetName>angrySawSheet</sheetName>
-      <sheet Type="System.String">foo</sheet>
+      <sheet Type="System.String">angrySawIdleRight</sheet>
       <initalX>0</initalX>
       <initalY>0</initalY>
       <frameWidth>32</frameWidth>
@@ -37,11 +37,11 @@
       <frameCount>1</frameCount>
       <frameSpeed>50</frameSpeed>
     </Item>
-    
+
     <Item>
       <name>angrySawIdleLeft</name>
       <sheetName>angrySawSheet</sheetName>
-      <sheet Type="System.String">fo</sheet>
+      <sheet Type="System.String">angrySawIdleRight</sheet>
       <initalX>0</initalX>
       <initalY>32</initalY>
       <frameWidth>32</frameWidth>
@@ -49,6 +49,36 @@
       <frameCount>1</frameCount>
       <frameSpeed>50</frameSpeed>
     </Item>
+
+
+
+
+    <Item>
+      <name>angrySawDieLeft</name>
+      <sheetName>angrySawSheet</sheetName>
+      <sheet Type="System.String">angrySawIdleRight</sheet>
+      <initalX>0</initalX>
+      <initalY>64</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>20</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+
+    <Item>
+      <name>angrySawDieRight</name>
+      <sheetName>angrySawSheet</sheetName>
+      <sheet Type="System.String">angrySawIdleRight</sheet>
+      <initalX>0</initalX>
+      <initalY>96</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>20</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+
 
   </Asset>
 </XnaContent>
