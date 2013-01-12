@@ -26,8 +26,8 @@ namespace MagnetBoy
 
         public static float playerStamina = 100.0f;
 
-        protected static int maxPlayerHealth = 7;
-        public static int currentPlayerHealth = 7;
+        protected static int maxPlayerHealth = 5;
+        public static int currentPlayerHealth = 0;
 
         private Texture2D backgroundTile = null;
         float backgroundDeltaX = 0.0f;
@@ -146,6 +146,8 @@ namespace MagnetBoy
             backgroundDeltaX = 0.0f;
             backgroundDeltaY = 0.0f;
 
+            currentPlayerHealth = maxPlayerHealth;
+
             IsUpdateable = true;
 
             GC.Collect();
@@ -170,6 +172,27 @@ namespace MagnetBoy
                 {
                     break;
                 }
+            }
+
+            if (currentPlayerHealth < 1)
+            {
+                foreach (Entity en in levelEntities)
+                {
+                    en.removeFromGame = true;
+                }
+
+                foreach (Entity en in levelEntities)
+                {
+                    en.death();
+                }
+
+                levelBulletPool.clearPool();
+
+                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+
+                endLevelFlag = false;
+
+                return;
             }
 
             if (endLevelFlag == true)
