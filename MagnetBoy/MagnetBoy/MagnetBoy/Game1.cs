@@ -26,6 +26,8 @@ namespace MagnetBoy
         public static Texture2D globalTestPositive = null;
         public static Texture2D globalTestNegative = null;
 
+        public static Texture2D globalBlackPixel = null;
+
         public static SpriteFont gameFontText = null;
 
         public static Song testSong = null;
@@ -119,9 +121,12 @@ namespace MagnetBoy
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
+            globalBlackPixel = this.Content.Load<Texture2D>("1x1BlackPixel");
 
             AudioFactory.pushNewSong("songs/song1");
             AudioFactory.pushNewSong("songs/introTheme");
+
+            AudioFactory.pushNewSFX("sfx/lose");
             AudioFactory.pushNewSFX("sfx/menu");
             AudioFactory.pushNewSFX("sfx/explosion");
 
