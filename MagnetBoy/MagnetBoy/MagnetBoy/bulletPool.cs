@@ -86,6 +86,7 @@ namespace MagnetBoy
                     velocity.X = 0.0f;
                     velocity.Y = 0.375f;
                     currentAnimation = "fireball";
+                    rotation = 0.0f;
                     break;
                 case BulletPool.BulletType.Bucket:
                     width = 16f;

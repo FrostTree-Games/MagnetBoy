@@ -152,7 +152,10 @@ namespace MagnetBoy
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            {
+                AudioFactory.stopSong();
                 this.Exit();
+            }
 
             gameInput.update();
 
