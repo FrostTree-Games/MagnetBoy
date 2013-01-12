@@ -174,12 +174,19 @@ namespace MagnetBoy
             {
                 foreach (Entity en in levelEntities)
                 {
+                    en.removeFromGame = true;
+                }
+
+                foreach (Entity en in levelEntities)
+                {
                     en.death();
                 }
 
                 levelBulletPool.clearPool();
 
                 GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+
+                endLevelFlag = false;
 
                 return;
             }
