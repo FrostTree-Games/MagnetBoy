@@ -175,11 +175,14 @@ namespace MagnetBoy
 
             if ((GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)) && LevelState.playerStamina > 0.0f)
             {
-                LevelState.playerStamina -= 5.0f;
+                LevelState.playerStamina -= 2.5f;
                 if (LevelState.playerStamina < 0.0f)
                 {
                     LevelState.playerStamina = 0.0f;
                 }
+
+                //normally I'd check if LevelState.levelParticlePool is null, but right now I want the thing crashing if this updates outside of a game loop
+                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.BlueSpark, CenterPosition, (float)(directionAngle + (0.05 * ((Game1.gameRandom.Next() % 10) - 5))));
 
                 isPushing = true;
 
@@ -384,7 +387,7 @@ namespace MagnetBoy
                 dirOffset.X -= width * 1.5f;
                 dirOffset.Y -= height/2;
 
-                AnimationFactory.drawAnimationFrame(sb, "pushArrow", 0, dirOffset, new Vector2(128, 64), (float)(directionAngle + Math.PI));
+                //AnimationFactory.drawAnimationFrame(sb, "pushArrow", 0, dirOffset, new Vector2(128, 64), (float)(directionAngle + Math.PI));
             }
         }
 

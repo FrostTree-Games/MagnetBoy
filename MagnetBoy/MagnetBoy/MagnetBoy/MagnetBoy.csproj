@@ -138,6 +138,7 @@
     <Compile Include="LavaDumper.cs" />
     <Compile Include="LevelState.cs" />
     <Compile Include="Lolrus.cs" />
+    <Compile Include="ParticlePool.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

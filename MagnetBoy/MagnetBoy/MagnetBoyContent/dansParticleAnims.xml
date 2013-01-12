@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>dansParticle</name>
+      <sheetName>dansParticleSheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>16</frameWidth>
+      <frameHeight>16</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    
+
+
+  </Asset>
+</XnaContent>

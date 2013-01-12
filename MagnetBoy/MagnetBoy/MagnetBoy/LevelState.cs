@@ -20,6 +20,7 @@ namespace MagnetBoy
         private List<Entity> levelEntities = null;
         private Camera levelCamera = null;
         private BulletPool levelBulletPool = null;
+        public static ParticlePool levelParticlePool = null;
 
         private static Map levelMap = null;
 
@@ -64,6 +65,7 @@ namespace MagnetBoy
             levelEntities = new List<Entity>();
             levelCamera = new Camera();
             levelBulletPool = new BulletPool();
+            levelParticlePool = new ParticlePool(100);
 
             levelMap = newManager.Load<Map>(levelName);
 
@@ -193,6 +195,8 @@ namespace MagnetBoy
 
             levelBulletPool.updatePool(currentTime);
 
+            levelParticlePool.updatePool(currentTime);
+
             backgroundDeltaX = 0.5f * levelCamera.getFocusPosition().X % backgroundTile.Bounds.Width;
             backgroundDeltaY = 0.25f * levelCamera.getFocusPosition().Y % backgroundTile.Bounds.Height;
 
@@ -279,6 +283,7 @@ namespace MagnetBoy
 
             levelBulletPool.drawPool(spriteBatch);
 
+            levelParticlePool.drawPool(spriteBatch);
             spriteBatch.End();
 
             spriteBatch.Begin();
