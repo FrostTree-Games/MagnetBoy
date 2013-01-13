@@ -48,6 +48,7 @@ namespace MagnetBoy
                 if (deathTimer > 500)
                 {
                     removeFromGame = true;
+                    deathAnimationSet = false;
                     deathTimer = 0.0;
                 }
                 else
