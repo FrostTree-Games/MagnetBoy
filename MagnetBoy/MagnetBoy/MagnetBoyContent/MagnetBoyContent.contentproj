@@ -233,6 +233,7 @@
       <Name>lolrus</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <Compile Include="lolrusSheet.png">
       <Name>lolrusSheet</Name>
