@@ -13,6 +13,8 @@ namespace MagnetBoy
         private const float blueSparkAccel = 0.005f;
         private const float blueSparkLiveTime = 500f;
 
+        string dansAnim = "dansParticle";
+
         public enum ParticleType
         {
             BlueSpark
@@ -38,6 +40,11 @@ namespace MagnetBoy
             public Color colorPrevB;
             public Color colorPrevC;
             public Color colorPrevD;
+
+            public int currentFrame;
+            public double lastFrameIncrement;
+            public int frameCount;
+            public double frameSpeed;
         }
 
         private Particle[] pool = null;
@@ -79,6 +86,10 @@ namespace MagnetBoy
                             pool[i].colorPrevB = pool[i].color;
                             pool[i].colorPrevC = pool[i].color;
                             pool[i].colorPrevD = pool[i].color;
+                            pool[i].currentFrame = 0;
+                            pool[i].lastFrameIncrement = 0;
+                            pool[i].frameCount = AnimationFactory.getAnimationFrameCount(dansAnim);
+                            pool[i].frameSpeed = AnimationFactory.getAnimationSpeed(dansAnim);
                             break;
                         default:
                             break;
@@ -107,6 +118,14 @@ namespace MagnetBoy
                     pool[i].velocity += pool[i].accel;
                     pool[i].timeActive += currentTime.ElapsedGameTime.Milliseconds;
 
+                    pool[i].lastFrameIncrement += currentTime.ElapsedGameTime.Milliseconds;
+
+                    if (pool[i].lastFrameIncrement > pool[i].frameSpeed)
+                    {
+                        pool[i].lastFrameIncrement = 0;
+                        pool[i].currentFrame = (pool[i].currentFrame + 1) % pool[i].frameCount;
+                    }
+
                     if (pool[i].timeActive > blueSparkLiveTime || LevelState.isSolidMap(pool[i].pos))
                     {
                         pool[i].active = false;
@@ -127,11 +146,11 @@ namespace MagnetBoy
                 switch (p.type)
                 {
                     case ParticleType.BlueSpark:
-                        AnimationFactory.drawAnimationFrame(sb, "dansParticle", (int)(p.timeActive / 100) % 2, p.posPrevD - new Vector2(4f, 4f), p.colorPrevD);
-                        AnimationFactory.drawAnimationFrame(sb, "dansParticle", (int)(p.timeActive / 100) % 2, p.posPrevC - new Vector2(4f, 4f), p.colorPrevC);
-                        AnimationFactory.drawAnimationFrame(sb, "dansParticle", (int)(p.timeActive / 100) % 2, p.posPrevB - new Vector2(4f, 4f), p.colorPrevB);
-                        AnimationFactory.drawAnimationFrame(sb, "dansParticle", (int)(p.timeActive / 100) % 2, p.posPrevA - new Vector2(4f, 4f), p.colorPrevA);
-                        AnimationFactory.drawAnimationFrame(sb, "dansParticle", (int)(p.timeActive / 100) % 2, p.pos - new Vector2(4f, 4f), p.color);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevD - new Vector2(4f, 4f), p.colorPrevD);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevC - new Vector2(4f, 4f), p.colorPrevC);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevB - new Vector2(4f, 4f), p.colorPrevB);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevA - new Vector2(4f, 4f), p.colorPrevA);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.pos - new Vector2(4f, 4f), p.color);
                         break;
                     default:
                         break;

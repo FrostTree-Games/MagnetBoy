@@ -349,13 +349,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dansParticleSheet.png">
-      <Name>dansParticleSheet</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="dansParticleAnims.xml">
       <Name>dansParticleAnims</Name>
       <Importer>XmlImporter</Importer>
@@ -374,6 +367,13 @@
       <Name>lose</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="dansParticleSheet.png">
+      <Name>dansParticleSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
