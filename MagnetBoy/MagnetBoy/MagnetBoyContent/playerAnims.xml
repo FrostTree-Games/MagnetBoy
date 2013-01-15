@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
   <Asset Type="MagnetBoyDataTypes.Animation[]">
+
+    <Item>
+      <name>playerWalkLeft</name>
+      <sheetName>playerSheet</sheetName>
+      <sheet Type="System.String">playerWalkLeft</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>10</frameSpeed>
+    </Item>
+ 
     <Item>
       <name>playerWalkRight</name>
       <sheetName>playerSheet</sheetName>
@@ -13,18 +26,19 @@
       <frameSpeed>10</frameSpeed>
     </Item>
     
+
+
     <Item>
-      <name>playerWalkLeft</name>
+      <name>playerIdleLeft</name>
       <sheetName>playerSheet</sheetName>
-      <sheet Type="System.String">playerWalkLeft</sheet>
+      <sheet Type="System.String">playerIdleRight</sheet>
       <initalX>0</initalX>
-      <initalY>0</initalY>
+      <initalY>64</initalY>
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
-      <frameCount>40</frameCount>
-      <frameSpeed>10</frameSpeed>
+      <frameCount>1</frameCount>
+      <frameSpeed>50</frameSpeed>
     </Item>
-    
     
     <Item>
       <name>playerIdleRight</name>
@@ -37,18 +51,32 @@
       <frameCount>1</frameCount>
       <frameSpeed>50</frameSpeed>
     </Item>
-    
+
+
     <Item>
-      <name>playerIdleLeft</name>
+      <name>playerHurtRight</name>
       <sheetName>playerSheet</sheetName>
       <sheet Type="System.String">playerIdleRight</sheet>
       <initalX>0</initalX>
-      <initalY>64</initalY>
+      <initalY>128</initalY>
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
-      <frameCount>1</frameCount>
+      <frameCount>40</frameCount>
       <frameSpeed>50</frameSpeed>
     </Item>
+    
+    <Item>
+      <name>playerHurtLeft</name>
+      <sheetName>playerSheet</sheetName>
+      <sheet Type="System.String">playerIdleRight</sheet>
+      <initalX>0</initalX>
+      <initalY>160</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>40</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
 
   </Asset>
 </XnaContent>

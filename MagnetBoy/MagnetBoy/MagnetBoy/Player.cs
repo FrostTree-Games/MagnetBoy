@@ -398,7 +398,14 @@ namespace MagnetBoy
             {
                 if (isKnockedBack)
                 {
-                    currentAnimation = "heartIdle";
+                    if (velocity.X < 0)
+                    {
+                        currentAnimation = "playerHurtLeft";
+                    }
+                    else
+                    {
+                        currentAnimation = "playerHurtRight";
+                    }
                     return;
                 }
 
@@ -427,7 +434,16 @@ namespace MagnetBoy
 
                 LevelState.currentPlayerHealth = LevelState.currentPlayerHealth - 1;
                 previousAnimation = currentAnimation;
-                currentAnimation = "heartIdle";
+
+                if (velocity.X < 0)
+                {
+                    currentAnimation = "playerHurtLeft";
+                }
+                else
+                {
+                    currentAnimation = "playerHurtRight";
+                }
+                
             }
         }
     }
