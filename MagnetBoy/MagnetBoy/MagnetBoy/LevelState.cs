@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,12 +18,24 @@ namespace MagnetBoy
 
         private bool musicPlaying = false;
 
+        /* this mutex is used to protect assets while loading the following:
+         *  -- levelEntities
+         *  -- levelCamera
+         *  -- levelBulletPool
+         *  -- levelParticlePool
+         *  -- levelMap
+         *  -- backgroundTile
+         *  -- levelName
+         */
+        private Semaphore assetResources;
+        private bool loadedAssets;
+
         private List<Entity> levelEntities = null;
         private Camera levelCamera = null;
         private BulletPool levelBulletPool = null;
         public static ParticlePool levelParticlePool = null;
-
         private static Map levelMap = null;
+        private string levelName = null;
 
         public static float playerStamina = 100.0f;
 
@@ -59,19 +72,43 @@ namespace MagnetBoy
             }
         }
 
-        public LevelState(ContentManager newManager, string levelName)
+        public LevelState(ContentManager newManager, string levelNameString)
         {
             EndLevelFlag = false;
 
             contentManager = newManager;
+
+            assetResources = new Semaphore(0, 1);
+            loadedAssets = false;
 
             gameInput = new GameInput(null);
             levelEntities = new List<Entity>();
             levelCamera = new Camera();
             levelBulletPool = new BulletPool();
             levelParticlePool = new ParticlePool(100);
+            levelName = levelNameString;
 
-            levelMap = newManager.Load<Map>(levelName);
+            new Thread(loadLevelThread).Start();
+
+            currentPlayerHealth = maxPlayerHealth;
+
+            fadingOut = false;
+            fadingOutTimer = 0;
+
+            IsUpdateable = true;
+
+            GC.Collect();
+        }
+
+        private void loadLevelThread()
+        {
+            /* add these lines when compiling for Xbox 360; sets thread explicity to extra core
+                #ifdef XBOX
+                Thread.SetProcessorAffinity(3); 
+                #endif
+             */
+
+            levelMap = contentManager.Load<Map>(levelName);
 
             foreach (ObjectLayer layer in levelMap.ObjectLayers)
             {
@@ -149,19 +186,19 @@ namespace MagnetBoy
             backgroundTile = contentManager.Load<Texture2D>("hackTile");
             backgroundDeltaX = 0.0f;
             backgroundDeltaY = 0.0f;
-
-            currentPlayerHealth = maxPlayerHealth;
-
-            fadingOut = false;
-            fadingOutTimer = 0;
-
-            IsUpdateable = true;
-
-            GC.Collect();
+            
+            Console.WriteLine("loadFinish");
+            assetResources.Release();
         }
 
         protected override void doUpdate(GameTime currentTime)
         {
+            if (assetResources.WaitOne(10) == false)
+            {
+                return;
+            }
+            assetResources.Release();
+
             gameInput.update();
 
             if (!musicPlaying)
@@ -279,6 +316,12 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch spriteBatch)
         {
+            if (assetResources.WaitOne(10) == false)
+            {
+                return;
+            }
+            assetResources.Release();
+
             Matrix mx = new Matrix();
             Rectangle rx = new Rectangle();
             levelCamera.getDrawTranslation(ref mx, ref Game1.mapView, ref levelMap);
@@ -294,7 +337,6 @@ namespace MagnetBoy
                     spriteBatch.Draw(backgroundTile, new Vector2((i * backgroundTile.Bounds.Width) - backgroundDeltaX, (j * backgroundTile.Bounds.Height) + backgroundDeltaY), Color.White);
                 }
             }
-
             spriteBatch.End();
 
             // draw map
