@@ -28,7 +28,6 @@ namespace MagnetBoy
          *  -- levelName
          */
         private Semaphore assetResources;
-        private bool loadedAssets;
 
         private List<Entity> levelEntities = null;
         private Camera levelCamera = null;
@@ -49,6 +48,17 @@ namespace MagnetBoy
         private bool fadingOut = false;
         private double fadingOutTimer = 0;
         private const double fadingOutDuration = 1000;
+
+        private string[] loadingText = {"L", "O", "A", "D", "I", "N", "G", ".", ".", "."};
+        private double loadingAnimTimePassed;
+        private const double loadingAnimTime = 2000;
+        private int magnetWopleyFrame;
+        private double magnetWopleyLastUpdateTime;
+        private string magnetWopleyAnim = "playerWalkRight";
+
+        private int chaserFrame;
+        private double chaserLastUpdateTime;
+        private string chaserAnim = "angrySawWalkLeft";
 
         public static Map CurrentLevel
         {
@@ -79,7 +89,6 @@ namespace MagnetBoy
             contentManager = newManager;
 
             assetResources = new Semaphore(0, 1);
-            loadedAssets = false;
 
             gameInput = new GameInput(null);
             levelEntities = new List<Entity>();
@@ -87,6 +96,12 @@ namespace MagnetBoy
             levelBulletPool = new BulletPool();
             levelParticlePool = new ParticlePool(100);
             levelName = levelNameString;
+
+            loadingAnimTimePassed = 0;
+            magnetWopleyFrame = 0;
+            magnetWopleyLastUpdateTime = 0;
+            chaserFrame = 0;
+            chaserLastUpdateTime = 0;
 
             new Thread(loadLevelThread).Start();
 
@@ -186,15 +201,51 @@ namespace MagnetBoy
             backgroundTile = contentManager.Load<Texture2D>("hackTile");
             backgroundDeltaX = 0.0f;
             backgroundDeltaY = 0.0f;
+
+            //Thread.Sleep(5000);
             
-            Console.WriteLine("loadFinish");
             assetResources.Release();
+        }
+
+        private void loadingDoUpdate(GameTime currentTime)
+        {
+            loadingAnimTimePassed += currentTime.ElapsedGameTime.Milliseconds;
+
+            if (loadingAnimTimePassed > loadingAnimTime)
+            {
+                loadingAnimTimePassed = 0;
+            }
+
+            //updates for anims
+            if (magnetWopleyLastUpdateTime == 0)
+            {
+                magnetWopleyLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+            if (currentTime.TotalGameTime.TotalMilliseconds - magnetWopleyLastUpdateTime > AnimationFactory.getAnimationSpeed(magnetWopleyAnim))
+            {
+                magnetWopleyLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+
+                magnetWopleyFrame = (magnetWopleyFrame + 1) % AnimationFactory.getAnimationFrameCount(magnetWopleyAnim);
+            }
+
+            //updates for anims
+            if (chaserLastUpdateTime == 0)
+            {
+                chaserLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+            if (currentTime.TotalGameTime.TotalMilliseconds - chaserLastUpdateTime > AnimationFactory.getAnimationSpeed(chaserAnim))
+            {
+                chaserLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+
+                chaserFrame = (magnetWopleyFrame + 1) % AnimationFactory.getAnimationFrameCount(chaserAnim);
+            }
         }
 
         protected override void doUpdate(GameTime currentTime)
         {
             if (assetResources.WaitOne(10) == false)
             {
+                loadingDoUpdate(currentTime);
                 return;
             }
             assetResources.Release();
@@ -314,10 +365,43 @@ namespace MagnetBoy
             return false;
         }
 
+        private void loadingDraw(SpriteBatch spriteBatch)
+        {
+            Game1.graphics.GraphicsDevice.Clear(Color.Black);
+
+            Vector2 loadPos = new Vector2(350, 300);
+            Vector2 wopleyPos = new Vector2(300, 300);
+            Vector2 chaserPos = new Vector2(500, 300);
+
+            spriteBatch.Begin();
+            for (int i = 0; i < loadingText.Length; i++)
+            {
+                if ((int)(10 * (loadingAnimTimePassed / loadingAnimTime)) == i)
+                {
+                    loadPos.Y -= 15;
+                }
+
+                spriteBatch.DrawString(Game1.gameFontText, loadingText[i], loadPos, Color.White);
+
+                loadPos.X += 15;
+
+                if ((int)(10 * (loadingAnimTimePassed / loadingAnimTime)) == i)
+                {
+                    loadPos.Y += 15;
+                }
+            }
+
+            AnimationFactory.drawAnimationFrame(spriteBatch, magnetWopleyAnim, magnetWopleyFrame, wopleyPos);
+            AnimationFactory.drawAnimationFrame(spriteBatch, chaserAnim, chaserFrame, chaserPos);
+
+            spriteBatch.End();
+        }
+
         public override void draw(SpriteBatch spriteBatch)
         {
             if (assetResources.WaitOne(10) == false)
             {
+                loadingDraw(spriteBatch);
                 return;
             }
             assetResources.Release();
