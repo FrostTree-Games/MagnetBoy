@@ -34,7 +34,7 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>15</frameCount>
-      <frameSpeed>20</frameSpeed>
+      <frameSpeed>50</frameSpeed>
     </Item>
 
     <Item>
@@ -46,7 +46,7 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>15</frameCount>
-      <frameSpeed>20</frameSpeed>
+      <frameSpeed>50</frameSpeed>
     </Item>
 
     <Item>
@@ -106,7 +106,7 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>15</frameCount>
-      <frameSpeed>20</frameSpeed>
+      <frameSpeed>50</frameSpeed>
     </Item>
 
     <Item>
@@ -118,8 +118,34 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>15</frameCount>
-      <frameSpeed>20</frameSpeed>
+      <frameSpeed>50</frameSpeed>
     </Item>
+
+    <Item>
+      <name>shieldGuyDieRight</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>320</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>32</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>shieldGuyDieLeft</name>
+      <sheetName>shieldGuySheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>352</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>32</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+
 
   </Asset>
 </XnaContent>
