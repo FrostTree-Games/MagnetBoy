@@ -20,46 +20,82 @@ namespace MagnetBoy
 
         protected override void enemyUpdate(GameTime currentTime)
         {
-            if (shooting)
+            if (deathAnimation == true)
             {
-                velocity.X = 0.0f;
-
-                if (currentAnimation == "lolrusWalkLeft")
+                if (deathAnimationSet == false)
                 {
-                    currentAnimation = "lolrusShootRight";
-                }
-                else if (currentAnimation == "lolrusWalkRight")
-                {
-                    currentAnimation = "lolrusShootLeft";
-                }
-
-                shootingTime += currentTime.ElapsedGameTime.Milliseconds;
-
-                if (shootingTime > AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation))
-                {
-                    shooting = false;
-
-                    foreach (Attribute a in list)
+                    if (velocity.X < 0.0)
                     {
-                        if (a is Walk)
-                        {
-                            a.enableDisable(true);
-                        }
+                        lastFrameIncrement = 0.0;
+                        currentFrame = 0;
+                        velocity.X = 0.0f;
+                        currentAnimation = "lolrusCrushLeft";
+                        deathAnimationSet = true;
                     }
+                    else
+                    {
+                        lastFrameIncrement = 0.0;
+                        currentFrame = 0;
+                        velocity.X = 0.0f;
+                        currentAnimation = "lolrusCrushRight";
+                        deathAnimationSet = true;
+                    }
+                }
+
+                
+                if (deathTimer > 500)
+                {
+                    removeFromGame = true;
+                    deathAnimationSet = false;
+                    deathTimer = 0.0;
+                }
+                else
+                {
+                    deathTimer += currentTime.ElapsedGameTime.Milliseconds;
                 }
             }
             else
             {
-                if (velocity.X < 0.0f)
+                if (shooting)
                 {
-                    currentAnimation = "lolrusWalkLeft";
+                    velocity.X = 0.0f;
+
+                    if (currentAnimation == "lolrusWalkLeft")
+                    {
+                        currentAnimation = "lolrusShootRight";
+                    }
+                    else if (currentAnimation == "lolrusWalkRight")
+                    {
+                        currentAnimation = "lolrusShootLeft";
+                    }
+
+                    shootingTime += currentTime.ElapsedGameTime.Milliseconds;
+
+                    if (shootingTime > AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation))
+                    {
+                        shooting = false;
+
+                        foreach (Attribute a in list)
+                        {
+                            if (a is Walk)
+                            {
+                                a.enableDisable(true);
+                            }
+                        }
+                    }
                 }
-                else if (velocity.X > 0.0f)
+                else
                 {
-                    currentAnimation = "lolrusWalkRight";
+                    if (velocity.X < 0.0f)
+                    {
+                        currentAnimation = "lolrusWalkLeft";
+                    }
+                    else if (velocity.X > 0.0f)
+                    {
+                        currentAnimation = "lolrusWalkRight";
+                    }
                 }
             }
-
             // if the last frame time hasn't been set, set it now
             if (lastFrameIncrement == 0)
             {

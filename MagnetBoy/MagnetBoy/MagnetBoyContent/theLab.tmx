@@ -8,13 +8,46 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt3EFOwzAQBdAAmy5hX+D+twSEKkVR7dqxm7Gj96W3apNMZjFqIruXZVkuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwkFES3QdgfCMmuifAmHI543WBeeUSVUt0T4Ax5RJVS3RPgDGtM0ot0XUAY8olqpbongBjyiWqluieAGPrnZYaonsBjOXZaakpujdAvPelPG+/Xgq8Jo7fU1/LscC5PJpX6xn19/3PAl+Jc+2pr+VY4Fxy8+o2o3qnpK6e5wLOY/0sN1uieweUK3k+2/PsNkui+w+Ue1b2vFcvfR9fan3+6D4D7Y5I6trbd18fBfXWWJ8/us9AuyOSurZ5BdTonXvPdKlrm1dAjVy2cyeV7RqrUuYVUKNmfflfan4/PWJeAa1ya0B7zhTzCughtUag5zXMK2AW5hUwC/MKmMV2Xn0v/3t8nnH+6HsF5pbae3ibWz33NkbfKzCvmv/565Ho+wXmZV4Bszh6XuUS3QtgfLl19Ecmug/A+La/sa5L2d6g653PHh273Ufkv7GAWiVr53Nr7EuPrf0MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7vkBXlVB4Q==
+   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
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="300" height="200">
-  <object name="endLevelFlag" x="2023" y="1365"/>
-  <object name="endLevelFlag" x="2062" y="1899"/>
-  <object name="player" x="33" y="1411" width="41" height="40"/>
-  <object x="200" y="1431"/>
+  <object name="endLevelFlag" x="2766" y="1426"/>
+  <object name="player" x="36" y="1489" width="20" height="34"/>
+  <object name="heartItem" x="3053" y="744"/>
+  <object name="lava" x="192" y="1568" width="20" height="19"/>
+  <object name="lava" x="224" y="1568"/>
+  <object name="lava" x="256" y="1568"/>
+  <object name="lava" x="288" y="1568"/>
+  <object name="lava" x="320" y="1568"/>
+  <object name="lava" x="352" y="1568"/>
+  <object name="lavaDumper" x="416" y="1376"/>
+  <object name="lavaDumper" x="192" y="1376"/>
+  <object name="lavaDumper" x="384" y="1376"/>
+  <object name="lavaDumper" x="288" y="1376"/>
+  <object name="lavaDumper" x="672" y="1184" width="32" height="32"/>
+  <object name="angrySaw" x="992" y="1216" width="32" height="32"/>
+  <object name="angrySaw" x="1152" y="960" width="32" height="32"/>
+  <object name="angrySaw" x="1312" y="960" width="32" height="32"/>
+  <object name="angrySaw" x="1312" y="960" width="32" height="32"/>
+  <object name="angrySaw" x="2048" y="1888" width="32" height="32"/>
+  <object name="spikes_up" x="1824" y="1888" width="32" height="32"/>
+  <object name="angrySaw" x="2240" y="1888" width="32" height="32"/>
+  <object name="lavaDumper" x="1952" y="1280" width="32" height="32"/>
+  <object name="lavaDumper" x="2048" y="1280" width="32" height="32"/>
+  <object name="lavaDumper" x="2144" y="1280" width="32" height="32"/>
+  <object name="lavaDumper" x="2240" y="1280" width="32" height="32"/>
+  <object name="lavaDumper" x="2592" y="1440" width="32" height="32"/>
+  <object name="lavaDumper" x="2592" y="1280" width="32" height="32"/>
+  <object name="lolrus" x="2368" y="1376" width="32" height="32"/>
+  <object name="lava" x="1536" y="1888" width="32" height="32"/>
+  <object name="lava" x="1568" y="1888" width="32" height="32"/>
+  <object name="angrySaw" x="1344" y="1888" width="32" height="32"/>
+  <object name="lavaDumper" x="1824" y="928" width="32" height="32"/>
+  <object name="angrySaw" x="1280" y="1376" width="32" height="32"/>
+  <object name="angrySaw" x="1376" y="1376" width="32" height="32"/>
+  <object name="angrySaw" x="1472" y="1376" width="32" height="32"/>
+  <object name="angrySaw" x="1568" y="1376" width="32" height="32"/>
+  <object name="angrySaw" x="1664" y="1376" width="32" height="32"/>
  </objectgroup>
 </map>
