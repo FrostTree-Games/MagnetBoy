@@ -128,11 +128,10 @@
   <object name="wallEntity" x="5824" y="1952" width="32" height="32"/>
   <object name="wallEntity" x="5792" y="1920" width="32" height="32"/>
   <object name="wallEntity" x="5792" y="1888" width="32" height="32"/>
-  <object name="lavaDumper" x="2368" y="896" width="32" height="32"/>
   <object name="lavaDumper" x="2432" y="800" width="32" height="32"/>
   <object name="lavaDumper" x="2368" y="640" width="32" height="32"/>
-  <object name="lavaDumper" x="2400" y="640" width="32" height="32"/>
+  <object name="lavaDumper" x="2368" y="896" width="32" height="32"/>
   <object name="lavaDumper" x="2432" y="640" width="32" height="32"/>
-  <object name="player" x="2505" y="1076" width="20" height="34"/>
+  <object name="player" x="2489" y="1072" width="20" height="34"/>
  </objectgroup>
 </map>

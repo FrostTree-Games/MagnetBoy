@@ -66,125 +66,164 @@ namespace MagnetBoy
         protected override void enemyUpdate(GameTime currentTime)
         {
             //if statements are chosen over a switch so the programmer may use scope if needed
-            if (state == ShieldDudeState.DownShield)
+
+            if (deathAnimation == true)
             {
-                stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
-
-                if (stateTimePassed > 3000)
+                if (deathAnimationSet == false)
                 {
-                    stateTimePassed = 0;
-
-                    state = ShieldDudeState.MovingUp;
-                    currentFrame = 0;
-                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
-
-                    if (facingRight)
+                    if (velocity.X < 0.0)
                     {
-                        currentAnimation = "shieldGuyRaiseShieldRight";
+                        lastFrameIncrement = 0.0;
+                        currentFrame = 0;
+                        velocity.X = 0.0f;
+                        currentAnimation = "shieldGuyDieLeft";
+                        deathAnimationSet = true;
                     }
                     else
                     {
-                        currentAnimation = "shieldGuyRaiseShieldLeft";
-                    }
-                }
-            } //DownShield
-            else if (state == ShieldDudeState.UpShield)
-            {
-                stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
-
-                if (stateTimePassed > 10)
-                {
-                    stateTimePassed = 0;
-
-                    state = ShieldDudeState.Shooting;
-                    currentFrame = 0;
-                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
-
-                    if (facingRight)
-                    {
-                        currentAnimation = "shieldGuyShootRight";
-                    }
-                    else
-                    {
-                        currentAnimation = "shieldGuyShootLeft";
-                    }
-                }
-            } //UpShield
-            else if (state == ShieldDudeState.MovingUp)
-            {
-                stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
-
-                if (stateTimePassed >= AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation) - 50)
-                {
-                    stateTimePassed = 0;
-
-                    state = ShieldDudeState.UpShield;
-                    currentFrame = 0;
-                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
-
-                    if (facingRight)
-                    {
-                        currentAnimation = "shieldGuyRaisedIdleRight";
-                    }
-                    else
-                    {
-                        currentAnimation = "shieldGuyRaisedIdleLeft";
-                    }
-                }
-            } //MovingUp
-            else if (state == ShieldDudeState.MovingDown)
-            {
-                stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
-
-                if (stateTimePassed >= AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation) - 50)
-                {
-                    stateTimePassed = 0;
-
-                    state = ShieldDudeState.DownShield;
-                    currentFrame = 0;
-                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
-
-                    if (facingRight)
-                    {
-                        currentAnimation = "shieldGuyIdleRight";
-                    }
-                    else
-                    {
-                        currentAnimation = "shieldGuyIdleLeft";
-                    }
-                }
-            } //MovingDown
-            else if (state == ShieldDudeState.Shooting)
-            {
-                if (stateTimePassed == 0)
-                {
-                    if (facingRight)
-                    {
-                        BulletPool.pushBullet(BulletPool.BulletType.Bucket, CenterPosition.X, CenterPosition.Y - 4, currentTime, 0.0f);
-                    }
-                    else
-                    {
-                        BulletPool.pushBullet(BulletPool.BulletType.Bucket, CenterPosition.X, CenterPosition.Y - 4, currentTime, (float)Math.PI);
+                        lastFrameIncrement = 0.0;
+                        currentFrame = 0;
+                        velocity.X = 0.0f;
+                        currentAnimation = "shieldGuyDieRight";
+                        deathAnimationSet = true;
                     }
                 }
 
-                stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
 
-                if (stateTimePassed >= AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation) - 50)
+                if (deathTimer > 1100)
                 {
-                    stateTimePassed = 0;
+                    removeFromGame = true;
+                    deathAnimationSet = false;
+                    deathTimer = 0.0;
+                }
+                else
+                {
+                    deathTimer += currentTime.ElapsedGameTime.Milliseconds;
+                }
+            }
 
-                    state = ShieldDudeState.MovingDown;
-                    currentFrame = 0;
-                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+            else
+            {
+                if (state == ShieldDudeState.DownShield)
+                {
+                    stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
 
-                    if (facingRight)
+                    if (stateTimePassed > 3000)
                     {
-                        currentAnimation = "shieldGuyLowerShieldRight";
+                        stateTimePassed = 0;
+
+                        state = ShieldDudeState.MovingUp;
+                        currentFrame = 0;
+                        lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                        if (facingRight)
+                        {
+                            currentAnimation = "shieldGuyRaiseShieldRight";
+                        }
+                        else
+                        {
+                            currentAnimation = "shieldGuyRaiseShieldLeft";
+                        }
                     }
-                    else
+                } //DownShield
+                else if (state == ShieldDudeState.UpShield)
+                {
+                    stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
+
+                    if (stateTimePassed > 10)
                     {
-                        currentAnimation = "shieldGuyLowerShieldLeft";
+                        stateTimePassed = 0;
+
+                        state = ShieldDudeState.Shooting;
+                        currentFrame = 0;
+                        lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                        if (facingRight)
+                        {
+                            currentAnimation = "shieldGuyShootRight";
+                        }
+                        else
+                        {
+                            currentAnimation = "shieldGuyShootLeft";
+                        }
+                    }
+                } //UpShield
+                else if (state == ShieldDudeState.MovingUp)
+                {
+                    stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
+
+                    if (stateTimePassed >= AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation) - 50)
+                    {
+                        stateTimePassed = 0;
+
+                        state = ShieldDudeState.UpShield;
+                        currentFrame = 0;
+                        lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                        if (facingRight)
+                        {
+                            currentAnimation = "shieldGuyRaisedIdleRight";
+                        }
+                        else
+                        {
+                            currentAnimation = "shieldGuyRaisedIdleLeft";
+                        }
+                    }
+                } //MovingUp
+                else if (state == ShieldDudeState.MovingDown)
+                {
+                    stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
+
+                    if (stateTimePassed >= AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation) - 50)
+                    {
+                        stateTimePassed = 0;
+
+                        state = ShieldDudeState.DownShield;
+                        currentFrame = 0;
+                        lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                        if (facingRight)
+                        {
+                            currentAnimation = "shieldGuyIdleRight";
+                        }
+                        else
+                        {
+                            currentAnimation = "shieldGuyIdleLeft";
+                        }
+                    }
+                } //MovingDown
+                else if (state == ShieldDudeState.Shooting)
+                {
+                    if (stateTimePassed == 0)
+                    {
+                        if (facingRight)
+                        {
+                            BulletPool.pushBullet(BulletPool.BulletType.Bucket, CenterPosition.X, CenterPosition.Y - 4, currentTime, 0.0f);
+                        }
+                        else
+                        {
+                            BulletPool.pushBullet(BulletPool.BulletType.Bucket, CenterPosition.X, CenterPosition.Y - 4, currentTime, (float)Math.PI);
+                        }
+                    }
+
+                    stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
+
+                    if (stateTimePassed >= AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation) - 50)
+                    {
+                        stateTimePassed = 0;
+
+                        state = ShieldDudeState.MovingDown;
+                        currentFrame = 0;
+                        lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                        if (facingRight)
+                        {
+                            currentAnimation = "shieldGuyLowerShieldRight";
+                        }
+                        else
+                        {
+                            currentAnimation = "shieldGuyLowerShieldLeft";
+                        }
                     }
                 }
             }
