@@ -91,7 +91,7 @@ namespace MagnetBoy
             assetResources = new Semaphore(0, 1);
 
             gameInput = new GameInput(null);
-            levelEntities = new List<Entity>();
+            levelEntities = new List<Entity>(100);
             levelCamera = new Camera();
             levelBulletPool = new BulletPool();
             levelParticlePool = new ParticlePool(100);
