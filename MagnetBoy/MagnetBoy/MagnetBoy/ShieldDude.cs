@@ -65,6 +65,10 @@ namespace MagnetBoy
 
         protected override void enemyUpdate(GameTime currentTime)
         {
+            if (onTheGround)
+            {
+                velocity.X *= 0.9f;
+            }
             //if statements are chosen over a switch so the programmer may use scope if needed
 
             if (deathAnimation == true)
@@ -88,7 +92,6 @@ namespace MagnetBoy
                         deathAnimationSet = true;
                     }
                 }
-
 
                 if (deathTimer > 1100)
                 {
