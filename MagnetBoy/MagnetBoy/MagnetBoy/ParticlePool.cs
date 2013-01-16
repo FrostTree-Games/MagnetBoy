@@ -59,7 +59,7 @@ namespace MagnetBoy
             }
         }
 
-        public void pushParticle(ParticleType newType, Vector2 newPos, float direction, float acceldir)
+        public void pushParticle(ParticleType newType, Vector2 newPos, Vector2 offsetVelocity, float direction, float acceldir)
         {
             for (int i = 0; i < pool.Length; i++)
             {
@@ -90,6 +90,10 @@ namespace MagnetBoy
                             pool[i].lastFrameIncrement = 0;
                             pool[i].frameCount = AnimationFactory.getAnimationFrameCount(dansAnim);
                             pool[i].frameSpeed = AnimationFactory.getAnimationSpeed(dansAnim);
+                            if (pool[i].velocity.X * offsetVelocity.X >= 0)
+                            {
+                                pool[i].velocity.X += offsetVelocity.X;
+                            }
                             break;
                         default:
                             break;
