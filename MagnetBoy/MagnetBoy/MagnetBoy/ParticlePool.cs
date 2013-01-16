@@ -114,14 +114,6 @@ namespace MagnetBoy
                 }
                 else
                 {
-                    pool[i].posPrevD = pool[i].posPrevC;
-                    pool[i].posPrevC = pool[i].posPrevB;
-                    pool[i].posPrevB = pool[i].posPrevA;
-                    pool[i].posPrevA = pool[i].pos;
-                    pool[i].pos += currentTime.ElapsedGameTime.Milliseconds * pool[i].velocity;
-                    pool[i].velocity += pool[i].accel;
-                    pool[i].timeActive += currentTime.ElapsedGameTime.Milliseconds;
-
                     pool[i].lastFrameIncrement += currentTime.ElapsedGameTime.Milliseconds;
 
                     if (pool[i].lastFrameIncrement > pool[i].frameSpeed)
@@ -130,10 +122,36 @@ namespace MagnetBoy
                         pool[i].currentFrame = (pool[i].currentFrame + 1) % pool[i].frameCount;
                     }
 
-                    if (pool[i].timeActive > blueSparkLiveTime || LevelState.isSolidMap(pool[i].pos))
+                    pool[i].timeActive += currentTime.ElapsedGameTime.Milliseconds;
+                    if (pool[i].timeActive > blueSparkLiveTime)
                     {
                         pool[i].active = false;
+                        continue;
                     }
+
+                    Vector2 stepX = currentTime.ElapsedGameTime.Milliseconds * pool[i].velocity;
+                    Vector2 stepY = stepX;
+                    stepX.Y = 0.0f;
+                    stepY.X = 0.0f;
+
+                    if (LevelState.isSolidMap(pool[i].pos + stepX))
+                    {
+                        pool[i].velocity.X *= -1;
+                        pool[i].accel.X *= -1;
+                    }
+
+                    if (LevelState.isSolidMap(pool[i].pos + stepY))
+                    {
+                        pool[i].velocity.Y *= -1;
+                        pool[i].accel.Y *= -1;
+                    }
+
+                    pool[i].posPrevD = pool[i].posPrevC;
+                    pool[i].posPrevC = pool[i].posPrevB;
+                    pool[i].posPrevB = pool[i].posPrevA;
+                    pool[i].posPrevA = pool[i].pos;
+                    pool[i].pos += currentTime.ElapsedGameTime.Milliseconds * pool[i].velocity;
+                    pool[i].velocity += pool[i].accel;
                 }
             }
         }
