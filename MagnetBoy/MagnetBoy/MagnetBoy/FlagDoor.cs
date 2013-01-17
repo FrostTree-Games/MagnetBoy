@@ -46,7 +46,7 @@ namespace MagnetBoy
 
         public override void update(GameTime currentTime)
         {
-            //
+            //foo
         }
 
         public override void draw(SpriteBatch sb)
