@@ -127,6 +127,7 @@
     <Compile Include="EndLevelFlag.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="FlagDoor.cs" />
     <Compile Include="GameInput.cs" />
     <Compile Include="GameScreenManager.cs" />
     <Compile Include="GameScreenNode.cs" />
