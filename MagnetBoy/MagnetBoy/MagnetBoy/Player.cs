@@ -165,6 +165,7 @@ namespace MagnetBoy
                 }
             }
 
+            /*
             if (ks.IsKeyDown(Keys.Up) || GameInput.isButtonDown(GameInput.PlayerButton.Jump))
             {
                 if (onTheGround)
@@ -172,6 +173,7 @@ namespace MagnetBoy
                     velocity.Y = -0.5f;
                 }
             }
+            */
 
             if ((GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)) && LevelState.playerStamina > 0.0f)
             {
