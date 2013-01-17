@@ -384,6 +384,11 @@ namespace MagnetBoy
 
                 if (isSolid == true)
                 {
+                    if (point.X < 0 || point.X >= levelMap.Bounds.Width || point.Y < 0 || point.Y >= levelMap.Bounds.Height)
+                    {
+                        //
+                    }
+
                     int posX = (int)(point.X / levelMap.TileWidth);
                     int posY = (int)(point.Y / levelMap.TileHeight);
 
