@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="labSheetA" tilewidth="32" tileheight="32">
+  <image source="./LabSheet.png" width="640" height="400"/>
+ </tileset>
+ <layer name="background walls" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1ltOg0AYBtB597IF6xrUbsHLFtRuwcv+H4RUkmECLZ1OOkDOSf40Rmjg+zoMIQAAa3A7g3lb+Zyidhdr7iNH7S700Ve7C3301e5izX3kdFK7C3301e5CH32lMr1rZpN5bnz97808T5iPGWQ95z62zVxnnJde/8vE+5x63JK6CBn5jc19mF8ftTvLMZbTUzNXyWxC/9kUf94083jg+0r38TvhmNp95HQyNbe2nzbzTdivg4ewz7/7zFkb5/RRag0trY94DcT5p8fl9pF2kpPh5//MrY8cceZDWcVr4VCm7THp8y2ddn29hsPvTcf+H8/u/76/Rs77LpzvpfroMh/KMGdPGJv2HWzsud+95w7luouO+0n+nstaKN1HqcxP3S+66a6h/V1sMu5dH2X6iN8VhtbklPtO72HJxvpo95Rj+0HJOfe5uA3r6WNo7yi5b1x6lqx2dmmO+vAbBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADO9wd5ZTGZ
+  </data>
+ </layer>
+ <layer name="background objects" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0cEJgDAMBdDs4BAZIvvvJVILehC8SJC+B59CyCH0RwAAAAAAAMA/bd0HcJMxOpmhz/H/FaOTGZ30yfOtS/J5nY/VyxkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABr2wGEvAK/
+  </data>
+ </layer>
+ <layer name="solid" width="100" height="100">
+  <properties>
+   <property name="solid" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2F1Tm0AUBuC1aqvem9R06r1f09r7aPz/f8plGiYrEwNJ1rCQ58w8M2HCAtkXDpBJCGECAMDojLH6ntNt5/q6wzpDrlzz9yO639P3II9ceUwzHEuXuZbH4fNobmsevSx1uYaGXEPII627II8++tXphvWqTB4y7K/EKjWPtkzGWiXnUfmWOIZ8Ss8j9SuMP5Mh5XEMmeyTQf0elyuPu9DtvbHK5DXD/kqsHNdDzued39FtdBFdZtrmkKrP/tSsv9Fz9C+s8rj6gv2cRecbltvG7DK+a+XI4yR8fA46hOpdfV3PmreMq+49P6ObZEy9/NnvSMe8NNZPv+ty//sqzX6173+J22jrjek7/LrngUX0J1m/y3w+Rk/hfx715+vlPKTLJeTRd63rF23nSJpplzwW0Vvj8yys8n3bMPaY8qh6xiJ8PN+3rRL6zaHzqHvtvtXs8bOw6kO7bn8MeUzCdvffXcZs2k6OY6otwqr/9D2njNe0gGMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKNE7Hwr8PQ==
+  </data>
+ </layer>
+ <objectgroup name="game objects" width="100" height="100">
+  <object name="spikes_up" x="2112" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="2144" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="2016" y="608" width="32" height="32"/>
+  <object name="player" x="384" y="576" width="32" height="32"/>
+ </objectgroup>
+</map>
