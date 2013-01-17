@@ -45,6 +45,10 @@ namespace MagnetBoy
         float backgroundDeltaX = 0.0f;
         float backgroundDeltaY = 0.0f;
 
+        private static bool[] flags = null;
+        private const int flagNum = 5;
+        public enum FlagColor { Red = 0, Blue = 1, Green = 2, Yellow = 3, Purple = 4 };
+
         private bool fadingOut = false;
         private double fadingOutTimer = 0;
         private const double fadingOutDuration = 1000;
@@ -82,6 +86,11 @@ namespace MagnetBoy
             }
         }
 
+        public static void setFlag(FlagColor color, bool value)
+        {
+            flags[(int)color] = value;
+        }
+
         public LevelState(ContentManager newManager, string levelNameString)
         {
             EndLevelFlag = false;
@@ -102,6 +111,12 @@ namespace MagnetBoy
             magnetWopleyLastUpdateTime = 0;
             chaserFrame = 0;
             chaserLastUpdateTime = 0;
+
+            flags = new bool[flagNum];
+            for (int i = 0; i < flagNum; i++)
+            {
+                flags[i] = false;
+            }
 
             new Thread(loadLevelThread).Start();
 
