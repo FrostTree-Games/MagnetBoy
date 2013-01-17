@@ -29,7 +29,7 @@
       <name>flagDoorWall</name>
       <sheetName>flagDoorSheet</sheetName>
       <sheet Type="System.String">whatever</sheet>
-      <initalX>32</initalX>
+      <initalX>0</initalX>
       <initalY>32</initalY>
       <frameWidth>32</frameWidth>
       <frameHeight>8</frameHeight>
