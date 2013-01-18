@@ -45,8 +45,9 @@ namespace MagnetBoy
         {
             graphics = new GraphicsDeviceManager(this);
 
-            //graphics.PreferredBackBufferWidth = 720;
-            //graphics.PreferredBackBufferHeight = 480;
+            //game runs in 480p widescreen
+            graphics.PreferredBackBufferWidth = 720;
+            graphics.PreferredBackBufferHeight = 480;
 
             //graphics.IsFullScreen = true;
 
