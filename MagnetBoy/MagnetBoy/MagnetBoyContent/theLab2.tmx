@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="labSheetA" tilewidth="32" tileheight="32">
-  <image source="./LabSheet.png" width="640" height="400"/>
+  <image source="LabSheet.png" width="640" height="400"/>
  </tileset>
  <layer name="background walls" width="100" height="100">
   <data encoding="base64" compression="zlib">
@@ -18,7 +18,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2F1Tm0AUBuC1aqvem9R06r1f09r7aPz/f8plGiYrEwNJ1rCQ58w8M2HCAtkXDpBJCGECAMDojLH6ntNt5/q6wzpDrlzz9yO639P3II9ceUwzHEuXuZbH4fNobmsevSx1uYaGXEPII627II8++tXphvWqTB4y7K/EKjWPtkzGWiXnUfmWOIZ8Ss8j9SuMP5Mh5XEMmeyTQf0elyuPu9DtvbHK5DXD/kqsHNdDzued39FtdBFdZtrmkKrP/tSsv9Fz9C+s8rj6gv2cRecbltvG7DK+a+XI4yR8fA46hOpdfV3PmreMq+49P6ObZEy9/NnvSMe8NNZPv+ty//sqzX6173+J22jrjek7/LrngUX0J1m/y3w+Rk/hfx715+vlPKTLJeTRd63rF23nSJpplzwW0Vvj8yys8n3bMPaY8qh6xiJ8PN+3rRL6zaHzqHvtvtXs8bOw6kO7bn8MeUzCdvffXcZs2k6OY6otwqr/9D2njNe0gGMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKNE7Hwr8PQ==
+   eJzt2AtugkAUBdDpfwVqa1dgP+kKtLj/TRVSiSOxAjqVEc9LTiKRAZwLD3AaQpgCADA6Y6yh57TvXE86rHPJlWr+nkpvJ3oM8kiVxyzBsXSZa3mcP4/mtpal1UaXa+iS6xLyiGsR5DFEv7o7sF6VyXuC/eVYuebRlslYK+c8KreRa8gn9zxir2H8mVxSHteQySkZ1O9xqfJYhG7vjVUm3wn2l2OluB7G/Lxz7hqyPw1V96WHA8ttY44Z37VS5HETdp+DzqF6V9/Xs5Yt46p7z3PpJRpTL//1O+Ixq8b68Xdd7n//pdmvTv0vsY+23hi/w+97HihKX9H6Xebzo/QZfvOoP0828xAv55DH0LWvX7SdI3GmXfIoSuvG53nY5rs+MPaa8qh6RhF2z/e+lUO/OXceda89tZo9fh62fejY7Y8hj2nod/89Zsyh7aQ4ploRtv1n6DllvGYZHAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAjn4AZLb7Qw==
   </data>
  </layer>
  <objectgroup name="game objects" width="100" height="100">
@@ -26,5 +26,6 @@
   <object name="spikes_up" x="2144" y="608" width="32" height="32"/>
   <object name="spikes_up" x="2016" y="608" width="32" height="32"/>
   <object name="player" x="384" y="576" width="32" height="32"/>
+  <object name="flagDoor" x="928" y="544" width="32" height="32"/>
  </objectgroup>
 </map>

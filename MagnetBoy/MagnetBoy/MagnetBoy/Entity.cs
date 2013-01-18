@@ -176,71 +176,27 @@ namespace MagnetBoy
 
         public Boolean checkForSolidObjects(ref Vector2 step)
         {
-            Boolean hitY = false;
-            Boolean hitX = false;
-
             foreach (Entity en in globalEntityList)
             {
-                if (en == this || en is Player)
+                if (en is FlagDoor)
                 {
-                    continue;
-                }
-
-                if (this is Player && en is Enemy)
-                {
-                    continue;
-                }
-
-                if (en.IsSolid && hitTest(en))
-                {
-                    float deltaX = 0.0f;
-                    float deltaY = 0.0f;
-
-                    if (en.Position.Y + en.height > vertical_pos && en.Position.Y < vertical_pos)
+                    if (hitTest(en))
                     {
-                        deltaY += (en.Position.Y + en.height) - vertical_pos;
-                    }
-                    else if (en.Position.Y < vertical_pos + height && en.Position.Y > vertical_pos)
-                    {
-                        deltaY += en.Position.Y - (vertical_pos + height);
+                        step.X = Position.X;
 
-                        onTheGround = true;
+                        if (en.Position.X > horizontal_pos)
+                        {
+                            step.X -= 1.5f;
+                        }
+                        else
+                        {
+                            step.X += 1.5f;
+                        }
                     }
-
-                    if (en.Position.X + en.width > horizontal_pos && en.Position.X < horizontal_pos)
-                    {
-                        deltaX += (en.Position.X + en.width) - horizontal_pos;
-                    }
-                    else if (en.Position.X < horizontal_pos + width && en.Position.X > horizontal_pos)
-                    {
-                        deltaX += en.Position.X - (horizontal_pos + width);
-                    }
-
-                    if (Math.Abs(horizontal_pos - en.Position.X) < Math.Abs(vertical_pos - en.Position.Y))
-                    {
-                        step.Y += deltaY * 1.1f;
-
-                        hitY = true;
-                    }
-                    else
-                    {
-                        step.X += deltaX * 1.1f;
-
-                        hitX = true;
-                    }
-                }
-
-                if (hitY)
-                {
-                    velocity.Y = 0;
-                }
-                if (hitX)
-                {
-                    velocity.X = 0;
                 }
             }
 
-            return hitY || hitX;
+            return false;
         }
 
         // pass a map and a vector stating where you'd like to move to

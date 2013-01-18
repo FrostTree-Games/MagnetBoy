@@ -86,9 +86,31 @@ namespace MagnetBoy
             }
         }
 
+        public static bool getFlag(FlagColor color)
+        {
+            return flags[(int)color];
+        }
         public static void setFlag(FlagColor color, bool value)
         {
             flags[(int)color] = value;
+        }
+        public static Color getFlagXNAColor(FlagColor color)
+        {
+            switch (color)
+            {
+                case FlagColor.Blue:
+                    return Color.Blue;
+                case FlagColor.Green:
+                    return Color.Green;
+                case FlagColor.Red:
+                    return Color.Red;
+                case FlagColor.Yellow:
+                    return Color.Yellow;
+                case FlagColor.Purple:
+                    return Color.Magenta;
+                default:
+                    return Color.Black;
+            }
         }
 
         public LevelState(ContentManager newManager, string levelNameString)
@@ -206,6 +228,12 @@ namespace MagnetBoy
                             break;
                         case "heartItem":
                             levelEntities.Add(new HealthItem(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        case "boss":
+                            //add boss code
+                            break;
+                        case "flagDoor":
+                            levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
                             break;
                         default:
                             break;
