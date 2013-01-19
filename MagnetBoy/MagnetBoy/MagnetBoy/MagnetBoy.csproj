@@ -128,6 +128,7 @@
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FlagDoor.cs" />
+    <Compile Include="FlagKey.cs" />
     <Compile Include="GameInput.cs" />
     <Compile Include="GameScreenManager.cs" />
     <Compile Include="GameScreenNode.cs" />
