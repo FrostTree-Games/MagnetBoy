@@ -5,12 +5,12 @@
  </tileset>
  <layer name="background walls" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt1ltOg0AYBtB597IF6xrUbsHLFtRuwcv+H4RUkmECLZ1OOkDOSf40Rmjg+zoMIQAAa3A7g3lb+Zyidhdr7iNH7S700Ve7C3301e5izX3kdFK7C3301e5CH32lMr1rZpN5bnz97808T5iPGWQ95z62zVxnnJde/8vE+5x63JK6CBn5jc19mF8ftTvLMZbTUzNXyWxC/9kUf94083jg+0r38TvhmNp95HQyNbe2nzbzTdivg4ewz7/7zFkb5/RRag0trY94DcT5p8fl9pF2kpPh5//MrY8cceZDWcVr4VCm7THp8y2ddn29hsPvTcf+H8/u/76/Rs77LpzvpfroMh/KMGdPGJv2HWzsud+95w7luouO+0n+nstaKN1HqcxP3S+66a6h/V1sMu5dH2X6iN8VhtbklPtO72HJxvpo95Rj+0HJOfe5uA3r6WNo7yi5b1x6lqx2dmmO+vAbBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADO9wd5ZTGZ
+   eJztl1ty3CAURPmP8/IGMq4k3oBj5/GRBeTD+19ORmVTRgxo0OVCX1Cfqi7bZY0G+gyIcY4QQgghM/DBQG4nzx7QLmb2IQHtgj7WoF3Qxxq0i5l9SJygXdDHGrQL+lij1emXc07C14bj/3rOx4J8M9C1ZR9P59wIXheP/1PhPEuvG8mFE/SXy52z5wPtTEKup8dz3kU5ufXeFP58f86Pjftp+/hTcA3ah8RJaW+Ln6Xzk3tZBw/upX//U7I2anxoraHRfIRrIOw/vk7qI3Yi6fD7a6z5kBB2nuoqXAtbnS7XxPtbnGV9fXbb56Zr/w9z/zrvn5nX/VLutzS+Ewlh56kOJc+EXJYzWG7f9+fcVK/3wXW/o7+trIXYRa0Prc5L9qa/we9xn8tnXfLdwoKPeK4Stnxok3O0fObDdRGuSYmPHpR89qR4H625c2/PK6190TsI98EejO7Dn5e1n0mptdKD0X2UPKfclf+XOOmxzkvHKQXpY1Ra+Wj9PA/vRx9l99U+7+bGHr/PyFjzkTojXUvuOT4iLX347+Yn93Ymvda95hlJynPFa3O03Cf2jmHx4s+krbrXGvdzYfaCnlc8hiflMaF97PWCnlcPWoxzr49SN0fw0QL6qKemw7hPjXukoA+Mj5yT2X1oOWjhI+VmVh8tPGx9rmvH4JnFR8v+pT72jMtDH219SMZGH2191IwP6aPm3qUd9vSmEZSPXu+H7renkxroQ99JDZL3Q3dEH/Z8zIrEB9LJ7Eh9IJwcgRofPi05igePdR9HhD5sQR+2oA9bzOjjn0JQzOJDw0EqvXsY3UcrD3t9aHUxqo/WHiQ+NPoYzUcvDyP66ElvDygfTvCeR3Eh8YFaI71Auhhlz0qNWRN0/yP5QHdDH8d2YdUHuhP6oAuLPtBdWEiJg5sg2qDnby1IH+i5W02vvSoGPW+roQ976enBg56z5fR24YBzHSG9HISg52w5PT140HO2GiTouVsMEvTcrcUC6A4sxQLoDizFEuguLMQa6D7o4hJ0L/SxBt0LfVyC7oY+LkH3Qxdp0F3RxSXozuhiG3SP9EAIIYQQQgghhBBCiC7/Aa3hihw=
   </data>
  </layer>
  <layer name="background objects" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt0cEJgDAMBdDs4BAZIvvvJVILehC8SJC+B59CyCH0RwAAAAAAAMA/bd0HcJMxOpmhz/H/FaOTGZ30yfOtS/J5nY/VyxkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABr2wGEvAK/
+   eJztwTEBAAAAwqD1T+1lC6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAbnEAAAQ==
   </data>
  </layer>
  <layer name="solid" width="100" height="100">
@@ -18,35 +18,99 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2AtugkAUBdDpfwVqa1dgP+kKtLj/TRVSiSOxAjqVEc9LTiKRAZwLD3AaQpgCADA6Y6yh57TvXE86rHPJlWr+nkpvJ3oM8kiVxyzBsXSZa3mcP4/mtpal1UaXa+iS6xLyiGsR5DFEv7o7sF6VyXuC/eVYuebRlslYK+c8KreRa8gn9zxir2H8mVxSHteQySkZ1O9xqfJYhG7vjVUm3wn2l2OluB7G/Lxz7hqyPw1V96WHA8ttY44Z37VS5HETdp+DzqF6V9/Xs5Yt46p7z3PpJRpTL//1O+Ixq8b68Xdd7n//pdmvTv0vsY+23hi/w+97HihKX9H6Xebzo/QZfvOoP0828xAv55DH0LWvX7SdI3GmXfIoSuvG53nY5rs+MPaa8qh6RhF2z/e+lUO/OXceda89tZo9fh62fejY7Y8hj2nod/89Zsyh7aQ4ploRtv1n6DllvGYZHAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAjn4AZLb7Qw==
+   eJztnNty2yAQhonTJtMHcNo6ae/Tw/Rwbzd5hL7/y1RMypShQuzCrrSgf2e+GWssI2s/QAhh3znn7gAAAIDB+VT5HuDneTS2zik31+H9t27MOLrtc5+ylOsjYZ+eQ8rHrWtvqzcOPqR8SOSHkmv42N7HeeLyF0ob6jl68BHHo+DxLIZFH57rhf28k88Cx7MYVn2UnIwaln14DhF78GPdR8y9G99NTz6kj2cxWnzEcxgS+Xl09HvHnq7nV4x9a33E+Zcc7zxMfJj4mLzuNbwLn6tXE68J+0v4kIzvEz8mfiavJSPNDSVXpc/MleFdhFx9mfhK+G4SPvxxD4pcIn4VzudcKMuPA95NvI8+E7Zz53Gd7FPaDp87uX/jkKeJ55ly05DwoTlHXNMOwz18bozmc/Mt2j/kMncecf0+ErZbzs26D8p1aa6vKI0N4nJLPuL6fSJsc84vbfOWfVDaxpX7v75zo+RDi97ax5KP0E/HfXTtPSJ81H3fMO9+WPhMzXjhydX1NXv3oX28tYnPL9Q1ibI499Vc5sa3I/poPbct54/gw4aP9BreO737kGgXlHUwNwpl58rUuP/QiDAPEW9LtAvK9w7XQ66X0nN/yhx1S53TnLM6JceQ6qM49YjrZe1nQCNQOx9GcdLiY7Rro6YPH5S2QplPKPUHe6O1T1lqK0vr+Hy+W8YKWyKxFjg3vonXROSedZQi11Yornu7PngXGs/GqXngzEumZY7gI20LWusUOHmgOknLpKxHsu6D25/H10XO/Dp1jMRxMndPUVrv3bOPuTFJ3J78a8oz9RBL+WtpJ3PHuHfzz/yt+1i6vqb7alxbSnPT/vtRfVPCug8KoU30tAYuF5Z9UMe1cx58X3Zx+bVA5+Q93y9ZWPu7pg/ufUNLfb8w94/z4L+n5tyblfvwNefgW3zshVof2usb9zo/VOND6rnGSHD7faoPSr2Hi3Iel+I3o5w99tnwMR5SPny/19PcgFXQPmwBH7aAD1to+PDzRz0+K7YA2ofOM/vaZ/zwYeP/BWr+2ws+9ELaR8/3HyP6QPtoC20f3PUD8KHrY+mY1oAPW4zoY27tTrp2AD7yIe2Dcp7wkY9wveWs84APWwEftqLVh+Z/B7Sw1tpH6loa1Dv9sLCWBj5ewoIL+HgJKy5G9/GGsI8lF6P76HG936g+rNX7Pfvo1UWLj9rfbWpHzy48pd/fU/rdXBk5Ty2/Xyi5tzq/YIG47R2EclaqPz23DW1yuUPOAAAAAAAAAAAAAAAAAAAAAAAAgP3xB9IWeFg=
   </data>
  </layer>
  <objectgroup name="game objects" width="100" height="100">
-  <object name="spikes_up" x="2112" y="608" width="32" height="32"/>
-  <object name="spikes_up" x="2144" y="608" width="32" height="32"/>
-  <object name="spikes_up" x="2016" y="608" width="32" height="32"/>
-  <object name="player" x="384" y="576" width="32" height="32"/>
-  <object name="flagDoor" x="2495" y="390" width="32" height="32">
+  <object name="lava" x="2016" y="608" width="32" height="32"/>
+  <object name="player" x="576" y="512" width="32" height="32"/>
+  <object name="flagDoor" x="1856" y="1312" width="32" height="32">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object name="flagKey" x="2303" y="390" width="32" height="32">
+  <object name="flagKey" x="1632" y="1056" width="32" height="32">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object name="flagLock" x="2367" y="454" width="32" height="32">
+  <object name="flagLock" x="1920" y="1376" width="32" height="32">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="480" y="544" width="160" height="96">
+  <object name="tutorialSign" x="288" y="528" width="160" height="96">
    <properties>
     <property name="message" value="message1"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="192" y="704" width="160" height="96">
+  <object name="tutorialSign" x="544" y="912" width="160" height="96">
+   <properties>
+    <property name="message" value="message3"/>
+   </properties>
+  </object>
+  <object name="spikes_up" x="2496" y="544" width="32" height="32"/>
+  <object name="spikes_up" x="2464" y="544" width="32" height="32"/>
+  <object name="lava" x="2048" y="608" width="32" height="32"/>
+  <object name="lava" x="2144" y="608" width="32" height="32"/>
+  <object name="lava" x="2176" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="2400" y="1248" width="32" height="32"/>
+  <object name="spikes_up" x="2432" y="1248" width="32" height="32"/>
+  <object name="spikes_up" x="2368" y="1248" width="32" height="32"/>
+  <object name="flagDoor" x="1056" y="1280" width="32" height="32">
+   <properties>
+    <property name="color" value="purple"/>
+   </properties>
+  </object>
+  <object name="flagDoor" x="1312" y="1376" width="32" height="32">
+   <properties>
+    <property name="color" value="red"/>
+   </properties>
+  </object>
+  <object name="flagKey" x="1366" y="1423" width="32" height="32">
+   <properties>
+    <property name="color" value="purple"/>
+   </properties>
+  </object>
+  <object name="flagLock" x="1120" y="1440" width="32" height="32">
+   <properties>
+    <property name="color" value="purple"/>
+   </properties>
+  </object>
+  <object name="flagKey" x="768" y="1280" width="32" height="32">
+   <properties>
+    <property name="color" value="red"/>
+   </properties>
+  </object>
+  <object name="flagLock" x="672" y="1280" width="32" height="32">
+   <properties>
+    <property name="color" value="red"/>
+   </properties>
+  </object>
+  <object name="tutorialSign" x="2096" y="1296" width="160" height="96">
+   <properties>
+    <property name="message" value="message4"/>
+   </properties>
+  </object>
+  <object name="tutorialSign" x="544" y="2352" width="160" height="96">
+   <properties>
+    <property name="message" value="message5"/>
+   </properties>
+  </object>
+  <object name="spikes_up" x="1120" y="2496" width="32" height="32"/>
+  <object name="spikes_up" x="1152" y="2496" width="32" height="32"/>
+  <object name="spikes_up" x="1216" y="2496" width="32" height="32"/>
+  <object name="spikes_up" x="1248" y="2496" width="32" height="32"/>
+  <object name="angrySaw" x="992" y="2432" width="32" height="32"/>
+  <object name="angrySaw" x="1920" y="2464" width="32" height="32"/>
+  <object name="tutorialSign" x="1568" y="2352" width="160" height="96">
+   <properties>
+    <property name="message" value="message6"/>
+   </properties>
+  </object>
+  <object name="angrySaw" x="2240" y="2304" width="32" height="32"/>
+  <object name="endLevelFlag" x="3072" y="2144" width="32" height="32"/>
+  <object name="tutorialSign" x="192" y="912" width="160" height="96">
    <properties>
     <property name="message" value="message2"/>
    </properties>
