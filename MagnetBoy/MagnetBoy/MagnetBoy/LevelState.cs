@@ -298,6 +298,32 @@ namespace MagnetBoy
                                 levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Purple));
                             }
                             break;
+                        case "tutorialSign":
+                            if (obj.Properties["message"].Value == "message1")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)1));
+                            }
+                            else if (obj.Properties["message"].Value == "message2")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)2));
+                            }
+                            else if (obj.Properties["message"].Value == "message3")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)3));
+                            }
+                            else if (obj.Properties["message"].Value == "message4")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)4));
+                            }
+                            else if (obj.Properties["message"].Value == "message5")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)5));
+                            }
+                            else if (obj.Properties["message"].Value == "message6")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)6));
+                            }
+                            break;
                         default:
                             break;
                     }
