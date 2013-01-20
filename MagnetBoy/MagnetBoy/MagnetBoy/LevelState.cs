@@ -233,7 +233,70 @@ namespace MagnetBoy
                             //add boss code
                             break;
                         case "flagDoor":
-                            levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            if (obj.Properties["color"].Value == "blue")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            }
+                            else if (obj.Properties["color"].Value == "green")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Green));
+                            }
+                            else if (obj.Properties["color"].Value == "red")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Red));
+                            }
+                            else if (obj.Properties["color"].Value == "yellow")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Yellow));
+                            }
+                            else if (obj.Properties["color"].Value == "purple")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Purple));
+                            }
+                            break;
+                        case "flagLock":
+                            if (obj.Properties["color"].Value == "blue")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            }
+                            else if (obj.Properties["color"].Value == "green")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Green));
+                            }
+                            else if (obj.Properties["color"].Value == "red")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Red));
+                            }
+                            else if (obj.Properties["color"].Value == "yellow")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Yellow));
+                            }
+                            else if (obj.Properties["color"].Value == "purple")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Purple));
+                            }
+                            break;
+                        case "flagKey":
+                            if (obj.Properties["color"].Value == "blue")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            }
+                            else if (obj.Properties["color"].Value == "green")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Green));
+                            }
+                            else if (obj.Properties["color"].Value == "red")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Red));
+                            }
+                            else if (obj.Properties["color"].Value == "yellow")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Yellow));
+                            }
+                            else if (obj.Properties["color"].Value == "purple")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Purple));
+                            }
                             break;
                         default:
                             break;
