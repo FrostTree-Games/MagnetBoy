@@ -162,6 +162,7 @@
     <Compile Include="Shooter.cs" />
     <Compile Include="Spikes.cs" />
     <Compile Include="TitleScreenMenuState.cs" />
+    <Compile Include="TutorialSign.cs" />
     <Compile Include="Walk.cs" />
     <Compile Include="WalkingEnemy.cs" />
     <Compile Include="WallMagnet.cs" />
