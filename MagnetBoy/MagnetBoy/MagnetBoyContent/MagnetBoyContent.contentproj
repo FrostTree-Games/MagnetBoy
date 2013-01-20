@@ -76,6 +76,7 @@
       <Name>testFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <Compile Include="theLab.tmx">
       <Name>theLab</Name>

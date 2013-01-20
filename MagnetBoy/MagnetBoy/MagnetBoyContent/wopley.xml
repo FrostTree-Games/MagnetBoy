@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>wopleyIdle</name>
+      <sheetName>wopleySheet</sheetName>
+      <sheet Type="System.String">spikes</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>160</frameWidth>
+      <frameHeight>160</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1000</frameSpeed>
+    </Item>
+  </Asset>
+</XnaContent>
