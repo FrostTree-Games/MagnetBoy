@@ -91,8 +91,11 @@ namespace MagnetBoy
 
                 currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
             }
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> origin/Eric-Dev
             return;
         }
 
