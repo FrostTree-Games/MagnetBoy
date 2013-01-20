@@ -69,8 +69,11 @@ namespace MagnetBoy
 
                 currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
             }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Boss code
             return;
         }
 
