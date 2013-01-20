@@ -13,7 +13,13 @@ namespace MagnetBoy
         protected int currentFrame = 0;
         protected double lastFrameIncrement = 0;
 
+        private string currentAnimation = "wopleyIdle";
+
         public bool dying = false;
+
+        double walkSwitchTimer = 0;
+        bool walkingLeft = false;
+        const float walkerSpeed = 0.09f;
 
         private BulletPool.BulletType organBullet;
 
@@ -45,45 +51,58 @@ namespace MagnetBoy
 
         public override void update(GameTime currentTime)
         {
+            // if the last frame time hasn't been set, set it now
+            if (lastFrameIncrement == 0)
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            // update the current frame if needed
+            if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
+            }
             return;
         }
 
         public override void draw(SpriteBatch sb)
         {
-            sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.Yellow);
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
 
             return;
         }
 
-        private void walk()
+        private void walk(GameTime currentTime)
         {
             if (walkSwitchTimer == 0)
             {
                 walkSwitchTimer = currentTime.TotalGameTime.TotalMilliseconds;
             }
 
-            if (parent.onTheGround)
+            if (onTheGround)
             {
-                if (Math.Abs(parent.velocity.X) < 0.01f)
+                if (Math.Abs(velocity.X) < 0.01f)
                 {
                     walkingLeft = !walkingLeft;
                 }
 
-                if (walkingLeft && parent.velocity.X > -walkerSpeed)
+                if (walkingLeft && velocity.X > -walkerSpeed)
                 {
-                    parent.acceleration.X = -0.001f;
+                    acceleration.X = -0.001f;
                 }
-                else if (parent.velocity.X < walkerSpeed)
+                else if (velocity.X < walkerSpeed)
                 {
-                    parent.acceleration.X = 0.001f;
+                    acceleration.X = 0.001f;
                 }
-                else if (parent.velocity.X < -walkerSpeed)
+                else if (velocity.X < -walkerSpeed)
                 {
-                    parent.velocity.X = -walkerSpeed;
+                    velocity.X = -walkerSpeed;
                 }
-                else if (parent.velocity.X > walkerSpeed)
+                else if (velocity.X > walkerSpeed)
                 {
-                    parent.velocity.X = walkerSpeed;
+                    velocity.X = walkerSpeed;
 
                 }
             }

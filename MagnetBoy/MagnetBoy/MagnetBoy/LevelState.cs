@@ -230,7 +230,7 @@ namespace MagnetBoy
                             levelEntities.Add(new HealthItem(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         case "boss":
-                            //add boss code
+                            levelEntities.Add(new Boss(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         case "flagDoor":
                             levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
