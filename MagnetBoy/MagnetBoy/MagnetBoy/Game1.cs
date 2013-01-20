@@ -45,8 +45,9 @@ namespace MagnetBoy
         {
             graphics = new GraphicsDeviceManager(this);
 
-            //graphics.PreferredBackBufferWidth = 720;
-            //graphics.PreferredBackBufferHeight = 480;
+            //game runs in 480p widescreen
+            graphics.PreferredBackBufferWidth = 720;
+            graphics.PreferredBackBufferHeight = 480;
 
             //graphics.IsFullScreen = true;
 
@@ -101,6 +102,7 @@ namespace MagnetBoy
             aFac.pushSheet("heartSheet");
             aFac.pushSheet("dansParticleSheet");
             aFac.pushSheet("flagDoorSheet");
+            aFac.pushSheet("flagKeySheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -119,6 +121,7 @@ namespace MagnetBoy
             aFac.pushAnimation("heart");
             aFac.pushAnimation("dansParticleAnims");
             aFac.pushAnimation("flagDoorAnims");
+            aFac.pushAnimation("flagKeyAnims");
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>flagKeyA</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    <Item>
+      <name>flagKeyB</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>32</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    <Item>
+      <name>flagKeyC</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>64</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    <Item>
+      <name>flagKeyD</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>96</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    <Item>
+      <name>flagKeyE</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>128</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+
+    
+    <Item>
+      <name>flagLockA</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>160</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    <Item>
+      <name>flagLockB</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>192</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    <Item>
+      <name>flagLockC</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>224</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    <Item>
+      <name>flagLockD</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>256</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    <Item>
+      <name>flagLockE</name>
+      <sheetName>flagKeySheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>0</initalX>
+      <initalY>288</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>2</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+  </Asset>
+</XnaContent>

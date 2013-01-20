@@ -57,6 +57,9 @@ namespace MagnetBoy
             {
                 switch (levelName)
                 {
+                    case "TitleScreenMenu":
+                        currentNode = new TitleScreenMenuState(manager);
+                        break;
                     case "BetaMenu":
                         currentNode = new BetaMenuState(manager);
                         break;
