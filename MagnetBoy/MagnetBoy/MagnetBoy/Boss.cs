@@ -109,7 +109,7 @@ namespace MagnetBoy
         }
     }
 
-    private class bossShield : Entity
+    public class bossShield : Entity
     {
         protected int currentFrame = 0;
         protected double lastFrameIncrement = 0;
