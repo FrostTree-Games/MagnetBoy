@@ -30,6 +30,8 @@ namespace MagnetBoy
         private double playerBlinkTimer = 0.0;
         private string previousAnimation = null;
 
+        private const float magnetForceValue = 1.0f;
+
         public Player()
         {
             creation();
@@ -177,7 +179,7 @@ namespace MagnetBoy
 
             if ((GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)) && LevelState.playerStamina > 0.0f)
             {
-                LevelState.playerStamina -= 2.5f;
+                LevelState.playerStamina -= LevelState.playerStaminaDepleteRate;
                 if (LevelState.playerStamina < 0.0f)
                 {
                     LevelState.playerStamina = 0.0f;
@@ -302,7 +304,7 @@ namespace MagnetBoy
 
                                 Vector2 newForce = new Vector2((float)(force * Math.Cos(directionAngle)), (float)(force * Math.Sin(directionAngle)));
 
-                                velocity += newForce * -1;
+                                velocity += newForce * -1 * magnetForceValue;
 
                                 Vector2.Clamp(velocity, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
                             }
@@ -314,7 +316,7 @@ namespace MagnetBoy
             {
                 isPushing = false;
 
-                LevelState.playerStamina += 2.0f;
+                LevelState.playerStamina += LevelState.playerStaminaGrowthRate;
 
                 if (LevelState.playerStamina > 100.0f)
                 {
