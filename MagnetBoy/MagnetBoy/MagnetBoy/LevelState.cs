@@ -528,9 +528,9 @@ namespace MagnetBoy
                 }
             }
 
-            AnimationFactory.drawAnimationFrame(spriteBatch, magnetWopleyAnim, magnetWopleyFrame, wopleyPos);
-            AnimationFactory.drawAnimationFrame(spriteBatch, chaserAnim, chaserFrame, chaserPos);
-
+            AnimationFactory.drawAnimationFrame(spriteBatch, magnetWopleyAnim, magnetWopleyFrame, wopleyPos, AnimationFactory.DepthLayer0);
+            AnimationFactory.drawAnimationFrame(spriteBatch, chaserAnim, chaserFrame, chaserPos, AnimationFactory.DepthLayer0);
+            
             spriteBatch.End();
         }
 
@@ -550,7 +550,7 @@ namespace MagnetBoy
 
             Game1.graphics.GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.Black, 0.4f));
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             for (int i = -5; i < (Game1.mapView.Width / backgroundTile.Bounds.Width) + 5; i++)
             {
                 for (int j = -5; j < (Game1.mapView.Height / backgroundTile.Bounds.Height) + 5; j++)
@@ -577,12 +577,12 @@ namespace MagnetBoy
             levelParticlePool.drawPool(spriteBatch);
             spriteBatch.End();
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             if (currentPlayerHealth <= maxPlayerHealth)
             {
                 for (int i = 0; i < currentPlayerHealth; i++)
                 {
-                    AnimationFactory.drawAnimationFrame(spriteBatch,"heartIdle",0, new Vector2(i*32,50));
+                    AnimationFactory.drawAnimationFrame(spriteBatch, "heartIdle", 0, new Vector2(i * 32, 50), AnimationFactory.DepthLayer0);
                 }
             }
             spriteBatch.End();
@@ -596,10 +596,10 @@ namespace MagnetBoy
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(Game1.graphics.GraphicsDevice.Viewport.Bounds.Width / 2, Game1.graphics.GraphicsDevice.Viewport.Bounds.Height / 2, 0.0f));
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, arrowRotation);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero, AnimationFactory.DepthLayer0);
             spriteBatch.End();
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             spriteBatch.DrawString(Game1.gameFontText, "Stamina: " + LevelState.playerStamina, new Vector2(32, 16), Color.White);
             spriteBatch.End();
 

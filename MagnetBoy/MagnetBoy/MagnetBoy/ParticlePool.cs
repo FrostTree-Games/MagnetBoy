@@ -168,11 +168,11 @@ namespace MagnetBoy
                 switch (p.type)
                 {
                     case ParticleType.BlueSpark:
-                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevD - new Vector2(4f, 4f), p.colorPrevD);
-                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevC - new Vector2(4f, 4f), p.colorPrevC);
-                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevB - new Vector2(4f, 4f), p.colorPrevB);
-                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevA - new Vector2(4f, 4f), p.colorPrevA);
-                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.pos - new Vector2(4f, 4f), p.color);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevD - new Vector2(4f, 4f), p.colorPrevD, AnimationFactory.DepthLayer0);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevC - new Vector2(4f, 4f), p.colorPrevC, AnimationFactory.DepthLayer0);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevB - new Vector2(4f, 4f), p.colorPrevB, AnimationFactory.DepthLayer0);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevA - new Vector2(4f, 4f), p.colorPrevA, AnimationFactory.DepthLayer0);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.pos - new Vector2(4f, 4f), p.color, AnimationFactory.DepthLayer0);
                         break;
                     default:
                         break;

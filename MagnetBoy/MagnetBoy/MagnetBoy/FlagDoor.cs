@@ -74,12 +74,12 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, "flagDoor", 0, Position, LevelState.getFlagXNAColor(doorColor));
+            AnimationFactory.drawAnimationFrame(sb, "flagDoor", 0, Position, LevelState.getFlagXNAColor(doorColor), AnimationFactory.DepthLayer0);
 
             for (int i = 0; i < doorHeight; i++)
             {
                 Vector2 pos = Position + new Vector2(0, 32 + (i * 8f));
-                AnimationFactory.drawAnimationFrame(sb, "flagDoorWall", 0, pos);
+                AnimationFactory.drawAnimationFrame(sb, "flagDoorWall", 0, pos, AnimationFactory.DepthLayer0);
             }
         }
     }

@@ -138,7 +138,7 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color));
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
         }
     }
 
@@ -196,7 +196,7 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color));
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
         }
 
         public void open()

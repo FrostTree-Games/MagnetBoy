@@ -106,7 +106,7 @@ namespace MagnetBoy
                 sb.DrawString(Game1.gameFontText, levelList[i].levelName, new Vector2(64, 64 * (i + 1)), Color.Black);
             }
 
-            AnimationFactory.drawAnimationFrame(sb, "playerWalkRight", 0, new Vector2(32, 64 * (menuOption + 1)));
+            AnimationFactory.drawAnimationFrame(sb, "playerWalkRight", 0, new Vector2(32, 64 * (menuOption + 1)), AnimationFactory.DepthLayer0);
             sb.End();
         }
     }

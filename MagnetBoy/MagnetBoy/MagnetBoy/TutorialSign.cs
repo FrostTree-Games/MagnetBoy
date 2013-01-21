@@ -116,7 +116,7 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, 0, Position, Color.Lerp(Color.Lerp(Color.Black, Color.DarkGray, 0.5f), Color.White, (float)lightValue));
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, 0, Position, Color.Lerp(Color.Lerp(Color.Black, Color.DarkGray, 0.5f), Color.White, (float)lightValue), AnimationFactory.DepthLayer3);
         }
     }
 }

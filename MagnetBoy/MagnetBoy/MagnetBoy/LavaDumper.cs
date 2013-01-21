@@ -47,7 +47,7 @@ namespace MagnetBoy
             Vector2 newPos = Position;
             newPos.Y -= 3;
 
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, newPos);
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, newPos, AnimationFactory.DepthLayer2);
         }
     }
 }
