@@ -30,6 +30,8 @@ namespace MagnetBoy
 
         public static SpriteFont gameFontText = null;
 
+        public static Effect tintRedEffect = null;
+
         public static Song testSong = null;
 
         private AnimationFactory aFac = null;
@@ -132,6 +134,9 @@ namespace MagnetBoy
             aFac.pushAnimation("brain");
             aFac.pushAnimation("lung");
             aFac.pushAnimation("tutorialSignsAnims");
+
+            tintRedEffect = this.Content.Load<Effect>("TintRed");
+            tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
 
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");

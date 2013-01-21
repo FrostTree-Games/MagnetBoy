@@ -569,7 +569,7 @@ namespace MagnetBoy
             spriteBatch.End();
 
             // draw sprites
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, mx);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, Game1.tintRedEffect, mx);
             foreach (Entity a in levelEntities)
             {
                 a.draw(spriteBatch);
