@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="87" height="28" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test tileset" tilewidth="32" tileheight="32">
+  <properties>
+   <property name="solid" value="1"/>
+  </properties>
+  <image source="terribleTileSheet.png" width="96" height="160"/>
+  <tile id="0">
+   <properties>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="16" name="FactoryTileSheet" tilewidth="32" tileheight="32">
+  <image source="FactoryTileSheet.png" width="224" height="160"/>
+ </tileset>
+ <layer name="test layer" width="87" height="28">
+  <properties>
+   <property name="solid" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmulOwzAMgP0IY/wYl0pAgoHEsfd/OpofEZ7lM3W7FmHJQlod1/niHE45AMDhX7v0xWn3OuqHoccV9Ceinj5lqcbmEWwpK+AV4frp6FOWFCUWD9svyBnHJXJySa5VihKrh21E6ji8Q968okyXYrcfdSfoFbIrSszZbKvcB+0982LJfKxcb4HnNcA5syLYTWX7PKFtlnjz627U61GfHG0lrhyzotjdKLFZsT4oz+eWxkXjYOVNgd9cjKz5Xra9PjnfdZx6+Gq5J6mVWxG2Uzj0+qD6DedzivPd5gHHeC88y4ovgy09h3D77CXylmPM5VodI7z2ZcWXwZa2sWyyYo+wjfjJiK/lG86zrbKte9kuwU9GfLgWq+e5xreHLZ1v3LreyxavN3StyWKSyZarcZu/Ne1lNE6cAxqTyN3IcYIfOtbS3UGrRax6o9k1v9L76/MB+NqwxU4Vn+ukOHFbek7w9oH2B9vXteUN4nmWeSfT6nTJn/Ycx+SdV1zbOerjKtE8m6MGtup06XmB2PqHZc7+rFm89XyBfraZcURtLyW1xjmBr8Ys4Gdr1Z9XjO3JaINVs7X6gmOj9SEXOxcr95tU43juWrLudej7LL8D0oPyl/Mt9UPaG+i94CDEGok/Qzm20XPV3DFqe65233pp5dhG1uDWRhsTL39tTLfGlXLsPbNaZwnvN7fIe9fONZqja5EtcN0i261wrRr5rhP57kN5ZL1jK1wt9f5/jjVOf4WHR38AejqiqQ==
+  </data>
+ </layer>
+ <objectgroup name="test object" width="87" height="28">
+  <object name="player" x="128" y="192" width="34" height="31"/>
+  <object name="angrySaw" x="1280" y="608" width="19" height="19"/>
+  <object name="lavaDumper" x="848" y="160" width="32" height="32"/>
+  <object name="spikes_up" x="512" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="480" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="1088" y="448" width="32" height="32"/>
+  <object name="lava" x="800" y="288" width="32" height="32"/>
+  <object name="lava" x="832" y="288" width="32" height="32"/>
+  <object name="endLevelFlag" x="2560" y="576" width="32" height="32"/>
+  <object name="lava" x="896" y="288" width="32" height="32"/>
+  <object name="lava" x="864" y="288" width="32" height="32"/>
+  <object name="lolrus" x="762" y="558" width="56" height="33"/>
+  <object name="lolrus" x="456" y="785" width="56" height="33"/>
+  <object name="lavaDumper" x="1872" y="64" width="32" height="32"/>
+  <object name="lavaDumper" x="2032" y="64" width="32" height="32"/>
+  <object name="lava" x="1856" y="608" width="32" height="32"/>
+  <object name="lava" x="1888" y="608" width="32" height="32"/>
+  <object name="lava" x="2016" y="608" width="32" height="32"/>
+  <object name="lava" x="2048" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="128" y="800" width="32" height="32"/>
+  <object name="spikes_up" x="802" y="832" width="32" height="32"/>
+ </objectgroup>
+</map>
