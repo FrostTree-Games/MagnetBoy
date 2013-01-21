@@ -132,7 +132,7 @@
   <object name="lavaDumper" x="2368" y="640" width="32" height="32"/>
   <object name="lavaDumper" x="2368" y="896" width="32" height="32"/>
   <object name="lavaDumper" x="2432" y="640" width="32" height="32"/>
-  <object name="boss" x="9504" y="4320" width="32" height="32"/>
+  <object name="boss" x="9376" y="4192" width="32" height="32"/>
   <object name="player" x="8750" y="4311" width="20" height="34"/>
  </objectgroup>
 </map>

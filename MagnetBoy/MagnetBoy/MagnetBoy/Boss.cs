@@ -23,6 +23,11 @@ namespace MagnetBoy
 
         private BulletPool.BulletType organBullet;
 
+        //after he walks into the scene, enabled becomes true
+        private bool isEnabled = false;
+
+        private double interval = 0.0;
+
         public Boss()
         {
             creation();
@@ -64,6 +69,8 @@ namespace MagnetBoy
 
                 currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
             }
+
+
             return;
         }
 
