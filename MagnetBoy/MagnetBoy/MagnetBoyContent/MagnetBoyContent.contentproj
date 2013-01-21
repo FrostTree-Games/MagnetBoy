@@ -458,6 +458,7 @@
       <Name>heartProjectile</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <Compile Include="heartSheet2.png">
       <Name>heartSheet2</Name>
