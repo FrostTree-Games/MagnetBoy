@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    
+    
+    <Item>
+      <name>brainIdle</name>
+      <sheetName>brainSheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>10</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+    <Item>
+      <name>brainDie</name>
+      <sheetName>brainSheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>32</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>10</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+  </Asset>
+</XnaContent>
