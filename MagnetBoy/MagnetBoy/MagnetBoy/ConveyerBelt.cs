@@ -53,7 +53,7 @@ namespace MagnetBoy
 
         public override void draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, AnimationFactory.DepthLayer1);
         }
         
         public override void update(Microsoft.Xna.Framework.GameTime currentTime)

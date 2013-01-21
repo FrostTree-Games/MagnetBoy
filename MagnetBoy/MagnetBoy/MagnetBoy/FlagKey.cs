@@ -96,6 +96,7 @@ namespace MagnetBoy
             step.Y += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.Y);
 
             checkForWalls(LevelState.CurrentLevel, ref step);
+            checkForSolidObjects(ref step);
 
             horizontal_pos = step.X;
             vertical_pos = step.Y;
@@ -137,7 +138,7 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color));
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
         }
     }
 
@@ -195,7 +196,7 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color));
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
         }
 
         public void open()

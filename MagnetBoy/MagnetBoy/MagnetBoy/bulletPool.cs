@@ -207,25 +207,25 @@ namespace MagnetBoy
             switch (type)
             {
                 case BulletPool.BulletType.TestBullet:
-                    AnimationFactory.drawAnimationFrame(sb, "testBullet", 0, Position, HitBox, rotation);
+                    AnimationFactory.drawAnimationFrame(sb, "testBullet", 0, Position, HitBox, rotation, AnimationFactory.DepthLayer0);
                     break;
                 case BulletPool.BulletType.LavaBlob:
-                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation, AnimationFactory.DepthLayer0);
                     break;
                 case BulletPool.BulletType.Bucket:
-                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation, AnimationFactory.DepthLayer0);
                     break;
                 case BulletPool.BulletType.Heart:
-                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation, AnimationFactory.DepthLayer0);
                     break;
                 case BulletPool.BulletType.Lung:
-                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation, AnimationFactory.DepthLayer0);
                     break;
                 case BulletPool.BulletType.Brain:
-                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation, AnimationFactory.DepthLayer0);
                     break;
                 default:
-                    AnimationFactory.drawAnimationFrame(sb, "testBullet", 0, Position);
+                    AnimationFactory.drawAnimationFrame(sb, "testBullet", 0, Position, AnimationFactory.DepthLayer0);
                     break;
             }
         }

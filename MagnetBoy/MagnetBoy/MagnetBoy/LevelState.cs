@@ -233,7 +233,96 @@ namespace MagnetBoy
                             levelEntities.Add(new Boss(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         case "flagDoor":
-                            levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            if (obj.Properties["color"].Value == "blue")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            }
+                            else if (obj.Properties["color"].Value == "green")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Green));
+                            }
+                            else if (obj.Properties["color"].Value == "red")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Red));
+                            }
+                            else if (obj.Properties["color"].Value == "yellow")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Yellow));
+                            }
+                            else if (obj.Properties["color"].Value == "purple")
+                            {
+                                levelEntities.Add(new FlagDoor(obj.Bounds.X, obj.Bounds.Y, FlagColor.Purple));
+                            }
+                            break;
+                        case "flagLock":
+                            if (obj.Properties["color"].Value == "blue")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            }
+                            else if (obj.Properties["color"].Value == "green")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Green));
+                            }
+                            else if (obj.Properties["color"].Value == "red")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Red));
+                            }
+                            else if (obj.Properties["color"].Value == "yellow")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Yellow));
+                            }
+                            else if (obj.Properties["color"].Value == "purple")
+                            {
+                                levelEntities.Add(new FlagLock(obj.Bounds.X, obj.Bounds.Y, FlagColor.Purple));
+                            }
+                            break;
+                        case "flagKey":
+                            if (obj.Properties["color"].Value == "blue")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            }
+                            else if (obj.Properties["color"].Value == "green")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Green));
+                            }
+                            else if (obj.Properties["color"].Value == "red")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Red));
+                            }
+                            else if (obj.Properties["color"].Value == "yellow")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Yellow));
+                            }
+                            else if (obj.Properties["color"].Value == "purple")
+                            {
+                                levelEntities.Add(new FlagKey(obj.Bounds.X, obj.Bounds.Y, FlagColor.Purple));
+                            }
+                            break;
+                        case "tutorialSign":
+                            if (obj.Properties["message"].Value == "message1")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)1));
+                            }
+                            else if (obj.Properties["message"].Value == "message2")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)2));
+                            }
+                            else if (obj.Properties["message"].Value == "message3")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)3));
+                            }
+                            else if (obj.Properties["message"].Value == "message4")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)4));
+                            }
+                            else if (obj.Properties["message"].Value == "message5")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)5));
+                            }
+                            else if (obj.Properties["message"].Value == "message6")
+                            {
+                                levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)6));
+                            }
                             break;
                         default:
                             break;
@@ -439,9 +528,9 @@ namespace MagnetBoy
                 }
             }
 
-            AnimationFactory.drawAnimationFrame(spriteBatch, magnetWopleyAnim, magnetWopleyFrame, wopleyPos);
-            AnimationFactory.drawAnimationFrame(spriteBatch, chaserAnim, chaserFrame, chaserPos);
-
+            AnimationFactory.drawAnimationFrame(spriteBatch, magnetWopleyAnim, magnetWopleyFrame, wopleyPos, AnimationFactory.DepthLayer0);
+            AnimationFactory.drawAnimationFrame(spriteBatch, chaserAnim, chaserFrame, chaserPos, AnimationFactory.DepthLayer0);
+            
             spriteBatch.End();
         }
 
@@ -461,7 +550,7 @@ namespace MagnetBoy
 
             Game1.graphics.GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.Black, 0.4f));
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             for (int i = -5; i < (Game1.mapView.Width / backgroundTile.Bounds.Width) + 5; i++)
             {
                 for (int j = -5; j < (Game1.mapView.Height / backgroundTile.Bounds.Height) + 5; j++)
@@ -488,12 +577,12 @@ namespace MagnetBoy
             levelParticlePool.drawPool(spriteBatch);
             spriteBatch.End();
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             if (currentPlayerHealth <= maxPlayerHealth)
             {
                 for (int i = 0; i < currentPlayerHealth; i++)
                 {
-                    AnimationFactory.drawAnimationFrame(spriteBatch,"heartIdle",0, new Vector2(i*32,50));
+                    AnimationFactory.drawAnimationFrame(spriteBatch, "heartIdle", 0, new Vector2(i * 32, 50), AnimationFactory.DepthLayer0);
                 }
             }
             spriteBatch.End();
@@ -507,10 +596,10 @@ namespace MagnetBoy
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(Game1.graphics.GraphicsDevice.Viewport.Bounds.Width / 2, Game1.graphics.GraphicsDevice.Viewport.Bounds.Height / 2, 0.0f));
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, arrowRotation);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero, AnimationFactory.DepthLayer0);
             spriteBatch.End();
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             spriteBatch.DrawString(Game1.gameFontText, "Stamina: " + LevelState.playerStamina, new Vector2(32, 16), Color.White);
             spriteBatch.End();
 

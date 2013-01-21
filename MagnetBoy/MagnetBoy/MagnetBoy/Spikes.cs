@@ -36,7 +36,7 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, "spikes", 0, Position);
+            AnimationFactory.drawAnimationFrame(sb, "spikes", 0, Position, AnimationFactory.DepthLayer2);
         }
     }
 }

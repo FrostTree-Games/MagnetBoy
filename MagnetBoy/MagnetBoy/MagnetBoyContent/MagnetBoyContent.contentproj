@@ -418,6 +418,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tutorialSignsSheet.png">
+      <Name>tutorialSignsSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="wopley.xml">
       <Name>wopley</Name>
       <Importer>XmlImporter</Importer>
@@ -427,6 +434,13 @@
       <Name>wopleySheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tutorialSignsAnims.xml">
+      <Name>tutorialSignsAnims</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

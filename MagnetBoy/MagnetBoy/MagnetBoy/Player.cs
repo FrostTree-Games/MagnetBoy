@@ -383,7 +383,7 @@ namespace MagnetBoy
         {
             if (!(playerBlink && ((int)(playerBlinkTimer / 100) % 2 == 0)))
             {
-                AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position);
+                AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, AnimationFactory.DepthLayer1);
             }
 
             if (isPushing)
