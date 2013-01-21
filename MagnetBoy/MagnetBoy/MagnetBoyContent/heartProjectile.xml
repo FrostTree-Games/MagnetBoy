@@ -5,7 +5,7 @@
     
     <Item>
       <name>heartIdle</name>
-      <sheetName>heartSheet</sheetName>
+      <sheetName>heartSheet2</sheetName>
       <sheet Type="System.String">asdfasdf</sheet>
       <initalX>0</initalX>
       <initalY>0</initalY>
@@ -16,7 +16,7 @@
     </Item>
     <Item>
       <name>heartDie</name>
-      <sheetName>heartSheet</sheetName>
+      <sheetName>heartSheet2</sheetName>
       <sheet Type="System.String">asdfasdf</sheet>
       <initalX>0</initalX>
       <initalY>32</initalY>

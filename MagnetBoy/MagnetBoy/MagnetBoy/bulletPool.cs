@@ -98,6 +98,16 @@ namespace MagnetBoy
                     currentFrame = 0;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
                     break;
+                case BulletPool.BulletType.Heart:
+                    width = 31.5f;
+                    height = 31.5f;
+                    velocity.X = (float)(testBulletVelocity * Math.Cos(direction));
+                    velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
+                    rotation = direction;
+                    currentAnimation = "heartIdle";
+                    currentFrame = 0;
+                    lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    break;
                 default:
                     inUse = false;
                     death();
@@ -205,6 +215,15 @@ namespace MagnetBoy
                 case BulletPool.BulletType.Bucket:
                     AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
                     break;
+                case BulletPool.BulletType.Heart:
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
+                    break;
+                case BulletPool.BulletType.Lung:
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
+                    break;
+                case BulletPool.BulletType.Brain:
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation);
+                    break;
                 default:
                     AnimationFactory.drawAnimationFrame(sb, "testBullet", 0, Position);
                     break;
@@ -218,7 +237,10 @@ namespace MagnetBoy
         {
             TestBullet,
             LavaBlob,
-            Bucket
+            Bucket,
+            Heart,
+            Brain,
+            Lung
         }
 
         private static Bullet[] pool = null;
