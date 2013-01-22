@@ -21,11 +21,13 @@ namespace MagnetBoy
         bool walkingLeft = false;
         const float walkerSpeed = 0.09f;
 
-        private BulletPool.BulletType organBullet = BulletPool.BulletType.Heart;
+        private BulletPool.BulletType Heart = BulletPool.BulletType.Heart;
+        private BulletPool.BulletType Brain = BulletPool.BulletType.Brain;
+        private BulletPool.BulletType Lung = BulletPool.BulletType.Lung;
 
         //after he walks into the scene, enabled becomes true
         private bool isEnabled = false;
-        private double interval = 0.0;
+        private double interval = 500;
         private double timeSinceLastShot= 0.0;
 
         public Boss()
@@ -58,23 +60,20 @@ namespace MagnetBoy
         {
             timeSinceLastShot += currentTime.ElapsedGameTime.Milliseconds;
 
-            if( timeSinceLastShot > interval)
+            if( timeSinceLastShot > interval )
             {
                 float direction = 0.0f;
-
-                if (velocity.X < 0.0f)
-                {
-                    direction += (float)(Math.PI);
-                }
+                
+                direction += (float)(0);
 
                 Vector2 bulletPosition = Position;
 
                 bulletPosition.Y += 4;
 
-                bulletPosition.X += HitBox.X;
-              
-                BulletPool.pushBullet(organBullet, bulletPosition.X, bulletPosition.Y, currentTime, direction);
-
+                BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+               // BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+               // BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+             
                 timeSinceLastShot = 0;
             }
 

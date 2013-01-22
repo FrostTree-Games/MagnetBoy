@@ -101,11 +101,34 @@ namespace MagnetBoy
                 case BulletPool.BulletType.Heart:
                     width = 31.5f;
                     height = 31.5f;
-                    velocity.X = (float)(testBulletVelocity * Math.Cos(direction));
-                    velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
+                    velocity.X = -0.1f;
+                    velocity.Y = -0.2f;
                     rotation = direction;
-                    currentAnimation = "heartIdle";
+                    currentAnimation = "heartIdle2";
                     currentFrame = 0;
+                    acceleration.Y = 0.0005f;
+                    lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    break;
+                case BulletPool.BulletType.Brain:
+                    width = 31.5f;
+                    height = 31.5f;
+                    velocity.X = -0.1f;
+                    velocity.Y = -0.2f;
+                    rotation = direction;
+                    currentAnimation = "brainIdle";
+                    currentFrame = 0;
+                    acceleration.Y = 0.0007f;
+                    lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    break;
+                case BulletPool.BulletType.Lung:
+                    width = 31.5f;
+                    height = 31.5f;
+                    velocity.X = -0.1f;
+                    velocity.Y = -0.2f;
+                    rotation = direction;
+                    currentAnimation = "lungIdle";
+                    currentFrame = 0;
+                    acceleration.Y = 0.0003f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
                     break;
                 default:
@@ -122,9 +145,10 @@ namespace MagnetBoy
             timePassed += delta;
 
             // animation
-            if (type == BulletPool.BulletType.Bucket || type == BulletPool.BulletType.LavaBlob)
+            if (type == BulletPool.BulletType.Bucket || type == BulletPool.BulletType.LavaBlob || type == BulletPool.BulletType.TestBullet)
             {
                 // if the last frame time hasn't been set, set it now
+                
                 if (lastFrameIncrement == 0)
                 {
                     lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
@@ -147,22 +171,19 @@ namespace MagnetBoy
             }
 
             // damage player
-            if (type == BulletPool.BulletType.TestBullet || type == BulletPool.BulletType.LavaBlob)
+            foreach (Entity en in globalEntityList)
             {
-                foreach (Entity en in globalEntityList)
+                if (en is Player)
                 {
-                    if (en is Player)
+                    if (hitTest(en))
                     {
-                        if (hitTest(en))
+                        if (en.CenterPosition.X - CenterPosition.X < 0)
                         {
-                            if (en.CenterPosition.X - CenterPosition.X < 0)
-                            {
-                                ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
-                            }
-                            else
-                            {
-                                ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
-                            }
+                            ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                        }
+                        else
+                        {
+                            ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
                         }
                     }
                 }
@@ -170,6 +191,21 @@ namespace MagnetBoy
 
             horizontal_pos += (float)(velocity.X * delta);
             vertical_pos += (float)(velocity.Y * delta);
+
+            if (type == BulletPool.BulletType.Heart || type == BulletPool.BulletType.Brain || type == BulletPool.BulletType.Lung)
+            {
+                Vector2 keyAcceleration = Vector2.Zero;
+                Vector2 step = new Vector2(horizontal_pos, vertical_pos);
+                Vector2 finalAcceleration = acceleration + keyAcceleration;
+
+                velocity.X += (float)(finalAcceleration.X * delta);
+                velocity.Y += (float)(finalAcceleration.Y * delta);
+
+                step.X += (float)(((velocity.X) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.X);
+                step.Y += (float)(((velocity.Y) * delta) + (0.5) * (Math.Pow(delta, 2.0)) * finalAcceleration.Y);
+                horizontal_pos = step.X;
+                vertical_pos = step.Y;
+            }
 
             if ((timePassed > maxLifeTime || LevelState.isSolidMap(CenterPosition)) && !exploding)
             {
