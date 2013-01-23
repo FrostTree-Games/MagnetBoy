@@ -41,7 +41,7 @@ namespace MagnetBoy
         public const float playerStaminaDepleteRate = 2.5f;
         public const float playerStaminaGrowthRate = 2.5f;
 
-        protected static int maxPlayerHealth = 5;
+        public static int maxPlayerHealth = 5;
         public static int currentPlayerHealth = 0;
 
         private Texture2D backgroundTile = null;

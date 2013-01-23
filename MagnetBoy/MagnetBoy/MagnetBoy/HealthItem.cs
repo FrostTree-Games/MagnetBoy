@@ -47,6 +47,11 @@ namespace MagnetBoy
                     if (LevelState.currentPlayerHealth < 7 && LevelState.currentPlayerHealth > 0)
                     {
                         LevelState.currentPlayerHealth = LevelState.currentPlayerHealth + 1;
+
+                        if (LevelState.currentPlayerHealth > LevelState.maxPlayerHealth)
+                        {
+                            LevelState.currentPlayerHealth = LevelState.maxPlayerHealth;
+                        }
                     }
                 }
             }
