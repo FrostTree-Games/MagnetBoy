@@ -66,9 +66,12 @@ namespace MagnetBoy
         private bool upPressed = false;
         private bool leftPressed = false;
         private bool rightPressed = false;
+        private bool confirmPressed = false;
 
         private List<TitleMenuOption> menuList;
         int selectedMenuItem;
+
+        private Vector2 checkerBoardSlide;
 
         public TitleScreenMenuState(ContentManager newManager)
         {
@@ -85,6 +88,8 @@ namespace MagnetBoy
             menuList.Add(new TitleMenuOption("CONTINUE"));
             menuList.Add(new TitleMenuOption("OPTION"));
             menuList.Add(new TitleMenuOption("EXIT"));
+
+            checkerBoardSlide = new Vector2(-720/2, -480/2);
 
             selectedMenuItem = 0;
         }
@@ -133,6 +138,29 @@ namespace MagnetBoy
                 selectedMenuItem += menuList.Count;
             }
 
+            if (GameInput.isButtonDown(GameInput.PlayerButton.Confirm))
+            {
+                confirmPressed = true;
+            }
+            else if (confirmPressed == true)
+            {
+                confirmPressed = false;
+
+                switch (menuList[selectedMenuItem].text)
+                {
+                    case "CONTINUE":
+                        AudioFactory.stopSong();
+                        AudioFactory.playSFX("sfx/menu");
+                        GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+                        break;
+                    case "EXIT":
+                        Game1.ExitGame = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             for (int i = 0; i < menuList.Count; i++)
             {
                 if (i == selectedMenuItem)
@@ -146,16 +174,36 @@ namespace MagnetBoy
 
                 menuList[i].update(currentTime);
             }
+
+            if (GameInput.isButtonDown(GameInput.PlayerButton.Push))
+            {
+                if (GameInput.P1MouseDirectionNormal.X != float.NaN)
+                {
+                    checkerBoardSlide.X += GameInput.P1MouseDirectionNormal.X;
+                }
+
+                if (GameInput.P1MouseDirectionNormal.Y != float.NaN)
+                {
+                    checkerBoardSlide.Y += GameInput.P1MouseDirectionNormal.Y;
+                }
+            }
+
+            Game1.grayCheckerBoard.Parameters["slideX"].SetValue(checkerBoardSlide.X);
+            Game1.grayCheckerBoard.Parameters["slideY"].SetValue(checkerBoardSlide.Y);
         }
 
         public override void draw(SpriteBatch spriteBatch)
         {
             Game1.graphics.GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.White, 0.4f));
 
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, Game1.grayCheckerBoard, Matrix.CreateScale(720, 480, 0));
+            spriteBatch.Draw(Game1.globalBlackPixel, Vector2.Zero, Color.White);
+            spriteBatch.End();
+
             spriteBatch.Begin();
             for (int i = 0; i < menuList.Count; i++)
             {
-                spriteBatch.DrawString(Game1.gameFontText, menuList[i].text, new Vector2((float)(300 + (25 * menuList[i].distanceOut)), 300 + (32 * i)), Color.Black);
+                spriteBatch.DrawString(Game1.gameFontText, menuList[i].text, new Vector2((float)(300 + (25 * menuList[i].distanceOut)), 300 + (32 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
             }
             spriteBatch.End();
         }

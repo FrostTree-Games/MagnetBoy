@@ -22,7 +22,8 @@ namespace MagnetBoy
             RightDirection,
             Push,
             Jump,
-            Confirm
+            Confirm,
+            Cancel
         }
 
         private static GraphicsDevice graphicsDevice = null;
@@ -114,6 +115,12 @@ namespace MagnetBoy
                     break;
                 case PlayerButton.Confirm:
                     if (p1PadState.Buttons.A == ButtonState.Pressed || kbdState.IsKeyDown(Keys.Enter))
+                    {
+                        return true;
+                    }
+                    break;
+                case PlayerButton.Cancel:
+                    if (p1PadState.Buttons.B == ButtonState.Pressed || kbdState.IsKeyDown(Keys.Back))
                     {
                         return true;
                     }

@@ -37,8 +37,11 @@ namespace MagnetBoy
         private string levelName = null;
 
         public static float playerStamina = 100.0f;
+        public const float playerStaminaMax = 100.0f;
+        public const float playerStaminaDepleteRate = 2.5f;
+        public const float playerStaminaGrowthRate = 2.5f;
 
-        protected static int maxPlayerHealth = 5;
+        public static int maxPlayerHealth = 5;
         public static int currentPlayerHealth = 0;
 
         private Texture2D backgroundTile = null;
@@ -566,7 +569,7 @@ namespace MagnetBoy
             spriteBatch.End();
 
             // draw sprites
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, mx);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, Game1.tintRedEffect, mx);
             foreach (Entity a in levelEntities)
             {
                 a.draw(spriteBatch);

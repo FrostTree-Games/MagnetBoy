@@ -17,6 +17,13 @@ namespace MagnetBoy
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        private static bool exitGame = false;
+        public static bool ExitGame
+        {
+            get { return exitGame; }
+            set { exitGame = value; }
+        }
+
         public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -29,6 +36,9 @@ namespace MagnetBoy
         public static Texture2D globalBlackPixel = null;
 
         public static SpriteFont gameFontText = null;
+
+        public static Effect tintRedEffect = null;
+        public static Effect grayCheckerBoard = null;
 
         public static Song testSong = null;
 
@@ -133,6 +143,12 @@ namespace MagnetBoy
             aFac.pushAnimation("lung");
             aFac.pushAnimation("tutorialSignsAnims");
 
+            tintRedEffect = this.Content.Load<Effect>("TintRed");
+            tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
+
+            grayCheckerBoard = this.Content.Load<Effect>("GrayCheckerBoard");
+            grayCheckerBoard.CurrentTechnique = grayCheckerBoard.Techniques["Technique1"];
+
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
@@ -146,7 +162,7 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/explosion");
 
             screenManager = new GameScreenManager(this.Content);
-            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
         }
 
         /// <summary>
@@ -155,7 +171,7 @@ namespace MagnetBoy
         /// </summary>
         protected override void UnloadContent()
         {
-            //
+            AudioFactory.stopSong();
         }
 
         /// <summary>
@@ -165,10 +181,14 @@ namespace MagnetBoy
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             {
-                AudioFactory.stopSong();
+                exitGame = true;
+            }
+
+            // Allows the game to exit
+            if (exitGame)
+            {
                 this.Exit();
             }
 
@@ -188,11 +208,6 @@ namespace MagnetBoy
             screenManager.CurrentNode.draw(spriteBatch);
 
             base.Draw(gameTime);
-        }
-
-        public static void changeState(string newState)
-        {
-            return;
         }
     }
 }
