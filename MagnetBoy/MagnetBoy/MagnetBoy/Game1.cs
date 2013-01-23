@@ -31,6 +31,7 @@ namespace MagnetBoy
         public static SpriteFont gameFontText = null;
 
         public static Effect tintRedEffect = null;
+        public static Effect grayCheckerBoard = null;
 
         public static Song testSong = null;
 
@@ -138,6 +139,9 @@ namespace MagnetBoy
             tintRedEffect = this.Content.Load<Effect>("TintRed");
             tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
 
+            grayCheckerBoard = this.Content.Load<Effect>("GrayCheckerBoard");
+            grayCheckerBoard.CurrentTechnique = grayCheckerBoard.Techniques["Technique1"];
+
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
@@ -151,7 +155,7 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/explosion");
 
             screenManager = new GameScreenManager(this.Content);
-            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
         }
 
         /// <summary>

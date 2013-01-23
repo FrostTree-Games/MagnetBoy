@@ -70,6 +70,9 @@ namespace MagnetBoy
         private List<TitleMenuOption> menuList;
         int selectedMenuItem;
 
+        private float checkerboardSlideTime;
+        private const float checkerBoardMaxSlideTime = 500f;
+
         public TitleScreenMenuState(ContentManager newManager)
         {
             IsUpdateable = true;
@@ -85,6 +88,8 @@ namespace MagnetBoy
             menuList.Add(new TitleMenuOption("CONTINUE"));
             menuList.Add(new TitleMenuOption("OPTION"));
             menuList.Add(new TitleMenuOption("EXIT"));
+
+            checkerboardSlideTime = checkerBoardMaxSlideTime;
 
             selectedMenuItem = 0;
         }
@@ -146,11 +151,31 @@ namespace MagnetBoy
 
                 menuList[i].update(currentTime);
             }
+
+            if (GameInput.P1MouseDirection.Length() > 0 && (GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)))
+            {
+                checkerboardSlideTime = 1 - GameInput.P1MouseDirectionNormal.X;
+            }
+            else
+            {
+                checkerboardSlideTime += (currentTime.ElapsedGameTime.Milliseconds / checkerBoardMaxSlideTime);
+
+                if (checkerboardSlideTime > 1.0f)
+                {
+                    checkerboardSlideTime = 1f;
+                }
+            }
+
+            Game1.grayCheckerBoard.Parameters["spread"].SetValue(checkerboardSlideTime);
         }
 
         public override void draw(SpriteBatch spriteBatch)
         {
             Game1.graphics.GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.White, 0.4f));
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, Game1.grayCheckerBoard, Matrix.CreateScale(720, 480, 0));
+            spriteBatch.Draw(Game1.globalBlackPixel, Vector2.Zero, Color.White);
+            spriteBatch.End();
 
             spriteBatch.Begin();
             for (int i = 0; i < menuList.Count; i++)
