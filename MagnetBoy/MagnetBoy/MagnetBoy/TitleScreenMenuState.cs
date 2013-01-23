@@ -89,7 +89,7 @@ namespace MagnetBoy
             menuList.Add(new TitleMenuOption("OPTION"));
             menuList.Add(new TitleMenuOption("EXIT"));
 
-            checkerBoardSlide = new Vector2(-720/2, -480/2);
+            checkerBoardSlide = new Vector2(720 * 100, 480 * 100);
 
             selectedMenuItem = 0;
         }
