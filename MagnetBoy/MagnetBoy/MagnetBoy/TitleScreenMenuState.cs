@@ -66,6 +66,7 @@ namespace MagnetBoy
         private bool upPressed = false;
         private bool leftPressed = false;
         private bool rightPressed = false;
+        private bool confirmPressed = false;
 
         private List<TitleMenuOption> menuList;
         int selectedMenuItem;
@@ -135,6 +136,29 @@ namespace MagnetBoy
             else if (selectedMenuItem < 0)
             {
                 selectedMenuItem += menuList.Count;
+            }
+
+            if (GameInput.isButtonDown(GameInput.PlayerButton.Confirm))
+            {
+                confirmPressed = true;
+            }
+            else if (confirmPressed == true)
+            {
+                confirmPressed = false;
+
+                switch (menuList[selectedMenuItem].text)
+                {
+                    case "CONTINUE":
+                        AudioFactory.stopSong();
+                        AudioFactory.playSFX("sfx/menu");
+                        GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+                        break;
+                    case "EXIT":
+                        Game1.ExitGame = true;
+                        break;
+                    default:
+                        break;
+                }
             }
 
             for (int i = 0; i < menuList.Count; i++)
