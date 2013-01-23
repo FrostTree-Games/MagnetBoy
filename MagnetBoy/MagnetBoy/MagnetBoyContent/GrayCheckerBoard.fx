@@ -3,7 +3,8 @@ sampler s0;
 int screenWidth = 720;
 int screenHeight = 480;
 
-float spread = 1.0;
+float slideX = 0.0f;
+float slideY = 0.0f;
 
 struct PixelShaderInput
 {
@@ -13,14 +14,14 @@ struct PixelShaderInput
 
 float4 PixelShaderFunction(PixelShaderInput input) : COLOR0
 {
-	float modX = ((screenWidth * input.Coords.x) / 16) % 2;
-	float modY = ((screenHeight * input.Coords.y) / 16) % 2;
+	float modX = ( abs(((screenWidth * input.Coords.x)) % screenWidth + slideX) / 16) % 2;
+	float modY = ( abs(((screenHeight * input.Coords.y)) % screenHeight + slideY) / 16) % 2;
 
-	if (modX <= 1 && modY > 1.0 && modX < spread)
+	if (modX <= 1 && modY > 1.0)
 	{
 		return float4(0, 0, 0, 0.125);
 	}
-	else if (modX > 1 && modY <= 1.0 && modX < 1 + spread)
+	else if (modX > 1 && modY <= 1.0)
 	{
 		return float4(0, 0, 0, 0.125);
 	}

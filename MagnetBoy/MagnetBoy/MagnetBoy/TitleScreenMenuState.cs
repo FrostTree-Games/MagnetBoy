@@ -70,8 +70,7 @@ namespace MagnetBoy
         private List<TitleMenuOption> menuList;
         int selectedMenuItem;
 
-        private float checkerboardSlideTime;
-        private const float checkerBoardMaxSlideTime = 500f;
+        private Vector2 checkerBoardSlide;
 
         public TitleScreenMenuState(ContentManager newManager)
         {
@@ -89,7 +88,7 @@ namespace MagnetBoy
             menuList.Add(new TitleMenuOption("OPTION"));
             menuList.Add(new TitleMenuOption("EXIT"));
 
-            checkerboardSlideTime = checkerBoardMaxSlideTime;
+            checkerBoardSlide = new Vector2(-720/2, -480/2);
 
             selectedMenuItem = 0;
         }
@@ -152,21 +151,21 @@ namespace MagnetBoy
                 menuList[i].update(currentTime);
             }
 
-            if (GameInput.P1MouseDirection.Length() > 0 && (GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)))
+            if (GameInput.isButtonDown(GameInput.PlayerButton.Push))
             {
-                checkerboardSlideTime = 1 - GameInput.P1MouseDirectionNormal.X;
-            }
-            else
-            {
-                checkerboardSlideTime += (currentTime.ElapsedGameTime.Milliseconds / checkerBoardMaxSlideTime);
-
-                if (checkerboardSlideTime > 1.0f)
+                if (GameInput.P1MouseDirectionNormal.X != float.NaN)
                 {
-                    checkerboardSlideTime = 1f;
+                    checkerBoardSlide.X += GameInput.P1MouseDirectionNormal.X;
+                }
+
+                if (GameInput.P1MouseDirectionNormal.Y != float.NaN)
+                {
+                    checkerBoardSlide.Y += GameInput.P1MouseDirectionNormal.Y;
                 }
             }
 
-            Game1.grayCheckerBoard.Parameters["spread"].SetValue(checkerboardSlideTime);
+            Game1.grayCheckerBoard.Parameters["slideX"].SetValue(checkerBoardSlide.X);
+            Game1.grayCheckerBoard.Parameters["slideY"].SetValue(checkerBoardSlide.Y);
         }
 
         public override void draw(SpriteBatch spriteBatch)
@@ -180,7 +179,7 @@ namespace MagnetBoy
             spriteBatch.Begin();
             for (int i = 0; i < menuList.Count; i++)
             {
-                spriteBatch.DrawString(Game1.gameFontText, menuList[i].text, new Vector2((float)(300 + (25 * menuList[i].distanceOut)), 300 + (32 * i)), Color.Black);
+                spriteBatch.DrawString(Game1.gameFontText, menuList[i].text, new Vector2((float)(300 + (25 * menuList[i].distanceOut)), 300 + (32 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
             }
             spriteBatch.End();
         }
