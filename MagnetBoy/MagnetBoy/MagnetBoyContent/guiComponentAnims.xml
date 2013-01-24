@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>gui_angledBoxA</name>
+      <sheetName>guiComponentSheet</sheetName>
+      <sheet Type="System.String">angrySawWalkRight</sheet>
+      <initalX>1</initalX>
+      <initalY>1</initalY>
+      <frameWidth>16</frameWidth>
+      <frameHeight>16</frameHeight>
+      <frameCount>3</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>gui_angledBoxB</name>
+      <sheetName>guiComponentSheet</sheetName>
+      <sheet Type="System.String">angrySawWalkRight</sheet>
+      <initalX>1</initalX>
+      <initalY>17</initalY>
+      <frameWidth>16</frameWidth>
+      <frameHeight>16</frameHeight>
+      <frameCount>3</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>gui_angledBoxC</name>
+      <sheetName>guiComponentSheet</sheetName>
+      <sheet Type="System.String">angrySawWalkRight</sheet>
+      <initalX>1</initalX>
+      <initalY>33</initalY>
+      <frameWidth>16</frameWidth>
+      <frameHeight>16</frameHeight>
+      <frameCount>3</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+
+
+  </Asset>
+</XnaContent>

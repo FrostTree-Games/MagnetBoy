@@ -119,6 +119,7 @@ namespace MagnetBoy
             aFac.pushSheet("lungSheet");
             aFac.pushSheet("tutorialSignsSheet");
             aFac.pushSheet("endLevelSheet");
+            aFac.pushSheet("guiComponentSheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -142,6 +143,7 @@ namespace MagnetBoy
             aFac.pushAnimation("heartProjectile");
             aFac.pushAnimation("brain");
             aFac.pushAnimation("lung");
+            aFac.pushAnimation("guiComponentAnims");
             aFac.pushAnimation("tutorialSignsAnims");
             aFac.pushAnimation("endLevelAnims");
 

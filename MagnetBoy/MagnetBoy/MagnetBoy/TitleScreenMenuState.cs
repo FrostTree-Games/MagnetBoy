@@ -203,7 +203,13 @@ namespace MagnetBoy
             spriteBatch.Begin();
             for (int i = 0; i < menuList.Count; i++)
             {
-                spriteBatch.DrawString(Game1.gameFontText, menuList[i].text, new Vector2((float)(300 + (25 * menuList[i].distanceOut)), 300 + (32 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+                for (int j = 0; j < 7; j++)
+                {
+                    AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxA", j != 0 ? (j == 6 ? 2 : 1) : 0, new Vector2((float)(300 + (25 * menuList[i].distanceOut)) + (j * 16), 300 + (40 * i)), Color.Purple, AnimationFactory.DepthLayer3);
+                    AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxC", j != 0 ? (j == 6 ? 2 : 1) : 0, new Vector2((float)(300 + (25 * menuList[i].distanceOut)) + (j * 16), 300 + (40 * i) + 16), Color.Purple, AnimationFactory.DepthLayer3);
+                }
+
+                spriteBatch.DrawString(Game1.gameFontText, menuList[i].text, new Vector2((float)(308 + (25 * menuList[i].distanceOut)), 305 + (40 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
             }
             spriteBatch.End();
         }
