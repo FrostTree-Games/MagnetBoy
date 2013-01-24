@@ -58,7 +58,19 @@ namespace MagnetBoy
                 switch (levelName)
                 {
                     case "TitleScreenMenu":
-                        currentNode = new TitleScreenMenuState(manager);
+                        currentNode = new TitleScreenMenuState(manager, false);
+                        break;
+                    case "TitleScreenMenu_fromOptions":
+                        currentNode = new TitleScreenMenuState(manager, true);
+                        break;
+                    case "TitleScreenMenu_fromLevelSelect":
+                        currentNode = new TitleScreenMenuState(manager, true);
+                        break;
+                    case "GameOptionsMenu":
+                        currentNode = new OptionsMenuState(manager);
+                        break;
+                    case "LevelSelectMenu":
+                        currentNode = new LevelSelectMenuState(manager);
                         break;
                     case "BetaMenu":
                         currentNode = new BetaMenuState(manager);

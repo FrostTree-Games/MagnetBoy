@@ -152,8 +152,10 @@
     <Compile Include="JumpingEnemy.cs" />
     <Compile Include="Lava.cs" />
     <Compile Include="LavaDumper.cs" />
+    <Compile Include="LevelSelectMenuState.cs" />
     <Compile Include="LevelState.cs" />
     <Compile Include="Lolrus.cs" />
+    <Compile Include="OptionsMenuState.cs" />
     <Compile Include="ParticlePool.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

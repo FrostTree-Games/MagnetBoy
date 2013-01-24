@@ -71,9 +71,9 @@ namespace MagnetBoy
         private List<TitleMenuOption> menuList;
         int selectedMenuItem;
 
-        private Vector2 checkerBoardSlide;
+        public static Vector2 checkerBoardSlide = new Vector2(720 * 100, 480 * 100);
 
-        public TitleScreenMenuState(ContentManager newManager)
+        public TitleScreenMenuState(ContentManager newManager, bool musicAlreadyPlaying)
         {
             IsUpdateable = true;
 
@@ -81,15 +81,13 @@ namespace MagnetBoy
 
             gameInput = new GameInput(Game1.graphics.GraphicsDevice);
 
-            musicPlaying = false;
+            musicPlaying = musicAlreadyPlaying;
 
             menuList = new List<TitleMenuOption>(5);
             menuList.Add(new TitleMenuOption("BEGIN"));
             menuList.Add(new TitleMenuOption("CONTINUE"));
             menuList.Add(new TitleMenuOption("OPTION"));
             menuList.Add(new TitleMenuOption("EXIT"));
-
-            checkerBoardSlide = new Vector2(720 * 100, 480 * 100);
 
             selectedMenuItem = 0;
         }
@@ -148,10 +146,18 @@ namespace MagnetBoy
 
                 switch (menuList[selectedMenuItem].text)
                 {
-                    case "CONTINUE":
+                    case "BEGIN":
                         AudioFactory.stopSong();
                         AudioFactory.playSFX("sfx/menu");
                         GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+                        break;
+                    case "CONTINUE":
+                        AudioFactory.playSFX("sfx/menu");
+                        GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "LevelSelectMenu");
+                        break;
+                    case "OPTION":
+                        AudioFactory.playSFX("sfx/menu");
+                        GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "GameOptionsMenu");
                         break;
                     case "EXIT":
                         Game1.ExitGame = true;
