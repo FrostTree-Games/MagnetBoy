@@ -118,6 +118,7 @@ namespace MagnetBoy
             aFac.pushSheet("brainSheet");
             aFac.pushSheet("lungSheet");
             aFac.pushSheet("tutorialSignsSheet");
+            aFac.pushSheet("endLevelSheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -142,6 +143,7 @@ namespace MagnetBoy
             aFac.pushAnimation("brain");
             aFac.pushAnimation("lung");
             aFac.pushAnimation("tutorialSignsAnims");
+            aFac.pushAnimation("endLevelAnims");
 
             tintRedEffect = this.Content.Load<Effect>("TintRed");
             tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
