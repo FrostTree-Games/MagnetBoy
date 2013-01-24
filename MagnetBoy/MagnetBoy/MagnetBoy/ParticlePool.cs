@@ -13,11 +13,16 @@ namespace MagnetBoy
         private const float blueSparkAccel = 0.005f;
         private const float blueSparkLiveTime = 500f;
 
+        private const float sweatDropVelocity = 0.5f;
+        private const float sweatDropAccel = 0.019f;
+        private const float sweatDropLiveTime = 100;
+
         string dansAnim = "dansParticle";
 
         public enum ParticleType
         {
-            BlueSpark
+            BlueSpark,
+            SweatDrops
         }
 
         private struct Particle
@@ -25,6 +30,8 @@ namespace MagnetBoy
             public bool active;
             public ParticleType type;
             public double timeActive;
+
+            public bool bounce;
 
             public Vector2 pos;
             public Vector2 velocity;
@@ -71,6 +78,7 @@ namespace MagnetBoy
                     switch (newType)
                     {
                         case ParticleType.BlueSpark:
+                            pool[i].bounce = true;
                             pool[i].pos = newPos;
                             pool[i].posPrevA = newPos;
                             pool[i].posPrevB = newPos;
@@ -93,6 +101,31 @@ namespace MagnetBoy
                             if (pool[i].velocity.X * offsetVelocity.X >= 0)
                             {
                                 pool[i].velocity.X += offsetVelocity.X;
+                            }
+                            break;
+                        case ParticleType.SweatDrops:
+                            pool[i].bounce = false;
+                            pool[i].pos = newPos;
+                            pool[i].posPrevA = newPos;
+                            pool[i].posPrevB = newPos;
+                            pool[i].posPrevC = newPos;
+                            pool[i].posPrevD = newPos;
+                            pool[i].velocity.X = (float)((sweatDropVelocity * Math.Cos(direction)) / 2.5f);
+                            pool[i].velocity.Y = (float)(sweatDropVelocity * Math.Sin(direction));
+                            pool[i].accel = new Vector2(0, sweatDropAccel);
+                            pool[i].timeActive = 0;
+                            pool[i].color = Color.White;
+                            pool[i].colorPrevA = pool[i].color;
+                            pool[i].colorPrevB = pool[i].color;
+                            pool[i].colorPrevC = pool[i].color;
+                            pool[i].colorPrevD = pool[i].color;
+                            pool[i].currentFrame = 2;
+                            pool[i].lastFrameIncrement = 0;
+                            pool[i].frameCount = AnimationFactory.getAnimationFrameCount(dansAnim);
+                            pool[i].frameSpeed = AnimationFactory.getAnimationSpeed(dansAnim);
+                            if (pool[i].velocity.Y > 0)
+                            {
+                                pool[i].velocity.Y *= -1;
                             }
                             break;
                         default:
@@ -134,16 +167,19 @@ namespace MagnetBoy
                     stepX.Y = 0.0f;
                     stepY.X = 0.0f;
 
-                    if (LevelState.isSolidMap(pool[i].pos + stepX))
+                    if (pool[i].bounce)
                     {
-                        pool[i].velocity.X *= -1;
-                        pool[i].accel.X *= -1;
-                    }
+                        if (LevelState.isSolidMap(pool[i].pos + stepX))
+                        {
+                            pool[i].velocity.X *= -1;
+                            pool[i].accel.X *= -1;
+                        }
 
-                    if (LevelState.isSolidMap(pool[i].pos + stepY))
-                    {
-                        pool[i].velocity.Y *= -1;
-                        pool[i].accel.Y *= -1;
+                        if (LevelState.isSolidMap(pool[i].pos + stepY))
+                        {
+                            pool[i].velocity.Y *= -1;
+                            pool[i].accel.Y *= -1;
+                        }
                     }
 
                     pool[i].posPrevD = pool[i].posPrevC;
@@ -173,6 +209,11 @@ namespace MagnetBoy
                         AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevB - new Vector2(4f, 4f), p.colorPrevB, AnimationFactory.DepthLayer0);
                         AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevA - new Vector2(4f, 4f), p.colorPrevA, AnimationFactory.DepthLayer0);
                         AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.pos - new Vector2(4f, 4f), p.color, AnimationFactory.DepthLayer0);
+                        break;
+                    case ParticleType.SweatDrops:
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, 0, p.posPrevB - new Vector2(4f, 4f), p.colorPrevB, AnimationFactory.DepthLayer0);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, 1, p.posPrevA - new Vector2(4f, 4f), p.colorPrevA, AnimationFactory.DepthLayer0);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, 2, p.pos - new Vector2(4f, 4f), p.color, AnimationFactory.DepthLayer0);
                         break;
                     default:
                         break;
