@@ -155,6 +155,7 @@
     <Compile Include="LevelSelectMenuState.cs" />
     <Compile Include="LevelState.cs" />
     <Compile Include="Lolrus.cs" />
+    <Compile Include="MBQG.cs" />
     <Compile Include="OptionsMenuState.cs" />
     <Compile Include="ParticlePool.cs" />
     <Compile Include="Player.cs" />
