@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>testParallax3</name>
+      <sheetName>testParallaxSheet</sheetName>
+      <sheet Type="System.String">foo</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>720</frameWidth>
+      <frameHeight>480</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+    <Item>
+      <name>testParallax2</name>
+      <sheetName>testParallaxSheet</sheetName>
+      <sheet Type="System.String">foo</sheet>
+      <initalX>0</initalX>
+      <initalY>480</initalY>
+      <frameWidth>720</frameWidth>
+      <frameHeight>480</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+    <Item>
+      <name>testParallax1</name>
+      <sheetName>testParallaxSheet</sheetName>
+      <sheet Type="System.String">foo</sheet>
+      <initalX>0</initalX>
+      <initalY>960</initalY>
+      <frameWidth>720</frameWidth>
+      <frameHeight>480</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+  </Asset>
+</XnaContent>

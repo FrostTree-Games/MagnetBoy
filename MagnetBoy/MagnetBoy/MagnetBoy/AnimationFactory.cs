@@ -99,6 +99,58 @@ namespace MagnetBoy
             return am.frameSpeed;
         }
 
+        public static double getAnimationFrameWidth(string animation)
+        {
+            if (sheetLib == null || animLib == null)
+            {
+                return -3;
+            }
+
+            Animation am = null;
+
+            if (animation == null)
+            {
+                return -1;
+            }
+
+            try
+            {
+                am = animLib[animation];
+            }
+            catch (KeyNotFoundException)
+            {
+                return -2;
+            }
+
+            return am.frameWidth;
+        }
+
+        public static double getAnimationFrameHeight(string animation)
+        {
+            if (sheetLib == null || animLib == null)
+            {
+                return -3;
+            }
+
+            Animation am = null;
+
+            if (animation == null)
+            {
+                return -1;
+            }
+
+            try
+            {
+                am = animLib[animation];
+            }
+            catch (KeyNotFoundException)
+            {
+                return -2;
+            }
+
+            return am.frameHeight;
+        }
+
         public static int getAnimationFrameCount(string animation)
         {
             if (sheetLib == null || animLib == null)
