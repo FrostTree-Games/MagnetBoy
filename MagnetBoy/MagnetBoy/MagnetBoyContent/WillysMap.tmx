@@ -20,7 +20,7 @@
   <image source="FactoryTileSheet.png" width="224" height="160"/>
  </tileset>
  <tileset firstgid="51" name="citySheet" tilewidth="32" tileheight="32">
-  <image source="../../../../../../Pictures/magnetboy tiles/city/citySheet.png" width="672" height="384"/>
+  <image source="./citySheet.png" width="672" height="384"/>
  </tileset>
  <layer name="test layer" width="200" height="50">
   <properties>
