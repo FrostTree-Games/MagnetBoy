@@ -36,8 +36,11 @@ namespace MagnetBoy
                     case "Erase Data":
                         description = "Confirm this to erase all previous save data.";
                         break;
-                    case "Return to Title":
-                        description = "Go back to the title screen.";
+                    case "Show Timer":
+                        description = "Show a timer onscreen to see how long you've been playing the level for.";
+                        break;
+                    case "Show Record":
+                        description = "Show a fixed timer onscreen to see the top record for completing a level.";
                         break;
                     default:
                         description = "...";
@@ -99,7 +102,7 @@ namespace MagnetBoy
 
             menuList.Add(new OptionsMenuOption("Starting Health"));
             menuList.Add(new OptionsMenuOption("Erase Data"));
-            menuList.Add(new OptionsMenuOption("Return to Title"));
+            menuList.Add(new OptionsMenuOption("Show Timer"));
         }
 
         protected override void doUpdate(GameTime currentTime)
@@ -193,8 +196,8 @@ namespace MagnetBoy
             spriteBatch.Begin();
             for (int i = 0; i < menuList.Count; i++)
             {
-                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(96 + (25 * menuList[i].distanceOut)), 100 + i * 64), 7, 3, Color.Purple, AnimationFactory.DepthLayer3);
-                spriteBatch.DrawString(Game1.gameFontText, menuList[i].title, new Vector2((float)(108 + (25 * menuList[i].distanceOut)), 105 + (64 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 100 + i * 64), 7, 3, Color.Purple, AnimationFactory.DepthLayer3);
+                spriteBatch.DrawString(Game1.gameFontText, menuList[i].title, new Vector2((float)(156 + (25 * menuList[i].distanceOut)), 105 + (64 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
             }
             spriteBatch.End();
         }
