@@ -20,14 +20,17 @@
   <image source="FactoryTileSheet.png" width="224" height="160"/>
  </tileset>
  <tileset firstgid="51" name="citySheet" tilewidth="32" tileheight="32">
-  <image source="./citySheet.png" width="672" height="384"/>
+  <image source="citySheet.png" width="672" height="384"/>
+ </tileset>
+ <tileset firstgid="303" name="cityPaint" tilewidth="32" tileheight="32">
+  <image source="cityPaint.png" width="256" height="256"/>
  </tileset>
  <layer name="test layer" width="200" height="50">
   <properties>
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="test object" width="200" height="50">
@@ -58,7 +61,15 @@
    <property name="solid" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2VEKgjAABmDvFD1V7+HJvEUdojpfBQPXatoEQ9f3wc98mPgwfza0aQAAAAAAAAAAAAAAgDm0yXWbmwh/KO2EjkAv14+xHENgTDeQpUvf+000bjNjek+NhtZ0jevMdN/uGbV3AkroA/Q+nRvijjhLwDv7CIzTDwDWrItG31gBfsN/LgAAAAAAAGBu+xDg1SnkHAI1e+4Dh4L5l0euIbeC+3YTngUAAAAAAAAAACzTHRtlLJw=
+   eJzt2bEJACAMBED3UvdzbC2tRBAU9Q6etIE0IQkBAAAAAAAAAAAAAAAAAPhFGYQ7jWZqzgDArJm9wS4BAAD8pHTVjRVgD38uAAAAAAAAAABeEVtSSz7dCAAAAAAAAAAAsKwCqWMU5Q==
+  </data>
+ </layer>
+ <layer name="paint" width="200" height="50">
+  <properties>
+   <property name="solid" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1uFqwyAYhtF6RR0bvf9bK6WEZa1foi7B1JwDIuR3Hl4vFwAAAOBMvtLzAL+mLl4PkG9BH/CkD4jpA2L6gJg+IKYPiOkDYvqAmD4gb6kDjXB2UwPzFnLf4Iz0wYhuKT41Wvr4Tu8HjmTqILpLtfaRu+Eo7AfEeu1HtB2tjfyksgM1eu1Hbjv+syEl/74+qNVjP+Yd5O6WRuwHe+ixH0vboQ+OpNd+lNw1vK/Yg/2A2CftR2kD+mArn7QfS/+39xV7sB8QG2k/9MHWRtqPNfqglv2A2Ej7oQ+2NtJ+rNEHtewHxOwHxF57aO3jmv7e0beHXAulfcx3YG0n7AcAAAAAAAAAALCFO3o1adY=
   </data>
  </layer>
 </map>
