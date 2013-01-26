@@ -27,7 +27,8 @@ namespace MagnetBoy
          *  -- backgroundTile
          *  -- levelName
          */
-        private Semaphore assetResources;
+        //private Semaphore assetResources;
+        private bool grabbed;
 
         private List<Entity> levelEntities = null;
         private Camera levelCamera = null;
@@ -118,8 +119,6 @@ namespace MagnetBoy
 
             contentManager = newManager;
 
-            assetResources = new Semaphore(0, 1);
-
             gameInput = new GameInput(null);
             levelEntities = new List<Entity>(100);
             levelCamera = new Camera();
@@ -139,7 +138,10 @@ namespace MagnetBoy
                 flags[i] = false;
             }
 
+            grabbed = false;
             new Thread(loadLevelThread).Start();
+
+            Thread.Yield();
 
             currentPlayerHealth = maxPlayerHealth;
 
@@ -158,6 +160,8 @@ namespace MagnetBoy
                 Thread.SetProcessorAffinity(3); 
                 #endif
              */
+            Monitor.Enter(levelEntities);
+            grabbed = true;
 
             levelMap = contentManager.Load<Map>(levelName);
 
@@ -331,7 +335,8 @@ namespace MagnetBoy
 
             //Thread.Sleep(5000);
             
-            assetResources.Release();
+            //assetResources.Release();
+            Monitor.Exit(levelEntities);
         }
 
         private void loadingDoUpdate(GameTime currentTime)
@@ -370,12 +375,13 @@ namespace MagnetBoy
 
         protected override void doUpdate(GameTime currentTime)
         {
-            if (assetResources.WaitOne(10) == false)
+            if (grabbed == false || Monitor.TryEnter(levelEntities) == false)
             {
                 loadingDoUpdate(currentTime);
                 return;
             }
-            assetResources.Release();
+            Monitor.Exit(levelEntities);
+            //assetResources.Release();
 
             gameInput.update();
 
@@ -528,12 +534,12 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch spriteBatch)
         {
-            if (assetResources.WaitOne(10) == false)
+            if (grabbed == false || Monitor.TryEnter(levelEntities) == false)
             {
                 loadingDraw(spriteBatch);
                 return;
             }
-            assetResources.Release();
+            Monitor.Exit(levelEntities);
 
             Matrix mx = new Matrix();
             Rectangle rx = new Rectangle();
