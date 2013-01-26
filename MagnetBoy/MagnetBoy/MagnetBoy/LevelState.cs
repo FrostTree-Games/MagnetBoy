@@ -44,10 +44,6 @@ namespace MagnetBoy
         public static int maxPlayerHealth = 5;
         public static int currentPlayerHealth = 0;
 
-        private Texture2D backgroundTile = null;
-        float backgroundDeltaX = 0.0f;
-        float backgroundDeltaY = 0.0f;
-
         private static bool[] flags = null;
         private const int flagNum = 5;
         public enum FlagColor { Red = 0, Blue = 1, Green = 2, Yellow = 3, Purple = 4 };
@@ -333,10 +329,6 @@ namespace MagnetBoy
                 }
             }
 
-            backgroundTile = contentManager.Load<Texture2D>("hackTile");
-            backgroundDeltaX = 0.0f;
-            backgroundDeltaY = 0.0f;
-
             //Thread.Sleep(5000);
             
             assetResources.Release();
@@ -448,9 +440,6 @@ namespace MagnetBoy
 
             levelParticlePool.updatePool(currentTime);
 
-            backgroundDeltaX = 0.5f * levelCamera.getFocusPosition().X % backgroundTile.Bounds.Width;
-            backgroundDeltaY = 0.25f * levelCamera.getFocusPosition().Y % backgroundTile.Bounds.Height;
-
             levelEntities.RemoveAll(en => en.removeFromGame == true);
 
             foreach (Entity en in levelEntities)
@@ -551,16 +540,20 @@ namespace MagnetBoy
             levelCamera.getDrawTranslation(ref mx, ref Game1.mapView, ref levelMap);
             levelCamera.getDrawRectangle(ref rx, ref Game1.mapView, ref levelMap);
 
-            Game1.graphics.GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.Black, 0.4f));
+            Game1.graphics.GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.Pink, 0.4f));
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
-            for (int i = -5; i < (Game1.mapView.Width / backgroundTile.Bounds.Width) + 5; i++)
-            {
-                for (int j = -5; j < (Game1.mapView.Height / backgroundTile.Bounds.Height) + 5; j++)
-                {
-                    spriteBatch.Draw(backgroundTile, new Vector2((i * backgroundTile.Bounds.Width) - backgroundDeltaX, (j * backgroundTile.Bounds.Height) + backgroundDeltaY), Color.White);
-                }
-            }
+            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax3", 0, new Vector2(-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax3"), 0f), AnimationFactory.DepthLayer3);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax3", 0, new Vector2((-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax3")) + (float)AnimationFactory.getAnimationFrameWidth("testParallax3"), 0f), AnimationFactory.DepthLayer3);
+
+            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax2", 0, new Vector2(-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax2"), 0f), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax2", 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax2")) + (float)AnimationFactory.getAnimationFrameWidth("testParallax2"), 0f), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax2", 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax2")) + (float)(2f* AnimationFactory.getAnimationFrameWidth("testParallax2")), 0f), AnimationFactory.DepthLayer2);
+
+            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax1", 0, new Vector2(-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1"), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax1", 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1")) + (float)AnimationFactory.getAnimationFrameWidth("testParallax1"), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax1", 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1")) + (float)(2f * AnimationFactory.getAnimationFrameWidth("testParallax1")), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax1", 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1")) + (float)(3f * AnimationFactory.getAnimationFrameWidth("testParallax1")), 0f), AnimationFactory.DepthLayer1);
             spriteBatch.End();
 
             // draw map

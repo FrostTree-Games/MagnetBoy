@@ -120,6 +120,7 @@ namespace MagnetBoy
             aFac.pushSheet("tutorialSignsSheet");
             aFac.pushSheet("endLevelSheet");
             aFac.pushSheet("guiComponentSheet");
+            aFac.pushSheet("testParallaxSheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -146,6 +147,7 @@ namespace MagnetBoy
             aFac.pushAnimation("guiComponentAnims");
             aFac.pushAnimation("tutorialSignsAnims");
             aFac.pushAnimation("endLevelAnims");
+            aFac.pushAnimation("testParallaxAnims");
 
             tintRedEffect = this.Content.Load<Effect>("TintRed");
             tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];

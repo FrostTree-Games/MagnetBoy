@@ -10,16 +10,82 @@ namespace MagnetBoy
 {
     class OptionsMenuState : IState
     {
+        private class OptionsMenuOption
+        {
+            public string title;
+            public string description;
+
+            public bool selected;
+            public double distanceOut;
+
+            private const double minDistanceOut = 0.0;
+            private const double maxDistanceOut = 1.0;
+            private const double moveSpeed = 0.01;
+
+            public OptionsMenuOption(string newTitle)
+            {
+                title = newTitle;
+                selected = false;
+                distanceOut = 0;
+
+                switch (title)
+                {
+                    case "Starting Health":
+                        description = "Change the health you start with on each level.";
+                        break;
+                    case "Erase Data":
+                        description = "Confirm this to erase all previous save data.";
+                        break;
+                    case "Return to Title":
+                        description = "Go back to the title screen.";
+                        break;
+                    default:
+                        description = "...";
+                        break;
+                }
+            }
+
+            public void update(GameTime currentTime)
+            {
+                if (selected)
+                {
+                    if (distanceOut < maxDistanceOut)
+                    {
+                        distanceOut += moveSpeed * currentTime.ElapsedGameTime.Milliseconds;
+
+                        if (distanceOut > maxDistanceOut)
+                        {
+                            distanceOut = maxDistanceOut;
+                        }
+                    }
+                }
+                else
+                {
+                    if (distanceOut > minDistanceOut)
+                    {
+                        distanceOut -= moveSpeed * currentTime.ElapsedGameTime.Milliseconds;
+
+                        if (distanceOut < minDistanceOut)
+                        {
+                            distanceOut = minDistanceOut;
+                        }
+                    }
+                }
+            }
+        }
+
         private ContentManager contentManager = null;
         private GameInput gameInput;
 
-        /*
         private bool downPressed = false;
-        private bool upPressed = false;
+        private bool upPressed = false; /*
         private bool leftPressed = false;
         private bool rightPressed = false;
         private bool confirmPressed = false; */
-        private bool cancelPressed = false; 
+        private bool cancelPressed = false;
+
+        private int selectedMenuItem;
+        private List<OptionsMenuOption> menuList;
 
         public OptionsMenuState(ContentManager newManager)
         {
@@ -27,6 +93,13 @@ namespace MagnetBoy
 
             contentManager = newManager;
             gameInput = new GameInput(Game1.graphics.GraphicsDevice);
+
+            selectedMenuItem = 0;
+            menuList = new List<OptionsMenuOption>(10);
+
+            menuList.Add(new OptionsMenuOption("Starting Health"));
+            menuList.Add(new OptionsMenuOption("Erase Data"));
+            menuList.Add(new OptionsMenuOption("Return to Title"));
         }
 
         protected override void doUpdate(GameTime currentTime)
@@ -43,6 +116,53 @@ namespace MagnetBoy
                 cancelPressed = false;
 
                 AudioFactory.playSFX("sfx/menu");
+            }
+
+            if (GameInput.isButtonDown(GameInput.PlayerButton.DownDirection))
+            {
+                downPressed = true;
+            }
+            else if (downPressed == true)
+            {
+                selectedMenuItem++;
+                downPressed = false;
+
+                AudioFactory.playSFX("sfx/menu");
+            }
+
+            if (GameInput.isButtonDown(GameInput.PlayerButton.UpDirection))
+            {
+                upPressed = true;
+            }
+            else if (upPressed == true)
+            {
+                selectedMenuItem--;
+                upPressed = false;
+
+                AudioFactory.playSFX("sfx/menu");
+            }
+
+            if (selectedMenuItem >= menuList.Count)
+            {
+                selectedMenuItem = selectedMenuItem % menuList.Count;
+            }
+            else if (selectedMenuItem < 0)
+            {
+                selectedMenuItem += menuList.Count;
+            }
+
+            for (int i = 0; i < menuList.Count; i++)
+            {
+                if (i == selectedMenuItem)
+                {
+                    menuList[i].selected = true;
+                }
+                else
+                {
+                    menuList[i].selected = false;
+                }
+
+                menuList[i].update(currentTime);
             }
 
             if (GameInput.isButtonDown(GameInput.PlayerButton.Push))
@@ -71,7 +191,11 @@ namespace MagnetBoy
             spriteBatch.End();
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Game1.globalTestWalrus, new Vector2(100, 100), Color.White);
+            for (int i = 0; i < menuList.Count; i++)
+            {
+                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(96 + (25 * menuList[i].distanceOut)), 100 + i * 64), 7, 3, Color.Purple, AnimationFactory.DepthLayer3);
+                spriteBatch.DrawString(Game1.gameFontText, menuList[i].title, new Vector2((float)(108 + (25 * menuList[i].distanceOut)), 105 + (64 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+            }
             spriteBatch.End();
         }
     }
