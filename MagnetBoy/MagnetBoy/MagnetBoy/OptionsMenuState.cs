@@ -198,6 +198,9 @@ namespace MagnetBoy
             {
                 MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 100 + i * 64), 7, 3, Color.Purple, AnimationFactory.DepthLayer3);
                 spriteBatch.DrawString(Game1.gameFontText, menuList[i].title, new Vector2((float)(156 + (25 * menuList[i].distanceOut)), 105 + (64 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+
+                AnimationFactory.drawAnimationFrame(spriteBatch, "xboxButtons", 3, new Vector2(425, 400), AnimationFactory.DepthLayer0);
+                spriteBatch.DrawString(Game1.gameFontText, "Back", new Vector2(450, 401), Color.Black);
             }
             spriteBatch.End();
         }

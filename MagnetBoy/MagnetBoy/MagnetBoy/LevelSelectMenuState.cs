@@ -178,7 +178,7 @@ namespace MagnetBoy
             {
                 MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 81 + i * 64), 28, 3, Color.Purple, AnimationFactory.DepthLayer3);
                 spriteBatch.DrawString(Game1.gameFontText, Game1.levelNames[i], new Vector2((float)(152 + (25 * menuList[i].distanceOut)), 85 + i * 64), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
-                spriteBatch.DrawString(Game1.gameFontText, "Completed in MM:SS by GAMERTAG", new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 106 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
+                spriteBatch.DrawString(Game1.gameFontText, "Completed in " + Game1.MagnetBoySaveData[i].levelBestTime + " by " + Game1.MagnetBoySaveData[i].levelBestTimeOwner, new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 106 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
             }
 
             AnimationFactory.drawAnimationFrame(spriteBatch, "xboxButtons", 0, new Vector2(220, 400), AnimationFactory.DepthLayer0);

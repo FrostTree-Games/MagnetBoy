@@ -29,6 +29,78 @@ namespace MagnetBoy
 
         GameInput gameInput = null;
 
+        public struct LevelScoreStruct
+        {
+            public string levelBestTimeOwner;
+            public uint levelBestTime;
+        }
+
+        // this struct is serialized into Xbox 360 save data; it is global for all users
+        public struct SaveGameData
+        {
+            public bool loaded;
+
+            public int furthestLevelUnlocked;
+
+            public int defaultStartingHealth;
+            public bool showInGameTimer;
+            public bool showInGameTopTime;
+
+            private LevelScoreStruct level1;
+            private LevelScoreStruct level2;
+            private LevelScoreStruct level3;
+            private LevelScoreStruct level4;
+            private LevelScoreStruct level5;
+
+            public LevelScoreStruct this[int index]
+            {
+                get
+                {
+                    switch (index)
+                    {
+                        case 0:
+                            return level1;
+                        case 1:
+                            return level2;
+                        case 2:
+                            return level3;
+                        case 3:
+                            return level4;
+                        case 4:
+                            return level5;
+                        default:
+                            throw new IndexOutOfRangeException();
+                    }
+                }
+
+                set
+                {
+                    switch (index)
+                    {
+                        case 0:
+                            level1 = value;
+                            break;
+                        case 1:
+                            level2 = value;
+                            break;
+                        case 2:
+                            level3 = value;
+                            break;
+                        case 3:
+                            level4 = value;
+                            break;
+                        case 4:
+                            level5 = value;
+                            break;
+                        default:
+                            throw new IndexOutOfRangeException();
+                    }
+                }
+            }
+        }
+
+        public static SaveGameData MagnetBoySaveData;
+
         public static Texture2D globalTestWalrus = null;
         public static Texture2D globalTestPositive = null;
         public static Texture2D globalTestNegative = null;
@@ -55,9 +127,8 @@ namespace MagnetBoy
 
         //currentLevel and furthestLevelProgressed start from 0 and go to NumberOfLevels - 1
         private static int currentLevel;
-        private static int furthestLevelProgressed;
         public static int CurrentLevel { get { return currentLevel; } set { currentLevel = value % Game1.NumberOfLevels; } }
-        public static int FurthestLevelProgressed { get { return furthestLevelProgressed; } set { furthestLevelProgressed = value % Game1.NumberOfLevels; } }
+        public static int FurthestLevelProgressed { get { return MagnetBoySaveData.furthestLevelUnlocked; } set { MagnetBoySaveData.furthestLevelUnlocked = value % Game1.NumberOfLevels; } }
         public static int NumberOfLevels { get { return levelNames.Length; } }
 
         public Game1()
@@ -89,7 +160,13 @@ namespace MagnetBoy
 
 #if WINDOWS
             currentLevel = 0;
-            furthestLevelProgressed = 4;
+
+            if (Game1.MagnetBoySaveData.loaded == false)
+            {
+                resetSaveData();
+            }
+
+            //FurthestLevelProgressed = 4;
 #endif
 #if XBOX
             // Xbox gamer services loading code here
@@ -233,6 +310,24 @@ namespace MagnetBoy
             screenManager.CurrentNode.draw(spriteBatch);
 
             base.Draw(gameTime);
+        }
+
+        public static void resetSaveData()
+        {
+            MagnetBoySaveData.loaded = true;
+            MagnetBoySaveData.furthestLevelUnlocked = 0;
+            MagnetBoySaveData.defaultStartingHealth = 5;
+            MagnetBoySaveData.showInGameTimer = false;
+            MagnetBoySaveData.showInGameTopTime = false;
+
+            for (int i = 0; i < NumberOfLevels; i++)
+            {
+                LevelScoreStruct s;
+                s.levelBestTime = 100000;
+                s.levelBestTimeOwner = "Anonymous";
+
+                MagnetBoySaveData[i] = s;
+            }
         }
     }
 }
