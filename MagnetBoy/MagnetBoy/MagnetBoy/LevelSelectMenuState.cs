@@ -176,10 +176,16 @@ namespace MagnetBoy
             spriteBatch.Begin();
             for (int i = 0; i < menuList.Count; i++)
             {
-                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 96 + i * 64), 28, 3, Color.Purple, AnimationFactory.DepthLayer3);
-                spriteBatch.DrawString(Game1.gameFontText, Game1.levelNames[i], new Vector2((float)(152 + (25 * menuList[i].distanceOut)), 100 + i * 64), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
-                spriteBatch.DrawString(Game1.gameFontText, "Completed in MM:SS by GAMERTAG", new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 121 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
+                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 81 + i * 64), 28, 3, Color.Purple, AnimationFactory.DepthLayer3);
+                spriteBatch.DrawString(Game1.gameFontText, Game1.levelNames[i], new Vector2((float)(152 + (25 * menuList[i].distanceOut)), 85 + i * 64), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+                spriteBatch.DrawString(Game1.gameFontText, "Completed in " + Game1.MagnetBoySaveData[i].levelBestTime + " by " + Game1.MagnetBoySaveData[i].levelBestTimeOwner, new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 106 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
             }
+
+            AnimationFactory.drawAnimationFrame(spriteBatch, "xboxButtons", 0, new Vector2(220, 400), AnimationFactory.DepthLayer0);
+            spriteBatch.DrawString(Game1.gameFontText, "Begin Level", new Vector2(245, 401), Color.Black);
+
+            AnimationFactory.drawAnimationFrame(spriteBatch, "xboxButtons", 3, new Vector2(425, 400), AnimationFactory.DepthLayer0);
+            spriteBatch.DrawString(Game1.gameFontText, "Back", new Vector2(450, 401), Color.Black);
             spriteBatch.End();
         }
     }
