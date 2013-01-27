@@ -60,19 +60,32 @@ namespace MagnetBoy
         {
             timeSinceLastShot += currentTime.ElapsedGameTime.Milliseconds;
 
+            BulletPool.shieldStatus(true);
+
             if( timeSinceLastShot > interval )
             {
                 float direction = 0.0f;
                 
-                direction += (float)(0);
+                direction += (float)(-0.75 * Math.PI);
 
                 Vector2 bulletPosition = Position;
 
                 bulletPosition.Y += 4;
 
-                BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
-               // BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
-               // BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                if (currentTime.TotalGameTime.Milliseconds % 5 == 0 || currentTime.TotalGameTime.Milliseconds % 7 == 0)
+                {
+                    BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                }
+
+                if (currentTime.TotalGameTime.Milliseconds % 3 == 0 || currentTime.TotalGameTime.Milliseconds % 11 == 0)
+                {
+                    BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                }
+
+                if (currentTime.TotalGameTime.Milliseconds % 2 == 0 || currentTime.TotalGameTime.Milliseconds % 13 == 0)
+                {
+                    BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                }
              
                 timeSinceLastShot = 0;
             }
