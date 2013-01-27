@@ -430,7 +430,8 @@ namespace MagnetBoy
 
                 levelBulletPool.clearPool();
 
-                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
+                //GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
+                GameScreenManager.nextLevel();
 
                 endLevelFlag = false;
 

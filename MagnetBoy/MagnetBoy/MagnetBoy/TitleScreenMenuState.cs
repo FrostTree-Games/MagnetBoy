@@ -88,6 +88,8 @@ namespace MagnetBoy
             menuList.Add(new TitleMenuOption("EXIT"));
 
             selectedMenuItem = 0;
+
+            Game1.CurrentLevel = 0;
         }
 
         protected override void doUpdate(GameTime currentTime)

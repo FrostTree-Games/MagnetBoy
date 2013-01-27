@@ -12,6 +12,15 @@ namespace MagnetBoy
     {
         private static ContentManager manager = null;
 
+        private static GameScreenNode currentNode = null;
+        public GameScreenNode CurrentNode
+        {
+            get
+            {
+                return currentNode;
+            }
+        }
+
         public enum GameScreenType
         {
             TitleScreen,
@@ -25,20 +34,35 @@ namespace MagnetBoy
             NoTransition,
         }
 
-        private static GameScreenNode currentNode = null;
-        public GameScreenNode CurrentNode
-        {
-            get
-            {
-                return currentNode;
-            }
-        }
-
         public GameScreenManager(ContentManager newManager)
         {
             if (manager == null)
             {
                 manager = newManager;
+            }
+        }
+
+        public static void nextLevel()
+        {
+            if (manager == null)
+            {
+                return;
+            }
+
+            if (!(currentNode is LevelState))
+            {
+                return;
+            }
+
+            Game1.CurrentLevel = (Game1.CurrentLevel + 1) % Game1.levelNames.Length;
+
+            if (Game1.CurrentLevel != 0)
+            {
+                currentNode = new LevelState(manager, Game1.levelFileNames[Game1.CurrentLevel]);
+            }
+            else
+            {
+                currentNode = new TitleScreenMenuState(manager, false);
             }
         }
 

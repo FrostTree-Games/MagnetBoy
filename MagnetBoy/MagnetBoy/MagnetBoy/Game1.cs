@@ -158,8 +158,9 @@ namespace MagnetBoy
 
             mapView = graphics.GraphicsDevice.Viewport.Bounds;
 
-#if WINDOWS
             currentLevel = 0;
+
+#if WINDOWS
 
             if (Game1.MagnetBoySaveData.loaded == false)
             {
