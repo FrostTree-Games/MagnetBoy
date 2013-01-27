@@ -141,7 +141,7 @@ namespace MagnetBoy
             grabbed = false;
             new Thread(loadLevelThread).Start();
 
-            Thread.Yield();
+            Thread.Sleep(50);
 
             currentPlayerHealth = Game1.MagnetBoySaveData.defaultStartingHealth;
 
