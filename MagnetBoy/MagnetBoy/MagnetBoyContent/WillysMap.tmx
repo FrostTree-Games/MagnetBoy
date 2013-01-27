@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="200" height="50" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="200" height="40" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test tileset" tilewidth="32" tileheight="32">
   <properties>
    <property name="solid" value="1"/>
@@ -19,57 +19,81 @@
  <tileset firstgid="16" name="FactoryTileSheet" tilewidth="32" tileheight="32">
   <image source="FactoryTileSheet.png" width="224" height="160"/>
  </tileset>
- <tileset firstgid="51" name="citySheet" tilewidth="32" tileheight="32">
-  <image source="citySheet.png" width="672" height="384"/>
- </tileset>
- <tileset firstgid="303" name="cityPaint" tilewidth="32" tileheight="32">
+ <tileset firstgid="51" name="cityPaint" tilewidth="32" tileheight="32">
   <image source="cityPaint.png" width="256" height="256"/>
  </tileset>
- <layer name="test layer" width="200" height="50">
+ <tileset firstgid="115" name="cityDecor" tilewidth="32" tileheight="32">
+  <image source="cityDecor.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="179" name="citySolid" tilewidth="32" tileheight="32">
+  <image source="citySolid.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="275" name="genericBlock" tilewidth="32" tileheight="32">
+  <image source="genericBlock.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="339" name="cityTexture" tilewidth="32" tileheight="32">
+  <image source="cityTexture.png" width="96" height="96"/>
+ </tileset>
+ <layer name="block" width="200" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2sFygyAUhWF5BpNxAcmmdpVl3//dWmcwuaWAhUpB/L8ZxsZkShYc70UzDAAAAAAA4ExGNQxXVftbAG1ZcjF9jdmOiZwATx+eLPjOAWdEPoAw8gGEkQ8gjHwAYeQDCCMfQBj5AMLIB+A32mfmF/vcfLJ/zzxDB551QtYL3zngjMgHejSKXkgeU3uinHy4c9OHoTXuGs695ufkYzlv1Pcj0BJtr93GOd7+IR9vYg+/HN/JBxpTq348AvM9MjOy9mqxQf+GVLXqx17zyrnMxqB/Q6oa9WMUOXA/ozOv89r2aLGRmz2cV436ocWew3fMWcfr/4wN8oFUNerH1pw5fRD9FUqoVT98c/5lD0J/hRKOVD9i96gM/RUKOFL9iPVQ9Fco4Uj1Y81VqH7QX2FvvdQP7l+hhF7qx43+CgX0VD/or7C3XuoH969QQi/1g/tXKKGn+rH1+13qB1Ktfbu8huf06qn14yLmmp3X1A+0Qtu1s65J9/VvpebDiHnu6ue50Hdd8nO1nxvVa+8tn3/43md/jqPQrFM05hMCP1Ry
+  </data>
+ </layer>
+ <layer name="texture" width="200" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2sEKgkAYhdHxGav3f5UWEUbNjczfpPEcmI27q34QWGsAAADAkZyn2wFm9y6eD9BvQR9wow/I9AGZPiDTB2T6gEwfkOkDMn1AX/p27hs6zA08ttC7BkekD0ZU9Zvomz4u0+thvdO07LzTe0afnFHoYzz6qKOP8eijzl59VN/bindhFPqoo4/x6KPOHn1scX/1MdNHHX2MRx919JH3bPFfgF90q486+sh79KGPf+pj6XPXhz7W0kfeow996CPv0Yc+9JH36EMf+sh79KEPfeQ9+tCHPvIefehDH3mPPvShj7xHH/rQR96jD33oI+/Rhz6A1q56McPR
+  </data>
+ </layer>
+ <layer name="solid" width="200" height="40">
   <properties>
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztnEFy0zAYRpVFG5bs2hXddcWOlg2wp+kZuAS3SIY7AGeg9FylXABpYk2E+v+OFcuOFL03841dx6k7dp4/xfb0whhzEQUAtngnrm3edgGALd6Pq2P/IQAFgh8AOvgBoDOnH082zzNsByAXc/jhvPhjc77Yxs3jCdSA9+PS5vVE2zizTnwx/2e5mGhjABmZ474HfkCt4AeAzhz3zvEDagU/AHTG+nFjc9vlvbIOfkCtjPHDufE5iuQIfkCtjPHjzrz0415YDz+gVpwTbwx+AEiE3XGd+N4hfrh757EbPtxDh9IJ/Uh9xmSIH747zoMO8fN0CJQOfgDoaH6E123DhNenpvLjlxAYj7Rf+wK6H+6z/85mFU3vo3Wm8uNrNB2Lf4Y4Tkvfgdx+/BtM981Dvx8rIXP5kftcdrbYPV8fpqUxHv2RTmn9IXXHmA7ReqPFDqE/0imtP3Kfz9z2X+1JKx1Cf6RTUn/446L1xyHHTBtXtTjGoj/SKak/pjin4ccO+iOd0I/LYPm+/rjplsV+uGXhNeBUP7TuOPQ7SC3jK7c/10a/lp4D+iMd7fnEff0hdYfUIXP1R3y/xn+2aukPtz+dH9+CqfQs2xjoj3T6/Ojrj6n8OKQ/+q5RPZt6/Vhn3gb9kc4p9Ifbhj+ucZaVjK/c/nTngFU3daE/js8p9EffGGpZ0fiq71pIDuiPdFroj1r8oD/Ko4X+qGV8RX+UB/1Rjh/0R3m00B+1+EF/lEcL/VHL+Ir+KA/6oxw/6I/yaKE/tNfCdY7NkP74bvPD5mc0PxT6I50hfmyM7Me6y6aL/1nzw6831I+NsEwi7A//+7X+iF8vrT+kfe34YPNg89vmMZr/aPNpwDYkB/wxwQ+Z2A/SZqT/NUBe7icA2IEfADr4AaCDHwA6+AGggx8AOvgBoIMfADq57zMBnBK5/ZCe2SKk1vwDKliBgA==
+   eJzt271OwzAYhWFfAls7wdapdw9MiN8RiQnxJ0DAFQB7B2w1ESbKIWAnzpfofaQzNK1SDz1ynLgL59yiEQBbdSdWPusqALbqfuyNPRDAIPoBaPQD0OgHoNEPQKv7sfTZGXksgDU89wA0+gFoPDsHNPoBaLn9ePR5qvLc47gAC5g/AI1+AFroxK6jH0CbeO5YjTwWwJq4H+wxAX6iH4Cm+rHvvu/bxjksMKYjn9coxwW+E2ij+nEhPq+O9+my4zVQisV+3Ha8Bkqx1o+Tfx7vEq4T7zvykHhuzJ+1fqhrqdRrrBLzHebLUj/CuvxGvHft85ZwztP04QCm+jHEOpx+IEfcj2V0vHQ/Xtw0+hHvV47D3uV5UvsTpzZ/NH+39e+V+QM5SvXjL/8TSe3HndP3pq4SzwkEc5k/gCFY6cdQ6w8gh5V+BPQD1tAPQBu6H+p+aNs6nX7AGivzR1h/sA9xnqb8bMhKPwCLcvoR9sYeNFLi/1NAKTn9CM+mzxo573l8wJjoB6B9TCyfPpsq778cI6SPfAGlUT2n
   </data>
  </layer>
- <objectgroup name="test object" width="200" height="50">
-  <object name="player" x="229" y="571" width="34" height="31"/>
-  <object name="angrySaw" x="1280" y="608" width="19" height="19"/>
+ <layer name="paint" width="200" height="40">
+  <properties>
+   <property name="solid" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt211qg0AUgFH3VEmb/W+sSAoRmV+91qjnwDDgQy1jvt740GEAAAAA7mT8W8DbmFlAugV9wIs+IE8fkKcPyNMH5OkD8vQBefqAPH1A2tTBT2ZphLsbF3vuGtyRPriiZ2H1WNPHI7HYrvRMe59z6hm1rKt4VvZW+vgc+ohjflyPPuIcNT8elb3Xd+O6A33EOWp+RJ9ty2dfH/rodcT8mJ9hal9zvubHmz7iHDE/9jhffbzpI84e82P5v+fzPmqzY773iP5+FfV3o/XnRtJHnLPNj9zvGT0/9PGij/LeqnV+TNbOj9YG9KGPKGeaH6XPt+9X9Xvoo98e86N0bcv7h/mx7R766Hel+aGP8j300e+/58dkr/lRow999IqcH6U1Z37o4yy8f6Tp46WniedwzT6u8v5Row/zo1fL/Gg51094/zA/yvfQR7+Wc9ujD/NDH2ewPKe1fXwt9ty1SeosW/uYz4HanDA/9AFs9wtH2Q9Q
+  </data>
+ </layer>
+ <layer name="decor" width="200" height="40">
+  <properties>
+   <property name="solid" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt29tqwkAUBdD5515SqFBKxNJ3P7iWRjoMnrFJzdW14DAmIyYP2ZxM1JQAAAAAACDWFgX8kg+IyQfE5ANi8gEx+YCYfEBMPiAmHwD01WZjW+yDeycfEJOPbToUdW9eT9V0Y8rGvobk41iMsFX6B1s0V/8ojzf0uLAGc/ePXVZNsb2b8DzYFv0DxtcnHx9ZXdqGpZijf+yujEO4v2LJynw0Sf9g/W7dP67t+zZG/4Alm2L9se+qyV7vuzn3V4xhK+sPWLK5+weMYaz+UVufe34FMf2DtbD+gNghGPsauv4oq8bzK6aWX08pXb6W8uxE+Zmif3wGVZvL3wND1frGsZs/pvi/TEN/v9vnO/Na/9hX5q1Rbude/0f4XJl7ST/X3Pl17uFUj+l6Pp6Cz37rcY5n7/+cB+BvvgAWBK4J
+  </data>
+ </layer>
+ <layer name="decor2" width="200" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2LsKgDAMBVC/WnCw3+7iVIqCfZlyDgTp1CXlJm4bAAAAAAAAAAAAAAAAAEB/R6EAiOMs1Cgp+wIQx8z8AMYovXNvnlp6Cf7BHk40M/Ijv6vF3eYr/k5PsppV8gOiq90/nmYn8xU9yA9Yg2xgtBb9ll7q6c7S+QvzFdH13D+gB/sHrMH/K0abnR/6GNqQH0S33wVAfBdNglnE
+  </data>
+ </layer>
+ <objectgroup name="objects" width="200" height="40">
+  <object name="player" x="429" y="1182" width="34" height="31"/>
+  <object name="angrySaw" x="1352" y="675" width="19" height="19"/>
   <object name="lavaDumper" x="848" y="160" width="32" height="32"/>
   <object name="spikes_up" x="512" y="608" width="32" height="32"/>
   <object name="spikes_up" x="480" y="608" width="32" height="32"/>
-  <object name="spikes_up" x="1088" y="448" width="32" height="32"/>
+  <object name="spikes_up" x="1191" y="571" width="32" height="32"/>
   <object name="lava" x="800" y="288" width="32" height="32"/>
   <object name="lava" x="832" y="288" width="32" height="32"/>
-  <object name="endLevelFlag" x="2560" y="576" width="32" height="32"/>
+  <object name="endLevelFlag" x="3915" y="540" width="32" height="32"/>
   <object name="lava" x="896" y="288" width="32" height="32"/>
   <object name="lava" x="864" y="288" width="32" height="32"/>
-  <object name="lolrus" x="762" y="558" width="56" height="33"/>
-  <object name="lolrus" x="456" y="785" width="56" height="33"/>
+  <object name="lolrus" x="863" y="1158" width="56" height="33"/>
+  <object name="lolrus" x="704" y="1137" width="56" height="33"/>
   <object name="lavaDumper" x="1872" y="64" width="32" height="32"/>
   <object name="lavaDumper" x="2032" y="64" width="32" height="32"/>
-  <object name="lava" x="1856" y="608" width="32" height="32"/>
-  <object name="lava" x="1888" y="608" width="32" height="32"/>
-  <object name="lava" x="2016" y="608" width="32" height="32"/>
-  <object name="lava" x="2048" y="608" width="32" height="32"/>
+  <object name="lava" x="1439" y="1246" width="32" height="32"/>
+  <object name="lava" x="1471" y="1246" width="32" height="32"/>
+  <object name="lava" x="1600" y="1248" width="32" height="32"/>
+  <object name="lava" x="1632" y="1248" width="32" height="32"/>
   <object name="spikes_up" x="128" y="800" width="32" height="32"/>
-  <object name="spikes_up" x="802" y="832" width="32" height="32"/>
+  <object name="spikes_up" x="673" y="1214" width="32" height="32"/>
  </objectgroup>
- <layer name="nonsoldshit" width="200" height="50">
-  <properties>
-   <property name="solid" value="0"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt2bEJACAMBED3UvdzbC2tRBAU9Q6etIE0IQkBAAAAAAAAAAAAAAAAAPhFGYQ7jWZqzgDArJm9wS4BAAD8pHTVjRVgD38uAAAAAAAAAABeEVtSSz7dCAAAAAAAAAAAsKwCqWMU5Q==
-  </data>
- </layer>
- <layer name="paint" width="200" height="50">
-  <properties>
-   <property name="solid" value="0"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt1uFqwyAYhtF6RR0bvf9bK6WEZa1foi7B1JwDIuR3Hl4vFwAAAOBMvtLzAL+mLl4PkG9BH/CkD4jpA2L6gJg+IKYPiOkDYvqAmD4gb6kDjXB2UwPzFnLf4Iz0wYhuKT41Wvr4Tu8HjmTqILpLtfaRu+Eo7AfEeu1HtB2tjfyksgM1eu1Hbjv+syEl/74+qNVjP+Yd5O6WRuwHe+ixH0vboQ+OpNd+lNw1vK/Yg/2A2CftR2kD+mArn7QfS/+39xV7sB8QG2k/9MHWRtqPNfqglv2A2Ej7oQ+2NtJ+rNEHtewHxOwHxF57aO3jmv7e0beHXAulfcx3YG0n7AcAAAAAAAAAALCFO3o1adY=
-  </data>
- </layer>
 </map>
