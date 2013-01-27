@@ -170,6 +170,7 @@ namespace MagnetBoy
 #endif
 #if XBOX
             // Xbox gamer services loading code here
+            resetSaveData();
 #endif
 
             gameInput = new GameInput(graphics.GraphicsDevice);
