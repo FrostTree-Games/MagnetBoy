@@ -40,8 +40,6 @@ namespace MagnetBoy
         public static Effect tintRedEffect = null;
         public static Effect grayCheckerBoard = null;
 
-        public static Song testSong = null;
-
         private AnimationFactory aFac = null;
         private AudioFactory audFac = null;
 
@@ -50,6 +48,17 @@ namespace MagnetBoy
         public static Rectangle mapView;
 
         private GameScreenManager screenManager = null;
+
+        // Game Level Information
+        public static readonly string[] levelNames = { "The Lab", "WILSON'S CITY LEVEL", "SEWER - NEED", "ERIC'S FACTORY LEVEL", "BOSS LEVEL - NEED" };
+        public static readonly string[] levelFileNames = { "theLab2", "WillysMap", "theLab2", "theLab", "theLab2" };
+
+        //currentLevel and furthestLevelProgressed start from 0 and go to NumberOfLevels - 1
+        private static int currentLevel;
+        private static int furthestLevelProgressed;
+        public static int CurrentLevel { get { return currentLevel; } set { currentLevel = value % Game1.NumberOfLevels; } }
+        public static int FurthestLevelProgressed { get { return furthestLevelProgressed; } set { furthestLevelProgressed = value % Game1.NumberOfLevels; } }
+        public static int NumberOfLevels { get { return levelNames.Length; } }
 
         public Game1()
         {
@@ -77,6 +86,14 @@ namespace MagnetBoy
             base.Initialize();
 
             mapView = graphics.GraphicsDevice.Viewport.Bounds;
+
+#if WINDOWS
+            currentLevel = 0;
+            furthestLevelProgressed = 4;
+#endif
+#if XBOX
+            // Xbox gamer services loading code here
+#endif
 
             gameInput = new GameInput(graphics.GraphicsDevice);
         }

@@ -10,16 +10,54 @@ namespace MagnetBoy
 {
     class LevelSelectMenuState : IState
     {
+        private class LevelSelectMenuOption
+        {
+            public bool selected;
+            public double distanceOut;
+
+            public const double minDistanceOut = 0.0;
+            public const double maxDistanceOut = 1.0;
+            public const double moveSpeed = 0.01;
+
+            public void update(GameTime currentTime)
+            {
+                if (selected)
+                {
+                    if (distanceOut < maxDistanceOut)
+                    {
+                        distanceOut += moveSpeed * currentTime.ElapsedGameTime.Milliseconds;
+
+                        if (distanceOut > maxDistanceOut)
+                        {
+                            distanceOut = maxDistanceOut;
+                        }
+                    }
+                }
+                else
+                {
+                    if (distanceOut > minDistanceOut)
+                    {
+                        distanceOut -= moveSpeed * currentTime.ElapsedGameTime.Milliseconds;
+
+                        if (distanceOut < minDistanceOut)
+                        {
+                            distanceOut = minDistanceOut;
+                        }
+                    }
+                }
+            }
+        }
+
         private ContentManager contentManager = null;
         private GameInput gameInput;
 
-        /*
         private bool downPressed = false;
         private bool upPressed = false;
-        private bool leftPressed = false;
-        private bool rightPressed = false;
-        private bool confirmPressed = false; */
+        private bool confirmPressed = false;
         private bool cancelPressed = false;
+
+        private int selectedMenuItem;
+        private List<LevelSelectMenuOption> menuList = null;
 
         public LevelSelectMenuState(ContentManager newManager)
         {
@@ -27,6 +65,13 @@ namespace MagnetBoy
 
             contentManager = newManager;
             gameInput = new GameInput(Game1.graphics.GraphicsDevice);
+
+            selectedMenuItem = 0;
+            menuList = new List<LevelSelectMenuOption>(5);
+            for (int i = 0; i < 5; i++)
+            {
+                menuList.Add(new LevelSelectMenuOption());
+            }
         }
 
         protected override void doUpdate(GameTime currentTime)
@@ -45,6 +90,53 @@ namespace MagnetBoy
                 AudioFactory.playSFX("sfx/menu");
             }
 
+            if (GameInput.isButtonDown(GameInput.PlayerButton.DownDirection))
+            {
+                downPressed = true;
+            }
+            else if (downPressed == true)
+            {
+                selectedMenuItem++;
+                downPressed = false;
+
+                AudioFactory.playSFX("sfx/menu");
+            }
+
+            if (GameInput.isButtonDown(GameInput.PlayerButton.UpDirection))
+            {
+                upPressed = true;
+            }
+            else if (upPressed == true)
+            {
+                selectedMenuItem--;
+                upPressed = false;
+
+                AudioFactory.playSFX("sfx/menu");
+            }
+
+            if (selectedMenuItem >= menuList.Count)
+            {
+                selectedMenuItem = selectedMenuItem % menuList.Count;
+            }
+            else if (selectedMenuItem < 0)
+            {
+                selectedMenuItem += menuList.Count;
+            }
+
+            for (int i = 0; i < menuList.Count; i++)
+            {
+                if (i == selectedMenuItem)
+                {
+                    menuList[i].selected = true;
+                }
+                else
+                {
+                    menuList[i].selected = false;
+                }
+
+                menuList[i].update(currentTime);
+            }
+
             if (GameInput.isButtonDown(GameInput.PlayerButton.Push))
             {
                 if (GameInput.P1MouseDirectionNormal.X != float.NaN)
@@ -56,6 +148,17 @@ namespace MagnetBoy
                 {
                     TitleScreenMenuState.checkerBoardSlide.Y += GameInput.P1MouseDirectionNormal.Y;
                 }
+            }
+
+            if (GameInput.isButtonDown(GameInput.PlayerButton.Confirm))
+            {
+                confirmPressed = true;
+            }
+            else if (confirmPressed == true)
+            {
+                confirmPressed = false;
+
+                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, Game1.levelFileNames[selectedMenuItem]);
             }
 
             Game1.grayCheckerBoard.Parameters["slideX"].SetValue(TitleScreenMenuState.checkerBoardSlide.X);
@@ -71,8 +174,12 @@ namespace MagnetBoy
             spriteBatch.End();
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Game1.globalTestPositive, new Vector2(100, 100), Color.White);
-            spriteBatch.Draw(Game1.globalTestNegative, new Vector2(100, 132), Color.White);
+            for (int i = 0; i < menuList.Count; i++)
+            {
+                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 96 + i * 64), 28, 3, Color.Purple, AnimationFactory.DepthLayer3);
+                spriteBatch.DrawString(Game1.gameFontText, Game1.levelNames[i], new Vector2((float)(152 + (25 * menuList[i].distanceOut)), 100 + i * 64), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+                spriteBatch.DrawString(Game1.gameFontText, "Completed in MM:SS by GAMERTAG", new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 121 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
+            }
             spriteBatch.End();
         }
     }

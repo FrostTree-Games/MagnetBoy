@@ -64,8 +64,6 @@ namespace MagnetBoy
 
         private bool downPressed = false;
         private bool upPressed = false;
-        private bool leftPressed = false;
-        private bool rightPressed = false;
         private bool confirmPressed = false;
 
         private List<TitleMenuOption> menuList;
