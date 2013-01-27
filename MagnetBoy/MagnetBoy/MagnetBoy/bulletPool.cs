@@ -25,6 +25,9 @@ namespace MagnetBoy
         int currentFrame = 0;
         double lastFrameIncrement = 0;
 
+        float organVelocityX = 0.0f;
+        float organVelocityY = 0.0f;
+
         public float Direction
         {
             get
@@ -71,6 +74,31 @@ namespace MagnetBoy
             exploding = false;
             explodingTime = 0;
 
+            if (BulletPool.shieldUp)
+            {
+                if (type == BulletPool.BulletType.Lung)
+                {
+                    organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.12f);
+                }
+                if (type == BulletPool.BulletType.Heart)
+                {
+                    organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.15f);
+                }
+                if (type == BulletPool.BulletType.Brain)
+                {
+                    organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.17f);
+                }
+                organVelocityY = (float)((Game1.gameRandom.Next() % 1 + 1.0) * 0.32f);
+            }
+            else
+            {
+                organVelocityX = (float)((Game1.gameRandom.Next() % 2 + 1.0) * 0.16f);
+                organVelocityY = (float)((Game1.gameRandom.Next() % 2 + 1.0) * 0.16f);
+            }
+
+            Console.WriteLine("X: " + organVelocityX);
+            Console.WriteLine("Y: " + organVelocityY);
+
             switch (newType)
             {
                 case BulletPool.BulletType.TestBullet:
@@ -101,35 +129,38 @@ namespace MagnetBoy
                 case BulletPool.BulletType.Heart:
                     width = 31.5f;
                     height = 31.5f;
-                    velocity.X = -0.1f;
-                    velocity.Y = -0.2f;
+                    velocity.X = (float)(organVelocityX * Math.Cos(direction));
+                    velocity.Y = (float)(organVelocityY * Math.Sin(direction));
                     rotation = direction;
                     currentAnimation = "heartIdle2";
                     currentFrame = 0;
                     acceleration.Y = 0.0005f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    maxLifeTime = 2000;
                     break;
                 case BulletPool.BulletType.Brain:
                     width = 31.5f;
                     height = 31.5f;
-                    velocity.X = -0.1f;
-                    velocity.Y = -0.2f;
+                    velocity.X = (float)(organVelocityX * Math.Cos(direction));
+                    velocity.Y = (float)(organVelocityY * Math.Sin(direction));
                     rotation = direction;
                     currentAnimation = "brainIdle";
                     currentFrame = 0;
                     acceleration.Y = 0.0007f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    maxLifeTime = 2000;
                     break;
                 case BulletPool.BulletType.Lung:
                     width = 31.5f;
                     height = 31.5f;
-                    velocity.X = -0.1f;
-                    velocity.Y = -0.2f;
+                    velocity.X = (float)(organVelocityX * Math.Cos(direction));
+                    velocity.Y = (float)(organVelocityY * Math.Sin(direction));
                     rotation = direction;
                     currentAnimation = "lungIdle";
                     currentFrame = 0;
                     acceleration.Y = 0.0003f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    maxLifeTime = 2000;
                     break;
                 default:
                     inUse = false;
@@ -281,6 +312,8 @@ namespace MagnetBoy
 
         private static Bullet[] pool = null;
 
+        public static bool shieldUp = false;
+
         public BulletPool()
         {
             if (pool == null)
@@ -293,6 +326,11 @@ namespace MagnetBoy
                 }
             }
             
+        }
+
+        public static void shieldStatus(bool val)
+        {
+            shieldUp = val;
         }
 
         public void updatePool(GameTime currentTime)
