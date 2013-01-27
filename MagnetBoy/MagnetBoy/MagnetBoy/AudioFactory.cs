@@ -18,9 +18,15 @@ namespace MagnetBoy
 
         private static string currentSongName = null;
 
+        public static bool Mute { get { return MediaPlayer.IsMuted; } set { MediaPlayer.IsMuted = value; } }
+
+        public static bool Looping { get { return MediaPlayer.IsRepeating; } set { MediaPlayer.IsRepeating = value; } }
+
         public AudioFactory(ContentManager newManager)
         {
             initalize(newManager);
+
+            MediaPlayer.IsRepeating = true;
         }
 
         private void initalize(ContentManager newManager)
@@ -93,11 +99,16 @@ namespace MagnetBoy
         //stops any other song playing and plays the specified song
         public static void playSong(string songName)
         {
+            if (MediaPlayer.IsMuted)
+            {
+                return;
+            }
+
             MediaPlayer.Stop();
 
             currentSongName = songName;
 
-            //MediaPlayer.Play(bgmLib[songName]);
+            MediaPlayer.Play(bgmLib[songName]);
         }
 
         public static void stopSong()

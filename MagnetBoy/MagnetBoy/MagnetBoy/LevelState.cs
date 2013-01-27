@@ -27,7 +27,8 @@ namespace MagnetBoy
          *  -- backgroundTile
          *  -- levelName
          */
-        private Semaphore assetResources;
+        //private Semaphore assetResources;
+        private bool grabbed;
 
         private List<Entity> levelEntities = null;
         private Camera levelCamera = null;
@@ -118,8 +119,6 @@ namespace MagnetBoy
 
             contentManager = newManager;
 
-            assetResources = new Semaphore(0, 1);
-
             gameInput = new GameInput(null);
             levelEntities = new List<Entity>(100);
             levelCamera = new Camera();
@@ -139,9 +138,12 @@ namespace MagnetBoy
                 flags[i] = false;
             }
 
+            grabbed = false;
             new Thread(loadLevelThread).Start();
 
-            currentPlayerHealth = maxPlayerHealth;
+            Thread.Yield();
+
+            currentPlayerHealth = Game1.MagnetBoySaveData.defaultStartingHealth;
 
             fadingOut = false;
             fadingOutTimer = 0;
@@ -158,6 +160,8 @@ namespace MagnetBoy
                 Thread.SetProcessorAffinity(3); 
                 #endif
              */
+            Monitor.Enter(levelEntities);
+            grabbed = true;
 
             levelMap = contentManager.Load<Map>(levelName);
 
@@ -334,7 +338,8 @@ namespace MagnetBoy
 
             //Thread.Sleep(5000);
             
-            assetResources.Release();
+            //assetResources.Release();
+            Monitor.Exit(levelEntities);
         }
 
         private void loadingDoUpdate(GameTime currentTime)
@@ -373,12 +378,13 @@ namespace MagnetBoy
 
         protected override void doUpdate(GameTime currentTime)
         {
-            if (assetResources.WaitOne(10) == false)
+            if (grabbed == false || Monitor.TryEnter(levelEntities) == false)
             {
                 loadingDoUpdate(currentTime);
                 return;
             }
-            assetResources.Release();
+            Monitor.Exit(levelEntities);
+            //assetResources.Release();
 
             gameInput.update();
 
@@ -531,12 +537,12 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch spriteBatch)
         {
-            if (assetResources.WaitOne(10) == false)
+            if (grabbed == false || Monitor.TryEnter(levelEntities) == false)
             {
                 loadingDraw(spriteBatch);
                 return;
             }
-            assetResources.Release();
+            Monitor.Exit(levelEntities);
 
             Matrix mx = new Matrix();
             Rectangle rx = new Rectangle();
@@ -579,11 +585,15 @@ namespace MagnetBoy
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             if (currentPlayerHealth <= maxPlayerHealth)
             {
-                for (int i = 0; i < currentPlayerHealth; i++)
+                for (int i = 0; i < maxPlayerHealth; i++)
                 {
-                    AnimationFactory.drawAnimationFrame(spriteBatch, "heartIdle", 0, new Vector2(i * 32, 50), AnimationFactory.DepthLayer0);
+                    AnimationFactory.drawAnimationFrame(spriteBatch, i < currentPlayerHealth ? "heartIdle" : "heartEmpty", 0, new Vector2(112 + (i * 32), 96), new Vector2(0.8f, 0.8f), Color.White, AnimationFactory.DepthLayer0);
                 }
             }
+
+            //spriteBatch.DrawString(Game1.gameFontText, "Stamina: " + LevelState.playerStamina, new Vector2(32, 16), Color.White);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f * (playerStamina / playerStaminaMax), 1.0f), Color.Lerp(Color.DarkBlue, Color.LightBlue, (playerStamina / playerStaminaMax)), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f, 1.0f), Color.Black, AnimationFactory.DepthLayer2);
             spriteBatch.End();
 
             //draw game cursor
@@ -596,10 +606,6 @@ namespace MagnetBoy
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, arrowRotation);
             AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero, AnimationFactory.DepthLayer0);
-            spriteBatch.End();
-
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
-            spriteBatch.DrawString(Game1.gameFontText, "Stamina: " + LevelState.playerStamina, new Vector2(32, 16), Color.White);
             spriteBatch.End();
 
             if (fadingOut)
