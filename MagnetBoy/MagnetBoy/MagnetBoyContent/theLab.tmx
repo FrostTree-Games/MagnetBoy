@@ -132,7 +132,7 @@
   <object name="lavaDumper" x="2368" y="896" width="32" height="32"/>
   <object name="lavaDumper" x="2432" y="640" width="32" height="32"/>
   <object name="boss" x="9376" y="4192" width="32" height="32"/>
-  <object name="player" x="9152" y="4128" width="32" height="32"/>
+  <object name="player" x="9143" y="4245" width="32" height="32"/>
   <object name="heartItem" x="8416" y="2624" width="32" height="32"/>
   <object name="spikes_up" x="6368" y="2592" width="32" height="32"/>
   <object name="spikes_up" x="6400" y="2592" width="32" height="32"/>

@@ -24,9 +24,9 @@ namespace MagnetBoy
         private BulletPool.BulletType Heart = BulletPool.BulletType.Heart;
         private BulletPool.BulletType Brain = BulletPool.BulletType.Brain;
         private BulletPool.BulletType Lung = BulletPool.BulletType.Lung;
+        private BulletPool.BulletType healthItem = BulletPool.BulletType.healthItem;
 
         //after he walks into the scene, enabled becomes true
-        private bool isEnabled = false;
         private double interval = 500;
         private double timeSinceLastShot= 0.0;
 
@@ -56,6 +56,8 @@ namespace MagnetBoy
             acceleration.Y = 0.001f;
 
             pole = Polarity.Neutral;
+
+            bossHealth = 30;
 
             solid = true;
         }
@@ -88,6 +90,11 @@ namespace MagnetBoy
                 {
                     BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
+
+                if (Game1.gameRandom.Next() % 10 == 0)
+                {
+                    BulletPool.pushBullet(healthItem, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                }
              
                 timeSinceLastShot = 0;
             }
@@ -111,8 +118,35 @@ namespace MagnetBoy
                         }
                     }
                 }
+                
+                if (en is Bullet)
+                {
+                    if (hitTest(en))
+                    {
+                        if (((Bullet)en).velocity.X > 0)
+                        {
+                            if (((Bullet)en).bulletUsed == false)
+                            {
+                                bossHealth -= 1;
+                                ((Bullet)en).bulletUsed = true;
+                            }
+                            ((Bullet)en).deathAnimationSet = true;
+                            ((Bullet)en).velocity.X = 0;
+                            ((Bullet)en).velocity.Y = 0;
+                            ((Bullet)en).acceleration.Y = 0;
+                            ((Bullet)en).maxLifeTime = 0;
+                            break;
+                        }
+                    }
+                }
+                
             }
 
+            if (bossHealth == 0)
+            {
+                removeFromGame = true;
+                death();
+            }
             // if the last frame time hasn't been set, set it now
             if (lastFrameIncrement == 0)
             {
@@ -181,7 +215,7 @@ namespace MagnetBoy
 
         private float interval = 10000;
         private float timeLastMoved = 0.0f;
-        public static float yPosDisplacement = 1.0f;
+        public static float yPosDisplacement = 0.0f;
 
         public static int shieldHealth = 0;
 
@@ -205,6 +239,8 @@ namespace MagnetBoy
             width = 31.5f;
             height = 31.5f;
 
+            yPosDisplacement = 0f;
+
             solid = true;
         }
 
@@ -219,17 +255,17 @@ namespace MagnetBoy
 
             if (BulletPool.shieldUp == true)
             {
-                if (yPosDisplacement < 64)
+                if (yPosDisplacement <= 64)
                 {
-                    vertical_pos -= 0.1f;
-                    yPosDisplacement += 0.1f;
+                    vertical_pos -= 0.05f;
+                    yPosDisplacement += 0.05f;
                     timeLastMoved = 0.0f;
                 }
             }
 
             if (BulletPool.shieldUp == false)
             {
-                if (yPosDisplacement > 0)
+                if (yPosDisplacement >= 0)
                 {
                     vertical_pos += 0.1f;
                     yPosDisplacement -= 0.1f;
@@ -244,21 +280,28 @@ namespace MagnetBoy
                 {
                     if (hitTest(b))
                     {
-                        Console.WriteLine(((Bullet)b).type);
                         if (((Bullet)b).velocity.X < 0)
                         {
                             ((Bullet)b).inUse = false;
-                            ((Bullet)b).removeFromGame = true;
-                            ((Bullet)b).death();
-                            death();
+                            ((Bullet)b).velocity.X = 0;
+                            ((Bullet)b).velocity.Y = 0;
+                            ((Bullet)b).acceleration.Y = 0;
+                            ((Bullet)b).bulletUsed = true;
+                            ((Bullet)b).maxLifeTime = 0;
                             break;
                         }
                         else
                         {
-                            shieldHealth -= 1;
-                            ((Bullet)b).inUse = false;
-                            ((Bullet)b).removeFromGame = true;
-                            ((Bullet)b).death();
+                            if (((Bullet)b).bulletUsed == false)
+                            {
+                                shieldHealth -= 1;
+                                ((Bullet)b).bulletUsed = true;
+                            }
+                            ((Bullet)b).deathAnimationSet = true;
+                            ((Bullet)b).velocity.X = 0;
+                            ((Bullet)b).velocity.Y = 0;
+                            ((Bullet)b).acceleration.Y = 0;
+                            ((Bullet)b).maxLifeTime = 0;
                             break;
                         }
                     }
@@ -280,8 +323,6 @@ namespace MagnetBoy
             if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
             {
                 lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
-
-                //currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
             }
         }
 
