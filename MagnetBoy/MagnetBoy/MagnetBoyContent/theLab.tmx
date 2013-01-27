@@ -175,5 +175,7 @@
   <object name="spikes_up" x="7616" y="2016" width="32" height="32"/>
   <object name="endLevelFlag" x="7488" y="2528" width="32" height="32"/>
   <object name="heartItem" x="5376" y="3936" width="32" height="32"/>
+  <object name="bossShield" x="9280" y="4224" width="32" height="32"/>
+  <object name="endLevelFlag" x="8832" y="4320" width="32" height="32"/>
  </objectgroup>
 </map>

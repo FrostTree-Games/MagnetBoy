@@ -26,6 +26,19 @@
       <frameCount>40</frameCount>
       <frameSpeed>1000</frameSpeed>
     </Item>
+    
+    <Item>
+      <name>heartEmpty</name>
+      <sheetName>heartSheet</sheetName>
+      <sheet Type="System.String">spikes</sheet>
+      <initalX>0</initalX>
+      <initalY>32</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1000</frameSpeed>
+    </Item>
+
 
   </Asset>
 </XnaContent>

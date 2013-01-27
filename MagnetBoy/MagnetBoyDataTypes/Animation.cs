@@ -7,7 +7,6 @@ using System.Xml.Serialization;
 
 namespace MagnetBoyDataTypes
 {
-    [Serializable]
     public class Animation
     {
         public string name;

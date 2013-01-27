@@ -30,6 +30,8 @@ namespace MagnetBoy
         private double interval = 500;
         private double timeSinceLastShot= 0.0;
 
+        public int bossHealth = 0;
+
         public Boss()
         {
             creation();
@@ -54,6 +56,8 @@ namespace MagnetBoy
             acceleration.Y = 0.001f;
 
             pole = Polarity.Neutral;
+
+            solid = true;
         }
 
         public override void update(GameTime currentTime)
@@ -64,17 +68,49 @@ namespace MagnetBoy
             {
                 float direction = 0.0f;
                 
-                direction += (float)(0);
+                direction += (float)(-0.75 * Math.PI);
 
                 Vector2 bulletPosition = Position;
 
                 bulletPosition.Y += 4;
 
-                BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
-               // BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
-               // BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                if (Game1.gameRandom.Next() % 7 == 0)
+                {
+                    BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                }
+
+                if (Game1.gameRandom.Next() % 6 == 0)
+                {
+                    BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                }
+
+                if (Game1.gameRandom.Next() % 8 == 0)
+                {
+                    BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                }
              
                 timeSinceLastShot = 0;
+            }
+
+            foreach (Entity en in Entity.globalEntityList)
+            {
+                if (en is Player)
+                {
+                    if (hitTest(en))
+                    {
+                        if (!(!en.onTheGround && en.velocity.Y > 0.001f && en.Position.Y < vertical_pos))
+                        {
+                            if (en.Position.X - Position.X < 0)
+                            {
+                                ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
+                            else
+                            {
+                                ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
+                        }
+                    }
+                }
             }
 
             // if the last frame time hasn't been set, set it now
@@ -141,6 +177,14 @@ namespace MagnetBoy
         protected int currentFrame = 0;
         protected double lastFrameIncrement = 0;
 
+        private string currentAnimation = null;
+
+        private float interval = 10000;
+        private float timeLastMoved = 0.0f;
+        public static float yPosDisplacement = 1.0f;
+
+        public static int shieldHealth = 0;
+
         public bossShield()
         {
             creation();
@@ -153,8 +197,97 @@ namespace MagnetBoy
         {
             creation();
 
+            shieldHealth = 21;
+
             horizontal_pos = initialx;
             vertical_pos = initialy;
+
+            width = 31.5f;
+            height = 31.5f;
+
+            solid = true;
+        }
+
+        public override void update(GameTime currentTime)
+        {
+            timeLastMoved += currentTime.ElapsedGameTime.Milliseconds;
+
+            if (timeLastMoved > interval)
+            {
+                BulletPool.shieldUp = !BulletPool.shieldUp;
+            }
+
+            if (BulletPool.shieldUp == true)
+            {
+                if (yPosDisplacement < 64)
+                {
+                    vertical_pos -= 0.1f;
+                    yPosDisplacement += 0.1f;
+                    timeLastMoved = 0.0f;
+                }
+            }
+
+            if (BulletPool.shieldUp == false)
+            {
+                if (yPosDisplacement > 0)
+                {
+                    vertical_pos += 0.1f;
+                    yPosDisplacement -= 0.1f;
+                    timeLastMoved = 0.0f;
+                }
+            }
+
+            foreach(Entity b in globalEntityList)
+            {
+                
+                if (b is Bullet)
+                {
+                    if (hitTest(b))
+                    {
+                        Console.WriteLine(((Bullet)b).type);
+                        if (((Bullet)b).velocity.X < 0)
+                        {
+                            ((Bullet)b).inUse = false;
+                            ((Bullet)b).removeFromGame = true;
+                            ((Bullet)b).death();
+                            death();
+                            break;
+                        }
+                        else
+                        {
+                            shieldHealth -= 1;
+                            ((Bullet)b).inUse = false;
+                            ((Bullet)b).removeFromGame = true;
+                            ((Bullet)b).death();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (shieldHealth == 0)
+            {
+                removeFromGame = true;
+            }
+
+            // if the last frame time hasn't been set, set it now
+            if (lastFrameIncrement == 0)
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            // update the current frame if needed
+            if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                //currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
+            }
+        }
+
+        public override void draw(SpriteBatch sb)
+        {
+            sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.Yellow);
         }
     }
 }

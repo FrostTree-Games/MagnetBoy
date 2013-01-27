@@ -170,6 +170,7 @@
     <Compile Include="Walk.cs" />
     <Compile Include="WalkingEnemy.cs" />
     <Compile Include="WallMagnet.cs" />
+    <Compile Include="XboxListTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

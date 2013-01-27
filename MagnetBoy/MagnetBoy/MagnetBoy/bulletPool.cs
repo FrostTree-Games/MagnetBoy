@@ -11,19 +11,24 @@ namespace MagnetBoy
     {
         private const float testBulletVelocity = 0.25f;
 
-        private bool inUse = false;
+        public bool inUse = false;
         private double timePassed = 0;
         private double maxLifeTime = 1500; 
         private float rotation = 0.0f; // 0.0 in rotation is considered to be right-facing, or "EAST"
-        private BulletPool.BulletType type;
+        public BulletPool.BulletType type;
 
         private bool exploding = false;
         private double explodingTime = 0;
+
+        public bool playerEnact = false;
 
         //animation data
         string currentAnimation = null;
         int currentFrame = 0;
         double lastFrameIncrement = 0;
+
+        float organVelocityX = 0.0f;
+        float organVelocityY = 0.0f;
 
         public float Direction
         {
@@ -56,7 +61,7 @@ namespace MagnetBoy
 
         public void add(float newX, float newY, BulletPool.BulletType newType, GameTime entryTime, float direction)
         {
-            if (newType == BulletPool.BulletType.TestBullet || newType == BulletPool.BulletType.Bucket)
+            if (newType == BulletPool.BulletType.TestBullet || newType == BulletPool.BulletType.Bucket || newType == BulletPool.BulletType.Heart || newType == BulletPool.BulletType.Brain || newType == BulletPool.BulletType.Lung)
             {
                 creation();
             }
@@ -70,6 +75,23 @@ namespace MagnetBoy
 
             exploding = false;
             explodingTime = 0;
+
+            if (type == BulletPool.BulletType.Lung)
+            {
+                organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.12f);
+                organVelocityY = (float)((Game1.gameRandom.Next() % 1 + 1.0) * 0.32f);
+            }
+            if (type == BulletPool.BulletType.Heart)
+            {
+                organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.13f);
+                organVelocityY = (float)((Game1.gameRandom.Next() % 1 + 1.0) * 0.4f);
+            }
+            if (type == BulletPool.BulletType.Brain)
+            {
+                organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.14f);
+                organVelocityY = (float)((Game1.gameRandom.Next() % 1 + 1.0) * 0.4f);
+            }
+                
 
             switch (newType)
             {
@@ -101,35 +123,38 @@ namespace MagnetBoy
                 case BulletPool.BulletType.Heart:
                     width = 31.5f;
                     height = 31.5f;
-                    velocity.X = -0.1f;
-                    velocity.Y = -0.2f;
+                    velocity.X = (float)(organVelocityX * Math.Cos(direction));
+                    velocity.Y = (float)(organVelocityY * Math.Sin(direction));
                     rotation = direction;
                     currentAnimation = "heartIdle2";
                     currentFrame = 0;
                     acceleration.Y = 0.0005f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    maxLifeTime = 5000;
                     break;
                 case BulletPool.BulletType.Brain:
                     width = 31.5f;
                     height = 31.5f;
-                    velocity.X = -0.1f;
-                    velocity.Y = -0.2f;
+                    velocity.X = (float)(organVelocityX * Math.Cos(direction));
+                    velocity.Y = (float)(organVelocityY * Math.Sin(direction));
                     rotation = direction;
                     currentAnimation = "brainIdle";
                     currentFrame = 0;
                     acceleration.Y = 0.0007f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    maxLifeTime = 5000;
                     break;
                 case BulletPool.BulletType.Lung:
                     width = 31.5f;
                     height = 31.5f;
-                    velocity.X = -0.1f;
-                    velocity.Y = -0.2f;
+                    velocity.X = (float)(organVelocityX * Math.Cos(direction));
+                    velocity.Y = (float)(organVelocityY * Math.Sin(direction));
                     rotation = direction;
                     currentAnimation = "lungIdle";
                     currentFrame = 0;
                     acceleration.Y = 0.0003f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
+                    maxLifeTime = 5000;
                     break;
                 default:
                     inUse = false;
@@ -164,10 +189,14 @@ namespace MagnetBoy
             }
 
             // redirection
-            if (type == BulletPool.BulletType.TestBullet || (type == BulletPool.BulletType.Bucket && !exploding))
+            if (type == BulletPool.BulletType.TestBullet || (type == BulletPool.BulletType.Bucket && !exploding) || type == BulletPool.BulletType.Heart || type == BulletPool.BulletType.Lung || type == BulletPool.BulletType.Brain)
             {
-                velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
-                velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
+                if (playerEnact == true)
+                {
+                    velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
+                    velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
+                    playerEnact = false;
+                }
             }
 
             // damage player
@@ -281,6 +310,8 @@ namespace MagnetBoy
 
         private static Bullet[] pool = null;
 
+        public static bool shieldUp = false;
+
         public BulletPool()
         {
             if (pool == null)
@@ -293,6 +324,11 @@ namespace MagnetBoy
                 }
             }
             
+        }
+
+        public static void shieldStatus(bool val)
+        {
+            shieldUp = val;
         }
 
         public void updatePool(GameTime currentTime)

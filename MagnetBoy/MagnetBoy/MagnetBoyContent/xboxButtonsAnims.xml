@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>xboxButtons</name>
+      <sheetName>xboxButtonsSheet</sheetName>
+      <sheet Type="System.String">dopeopleactuallywritestuffinhere</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>22</frameWidth>
+      <frameHeight>21</frameHeight>
+      <frameCount>4</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+    <Item>
+      <name>xboxDPad</name>
+      <sheetName>xboxButtonsSheet</sheetName>
+      <sheet Type="System.String">dopeopleactuallywritestuffinhere</sheet>
+      <initalX>0</initalX>
+      <initalY>22</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+  </Asset>
+</XnaContent>
