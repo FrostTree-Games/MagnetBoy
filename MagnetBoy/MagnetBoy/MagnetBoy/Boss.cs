@@ -74,20 +74,20 @@ namespace MagnetBoy
 
                 bulletPosition.Y += 4;
 
-                if (Game1.gameRandom.Next() % 5 == 0 || Game1.gameRandom.Next() % 7 == 0)
+                if (Game1.gameRandom.Next() % 7 == 0)
                 {
                     BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
 
-                /*if (Game1.gameRandom.Next() % 3 == 0 || Game1.gameRandom.Next() % 11 == 0)
+                if (Game1.gameRandom.Next() % 6 == 0)
                 {
                     BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
 
-                if (Game1.gameRandom.Next() % 2 == 0 || Game1.gameRandom.Next() % 13 == 0)
+                if (Game1.gameRandom.Next() % 8 == 0)
                 {
                     BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
-                }*/
+                }
              
                 timeSinceLastShot = 0;
             }
@@ -183,7 +183,7 @@ namespace MagnetBoy
         private float timeLastMoved = 0.0f;
         public static float yPosDisplacement = 1.0f;
 
-        public static int shieldHealth = 0;
+        public static int shieldHealth = 1;
 
         public bossShield()
         {
@@ -197,7 +197,7 @@ namespace MagnetBoy
         {
             creation();
 
-            shieldHealth = 21;
+            shieldHealth = 1;
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
@@ -250,11 +250,19 @@ namespace MagnetBoy
                         }
                         else
                         {
+                            shieldHealth = shieldHealth - 1;
+                            ((Bullet)b).inUse = false;
                             death();
-                            //en.shieldHealth -= 1;
+                            Console.WriteLine(shieldHealth);
                         }
                     }
                 }
+            }
+
+            if (shieldHealth == 0)
+            {
+                removeFromGame = true;
+                death();
             }
 
             // if the last frame time hasn't been set, set it now

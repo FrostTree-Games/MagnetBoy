@@ -233,6 +233,7 @@ namespace MagnetBoy
                         if (en is Bullet)
                         {
                             ((Bullet)en).Direction = (float)(angle - (Math.PI/2));
+                            ((Bullet)en).playerEnact = true;
                         }
 
                         if (flip == false)

@@ -20,6 +20,8 @@ namespace MagnetBoy
         private bool exploding = false;
         private double explodingTime = 0;
 
+        public bool playerEnact = false;
+
         //animation data
         string currentAnimation = null;
         int currentFrame = 0;
@@ -128,7 +130,7 @@ namespace MagnetBoy
                     currentFrame = 0;
                     acceleration.Y = 0.0005f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
-                    maxLifeTime = 2000;
+                    maxLifeTime = 5000;
                     break;
                 case BulletPool.BulletType.Brain:
                     width = 31.5f;
@@ -140,7 +142,7 @@ namespace MagnetBoy
                     currentFrame = 0;
                     acceleration.Y = 0.0007f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
-                    maxLifeTime = 2000;
+                    maxLifeTime = 5000;
                     break;
                 case BulletPool.BulletType.Lung:
                     width = 31.5f;
@@ -152,7 +154,7 @@ namespace MagnetBoy
                     currentFrame = 0;
                     acceleration.Y = 0.0003f;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
-                    maxLifeTime = 2000;
+                    maxLifeTime = 5000;
                     break;
                 default:
                     inUse = false;
@@ -187,10 +189,14 @@ namespace MagnetBoy
             }
 
             // redirection
-            if (type == BulletPool.BulletType.TestBullet || (type == BulletPool.BulletType.Bucket && !exploding) || type == BulletPool.BulletType.Heart)
+            if (type == BulletPool.BulletType.TestBullet || (type == BulletPool.BulletType.Bucket && !exploding) || type == BulletPool.BulletType.Heart || type == BulletPool.BulletType.Lung || type == BulletPool.BulletType.Brain)
             {
-                velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
-                velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
+                if (playerEnact == true)
+                {
+                    velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
+                    velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
+                    playerEnact = false;
+                }
             }
 
             // damage player
