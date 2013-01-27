@@ -44,7 +44,7 @@ namespace MagnetBoy
                 if (en is Player && hitTest(en))
                 {
                     removeFromGame = true;
-                    if (LevelState.currentPlayerHealth < 7 && LevelState.currentPlayerHealth > 0)
+                    if (LevelState.currentPlayerHealth < 5 && LevelState.currentPlayerHealth > 0)
                     {
                         LevelState.currentPlayerHealth = LevelState.currentPlayerHealth + 1;
 

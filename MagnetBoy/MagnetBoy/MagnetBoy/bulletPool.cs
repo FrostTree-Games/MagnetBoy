@@ -232,9 +232,13 @@ namespace MagnetBoy
                         {
                             if (bulletUsed == false)
                             {
-                                LevelState.currentPlayerHealth += 1;
+                                if (LevelState.currentPlayerHealth < 5 && LevelState.currentPlayerHealth > 0)
+                                {
+                                    LevelState.currentPlayerHealth += 1;
+                                    maxLifeTime = 0;
+                                }
+
                                 bulletUsed = true;
-                                maxLifeTime = 0;
                             }
 
                         }
@@ -322,10 +326,6 @@ namespace MagnetBoy
                 }
                 else
                 {
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Eric-Dev
                     removeFromGame = true;
                     death();
                     inUse = false;
