@@ -9,9 +9,9 @@ namespace MagnetBoy
 {
     class ParticlePool
     {
-        private const float blueSparkVelocity = 0.2f;
+        private const float blueSparkVelocity = 0.3f;
         private const float blueSparkAccel = 0.005f;
-        private const float blueSparkLiveTime = 500f;
+        private const float blueSparkLiveTime = 750f;
 
         private const float sweatDropVelocity = 0.5f;
         private const float sweatDropAccel = 0.019f;
@@ -32,6 +32,8 @@ namespace MagnetBoy
             public double timeActive;
 
             public bool bounce;
+
+            public Vector2 startPosition;
 
             public Vector2 pos;
             public Vector2 velocity;
@@ -75,6 +77,8 @@ namespace MagnetBoy
                     pool[i].active = true;
                     pool[i].type = newType;
 
+                    pool[i].startPosition = newPos;
+
                     switch (newType)
                     {
                         case ParticleType.BlueSpark:
@@ -86,8 +90,9 @@ namespace MagnetBoy
                             pool[i].posPrevD = newPos;
                             pool[i].velocity.X = (float)(blueSparkVelocity * Math.Cos(direction));
                             pool[i].velocity.Y = (float)(blueSparkVelocity * Math.Sin(direction));
-                            pool[i].accel.X = (float)(blueSparkAccel * Math.Cos(acceldir + 0.7));
-                            pool[i].accel.Y = (float)(blueSparkAccel * Math.Sin(acceldir + 0.7));
+                            //pool[i].accel.X = (float)(blueSparkAccel * Math.Cos(acceldir + 0.7));
+                            //pool[i].accel.Y = (float)(blueSparkAccel * Math.Sin(acceldir + 0.7));
+                            pool[i].accel = Vector2.Zero;
                             pool[i].timeActive = 0;
                             pool[i].color = Game1.gameRandom.Next() % 2 == 0 ? Color.Cyan : Color.DarkCyan;
                             pool[i].colorPrevA = pool[i].color;
@@ -156,7 +161,7 @@ namespace MagnetBoy
                     }
 
                     pool[i].timeActive += currentTime.ElapsedGameTime.Milliseconds;
-                    if (pool[i].timeActive > blueSparkLiveTime)
+                    if (pool[i].timeActive > blueSparkLiveTime || (Vector2.Distance(pool[i].pos, pool[i].startPosition) > 128 && pool[i].type == ParticleType.BlueSpark))
                     {
                         pool[i].active = false;
                         continue;

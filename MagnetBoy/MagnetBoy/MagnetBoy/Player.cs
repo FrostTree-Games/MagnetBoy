@@ -186,8 +186,8 @@ namespace MagnetBoy
                 }
 
                 //normally I'd check if LevelState.levelParticlePool is null, but right now I want the thing crashing if this updates outside of a game loop
-                int offset = (Game1.gameRandom.Next() % 3) - 1;
-                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.BlueSpark, CenterPosition + new Vector2((float)((width / 2) * Math.Cos(directionAngle + (offset * Math.PI / 4))), (float)((width / 2) * Math.Sin(directionAngle + (offset * Math.PI / 4)))), velocity, (float)(directionAngle + (0.05 * ((Game1.gameRandom.Next() % 10) - 5))), (float)(directionAngle - (offset * (Math.PI))));
+                double offset = 0.5 - Game1.gameRandom.NextDouble();
+                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.BlueSpark, CenterPosition + new Vector2((float)((width / 2) * Math.Cos(directionAngle)), (float)((width / 2) * Math.Sin(directionAngle))), velocity, (float)(directionAngle + (aimWindow * offset)), (float)directionAngle);
 
                 isPushing = true;
 
