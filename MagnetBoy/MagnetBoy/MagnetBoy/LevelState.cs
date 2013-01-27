@@ -150,6 +150,8 @@ namespace MagnetBoy
 
             IsUpdateable = true;
 
+            GameInput.LockMostRecentPad = true;
+
             GC.Collect();
         }
 
@@ -428,9 +430,11 @@ namespace MagnetBoy
 
                 levelBulletPool.clearPool();
 
-                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
 
                 endLevelFlag = false;
+
+                GameInput.LockMostRecentPad = false;
 
                 return;
             }
