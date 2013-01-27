@@ -79,7 +79,7 @@ namespace MagnetBoy
                     BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
 
-                if (Game1.gameRandom.Next() % 3 == 0 || Game1.gameRandom.Next() % 11 == 0)
+                /*if (Game1.gameRandom.Next() % 3 == 0 || Game1.gameRandom.Next() % 11 == 0)
                 {
                     BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
@@ -87,7 +87,7 @@ namespace MagnetBoy
                 if (Game1.gameRandom.Next() % 2 == 0 || Game1.gameRandom.Next() % 13 == 0)
                 {
                     BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
-                }
+                }*/
              
                 timeSinceLastShot = 0;
             }

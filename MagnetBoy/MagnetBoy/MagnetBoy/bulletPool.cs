@@ -187,7 +187,7 @@ namespace MagnetBoy
             }
 
             // redirection
-            if (type == BulletPool.BulletType.TestBullet || (type == BulletPool.BulletType.Bucket && !exploding))
+            if (type == BulletPool.BulletType.TestBullet || (type == BulletPool.BulletType.Bucket && !exploding) || type == BulletPool.BulletType.Heart)
             {
                 velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
                 velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
