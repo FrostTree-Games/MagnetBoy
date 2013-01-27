@@ -449,7 +449,8 @@ namespace MagnetBoy
 
             levelParticlePool.updatePool(currentTime);
 
-            levelEntities.RemoveAll(en => en.removeFromGame == true);
+            //levelEntities.RemoveAll(en => en.removeFromGame == true);
+            XboxListTools.RemoveAll<Entity>(levelEntities, XboxListTools.isShouldBeRemoved);
 
             foreach (Entity en in levelEntities)
             {
