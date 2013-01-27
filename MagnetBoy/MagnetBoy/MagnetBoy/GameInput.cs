@@ -23,7 +23,9 @@ namespace MagnetBoy
             Push,
             Jump,
             Confirm,
-            Cancel
+            Cancel,
+            StartButton,
+            BackButton
         }
 
         private static GraphicsDevice graphicsDevice = null;
@@ -148,6 +150,12 @@ namespace MagnetBoy
                         break;
                     case PlayerButton.Cancel:
                         if (padStates[i].Buttons.B == ButtonState.Pressed || kbdState.IsKeyDown(Keys.Back))
+                        {
+                            return true;
+                        }
+                        break;
+                    case PlayerButton.StartButton:
+                        if (padStates[i].Buttons.Start == ButtonState.Pressed || kbdState.IsKeyDown(Keys.Escape))
                         {
                             return true;
                         }
