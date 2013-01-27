@@ -31,7 +31,7 @@ namespace MagnetBoy
                 switch (title)
                 {
                     case "Starting Health":
-                        description = "Change the health you start with on each level.";
+                        description = "Change the health you\nstart with on each level.";
                         break;
                     case "Erase Data":
                         description = "Confirm this to erase all previous save data.";
@@ -41,6 +41,9 @@ namespace MagnetBoy
                         break;
                     case "Show Record":
                         description = "Show a fixed timer onscreen to see the top record for completing a level.";
+                        break;
+                    case "Mute Music":
+                        description = "Turn the music off if\nyou don't like it.";
                         break;
                     default:
                         description = "...";
@@ -81,11 +84,13 @@ namespace MagnetBoy
         private GameInput gameInput;
 
         private bool downPressed = false;
-        private bool upPressed = false; /*
+        private bool upPressed = false; 
         private bool leftPressed = false;
-        private bool rightPressed = false;
+        private bool rightPressed = false; /*
         private bool confirmPressed = false; */
         private bool cancelPressed = false;
+
+        private Vector2 optionDescriptionText = new Vector2(400, 120);
 
         private int selectedMenuItem;
         private List<OptionsMenuOption> menuList;
@@ -101,8 +106,7 @@ namespace MagnetBoy
             menuList = new List<OptionsMenuOption>(10);
 
             menuList.Add(new OptionsMenuOption("Starting Health"));
-            menuList.Add(new OptionsMenuOption("Erase Data"));
-            menuList.Add(new OptionsMenuOption("Show Timer"));
+            menuList.Add(new OptionsMenuOption("Mute Music"));
         }
 
         protected override void doUpdate(GameTime currentTime)
@@ -168,6 +172,60 @@ namespace MagnetBoy
                 menuList[i].update(currentTime);
             }
 
+            if (GameInput.isButtonDown(GameInput.PlayerButton.RightDirection))
+            {
+                rightPressed = true;
+            }
+            else if (rightPressed == true)
+            {
+                switch (menuList[selectedMenuItem].title)
+                {
+                    case "Starting Health":
+                        Game1.MagnetBoySaveData.defaultStartingHealth = Game1.MagnetBoySaveData.defaultStartingHealth + 1;
+                        if (Game1.MagnetBoySaveData.defaultStartingHealth > LevelState.maxPlayerHealth)
+                        {
+                            Game1.MagnetBoySaveData.defaultStartingHealth = LevelState.maxPlayerHealth;
+                        }
+                        break;
+                    case "Mute Music":
+                        AudioFactory.Mute = !AudioFactory.Mute;
+                        break;
+                    default:
+                        break;
+                }
+
+                rightPressed = false;
+
+                AudioFactory.playSFX("sfx/menu");
+            }
+
+            if (GameInput.isButtonDown(GameInput.PlayerButton.LeftDirection))
+            {
+                leftPressed = true;
+            }
+            else if (leftPressed == true)
+            {
+                switch (menuList[selectedMenuItem].title)
+                {
+                    case "Starting Health":
+                        Game1.MagnetBoySaveData.defaultStartingHealth = Game1.MagnetBoySaveData.defaultStartingHealth - 1;
+                        if (Game1.MagnetBoySaveData.defaultStartingHealth < 1)
+                        {
+                            Game1.MagnetBoySaveData.defaultStartingHealth = 1;
+                        }
+                        break;
+                    case "Mute Music":
+                        AudioFactory.Mute = !AudioFactory.Mute;
+                        break;
+                    default:
+                        break;
+                }
+
+                leftPressed = false;
+
+                AudioFactory.playSFX("sfx/menu");
+            }
+
             if (GameInput.isButtonDown(GameInput.PlayerButton.Push))
             {
                 if (GameInput.P1MouseDirectionNormal.X != float.NaN)
@@ -193,14 +251,45 @@ namespace MagnetBoy
             spriteBatch.Draw(Game1.globalBlackPixel, Vector2.Zero, Color.White);
             spriteBatch.End();
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             for (int i = 0; i < menuList.Count; i++)
             {
-                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 100 + i * 64), 7, 3, Color.Purple, AnimationFactory.DepthLayer3);
-                spriteBatch.DrawString(Game1.gameFontText, menuList[i].title, new Vector2((float)(156 + (25 * menuList[i].distanceOut)), 105 + (64 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 100 + i * 64), 10, 3, Color.Purple, AnimationFactory.DepthLayer3);
+                spriteBatch.DrawString(Game1.gameFontText, menuList[i].title, new Vector2((float)(156 + (25 * menuList[i].distanceOut)), 112 + (64 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+            }
 
-                AnimationFactory.drawAnimationFrame(spriteBatch, "xboxButtons", 3, new Vector2(425, 400), AnimationFactory.DepthLayer0);
-                spriteBatch.DrawString(Game1.gameFontText, "Back", new Vector2(450, 401), Color.Black);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "xboxDPad", 0, new Vector2(210, 395), AnimationFactory.DepthLayer0);
+            spriteBatch.DrawString(Game1.gameFontText, "Change Option", new Vector2(245, 401), Color.Black);
+
+            AnimationFactory.drawAnimationFrame(spriteBatch, "xboxButtons", 3, new Vector2(425, 400), AnimationFactory.DepthLayer0);
+            spriteBatch.DrawString(Game1.gameFontText, "Back", new Vector2(450, 401), Color.Black);
+
+            spriteBatch.DrawString(Game1.gameFontText, menuList[selectedMenuItem].description, optionDescriptionText, Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, AnimationFactory.DepthLayer0);
+            MBQG.drawGUIBox(spriteBatch, optionDescriptionText - new Vector2(14, 8), 16, 4, Color.Purple, AnimationFactory.DepthLayer1);
+
+            switch (menuList[selectedMenuItem].title)
+            {
+                case "Starting Health":
+                    for (int i = 0; i < LevelState.maxPlayerHealth; i++)
+                    {
+                        if (i < Game1.MagnetBoySaveData.defaultStartingHealth)
+                        {
+                            AnimationFactory.drawAnimationFrame(spriteBatch, "heartIdle", 0, new Vector2(432 + (i * 32), 193), new Vector2(0.8f, 0.8f), Color.White, AnimationFactory.DepthLayer0);
+                        }
+                        else
+                        {
+                            AnimationFactory.drawAnimationFrame(spriteBatch, "heartEmpty", 0, new Vector2(432 + (i * 32), 193), new Vector2(0.8f, 0.8f), Color.White, AnimationFactory.DepthLayer0);
+                        }
+                    }
+                    break;
+                case "Mute Music":
+                    MBQG.drawGUIBox(spriteBatch, optionDescriptionText + new Vector2(14, 8) + new Vector2(16, 100), 4, 2, Color.Purple, AnimationFactory.DepthLayer3);
+                    MBQG.drawGUIBox(spriteBatch, optionDescriptionText + new Vector2(14, 8) + new Vector2(132, 100), 4, 2, Color.Purple, AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, "ON", optionDescriptionText + new Vector2(32, 12) + new Vector2(16, 100), AudioFactory.Mute ? Color.Black : Color.White);
+                    spriteBatch.DrawString(Game1.gameFontText, "OFF", optionDescriptionText + new Vector2(28, 12) + new Vector2(132, 100), AudioFactory.Mute ? Color.White : Color.Black);
+                    break;
+                default:
+                    break;
             }
             spriteBatch.End();
         }

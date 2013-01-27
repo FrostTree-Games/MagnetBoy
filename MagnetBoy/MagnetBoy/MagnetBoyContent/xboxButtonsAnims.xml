@@ -12,5 +12,16 @@
       <frameCount>4</frameCount>
       <frameSpeed>1</frameSpeed>
     </Item>
+    <Item>
+      <name>xboxDPad</name>
+      <sheetName>xboxButtonsSheet</sheetName>
+      <sheet Type="System.String">dopeopleactuallywritestuffinhere</sheet>
+      <initalX>0</initalX>
+      <initalY>22</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
   </Asset>
 </XnaContent>

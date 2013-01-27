@@ -143,7 +143,7 @@ namespace MagnetBoy
 
             Thread.Yield();
 
-            currentPlayerHealth = maxPlayerHealth;
+            currentPlayerHealth = Game1.MagnetBoySaveData.defaultStartingHealth;
 
             fadingOut = false;
             fadingOutTimer = 0;
@@ -582,9 +582,9 @@ namespace MagnetBoy
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             if (currentPlayerHealth <= maxPlayerHealth)
             {
-                for (int i = 0; i < currentPlayerHealth; i++)
+                for (int i = 0; i < maxPlayerHealth; i++)
                 {
-                    AnimationFactory.drawAnimationFrame(spriteBatch, "heartIdle", 0, new Vector2(112 + (i * 32), 116), new Vector2(0.8f, 0.8f), Color.White, AnimationFactory.DepthLayer0);
+                    AnimationFactory.drawAnimationFrame(spriteBatch, i < currentPlayerHealth ? "heartIdle" : "heartEmpty", 0, new Vector2(112 + (i * 32), 116), new Vector2(0.8f, 0.8f), Color.White, AnimationFactory.DepthLayer0);
                 }
             }
 
