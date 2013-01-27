@@ -13,9 +13,10 @@ namespace MagnetBoy
 
         public bool inUse = false;
         private double timePassed = 0;
-        private double maxLifeTime = 1500; 
         private float rotation = 0.0f; // 0.0 in rotation is considered to be right-facing, or "EAST"
         public BulletPool.BulletType type;
+        public double maxLifeTime = 1500;
+        public bool doneBossDamage = false;
 
         private bool exploding = false;
         private double explodingTime = 0;
@@ -102,8 +103,8 @@ namespace MagnetBoy
             switch (newType)
             {
                 case BulletPool.BulletType.TestBullet:
-                    width= 31.5f;
-                    height = 31.5f;
+                    width= 16f;
+                    height = 16f;
                     velocity.X = (float)(testBulletVelocity * Math.Cos(direction));
                     velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
                     rotation = direction;
@@ -117,8 +118,8 @@ namespace MagnetBoy
                     rotation = 0.0f;
                     break;
                 case BulletPool.BulletType.Bucket:
-                    width = 16f;
-                    height = 16f;
+                    width = 31.5f;
+                    height = 31.5f;
                     velocity.X = (float)(testBulletVelocity * Math.Cos(direction));
                     velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
                     rotation = direction;
@@ -133,10 +134,11 @@ namespace MagnetBoy
                     velocity.Y = (float)(organVelocityY * Math.Sin(direction));
                     rotation = direction;
                     currentAnimation = "heartIdle2";
-                    currentFrame = 0;
                     acceleration.Y = 0.0005f;
+                    maxLifeTime = 50000;
+                    doneBossDamage = false;
+                    currentFrame = 0;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
-                    maxLifeTime = 5000;
                     break;
                 case BulletPool.BulletType.Brain:
                     width = 31.5f;
@@ -145,10 +147,12 @@ namespace MagnetBoy
                     velocity.Y = (float)(organVelocityY * Math.Sin(direction));
                     rotation = direction;
                     currentAnimation = "brainIdle";
-                    currentFrame = 0;
+                    maxLifeTime = 50000;
                     acceleration.Y = 0.0007f;
+                    doneBossDamage = false;
+                    currentFrame = 0;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
-                    maxLifeTime = 5000;
+                    
                     break;
                 case BulletPool.BulletType.Lung:
                     width = 31.5f;
@@ -159,8 +163,9 @@ namespace MagnetBoy
                     currentAnimation = "lungIdle";
                     currentFrame = 0;
                     acceleration.Y = 0.0003f;
+                    doneBossDamage = false;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
-                    maxLifeTime = 5000;
+                    maxLifeTime = 50000;
                     break;
                 default:
                     inUse = false;
@@ -176,10 +181,8 @@ namespace MagnetBoy
             timePassed += delta;
 
             // animation
-            if (type == BulletPool.BulletType.Bucket || type == BulletPool.BulletType.LavaBlob || type == BulletPool.BulletType.TestBullet)
-            {
                 // if the last frame time hasn't been set, set it now
-                
+
                 if (lastFrameIncrement == 0)
                 {
                     lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
@@ -192,7 +195,7 @@ namespace MagnetBoy
 
                     currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
                 }
-            }
+            
 
             // redirection
             if (type == BulletPool.BulletType.TestBullet || (type == BulletPool.BulletType.Bucket && !exploding) || type == BulletPool.BulletType.Heart || type == BulletPool.BulletType.Lung || type == BulletPool.BulletType.Brain)
@@ -252,11 +255,48 @@ namespace MagnetBoy
                     velocity.Y = 0f;
 
                     currentFrame = 0;
-                    currentAnimation = "bucketExplode";
+                    currentAnimation = "heartDie2";
+                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+                }
+                else if (type == BulletPool.BulletType.Heart)
+                {
+                    exploding = true;
+
+                    velocity.X = 0f;
+                    velocity.Y = 0f;
+                    acceleration.Y = 0f;
+
+                    currentFrame = 0;
+                    currentAnimation = "heartDie2";
+                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+                }
+                else if (type == BulletPool.BulletType.Brain)
+                {
+                    exploding = true;
+
+                    velocity.X = 0f;
+                    velocity.Y = 0f;
+                    acceleration.Y = 0f;
+
+                    currentFrame = 0;
+                    currentAnimation = "brainDie";
+                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+                }
+                else if (type == BulletPool.BulletType.Lung)
+                {
+                    exploding = true;
+
+                    velocity.X = 0f;
+                    velocity.Y = 0f;
+                    acceleration.Y = 0f;
+
+                    currentFrame = 0;
+                    currentAnimation = "lungDie";
                     lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
                 }
                 else
                 {
+
                     removeFromGame = true;
                     death();
                     inUse = false;
@@ -268,10 +308,12 @@ namespace MagnetBoy
 
                 if (explodingTime > AnimationFactory.getAnimationFrameCount(currentAnimation) * AnimationFactory.getAnimationSpeed(currentAnimation))
                 {
+                    removeFromGame = true;
                     death();
                     inUse = false;
                 }
             }
+            
         }
 
         public override void draw(SpriteBatch sb)
