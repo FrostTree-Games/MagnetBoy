@@ -602,6 +602,7 @@ namespace MagnetBoy
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f, 1.0f), Color.Black, AnimationFactory.DepthLayer2);
             spriteBatch.End();
 
+            /*
             //draw game cursor
             Matrix arrowRotation = Matrix.Identity;
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(-16.0f, -16.0f, 0.0f));
@@ -609,10 +610,11 @@ namespace MagnetBoy
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(GameInput.P1MouseDirection.Length(), 0.0f, 0.0f));
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateRotationZ((float)Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X)));
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(Game1.graphics.GraphicsDevice.Viewport.Bounds.Width / 2, Game1.graphics.GraphicsDevice.Viewport.Bounds.Height / 2, 0.0f));
+            
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, arrowRotation);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero, AnimationFactory.DepthLayer0);
-            spriteBatch.End();
+            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero, AnimationFactory.DepthLayer0); 
+            spriteBatch.End();*/
 
             if (fadingOut)
             {
