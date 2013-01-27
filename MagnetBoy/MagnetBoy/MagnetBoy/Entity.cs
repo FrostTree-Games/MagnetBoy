@@ -111,7 +111,8 @@ namespace MagnetBoy
 
         public void death()
         {
-            globalEntityList.RemoveAll(en => en.removeFromGame == true);
+            //globalEntityList.RemoveAll(en => en.removeFromGame == true);
+            XboxListTools.RemoveAll<Entity>(globalEntityList, XboxListTools.isShouldBeRemoved);
         }
 
         public virtual void update(GameTime currentTime)
