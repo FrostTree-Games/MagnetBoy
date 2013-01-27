@@ -11,7 +11,7 @@ namespace MagnetBoy
     {
         private const float testBulletVelocity = 0.25f;
 
-        private bool inUse = false;
+        public bool inUse = false;
         private double timePassed = 0;
         private double maxLifeTime = 1500; 
         private float rotation = 0.0f; // 0.0 in rotation is considered to be right-facing, or "EAST"
@@ -59,7 +59,7 @@ namespace MagnetBoy
 
         public void add(float newX, float newY, BulletPool.BulletType newType, GameTime entryTime, float direction)
         {
-            if (newType == BulletPool.BulletType.TestBullet || newType == BulletPool.BulletType.Bucket)
+            if (newType == BulletPool.BulletType.TestBullet || newType == BulletPool.BulletType.Bucket || newType == BulletPool.BulletType.Heart || newType == BulletPool.BulletType.Brain || newType == BulletPool.BulletType.Lung)
             {
                 creation();
             }
@@ -74,27 +74,22 @@ namespace MagnetBoy
             exploding = false;
             explodingTime = 0;
 
-            if (bossShield.yPosDisplacement != 0)
+            if (type == BulletPool.BulletType.Lung)
             {
-                if (type == BulletPool.BulletType.Lung)
-                {
-                    organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.12f);
-                }
-                if (type == BulletPool.BulletType.Heart)
-                {
-                    organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.15f);
-                }
-                if (type == BulletPool.BulletType.Brain)
-                {
-                    organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.17f);
-                }
+                organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.12f);
                 organVelocityY = (float)((Game1.gameRandom.Next() % 1 + 1.0) * 0.32f);
             }
-            else
+            if (type == BulletPool.BulletType.Heart)
             {
-                organVelocityX = (float)((Game1.gameRandom.Next() % 2 + 1.0) * 0.16f);
-                organVelocityY = (float)((Game1.gameRandom.Next() % 2 + 1.0) * 0.16f);
+                organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.13f);
+                organVelocityY = (float)((Game1.gameRandom.Next() % 1 + 1.0) * 0.4f);
             }
+            if (type == BulletPool.BulletType.Brain)
+            {
+                organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.14f);
+                organVelocityY = (float)((Game1.gameRandom.Next() % 1 + 1.0) * 0.4f);
+            }
+                
 
             switch (newType)
             {
@@ -212,6 +207,23 @@ namespace MagnetBoy
                         else
                         {
                             ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                        }
+                    }
+                }
+                if (en is bossShield)
+                {
+                    if (hitTest(en))
+                    {
+                        if (velocity.X > 0)
+                        {
+                            Console.WriteLine("HI");
+                            inUse = false;
+                            death();
+                        }
+                        else
+                        {
+                            death();
+                            //en.shieldHealth -= 1;
                         }
                     }
                 }
