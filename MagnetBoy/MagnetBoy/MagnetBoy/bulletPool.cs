@@ -16,7 +16,7 @@ namespace MagnetBoy
         private float rotation = 0.0f; // 0.0 in rotation is considered to be right-facing, or "EAST"
         public BulletPool.BulletType type;
         public double maxLifeTime = 1500;
-        public bool doneBossDamage = false;
+        public bool bulletUsed = false;
 
         private bool exploding = false;
         private double explodingTime = 0;
@@ -88,7 +88,7 @@ namespace MagnetBoy
                 organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.12f);
                 organVelocityY = (float)((Game1.gameRandom.Next() % 1 + 1.0) * 0.32f);
             }
-            if (type == BulletPool.BulletType.Heart)
+            if (type == BulletPool.BulletType.Heart || type == BulletPool.BulletType.healthItem)
             {
                 organVelocityX = (float)((Game1.gameRandom.Next() % 1.2 + 1.0) * 0.13f);
                 organVelocityY = (float)((Game1.gameRandom.Next() % 1 + 1.0) * 0.4f);
@@ -136,7 +136,7 @@ namespace MagnetBoy
                     currentAnimation = "heartIdle2";
                     acceleration.Y = 0.0005f;
                     maxLifeTime = 50000;
-                    doneBossDamage = false;
+                    bulletUsed = false;
                     currentFrame = 0;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
                     break;
@@ -149,7 +149,7 @@ namespace MagnetBoy
                     currentAnimation = "brainIdle";
                     maxLifeTime = 50000;
                     acceleration.Y = 0.0007f;
-                    doneBossDamage = false;
+                    bulletUsed = false;
                     currentFrame = 0;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
                     
@@ -163,9 +163,22 @@ namespace MagnetBoy
                     currentAnimation = "lungIdle";
                     currentFrame = 0;
                     acceleration.Y = 0.0003f;
-                    doneBossDamage = false;
+                    bulletUsed = false;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
                     maxLifeTime = 50000;
+                    break;
+                case BulletPool.BulletType.healthItem:
+                    width = 31.5f;
+                    height = 31.5f;
+                    velocity.X = (float)(organVelocityX * Math.Cos(direction));
+                    velocity.Y = (float)(organVelocityY * Math.Sin(direction));
+                    rotation = direction;
+                    currentAnimation = "heartIdle";
+                    acceleration.Y = 0.0005f;
+                    maxLifeTime = 2000;
+                    bulletUsed = false;
+                    currentFrame = 0;
+                    lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
                     break;
                 default:
                     inUse = false;
@@ -215,13 +228,26 @@ namespace MagnetBoy
                 {
                     if (hitTest(en))
                     {
-                        if (en.CenterPosition.X - CenterPosition.X < 0)
+                        if (type == BulletPool.BulletType.healthItem)
                         {
-                            ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            if (bulletUsed == false)
+                            {
+                                LevelState.currentPlayerHealth += 1;
+                                bulletUsed = true;
+                                maxLifeTime = 0;
+                            }
+
                         }
                         else
                         {
-                            ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            if (en.CenterPosition.X - CenterPosition.X < 0)
+                            {
+                                ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
+                            else
+                            {
+                                ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
                         }
                     }
                 }
@@ -230,7 +256,7 @@ namespace MagnetBoy
             horizontal_pos += (float)(velocity.X * delta);
             vertical_pos += (float)(velocity.Y * delta);
 
-            if (type == BulletPool.BulletType.Heart || type == BulletPool.BulletType.Brain || type == BulletPool.BulletType.Lung)
+            if (type == BulletPool.BulletType.Heart || type == BulletPool.BulletType.Brain || type == BulletPool.BulletType.Lung || type == BulletPool.BulletType.healthItem)
             {
                 Vector2 keyAcceleration = Vector2.Zero;
                 Vector2 step = new Vector2(horizontal_pos, vertical_pos);
@@ -255,7 +281,7 @@ namespace MagnetBoy
                     velocity.Y = 0f;
 
                     currentFrame = 0;
-                    currentAnimation = "heartDie2";
+                    currentAnimation = "bucketExplode";
                     lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
                 }
                 else if (type == BulletPool.BulletType.Heart)
@@ -338,6 +364,9 @@ namespace MagnetBoy
                 case BulletPool.BulletType.Brain:
                     AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation, AnimationFactory.DepthLayer0);
                     break;
+                case BulletPool.BulletType.healthItem:
+                    AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, rotation, AnimationFactory.DepthLayer0);
+                    break;
                 default:
                     AnimationFactory.drawAnimationFrame(sb, "testBullet", 0, Position, AnimationFactory.DepthLayer0);
                     break;
@@ -354,7 +383,8 @@ namespace MagnetBoy
             Bucket,
             Heart,
             Brain,
-            Lung
+            Lung,
+            healthItem
         }
 
         private static Bullet[] pool = null;

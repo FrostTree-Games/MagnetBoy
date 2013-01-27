@@ -24,6 +24,7 @@ namespace MagnetBoy
         private BulletPool.BulletType Heart = BulletPool.BulletType.Heart;
         private BulletPool.BulletType Brain = BulletPool.BulletType.Brain;
         private BulletPool.BulletType Lung = BulletPool.BulletType.Lung;
+        private BulletPool.BulletType healthItem = BulletPool.BulletType.healthItem;
 
         //after he walks into the scene, enabled becomes true
         private double interval = 500;
@@ -89,6 +90,11 @@ namespace MagnetBoy
                 {
                     BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
+
+                if (Game1.gameRandom.Next() % 10 == 0)
+                {
+                    BulletPool.pushBullet(healthItem, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                }
              
                 timeSinceLastShot = 0;
             }
@@ -119,10 +125,10 @@ namespace MagnetBoy
                     {
                         if (((Bullet)en).velocity.X > 0)
                         {
-                            if (((Bullet)en).doneBossDamage == false)
+                            if (((Bullet)en).bulletUsed == false)
                             {
                                 bossHealth -= 1;
-                                ((Bullet)en).doneBossDamage = true;
+                                ((Bullet)en).bulletUsed = true;
                             }
                             ((Bullet)en).deathAnimationSet = true;
                             ((Bullet)en).velocity.X = 0;
@@ -280,16 +286,16 @@ namespace MagnetBoy
                             ((Bullet)b).velocity.X = 0;
                             ((Bullet)b).velocity.Y = 0;
                             ((Bullet)b).acceleration.Y = 0;
-                            ((Bullet)b).doneBossDamage = true;
+                            ((Bullet)b).bulletUsed = true;
                             ((Bullet)b).maxLifeTime = 0;
                             break;
                         }
                         else
                         {
-                            if (((Bullet)b).doneBossDamage == false)
+                            if (((Bullet)b).bulletUsed == false)
                             {
                                 shieldHealth -= 1;
-                                ((Bullet)b).doneBossDamage = true;
+                                ((Bullet)b).bulletUsed = true;
                             }
                             ((Bullet)b).deathAnimationSet = true;
                             ((Bullet)b).velocity.X = 0;
