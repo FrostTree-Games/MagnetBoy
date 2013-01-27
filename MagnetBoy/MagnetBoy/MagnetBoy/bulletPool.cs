@@ -74,7 +74,7 @@ namespace MagnetBoy
             exploding = false;
             explodingTime = 0;
 
-            if (BulletPool.shieldUp)
+            if (bossShield.yPosDisplacement != 0)
             {
                 if (type == BulletPool.BulletType.Lung)
                 {
@@ -95,9 +95,6 @@ namespace MagnetBoy
                 organVelocityX = (float)((Game1.gameRandom.Next() % 2 + 1.0) * 0.16f);
                 organVelocityY = (float)((Game1.gameRandom.Next() % 2 + 1.0) * 0.16f);
             }
-
-            Console.WriteLine("X: " + organVelocityX);
-            Console.WriteLine("Y: " + organVelocityY);
 
             switch (newType)
             {

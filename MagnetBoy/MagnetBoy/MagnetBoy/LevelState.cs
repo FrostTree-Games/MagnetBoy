@@ -323,6 +323,9 @@ namespace MagnetBoy
                                 levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)6));
                             }
                             break;
+                        case"bossShield":
+                            levelEntities.Add(new bossShield(obj.Bounds.X, obj.Bounds.Y));
+                            break;
                         default:
                             break;
                     }
