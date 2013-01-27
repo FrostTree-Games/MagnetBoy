@@ -30,6 +30,8 @@ namespace MagnetBoy
         private double interval = 500;
         private double timeSinceLastShot= 0.0;
 
+        public int bossHealth = 0;
+
         public Boss()
         {
             creation();
@@ -54,6 +56,8 @@ namespace MagnetBoy
             acceleration.Y = 0.001f;
 
             pole = Polarity.Neutral;
+
+            solid = true;
         }
 
         public override void update(GameTime currentTime)
@@ -86,6 +90,27 @@ namespace MagnetBoy
                 }
              
                 timeSinceLastShot = 0;
+            }
+
+            foreach (Entity en in Entity.globalEntityList)
+            {
+                if (en is Player)
+                {
+                    if (hitTest(en))
+                    {
+                        if (!(!en.onTheGround && en.velocity.Y > 0.001f && en.Position.Y < vertical_pos))
+                        {
+                            if (en.Position.X - Position.X < 0)
+                            {
+                                ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
+                            else
+                            {
+                                ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
+                        }
+                    }
+                }
             }
 
             // if the last frame time hasn't been set, set it now
@@ -156,7 +181,9 @@ namespace MagnetBoy
 
         private float interval = 10000;
         private float timeLastMoved = 0.0f;
-        public static float yPosDisplacement = 0.0f;
+        public static float yPosDisplacement = 1.0f;
+
+        public static int shieldHealth = 0;
 
         public bossShield()
         {
@@ -170,8 +197,15 @@ namespace MagnetBoy
         {
             creation();
 
+            shieldHealth = 21;
+
             horizontal_pos = initialx;
             vertical_pos = initialy;
+
+            width = 31.5f;
+            height = 31.5f;
+
+            solid = true;
         }
 
         public override void update(GameTime currentTime)
@@ -203,10 +237,25 @@ namespace MagnetBoy
                 }
             }
 
-            /*if (yPosDisplacement == 64 || yPosDisplacement == 0)
+            foreach(Entity b in globalEntityList)
             {
-                timeLastMoved = 0.0f;
-            }*/
+                if (b is Bullet)
+                {
+                    if (hitTest(b))
+                    {
+                        if (((Bullet)b).velocity.X < 0)
+                        {
+                            ((Bullet)b).inUse = false;
+                            death();
+                        }
+                        else
+                        {
+                            death();
+                            //en.shieldHealth -= 1;
+                        }
+                    }
+                }
+            }
 
             // if the last frame time hasn't been set, set it now
             if (lastFrameIncrement == 0)
