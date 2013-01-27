@@ -216,23 +216,6 @@ namespace MagnetBoy
                         }
                     }
                 }
-                if (en is bossShield)
-                {
-                    if (hitTest(en))
-                    {
-                        if (velocity.X > 0)
-                        {
-                            Console.WriteLine("HI");
-                            inUse = false;
-                            death();
-                        }
-                        else
-                        {
-                            death();
-                            //en.shieldHealth -= 1;
-                        }
-                    }
-                }
             }
 
             horizontal_pos += (float)(velocity.X * delta);
