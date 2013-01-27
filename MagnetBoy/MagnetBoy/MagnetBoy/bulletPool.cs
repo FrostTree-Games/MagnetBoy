@@ -15,7 +15,7 @@ namespace MagnetBoy
         private double timePassed = 0;
         private double maxLifeTime = 1500; 
         private float rotation = 0.0f; // 0.0 in rotation is considered to be right-facing, or "EAST"
-        private BulletPool.BulletType type;
+        public BulletPool.BulletType type;
 
         private bool exploding = false;
         private double explodingTime = 0;

@@ -183,7 +183,7 @@ namespace MagnetBoy
         private float timeLastMoved = 0.0f;
         public static float yPosDisplacement = 1.0f;
 
-        public static int shieldHealth = 1;
+        public static int shieldHealth = 0;
 
         public bossShield()
         {
@@ -197,7 +197,7 @@ namespace MagnetBoy
         {
             creation();
 
-            shieldHealth = 1;
+            shieldHealth = 21;
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
@@ -239,21 +239,27 @@ namespace MagnetBoy
 
             foreach(Entity b in globalEntityList)
             {
+                
                 if (b is Bullet)
                 {
                     if (hitTest(b))
                     {
+                        Console.WriteLine(((Bullet)b).type);
                         if (((Bullet)b).velocity.X < 0)
                         {
                             ((Bullet)b).inUse = false;
+                            ((Bullet)b).removeFromGame = true;
+                            ((Bullet)b).death();
                             death();
+                            break;
                         }
                         else
                         {
-                            shieldHealth = shieldHealth - 1;
+                            shieldHealth -= 1;
                             ((Bullet)b).inUse = false;
-                            death();
-                            Console.WriteLine(shieldHealth);
+                            ((Bullet)b).removeFromGame = true;
+                            ((Bullet)b).death();
+                            break;
                         }
                     }
                 }
@@ -262,7 +268,6 @@ namespace MagnetBoy
             if (shieldHealth == 0)
             {
                 removeFromGame = true;
-                death();
             }
 
             // if the last frame time hasn't been set, set it now
