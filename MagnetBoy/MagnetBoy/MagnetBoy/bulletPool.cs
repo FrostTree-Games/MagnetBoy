@@ -57,6 +57,7 @@ namespace MagnetBoy
         public Bullet()
         {
             inUse = false;
+            removeFromGame = true;
         }
 
         public void add(float newX, float newY, BulletPool.BulletType newType, GameTime entryTime, float direction)
@@ -75,6 +76,11 @@ namespace MagnetBoy
 
             exploding = false;
             explodingTime = 0;
+
+            removeFromGame = false;
+
+            pole = Polarity.Neutral;
+            magneticMoment = 0.5f;
 
             if (type == BulletPool.BulletType.Lung)
             {
@@ -251,6 +257,7 @@ namespace MagnetBoy
                 }
                 else
                 {
+                    removeFromGame = true;
                     death();
                     inUse = false;
                 }
