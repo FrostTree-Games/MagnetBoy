@@ -108,7 +108,7 @@ namespace MagnetBoy
 
             currentSongName = songName;
 
-            //MediaPlayer.Play(bgmLib[songName]);
+            MediaPlayer.Play(bgmLib[songName]);
         }
 
         public static void stopSong()
