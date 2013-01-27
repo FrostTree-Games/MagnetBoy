@@ -598,8 +598,9 @@ namespace MagnetBoy
             }
 
             //spriteBatch.DrawString(Game1.gameFontText, "Stamina: " + LevelState.playerStamina, new Vector2(32, 16), Color.White);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f * (playerStamina / playerStaminaMax), 1.0f), Color.Lerp(Color.DarkBlue, Color.LightBlue, (playerStamina / playerStaminaMax)), AnimationFactory.DepthLayer1);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f, 1.0f), Color.Black, AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f * (playerStamina / playerStaminaMax), 1.0f), Color.Lerp(Color.DarkBlue, Color.Cyan, (playerStamina / playerStaminaMax)), AnimationFactory.DepthLayer0);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10f, 1f), Color.Gray, AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(107, 75), new Vector2(10.1f, 1.1f), Color.Black, AnimationFactory.DepthLayer2);
             spriteBatch.End();
 
             /*
