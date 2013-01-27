@@ -60,8 +60,6 @@ namespace MagnetBoy
         {
             timeSinceLastShot += currentTime.ElapsedGameTime.Milliseconds;
 
-            BulletPool.shieldStatus(true);
-
             if( timeSinceLastShot > interval )
             {
                 float direction = 0.0f;
@@ -72,17 +70,17 @@ namespace MagnetBoy
 
                 bulletPosition.Y += 4;
 
-                if (currentTime.TotalGameTime.Milliseconds % 5 == 0 || currentTime.TotalGameTime.Milliseconds % 7 == 0)
+                if (Game1.gameRandom.Next() % 5 == 0 || Game1.gameRandom.Next() % 7 == 0)
                 {
                     BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
 
-                if (currentTime.TotalGameTime.Milliseconds % 3 == 0 || currentTime.TotalGameTime.Milliseconds % 11 == 0)
+                if (Game1.gameRandom.Next() % 3 == 0 || Game1.gameRandom.Next() % 11 == 0)
                 {
                     BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
 
-                if (currentTime.TotalGameTime.Milliseconds % 2 == 0 || currentTime.TotalGameTime.Milliseconds % 13 == 0)
+                if (Game1.gameRandom.Next() % 2 == 0 || Game1.gameRandom.Next() % 13 == 0)
                 {
                     BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
@@ -154,6 +152,12 @@ namespace MagnetBoy
         protected int currentFrame = 0;
         protected double lastFrameIncrement = 0;
 
+        private string currentAnimation = null;
+
+        private float interval = 10000;
+        private float timeLastMoved = 0.0f;
+        public static float yPosDisplacement = 0.0f;
+
         public bossShield()
         {
             creation();
@@ -168,6 +172,60 @@ namespace MagnetBoy
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
+        }
+
+        public override void update(GameTime currentTime)
+        {
+            timeLastMoved += currentTime.ElapsedGameTime.Milliseconds;
+
+            if (timeLastMoved > interval)
+            {
+                BulletPool.shieldUp = !BulletPool.shieldUp;
+            }
+
+            if (BulletPool.shieldUp == true)
+            {
+                if (yPosDisplacement < 64)
+                {
+                    vertical_pos -= 0.1f;
+                    yPosDisplacement += 0.1f;
+                    timeLastMoved = 0.0f;
+                }
+            }
+
+            if (BulletPool.shieldUp == false)
+            {
+                if (yPosDisplacement > 0)
+                {
+                    vertical_pos += 0.1f;
+                    yPosDisplacement -= 0.1f;
+                    timeLastMoved = 0.0f;
+                }
+            }
+
+            /*if (yPosDisplacement == 64 || yPosDisplacement == 0)
+            {
+                timeLastMoved = 0.0f;
+            }*/
+
+            // if the last frame time hasn't been set, set it now
+            if (lastFrameIncrement == 0)
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            // update the current frame if needed
+            if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                //currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
+            }
+        }
+
+        public override void draw(SpriteBatch sb)
+        {
+            sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.Yellow);
         }
     }
 }
