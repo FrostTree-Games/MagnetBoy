@@ -11,7 +11,7 @@
       <initalY>0</initalY>
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
-      <frameCount>40</frameCount>
+      <frameCount>10</frameCount>
       <frameSpeed>50</frameSpeed>
     </Item>
     <Item>
