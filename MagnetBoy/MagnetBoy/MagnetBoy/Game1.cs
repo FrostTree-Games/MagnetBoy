@@ -287,10 +287,13 @@ namespace MagnetBoy
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            //only use this for Windows testing now
+#if WINDOWS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             {
                 exitGame = true;
             }
+#endif
 
             // Allows the game to exit
             if (exitGame)

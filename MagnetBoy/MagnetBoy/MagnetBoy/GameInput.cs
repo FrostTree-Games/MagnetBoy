@@ -25,7 +25,8 @@ namespace MagnetBoy
             Confirm,
             Cancel,
             StartButton,
-            BackButton
+            BackButton,
+            AnyButton
         }
 
         private static GraphicsDevice graphicsDevice = null;
@@ -156,6 +157,12 @@ namespace MagnetBoy
                         break;
                     case PlayerButton.StartButton:
                         if (padStates[i].Buttons.Start == ButtonState.Pressed || kbdState.IsKeyDown(Keys.Escape))
+                        {
+                            return true;
+                        }
+                        break;
+                    case PlayerButton.AnyButton:
+                        if (padStates[i].Buttons.A == ButtonState.Pressed || padStates[i].Buttons.B == ButtonState.Pressed || padStates[i].Buttons.X == ButtonState.Pressed || padStates[i].Buttons.Y == ButtonState.Pressed || padStates[i].Buttons.Back == ButtonState.Pressed || padStates[i].Buttons.Start == ButtonState.Pressed || padStates[i].Buttons.RightShoulder == ButtonState.Pressed || padStates[i].Buttons.LeftShoulder == ButtonState.Pressed || padStates[i].Buttons.RightStick == ButtonState.Pressed || padStates[i].Buttons.LeftStick == ButtonState.Pressed)
                         {
                             return true;
                         }

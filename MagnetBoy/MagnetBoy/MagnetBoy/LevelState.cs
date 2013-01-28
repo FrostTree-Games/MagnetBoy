@@ -163,8 +163,6 @@ namespace MagnetBoy
 
             IsUpdateable = true;
 
-            GameInput.LockMostRecentPad = true;
-
             GC.Collect();
         }
 
@@ -576,8 +574,6 @@ namespace MagnetBoy
                     GameScreenManager.nextLevel();
 
                     endLevelFlag = false;
-
-                    GameInput.LockMostRecentPad = false;
 
                     return;
                 }
