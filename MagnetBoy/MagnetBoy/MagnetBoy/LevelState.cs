@@ -471,6 +471,33 @@ namespace MagnetBoy
                     AudioFactory.playSFX("sfx/menu");
                 }
 
+                if (GameInput.isButtonDown(GameInput.PlayerButton.Confirm))
+                {
+                    confirmPressed = true;
+                }
+                else if (!(GameInput.isButtonDown(GameInput.PlayerButton.Confirm)) && confirmPressed)
+                {
+                    switch (pausedSelect)
+                    {
+                        case 0:
+                            paused = false;
+                            MediaPlayer.Volume = 1.0f;
+                            AudioFactory.playSFX("sfx/menuClose");
+                            break;
+                        case 1:
+                            paused = false;
+                            MediaPlayer.Volume = 1.0f;
+                            AudioFactory.playSFX("sfx/menuOpen");
+                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
+                            break;
+                        default:
+                            break;
+                    }
+
+                    confirmPressed = false;
+                    //AudioFactory.playSFX("sfx/menu");
+                }
+
                 if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
                 {
                     startButtonDown = true;
@@ -481,7 +508,25 @@ namespace MagnetBoy
 
                     paused = false;
                     MediaPlayer.Volume = 1.0f;
+
+                    AudioFactory.playSFX("sfx/menuClose");
                 }
+
+                if (GameInput.isButtonDown(GameInput.PlayerButton.Cancel))
+                {
+                    backPressed = true;
+                }
+                else if (!(GameInput.isButtonDown(GameInput.PlayerButton.Cancel)) && backPressed)
+                {
+                    backPressed = false;
+
+                    paused = false;
+                    MediaPlayer.Volume = 1.0f;
+
+                    AudioFactory.playSFX("sfx/menuClose");
+                }
+
+                //
             }
             else
             {
@@ -498,6 +543,8 @@ namespace MagnetBoy
                         MediaPlayer.Volume = 0.25f;
                         pausedSelect = 0;
                         paused = true;
+
+                        AudioFactory.playSFX("sfx/menuOpen");
                     }
                 }
 
