@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.GamerServices;
 
 /* This class is to be a public abstraction for keyboard/mouse input.
  * It is to follow a singleton pattern.
@@ -231,6 +232,33 @@ namespace MagnetBoy
                 else
                 {
                     analogDirections[i] = Vector2.Zero;
+                }
+            }
+        }
+
+        public static PlayerIndex lockedPlayerIndex
+        {
+            get
+            {
+                if (!lockMostRecentPad)
+                {
+                    throw new Exception("Game pads are not locked");
+                }
+                else
+                {
+                    switch (mostRecentPad)
+                    {
+                        case 0:
+                            return PlayerIndex.One;
+                        case 1:
+                            return PlayerIndex.Two;
+                        case 2:
+                            return PlayerIndex.Three;
+                        case 3:
+                            return PlayerIndex.Four;
+                        default:
+                            return PlayerIndex.One;
+                    }
                 }
             }
         }
