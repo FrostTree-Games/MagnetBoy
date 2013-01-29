@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>goombaWalkRight</name>
+      <sheetName>goombaSheet</sheetName>
+      <sheet Type="System.String">angrySawWalkRight</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>30</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>goombaWalkLeft</name>
+      <sheetName>goombaSheet</sheetName>
+      <sheet Type="System.String">angrySawWalkLeft</sheet>
+      <initalX>0</initalX>
+      <initalY>32</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>30</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+
+    <Item>
+      <name>goombaIdleRight</name>
+      <sheetName>goombaSheet</sheetName>
+      <sheet Type="System.String">angrySawIdleRight</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>goombaIdleLeft</name>
+      <sheetName>goombaSheet</sheetName>
+      <sheet Type="System.String">angrySawIdleRight</sheet>
+      <initalX>0</initalX>
+      <initalY>32</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+
+
+
+    <Item>
+      <name>goombaDieLeft</name>
+      <sheetName>goombaSheet</sheetName>
+      <sheet Type="System.String">angrySawIdleRight</sheet>
+      <initalX>0</initalX>
+      <initalY>64</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>30</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+
+    <Item>
+      <name>goombaDieRight</name>
+      <sheetName>goombaSheet</sheetName>
+      <sheet Type="System.String">angrySawIdleRight</sheet>
+      <initalX>0</initalX>
+      <initalY>96</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>30</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+
+
+  </Asset>
+</XnaContent>
