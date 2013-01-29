@@ -158,6 +158,7 @@ namespace MagnetBoy
             {
                 confirmPressed = false;
 
+                Game1.CurrentLevel = selectedMenuItem;
                 GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, Game1.levelFileNames[selectedMenuItem]);
             }
 

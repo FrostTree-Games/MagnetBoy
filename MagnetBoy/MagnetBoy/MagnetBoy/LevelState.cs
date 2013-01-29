@@ -6,6 +6,7 @@ using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using FuncWorks.XNA.XTiled;
 
 namespace MagnetBoy
@@ -48,6 +49,15 @@ namespace MagnetBoy
         private static bool[] flags = null;
         private const int flagNum = 5;
         public enum FlagColor { Red = 0, Blue = 1, Green = 2, Yellow = 3, Purple = 4 };
+
+        private bool paused;
+        private bool startButtonDown;
+        private int pausedSelect;
+
+        private bool downPressed = false;
+        private bool upPressed = false;
+        private bool confirmPressed = false;
+        private bool backPressed = false;
 
         private bool fadingOut = false;
         private double fadingOutTimer = 0;
@@ -126,6 +136,9 @@ namespace MagnetBoy
             levelParticlePool = new ParticlePool(100);
             levelName = levelNameString;
 
+            paused = false;
+            startButtonDown = false;
+
             loadingAnimTimePassed = 0;
             magnetWopleyFrame = 0;
             magnetWopleyLastUpdateTime = 0;
@@ -155,11 +168,10 @@ namespace MagnetBoy
 
         private void loadLevelThread()
         {
-            /* add these lines when compiling for Xbox 360; sets thread explicity to extra core
-                #ifdef XBOX
-                Thread.SetProcessorAffinity(3); 
-                #endif
-             */
+            #if XBOX
+            Thread.SetProcessorAffinity(3); 
+            #endif
+
             Monitor.Enter(levelEntities);
             grabbed = true;
 
@@ -327,8 +339,11 @@ namespace MagnetBoy
                                 levelEntities.Add(new TutorialSign(obj.Bounds.X, obj.Bounds.Y, (TutorialSign.SignMessage)6));
                             }
                             break;
-                        case"bossShield":
+                        case "bossShield":
                             levelEntities.Add(new bossShield(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        case "walkMarker":
+                            levelEntities.Add(new WalkMarker(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         default:
                             break;
@@ -404,58 +419,187 @@ namespace MagnetBoy
                 fadingOut = true;
             }
 
-            if (fadingOut)
+            if (paused)
             {
-                fadingOutTimer += currentTime.ElapsedGameTime.Milliseconds;
-
-                if (fadingOutTimer > fadingOutDuration)
+                if (GameInput.isButtonDown(GameInput.PlayerButton.Push))
                 {
-                    endLevelFlag = true;
-                }
-            }
+                    if (GameInput.P1MouseDirectionNormal.X != float.NaN)
+                    {
+                        TitleScreenMenuState.checkerBoardSlide.X += GameInput.P1MouseDirectionNormal.X;
+                    }
 
-            if (endLevelFlag == true)
+                    if (GameInput.P1MouseDirectionNormal.Y != float.NaN)
+                    {
+                        TitleScreenMenuState.checkerBoardSlide.Y += GameInput.P1MouseDirectionNormal.Y;
+                    }
+
+                    Game1.grayCheckerBoard.Parameters["slideX"].SetValue(TitleScreenMenuState.checkerBoardSlide.X);
+                    Game1.grayCheckerBoard.Parameters["slideY"].SetValue(TitleScreenMenuState.checkerBoardSlide.Y);
+                }
+
+                if (GameInput.isButtonDown(GameInput.PlayerButton.UpDirection))
+                {
+                    upPressed = true;
+                }
+                else if (!(GameInput.isButtonDown(GameInput.PlayerButton.UpDirection)) && upPressed)
+                {
+                    pausedSelect--;
+                    if (pausedSelect < 0)
+                    {
+                        pausedSelect = 1;
+                    }
+
+                    upPressed = false;
+                    AudioFactory.playSFX("sfx/menu");
+                }
+
+                if (GameInput.isButtonDown(GameInput.PlayerButton.DownDirection))
+                {
+                    downPressed = true;
+                }
+                else if (!(GameInput.isButtonDown(GameInput.PlayerButton.DownDirection)) && downPressed)
+                {
+                    pausedSelect++;
+                    if (pausedSelect > 1)
+                    {
+                        pausedSelect = 0;
+                    }
+
+                    downPressed = false;
+                    AudioFactory.playSFX("sfx/menu");
+                }
+
+                if (GameInput.isButtonDown(GameInput.PlayerButton.Confirm))
+                {
+                    confirmPressed = true;
+                }
+                else if (!(GameInput.isButtonDown(GameInput.PlayerButton.Confirm)) && confirmPressed)
+                {
+                    switch (pausedSelect)
+                    {
+                        case 0:
+                            paused = false;
+                            MediaPlayer.Volume = 1.0f;
+                            AudioFactory.playSFX("sfx/menuClose");
+                            break;
+                        case 1:
+                            paused = false;
+                            MediaPlayer.Volume = 1.0f;
+                            AudioFactory.playSFX("sfx/menuOpen");
+                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
+                            break;
+                        default:
+                            break;
+                    }
+
+                    confirmPressed = false;
+                    //AudioFactory.playSFX("sfx/menu");
+                }
+
+                if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
+                {
+                    startButtonDown = true;
+                }
+                else if (!(GameInput.isButtonDown(GameInput.PlayerButton.StartButton)) && startButtonDown)
+                {
+                    startButtonDown = false;
+
+                    paused = false;
+                    MediaPlayer.Volume = 1.0f;
+
+                    AudioFactory.playSFX("sfx/menuClose");
+                }
+
+                if (GameInput.isButtonDown(GameInput.PlayerButton.Cancel))
+                {
+                    backPressed = true;
+                }
+                else if (!(GameInput.isButtonDown(GameInput.PlayerButton.Cancel)) && backPressed)
+                {
+                    backPressed = false;
+
+                    paused = false;
+                    MediaPlayer.Volume = 1.0f;
+
+                    AudioFactory.playSFX("sfx/menuClose");
+                }
+
+                //
+            }
+            else
             {
+                if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
+                {
+                    startButtonDown = true;
+                }
+                else if (!(GameInput.isButtonDown(GameInput.PlayerButton.StartButton)) && startButtonDown)
+                {
+                    startButtonDown = false;
+
+                    if (!fadingOut)
+                    {
+                        MediaPlayer.Volume = 0.25f;
+                        pausedSelect = 0;
+                        paused = true;
+
+                        AudioFactory.playSFX("sfx/menuOpen");
+                    }
+                }
+
+                if (fadingOut)
+                {
+                    fadingOutTimer += currentTime.ElapsedGameTime.Milliseconds;
+
+                    if (fadingOutTimer > fadingOutDuration)
+                    {
+                        endLevelFlag = true;
+                    }
+                }
+
+                if (endLevelFlag == true)
+                {
+                    foreach (Entity en in levelEntities)
+                    {
+                        en.removeFromGame = true;
+                    }
+
+                    foreach (Entity en in levelEntities)
+                    {
+                        en.death();
+                    }
+
+                    levelBulletPool.clearPool();
+
+                    //GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
+                    GameScreenManager.nextLevel();
+
+                    endLevelFlag = false;
+
+                    return;
+                }
+
                 foreach (Entity en in levelEntities)
                 {
-                    en.removeFromGame = true;
+                    en.update(currentTime);
+
+                    if (endLevelFlag == true)
+                    {
+                        break;
+                    }
                 }
+
+                levelBulletPool.updatePool(currentTime);
+
+                levelParticlePool.updatePool(currentTime);
+
+                //levelEntities.RemoveAll(en => en.removeFromGame == true);
+                XboxListTools.RemoveAll<Entity>(levelEntities, XboxListTools.isShouldBeRemoved);
 
                 foreach (Entity en in levelEntities)
                 {
                     en.death();
-                }
-
-                levelBulletPool.clearPool();
-
-                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
-
-                endLevelFlag = false;
-
-                return;
-            }
-
-            foreach (Entity en in levelEntities)
-            {
-                en.update(currentTime);
-
-                if (endLevelFlag == true)
-                {
                     break;
                 }
-            }
-
-            levelBulletPool.updatePool(currentTime);
-
-            levelParticlePool.updatePool(currentTime);
-
-            //levelEntities.RemoveAll(en => en.removeFromGame == true);
-            XboxListTools.RemoveAll<Entity>(levelEntities, XboxListTools.isShouldBeRemoved);
-
-            foreach (Entity en in levelEntities)
-            {
-                en.death();
-                break;
             }
         }
 
@@ -592,11 +736,26 @@ namespace MagnetBoy
                 }
             }
 
-            //spriteBatch.DrawString(Game1.gameFontText, "Stamina: " + LevelState.playerStamina, new Vector2(32, 16), Color.White);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f * (playerStamina / playerStaminaMax), 1.0f), Color.Lerp(Color.DarkBlue, Color.LightBlue, (playerStamina / playerStaminaMax)), AnimationFactory.DepthLayer1);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f, 1.0f), Color.Black, AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f * (playerStamina / playerStaminaMax), 1.0f), Color.Lerp(Color.DarkBlue, Color.Cyan, (playerStamina / playerStaminaMax)), AnimationFactory.DepthLayer0);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10f, 1f), Color.Gray, AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(107, 75), new Vector2(10.1f, 1.1f), Color.Black, AnimationFactory.DepthLayer2);
             spriteBatch.End();
 
+            if (paused)
+            {
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, Game1.grayCheckerBoard, Matrix.CreateScale(720, 480, 0));
+                spriteBatch.Draw(Game1.globalBlackPixel, Vector2.Zero, Color.White);
+                spriteBatch.End();
+
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+                MBQG.drawGUIBox(spriteBatch, new Vector2(284, 200), 10, 5, Color.Purple, AnimationFactory.DepthLayer2);
+                spriteBatch.DrawString(Game1.gameFontText, "PAUSED", new Vector2(330, 204), Color.White);
+                spriteBatch.DrawString(Game1.gameFontText, "Continue", new Vector2(322, 228), pausedSelect == 0 ? Color.LightGray : Color.Black);
+                spriteBatch.DrawString(Game1.gameFontText, "Return to Title", new Vector2(298, 252), pausedSelect == 1 ? Color.White : Color.Black);
+                spriteBatch.End();
+            }
+
+            /*
             //draw game cursor
             Matrix arrowRotation = Matrix.Identity;
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(-16.0f, -16.0f, 0.0f));
@@ -604,10 +763,11 @@ namespace MagnetBoy
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(GameInput.P1MouseDirection.Length(), 0.0f, 0.0f));
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateRotationZ((float)Math.Atan2(GameInput.P1MouseDirectionNormal.Y, GameInput.P1MouseDirectionNormal.X)));
             arrowRotation = Matrix.Multiply(arrowRotation, Matrix.CreateTranslation(Game1.graphics.GraphicsDevice.Viewport.Bounds.Width / 2, Game1.graphics.GraphicsDevice.Viewport.Bounds.Height / 2, 0.0f));
+            
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, arrowRotation);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero, AnimationFactory.DepthLayer0);
-            spriteBatch.End();
+            AnimationFactory.drawAnimationFrame(spriteBatch, "mouseArrow", 0, Vector2.Zero, AnimationFactory.DepthLayer0); 
+            spriteBatch.End();*/
 
             if (fadingOut)
             {

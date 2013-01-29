@@ -158,8 +158,9 @@ namespace MagnetBoy
 
             mapView = graphics.GraphicsDevice.Viewport.Bounds;
 
-#if WINDOWS
             currentLevel = 0;
+
+#if WINDOWS
 
             if (Game1.MagnetBoySaveData.loaded == false)
             {
@@ -265,6 +266,8 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/lose");
             AudioFactory.pushNewSFX("sfx/menu");
             AudioFactory.pushNewSFX("sfx/explosion");
+            AudioFactory.pushNewSFX("sfx/menuOpen");
+            AudioFactory.pushNewSFX("sfx/menuClose");
 
             screenManager = new GameScreenManager(this.Content);
             GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
@@ -286,10 +289,13 @@ namespace MagnetBoy
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            //only use this for Windows testing now
+#if WINDOWS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             {
                 exitGame = true;
             }
+#endif
 
             // Allows the game to exit
             if (exitGame)

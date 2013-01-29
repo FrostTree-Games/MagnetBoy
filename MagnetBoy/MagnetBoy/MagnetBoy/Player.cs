@@ -26,12 +26,17 @@ namespace MagnetBoy
         private bool isPushing = false;
         private double directionAngle = 0;
 
+        private bool spinning;
+        private float spin;
+        private float spinVelocity;
+
         private bool playerBlink = false;
         private double playerBlinkTimer = 0.0;
         private string previousAnimation = null;
 
         private const float magnetForceValue = 1.0f;
 
+        /*
         public Player()
         {
             creation();
@@ -48,7 +53,7 @@ namespace MagnetBoy
             solid = true;
 
             currentAnimation = "playerWalkRight";
-        }
+        } */
 
         public Player(float initialx, float initialy)
         {
@@ -69,6 +74,10 @@ namespace MagnetBoy
             magneticMoment = 0.5f;
 
             solid = true;
+
+            spinning = false;
+            spin = 0.0f;
+            spinVelocity = 0.0f;
 
             currentAnimation = "playerWalkRight";
         }
@@ -186,8 +195,8 @@ namespace MagnetBoy
                 }
 
                 //normally I'd check if LevelState.levelParticlePool is null, but right now I want the thing crashing if this updates outside of a game loop
-                int offset = (Game1.gameRandom.Next() % 3) - 1;
-                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.BlueSpark, CenterPosition + new Vector2((float)((width / 2) * Math.Cos(directionAngle + (offset * Math.PI / 4))), (float)((width / 2) * Math.Sin(directionAngle + (offset * Math.PI / 4)))), velocity, (float)(directionAngle + (0.05 * ((Game1.gameRandom.Next() % 10) - 5))), (float)(directionAngle - (offset * (Math.PI))));
+                double offset = 0.5 - Game1.gameRandom.NextDouble();
+                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.BlueSpark, CenterPosition + new Vector2((float)((width / 2) * Math.Cos(directionAngle)), (float)((width / 2) * Math.Sin(directionAngle))), velocity, (float)(directionAngle + (aimWindow * offset)), (float)directionAngle);
 
                 isPushing = true;
 
@@ -362,9 +371,33 @@ namespace MagnetBoy
             horizontal_pos = step.X;
             vertical_pos = step.Y;
 
-            if (onTheGround)
+            if (onTheGround || isKnockedBack)
             {
-                conveyer = Vector2.Zero;
+                spinning = false;
+
+                float targetRotation = 0.0f;
+
+                if (targetRotation > spin + Math.PI)
+                {
+                    targetRotation -= (float)(2 * Math.PI);
+                }
+                else if (targetRotation < spin - Math.PI)
+                {
+                    targetRotation += (float)(2 * Math.PI);
+                }
+
+                spin = MathHelper.Lerp(targetRotation, spin, 0.5f);
+            }
+            else if (!onTheGround && velocity.Y < 0f)
+            {
+                spinning = true;
+                spinVelocity = velocity.X;
+            }
+
+            if (spinning)
+            {
+                spin += spinVelocity;
+                spin = MathHelper.WrapAngle(spin);
             }
 
             // if the last frame time hasn't been set, set it now
@@ -386,7 +419,7 @@ namespace MagnetBoy
         {
             if (!(playerBlink && ((int)(playerBlinkTimer / 100) % 2 == 0)))
             {
-                AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, AnimationFactory.DepthLayer1);
+                AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, spin, AnimationFactory.DepthLayer1);
             }
 
             if (isPushing)

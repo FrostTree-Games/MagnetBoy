@@ -65,6 +65,11 @@ namespace MagnetBoy
         private bool downPressed = false;
         private bool upPressed = false;
         private bool confirmPressed = false;
+        private bool backPressed = false;
+        private bool anyButtonPressed = false;
+
+        private bool showPressButtonDialog;
+        private double dialogTimer;
 
         private List<TitleMenuOption> menuList;
         int selectedMenuItem;
@@ -88,6 +93,18 @@ namespace MagnetBoy
             menuList.Add(new TitleMenuOption("EXIT"));
 
             selectedMenuItem = 0;
+
+            if (musicAlreadyPlaying)
+            {
+                showPressButtonDialog = false;
+            }
+            else
+            {
+                showPressButtonDialog = true;
+                GameInput.LockMostRecentPad = false;
+            }
+
+            Game1.CurrentLevel = 0;
         }
 
         protected override void doUpdate(GameTime currentTime)
@@ -101,82 +118,120 @@ namespace MagnetBoy
                 AudioFactory.playSong("songs/introTheme");
             }
 
-            if (GameInput.isButtonDown(GameInput.PlayerButton.DownDirection))
+            if (!showPressButtonDialog)
             {
-                downPressed = true;
-            }
-            else if (downPressed == true)
-            {
-                selectedMenuItem++;
-                downPressed = false;
-
-                AudioFactory.playSFX("sfx/menu");
-            }
-
-            if (GameInput.isButtonDown(GameInput.PlayerButton.UpDirection))
-            {
-                upPressed = true;
-            }
-            else if (upPressed == true)
-            {
-                selectedMenuItem--;
-                upPressed = false;
-
-                AudioFactory.playSFX("sfx/menu");
-            }
-
-            if (selectedMenuItem >= menuList.Count)
-            {
-                selectedMenuItem = selectedMenuItem % menuList.Count;
-            }
-            else if (selectedMenuItem < 0)
-            {
-                selectedMenuItem += menuList.Count;
-            }
-
-            if (GameInput.isButtonDown(GameInput.PlayerButton.Confirm))
-            {
-                confirmPressed = true;
-            }
-            else if (confirmPressed == true)
-            {
-                confirmPressed = false;
-
-                switch (menuList[selectedMenuItem].text)
+                if (GameInput.isButtonDown(GameInput.PlayerButton.DownDirection))
                 {
-                    case "BEGIN":
-                        AudioFactory.stopSong();
-                        AudioFactory.playSFX("sfx/menu");
-                        GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
-                        break;
-                    case "CONTINUE":
-                        AudioFactory.playSFX("sfx/menu");
-                        GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "LevelSelectMenu");
-                        break;
-                    case "OPTION":
-                        AudioFactory.playSFX("sfx/menu");
-                        GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "GameOptionsMenu");
-                        break;
-                    case "EXIT":
-                        Game1.ExitGame = true;
-                        break;
-                    default:
-                        break;
+                    downPressed = true;
                 }
-            }
+                else if (downPressed == true)
+                {
+                    selectedMenuItem++;
+                    downPressed = false;
 
-            for (int i = 0; i < menuList.Count; i++)
-            {
-                if (i == selectedMenuItem)
-                {
-                    menuList[i].selected = true;
-                }
-                else
-                {
-                    menuList[i].selected = false;
+                    AudioFactory.playSFX("sfx/menu");
                 }
 
-                menuList[i].update(currentTime);
+                if (GameInput.isButtonDown(GameInput.PlayerButton.UpDirection))
+                {
+                    upPressed = true;
+                }
+                else if (upPressed == true)
+                {
+                    selectedMenuItem--;
+                    upPressed = false;
+
+                    AudioFactory.playSFX("sfx/menu");
+                }
+
+                if (selectedMenuItem >= menuList.Count)
+                {
+                    selectedMenuItem = selectedMenuItem % menuList.Count;
+                }
+                else if (selectedMenuItem < 0)
+                {
+                    selectedMenuItem += menuList.Count;
+                }
+
+                if (GameInput.isButtonDown(GameInput.PlayerButton.Cancel))
+                {
+                    backPressed = true;
+                }
+                else if (backPressed == true)
+                {
+                    showPressButtonDialog = true;
+                    GameInput.LockMostRecentPad = false;
+                    dialogTimer = 0;
+
+                    backPressed = false;
+
+                    AudioFactory.playSFX("sfx/menuClose");
+                }
+
+                if (GameInput.isButtonDown(GameInput.PlayerButton.Confirm))
+                {
+                    confirmPressed = true;
+                }
+                else if (confirmPressed == true)
+                {
+                    confirmPressed = false;
+
+                    switch (menuList[selectedMenuItem].text)
+                    {
+                        case "BEGIN":
+                            AudioFactory.stopSong();
+                            AudioFactory.playSFX("sfx/menu");
+                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+                            break;
+                        case "CONTINUE":
+                            AudioFactory.playSFX("sfx/menu");
+                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "LevelSelectMenu");
+                            break;
+                        case "OPTION":
+                            AudioFactory.playSFX("sfx/menu");
+                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "GameOptionsMenu");
+                            break;
+                        case "EXIT":
+                            Game1.ExitGame = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                for (int i = 0; i < menuList.Count; i++)
+                {
+                    if (i == selectedMenuItem)
+                    {
+                        menuList[i].selected = true;
+                    }
+                    else
+                    {
+                        menuList[i].selected = false;
+                    }
+
+                    menuList[i].update(currentTime);
+                }
+            }
+            else
+            {
+                dialogTimer += currentTime.ElapsedGameTime.Milliseconds;
+
+                if (GameInput.isButtonDown(GameInput.PlayerButton.AnyButton))
+                {
+                    anyButtonPressed = true;
+                }
+                else if (anyButtonPressed == true)
+                {
+                    showPressButtonDialog = false;
+
+                    GameInput.LockMostRecentPad = true;
+                    //apply any sign-in, storage device, or settings dialogs here
+
+                    anyButtonPressed = false;
+
+                    AudioFactory.playSFX("sfx/menuOpen");
+                }
             }
 
             if (GameInput.isButtonDown(GameInput.PlayerButton.Push))
@@ -205,15 +260,25 @@ namespace MagnetBoy
             spriteBatch.End();
 
             spriteBatch.Begin();
-            for (int i = 0; i < menuList.Count; i++)
+            if (!showPressButtonDialog)
             {
-                for (int j = 0; j < 7; j++)
+                for (int i = 0; i < menuList.Count; i++)
                 {
-                    AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxA", j != 0 ? (j == 6 ? 2 : 1) : 0, new Vector2((float)(300 + (25 * menuList[i].distanceOut)) + (j * 16), 300 + (40 * i)), Color.Purple, AnimationFactory.DepthLayer3);
-                    AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxC", j != 0 ? (j == 6 ? 2 : 1) : 0, new Vector2((float)(300 + (25 * menuList[i].distanceOut)) + (j * 16), 300 + (40 * i) + 16), Color.Purple, AnimationFactory.DepthLayer3);
-                }
+                    for (int j = 0; j < 7; j++)
+                    {
+                        AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxA", j != 0 ? (j == 6 ? 2 : 1) : 0, new Vector2((float)(300 + (25 * menuList[i].distanceOut)) + (j * 16), 300 + (40 * i)), Color.Purple, AnimationFactory.DepthLayer3);
+                        AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxC", j != 0 ? (j == 6 ? 2 : 1) : 0, new Vector2((float)(300 + (25 * menuList[i].distanceOut)) + (j * 16), 300 + (40 * i) + 16), Color.Purple, AnimationFactory.DepthLayer3);
+                    }
 
-                spriteBatch.DrawString(Game1.gameFontText, menuList[i].text, new Vector2((float)(308 + (25 * menuList[i].distanceOut)), 305 + (40 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+                    spriteBatch.DrawString(Game1.gameFontText, menuList[i].text, new Vector2((float)(308 + (25 * menuList[i].distanceOut)), 305 + (40 * i)), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
+                }
+            }
+            else
+            {
+                if ((dialogTimer / 750) % 2 < 1.0)
+                {
+                    spriteBatch.DrawString(Game1.gameFontText, "PRESS ANY BUTTON", new Vector2(275, 345), Color.Black);
+                }
             }
             spriteBatch.End();
         }

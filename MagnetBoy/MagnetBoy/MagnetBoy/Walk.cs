@@ -9,16 +9,42 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MagnetBoy
 {
+    class WalkMarker : Entity
+    {
+        public WalkMarker(float newX, float newY)
+        {
+            creation();
+
+            horizontal_pos = newX + 15;
+            vertical_pos = newY;
+            width = 2.0f;
+            height = 32.0f;
+        }
+
+        public override void update(GameTime currentTime)
+        {
+            //
+        }
+
+        public override void draw(SpriteBatch sb)
+        {
+            //base.draw(sb);
+        }
+    }
+
     class Walk : Attribute
     {
         double walkSwitchTimer = 0;
         bool walkingLeft = false;
         const float walkerSpeed = 0.09f;
 
+        private bool onWalkMarker;
+
         private bool isEnabled = true;
 
         public Walk(Enemy parent)
-        { 
+        {
+            onWalkMarker = false;
         }
 
         public void enableDisable(bool value)
@@ -55,13 +81,45 @@ namespace MagnetBoy
                 }
                 else if (parent.velocity.X < -walkerSpeed)
                 {
-                    parent.velocity.X = -walkerSpeed;
+                    //parent.velocity.X = -walkerSpeed;
                 }
                 else if (parent.velocity.X > walkerSpeed)
                 {
-                    parent.velocity.X = walkerSpeed;
-
+                    //parent.velocity.X = walkerSpeed;
                 }
+            }
+
+            bool touchingWalkMarker = false;
+            foreach (Entity en in Entity.globalEntityList)
+            {
+                if (en is WalkMarker)
+                {
+                    if (parent.hitTest(en))
+                    {
+                        Entity player = null;
+                        foreach (Entity p in Entity.globalEntityList)
+                        {
+                            if (p is Player)
+                            {
+                                player = p;
+                            }
+                        }
+
+                        touchingWalkMarker = true;
+
+                        if (!onWalkMarker && !((Vector2.Distance(en.CenterPosition, player.CenterPosition) < 134) && GameInput.isButtonDown(GameInput.PlayerButton.Push)))
+                        {
+                            onWalkMarker = true;
+
+                            parent.velocity.X *= -1;
+                        }
+                    }
+                }
+            }
+
+            if (!touchingWalkMarker && onWalkMarker)
+            {
+                onWalkMarker = false;
             }
         }
     }
