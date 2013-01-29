@@ -345,6 +345,9 @@ namespace MagnetBoy
                         case "walkMarker":
                             levelEntities.Add(new WalkMarker(obj.Bounds.X, obj.Bounds.Y));
                             break;
+                        case "goomba":
+                            levelEntities.Add(new Goomba(obj.Bounds.X, obj.Bounds.Y));
+                            break;
                         default:
                             break;
                     }
