@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="sewerPaint" tilewidth="32" tileheight="32">
+  <image source="sewerPaint.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="65" name="sewerTexture" tilewidth="32" tileheight="32">
+  <image source="sewerTexture.png" width="96" height="96"/>
+ </tileset>
+ <tileset firstgid="74" name="citySolid" tilewidth="32" tileheight="32">
+  <image source="citySolid.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="170" name="genericBlock" tilewidth="32" tileheight="32">
+  <image source="genericBlock.png" width="256" height="256"/>
+ </tileset>
+ <layer name="block" width="100" height="100">
+  <properties>
+   <property name="solid" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2TEKwlAURcG//61oZazUxWmKYBsQvycyA7cOcngEzDLGuE/eY7zdfvD86pbXroOKy9CjRI8WPVr0aNl6nL6487Rfc3xbj+WLc3/76dGiR8uMHuu8h/aZ1cOd7XOkHp/c2VFu62g9/v229GjRo0WPlq3Hr7/DzPz+Veb/xBY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFj5a1x/LayRJbWzwBew6Alw==
+  </data>
+ </layer>
+ <layer name="texture" width="100" height="100">
+  <properties>
+   <property name="solid" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJwAAMA0EPl+y/UmqXLowMuQMtoK+qepYGAPBX7/KY0eMWPW7R45btHrrOpH/Wo0v/rGWX/kqPLv2VHl36Kz269Fd6dOmv9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJj5XLZKL
+  </data>
+ </layer>
+ <layer name="paint" width="100" height="100">
+  <properties>
+   <property name="solid" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1zsKgDAQRdH0Vn72v1YV0kwj2uQFOQeml3eb2Fpry+C7rf3I2647+u3hbwGAvxjxnuI9Peaix1z0mMvo/3Ndn6V31qNK76xlld5Kjyq9lR5Veis9qvRWelTprfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL44AZ79GBI=
+  </data>
+ </layer>
+ <layer name="paint2" width="100" height="100">
+  <properties>
+   <property name="solid" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKwCAQBEDbiMmz/P+TbGxUJI2JgczAFtftciEAALDa8UBizfXiDu6duwv8XO5u//iWtLsAjTgJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAqzKcBiA==
+  </data>
+ </layer>
+</map>
