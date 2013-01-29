@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="104" height="104" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="sewerPaint" tilewidth="32" tileheight="32">
   <image source="sewerPaint.png" width="256" height="256"/>
  </tileset>
@@ -12,36 +12,44 @@
  <tileset firstgid="170" name="genericBlock" tilewidth="32" tileheight="32">
   <image source="genericBlock.png" width="256" height="256"/>
  </tileset>
- <layer name="block" width="100" height="100">
+ <tileset firstgid="234" name="mapBorder" tilewidth="32" tileheight="32">
+  <image source="mapBorder.png" width="32" height="32"/>
+ </tileset>
+ <layer name="block" width="104" height="104">
   <properties>
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2TEKwlAURcG//61oZazUxWmKYBsQvycyA7cOcngEzDLGuE/eY7zdfvD86pbXroOKy9CjRI8WPVr0aNl6nL6487Rfc3xbj+WLc3/76dGiR8uMHuu8h/aZ1cOd7XOkHp/c2VFu62g9/v229GjRo0WPlq3Hr7/DzPz+Veb/xBY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFj5a1x/LayRJbWzwBew6Alw==
+   eJzt2cFKw0AARdH8/6/UlXGl7vpjKgjtYgIRaeamnAtv3ZSTSaG5LstynbiP3828Bhvvbbn1Grie8tbldi8ftc87n/cJn1/dOvC5v5c1t9GzhE8nPu34tOPTbsvn8sC9HPLNnqMtn/WBcz73x6cdn3YzfH7md2xfs3ycw32d2ec/5/AsZ+/sPs9+9vi049OOT7stn9nvpY58H1jO/6Pt+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7t+LTj045POz7tRj7r9y6W2DrwMbO/7wv/3eyP
   </data>
  </layer>
- <layer name="texture" width="100" height="100">
+ <layer name="texture" width="104" height="104">
   <properties>
    <property name="solid" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0bEJwAAMA0EPl+y/UmqXLowMuQMtoK+qepYGAPBX7/KY0eMWPW7R45btHrrOpH/Wo0v/rGWX/kqPLv2VHl36Kz269Fd6dOmv9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJj5XLZKL
+   eJzt0TENwEAQA8EHl/CnFAZuPidfMSOZgPcc4A/P0AAAmPEOjzv67KbPbvrsNt1H5zvt3/XJ2r9rm7W/0ydrf6dP1v5On6z9nT5Z+zt9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA0+syCSiw==
   </data>
  </layer>
- <layer name="paint" width="100" height="100">
+ <layer name="paint" width="104" height="104">
   <properties>
    <property name="solid" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1zsKgDAQRdH0Vn72v1YV0kwj2uQFOQeml3eb2Fpry+C7rf3I2647+u3hbwGAvxjxnuI9Peaix1z0mMvo/3Ndn6V31qNK76xlld5Kjyq9lR5Veis9qvRWelTprfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL44AZ79GBI=
+   eJzt2DEKhFAQREFzo1Xvf9ZVMNQRDX5PUAWTS7/k4zTBvd95PJsH30Gfvpb9tvPW8LcAANdGvNf4Tp/e9OlNn95G/z/Q+Z307vrU0rtrW0tvp08tvZ0+tfR2+tTS2+lTS2+nDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDBHyBYGDQ=
   </data>
  </layer>
- <layer name="paint2" width="100" height="100">
+ <layer name="paint2" width="104" height="104">
   <properties>
    <property name="solid" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0TEKwCAQBEDbiMmz/P+TbGxUJI2JgczAFtftciEAALDa8UBizfXiDu6duwv8XO5u//iWtLsAjTgJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAqzKcBiA==
+   eJzt0TsKwCAQBFDbSMyxvP+RbNIoREjhh+Q9mGK7GTYEAACA/zkGJN65Ju7gvbS6AJXc3P6zt3N1AbriQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDvKqFxAYg=
+  </data>
+ </layer>
+ <layer name="mapBorder" width="104" height="104">
+  <data encoding="base64" compression="zlib">
+   eJzt0UENAAAMhLD5l3oqZqMPmqCA3d2KLqb+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2Ppj64+tP7b+2FZ8Dw9neKg=
   </data>
  </layer>
 </map>
