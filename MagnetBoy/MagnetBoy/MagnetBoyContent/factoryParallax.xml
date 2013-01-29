@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>factoryParallax3</name>
+      <sheetName>factoryParallaxSheet</sheetName>
+      <sheet Type="System.String">foo</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>1024</frameWidth>
+      <frameHeight>512</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+    <Item>
+      <name>factoryParallax2</name>
+      <sheetName>factoryParallaxSheet</sheetName>
+      <sheet Type="System.String">foo</sheet>
+      <initalX>0</initalX>
+      <initalY>512</initalY>
+      <frameWidth>1024</frameWidth>
+      <frameHeight>512</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+    <Item>
+      <name>factoryParallax1</name>
+      <sheetName>factoryParallaxSheet</sheetName>
+      <sheet Type="System.String">foo</sheet>
+      <initalX>0</initalX>
+      <initalY>1024</initalY>
+      <frameWidth>1024</frameWidth>
+      <frameHeight>512</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+  </Asset>
+</XnaContent>
