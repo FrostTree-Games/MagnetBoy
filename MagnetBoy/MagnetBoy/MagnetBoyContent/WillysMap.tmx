@@ -34,6 +34,9 @@
  <tileset firstgid="339" name="cityTexture" tilewidth="32" tileheight="32">
   <image source="cityTexture.png" width="96" height="96"/>
  </tileset>
+ <tileset firstgid="348" name="mapBorder" tilewidth="32" tileheight="32">
+  <image source="mapBorder.png" width="32" height="32"/>
+ </tileset>
  <layer name="block" width="200" height="40">
   <data encoding="base64" compression="zlib">
    eJzt2sFygyAUhWF5BpNxAcmmdpVl3//dWmcwuaWAhUpB/L8ZxsZkShYc70UzDAAAAAAA4ExGNQxXVftbAG1ZcjF9jdmOiZwATx+eLPjOAWdEPoAw8gGEkQ8gjHwAYeQDCCMfQBj5AMLIB+A32mfmF/vcfLJ/zzxDB551QtYL3zngjMgHejSKXkgeU3uinHy4c9OHoTXuGs695ufkYzlv1Pcj0BJtr93GOd7+IR9vYg+/HN/JBxpTq348AvM9MjOy9mqxQf+GVLXqx17zyrnMxqB/Q6oa9WMUOXA/ozOv89r2aLGRmz2cV436ocWew3fMWcfr/4wN8oFUNerH1pw5fRD9FUqoVT98c/5lD0J/hRKOVD9i96gM/RUKOFL9iPVQ9Fco4Uj1Y81VqH7QX2FvvdQP7l+hhF7qx43+CgX0VD/or7C3XuoH969QQi/1g/tXKKGn+rH1+13qB1Ktfbu8huf06qn14yLmmp3X1A+0Qtu1s65J9/VvpebDiHnu6ue50Hdd8nO1nxvVa+8tn3/43md/jqPQrFM05hMCP1Ry
@@ -49,7 +52,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt271OwzAYhWFfAls7wdaJuwcmBAjGSkyIPwECrqDtzlBbSYSx8hG1jp3P7vtIZ2hAwUOP7MRmZoyZBQHQ6DqxsDltA6DR9eNk6oEACtEPQEY/ABn9AGT0A5B1/ZjbHE08FkAb9j0AGf0AZOydAzL6Achi+/Fm897mY8RxARowfwAy+gHIXCeODf0A+vhzx2LisQDa+P3gjAnwF/0AZFI/zszve1s/FxnGdGnz5eUqw98E+kj9uBN+X7o+puXAZyAXjf14GvgM5KKtH9c7Xh/i1okvA3nd896on7Z+SGupfddYOeY71EtLPz5N81z+KPz8weZ7x3s+29zEDAoHT0s/nBTP4fQDMfx+zL3rufrhn/ktoR/+eWU/nF2uk3Q+sbT5I/zedt9X5g/EqKEf7jlDejd1P87QcKBS90Naj/StSdgHhDY1zB9AKlr64d7v0g9oo6UfDv2ANvQDkKXsx3/P5uEzultfcQ6xTiXvDWmaPwBtYvrhzsaeB8nx/1NALjH96Nubvh1pXIAGJfVjZbNJeH8gtC4oP0FW7fVNzzVCxsgWY+5Aeg==
+   eJzt271OwzAYhWFfAls6wcb9S4UJAYIRqRPiT4CAK2i7M2CLVLiRP6LWP/nsvo90hhoUPPTITmKMAQAAAIAyuj4nU08EUIh+ADL6Acg2/ZjZHE08F0CbzguAbfQDkHWGjgAS+gHIYvvxavPW5z3hvAANWD8AGf0AZK4Tx4Z+ACH+2nE68VwAbfx+cMYE2EY/AJnUj7n5e27r57zAnC5sPr1cFvibQIjUj1vh96XxlO5GPgOlaOzH48hnoBRt/bjacXyM2yc+j+Rlz2ujfdr6Ie2l9t1jlVjv0C4t/fgwv/flD8LP722+drzmk811zKRw8LT0w8lxH04/EMPvx8wbL9UP/8xvDf3wzyv74exym6TzibWtH8Pv7eb7yvqBGC30w91nSM+mFmmmhgOVux/SfiS0J+E9ILRpYf0ActHSD/d8l35AGy39cOgHtKEfgCxnP/67Nx/eo7v9FecQ21TzuyFN6wegTUw/3NnYs0FK/P8UUEpMP0Lvpm8SzQvQoKZ+LG3WGa8PDK0qyvcgy358HRgjJEV+ANvrPsE=
   </data>
  </layer>
  <layer name="paint" width="200" height="40">
@@ -98,4 +101,9 @@
   <object name="heartItem" x="1228" y="575"/>
   <object name="shieldDudeLeft" x="1933" y="662"/>
  </objectgroup>
+ <layer name="mapBorder" width="200" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt3SEOwCAUBUF6T+5/jlpEF0sTZpJn8Jsvmc8Y08xyq683uFH1AbgVsKMPaPqApg9o+oCmD2j6gKYPaPqApg9o+oCmD2j6gKYPaPqApg9o+oCmD2j6gKYPaPqApg9o+oCmD2j6gKYPaPqApg9o+oCmD2j6gKYPaPqApg9o+oCmD2in/801+/tekcauBA==
+  </data>
+ </layer>
 </map>
