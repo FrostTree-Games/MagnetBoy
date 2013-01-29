@@ -236,7 +236,7 @@ namespace MagnetBoy
             }
         }
 
-        public static PlayerIndex lockedPlayerIndex
+        public static PlayerIndex LockedPlayerIndex
         {
             get
             {
