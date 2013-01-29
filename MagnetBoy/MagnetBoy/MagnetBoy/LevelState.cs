@@ -198,6 +198,12 @@ namespace MagnetBoy
             Monitor.Enter(levelEntities);
             grabbed = true;
 
+            if (Entity.globalEntityList != null)
+            {
+                Entity.globalEntityList.Clear();
+                Entity.globalEntityList.TrimExcess();
+            }
+
             levelMap = contentManager.Load<Map>(levelName);
 
             foreach (ObjectLayer layer in levelMap.ObjectLayers)
