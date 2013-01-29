@@ -146,6 +146,7 @@
     <Compile Include="GameInput.cs" />
     <Compile Include="GameScreenManager.cs" />
     <Compile Include="GameScreenNode.cs" />
+    <Compile Include="Goomba.cs" />
     <Compile Include="HealthItem.cs" />
     <Compile Include="IntervalShoot.cs" />
     <Compile Include="Jump.cs" />

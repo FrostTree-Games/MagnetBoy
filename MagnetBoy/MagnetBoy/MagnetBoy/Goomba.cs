@@ -8,11 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MagnetBoy
 {
-    class AngrySaw : Enemy
+    class Goomba : Enemy
     {
-        public AngrySaw(float initialx, float initialy) : base(initialx, initialy)
+        public Goomba(float initialx, float initialy) : base(initialx, initialy)
         {
-            list.Add(new climbChaser(this));
+            list.Add(new Walk(this));
 
             currentFrame = 0;
             lastFrameIncrement = 0;
@@ -31,7 +31,7 @@ namespace MagnetBoy
                         lastFrameIncrement = 0.0;
                         currentFrame = 0;
                         velocity.X = 0.0f;
-                        currentAnimation = "angrySawDieLeft";
+                        currentAnimation = "goombaDieRight";
                         deathAnimationSet = true;
                     }
                     else
@@ -39,12 +39,12 @@ namespace MagnetBoy
                         lastFrameIncrement = 0.0;
                         currentFrame = 0;
                         velocity.X = 0.0f;
-                        currentAnimation = "angrySawDieRight";
+                        currentAnimation = "goombaDieLeft";
                         deathAnimationSet = true;
                     }
                 }
 
-                
+
                 if (deathTimer > 500)
                 {
                     removeFromGame = true;
@@ -62,20 +62,20 @@ namespace MagnetBoy
                 {
                     if (velocity.X > 0)
                     {
-                        currentAnimation = "angrySawIdleRight";
+                        currentAnimation = "goombaIdleRight";
                     }
                     else if (velocity.X < 0)
                     {
-                        currentAnimation = "angrySawIdleLeft";
+                        currentAnimation = "goombaIdleLeft";
                     }
                 }
                 else if (velocity.X > 0)
                 {
-                    currentAnimation = "angrySawWalkLeft";
+                    currentAnimation = "goombaWalkRight";
                 }
                 else if (velocity.X < 0)
                 {
-                    currentAnimation = "angrySawWalkRight";
+                    currentAnimation = "goombaWalkLeft";
                 }
 
             }
@@ -92,7 +92,7 @@ namespace MagnetBoy
 
                 currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
             }
-            
+
         }
 
         public override void draw(SpriteBatch sb)

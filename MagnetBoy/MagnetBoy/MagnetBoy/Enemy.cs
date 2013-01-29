@@ -70,21 +70,24 @@ namespace MagnetBoy
                 }
             }
 
-            foreach (Entity en in Entity.globalEntityList)
+            if(!deathAnimationSet)
             {
-                if (en is Player)
+                foreach (Entity en in Entity.globalEntityList)
                 {
-                    if (hitTest(en))
+                    if (en is Player)
                     {
-                        if (!(!en.onTheGround && en.velocity.Y > 0.001f && en.Position.Y < vertical_pos))
+                        if (hitTest(en))
                         {
-                            if (en.Position.X - Position.X < 0)
+                            if (!(!en.onTheGround && en.velocity.Y > 0.001f && en.Position.Y < vertical_pos))
                             {
-                                ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
-                            }
-                            else
-                            {
-                                ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                                if (en.Position.X - Position.X < 0)
+                                {
+                                    ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                                }
+                                else
+                                {
+                                    ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                                }
                             }
                         }
                     }
