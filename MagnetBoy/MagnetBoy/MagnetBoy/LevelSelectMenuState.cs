@@ -158,8 +158,15 @@ namespace MagnetBoy
             {
                 confirmPressed = false;
 
-                Game1.CurrentLevel = selectedMenuItem;
-                GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, Game1.levelFileNames[selectedMenuItem]);
+                if (selectedMenuItem <= Game1.MagnetBoySaveData.furthestLevelUnlocked)
+                {
+                    Game1.CurrentLevel = selectedMenuItem;
+                    GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, Game1.levelFileNames[selectedMenuItem]);
+                }
+                else
+                {
+                    AudioFactory.playSFX("sfx/menuDeny");
+                }
             }
 
             Game1.grayCheckerBoard.Parameters["slideX"].SetValue(TitleScreenMenuState.checkerBoardSlide.X);
@@ -177,9 +184,16 @@ namespace MagnetBoy
             spriteBatch.Begin();
             for (int i = 0; i < menuList.Count; i++)
             {
-                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 81 + i * 64), 28, 3, Color.Purple, AnimationFactory.DepthLayer3);
+                MBQG.drawGUIBox(spriteBatch, new Vector2((float)(144 + (25 * menuList[i].distanceOut)), 81 + i * 64), 28, 3, (i <= Game1.MagnetBoySaveData.furthestLevelUnlocked) ? Color.Purple : Color.Lerp(Color.Purple, Color.Black, 0.5f), AnimationFactory.DepthLayer3);
                 spriteBatch.DrawString(Game1.gameFontText, Game1.levelNames[i], new Vector2((float)(152 + (25 * menuList[i].distanceOut)), 85 + i * 64), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
-                spriteBatch.DrawString(Game1.gameFontText, "Completed in " + Game1.MagnetBoySaveData[i].levelBestTime + " by " + Game1.MagnetBoySaveData[i].levelBestTimeOwner, new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 106 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
+                if (i <= Game1.MagnetBoySaveData.furthestLevelUnlocked)
+                {
+                    spriteBatch.DrawString(Game1.gameFontText, "Completed in " + Game1.MagnetBoySaveData[i].levelBestTime + " by " + Game1.MagnetBoySaveData[i].levelBestTimeOwner, new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 106 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
+                }
+                else
+                {
+                    spriteBatch.DrawString(Game1.gameFontText, "LOCKED", new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 106 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
+                }
             }
 
             AnimationFactory.drawAnimationFrame(spriteBatch, "xboxButtons", 0, new Vector2(220, 400), AnimationFactory.DepthLayer0);

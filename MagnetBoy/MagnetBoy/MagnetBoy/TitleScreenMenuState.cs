@@ -67,6 +67,8 @@ namespace MagnetBoy
         private bool confirmPressed = false;
         private bool backPressed = false;
         private bool anyButtonPressed = false;
+        private bool xButtonPressed = false;
+        private bool yButtonPressed = false;
 
         private bool showPressButtonDialog;
         private double dialogTimer;
@@ -120,6 +122,20 @@ namespace MagnetBoy
 
             if (!showPressButtonDialog)
             {
+                if (GameInput.isButtonDown(GameInput.PlayerButton.XButton))
+                {
+                    xButtonPressed = true;
+                }
+                else if (xButtonPressed == true && GameInput.isButtonDown(GameInput.PlayerButton.LBumper))
+                {
+                    xButtonPressed = false;
+
+                    if (Game1.MagnetBoySaveData.furthestLevelUnlocked < 4)
+                    {
+                        Game1.MagnetBoySaveData.furthestLevelUnlocked++;
+                    }
+                }
+
                 if (GameInput.isButtonDown(GameInput.PlayerButton.DownDirection))
                 {
                     downPressed = true;
