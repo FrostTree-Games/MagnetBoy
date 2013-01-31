@@ -274,6 +274,7 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/explosion");
             AudioFactory.pushNewSFX("sfx/menuOpen");
             AudioFactory.pushNewSFX("sfx/menuClose");
+            AudioFactory.pushNewSFX("sfx/menuDeny");
 
             screenManager = new GameScreenManager(this.Content);
             GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
