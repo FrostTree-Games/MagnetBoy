@@ -68,7 +68,6 @@ namespace MagnetBoy
         private bool backPressed = false;
         private bool anyButtonPressed = false;
         private bool xButtonPressed = false;
-        private bool yButtonPressed = false;
 
         private bool showPressButtonDialog;
         private double dialogTimer;

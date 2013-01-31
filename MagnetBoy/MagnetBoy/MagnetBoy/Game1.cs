@@ -141,6 +141,10 @@ namespace MagnetBoy
 
             //graphics.IsFullScreen = true;
 
+#if XBOX
+            Components.Add(new GamerServicesComponent(this));
+#endif
+
             Content.RootDirectory = "Content";
         }
 
@@ -170,7 +174,6 @@ namespace MagnetBoy
             //FurthestLevelProgressed = 4;
 #endif
 #if XBOX
-            // Xbox gamer services loading code here
             resetSaveData();
 #endif
 

@@ -54,6 +54,17 @@ namespace MagnetBoy
                     {
                         if (hitTest(en))
                         {
+#if XBOX
+                            if ((uint)(LevelState.LevelRecordTime / 1000) < Game1.MagnetBoySaveData[Game1.CurrentLevel].levelBestTime)
+                            {
+                                Game1.LevelScoreStruct newHighScore;
+                                newHighScore.levelBestTime = (uint)(LevelState.LevelRecordTime / 1000);
+                                newHighScore.levelBestTimeOwner = GameInput.LockedPlayerGamerTag;
+
+                                Game1.MagnetBoySaveData[Game1.CurrentLevel] = newHighScore;
+                            }
+#endif
+
                             state = EndLevelFlagState.Spinning;
                             stateTimer = 0;
                             break;

@@ -54,6 +54,9 @@ namespace MagnetBoy
         private bool startButtonDown;
         private int pausedSelect;
 
+        private static double levelRecordTime;
+        public static double LevelRecordTime { get { return levelRecordTime; } }
+
         private bool downPressed = false;
         private bool upPressed = false;
         private bool confirmPressed = false;
@@ -141,6 +144,7 @@ namespace MagnetBoy
             levelBulletPool = new BulletPool();
             levelParticlePool = new ParticlePool(100);
             levelName = levelNameString;
+            levelRecordTime = 0;
 
             paused = false;
             startButtonDown = false;
@@ -175,7 +179,7 @@ namespace MagnetBoy
         private void loadLevelThread()
         {
             #if XBOX
-            Thread.SetProcessorAffinity(3); 
+            //Thread.SetProcessorAffinity(3); 
             #endif
 
             Monitor.Enter(levelEntities);
@@ -391,8 +395,9 @@ namespace MagnetBoy
             }
 
             //Thread.Sleep(5000);
-            
-            //assetResources.Release();
+
+            levelRecordTime = 0;
+
             Monitor.Exit(levelEntities);
         }
 
@@ -567,6 +572,8 @@ namespace MagnetBoy
             }
             else
             {
+                levelRecordTime += currentTime.ElapsedGameTime.Milliseconds;
+
                 if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
                 {
                     startButtonDown = true;
