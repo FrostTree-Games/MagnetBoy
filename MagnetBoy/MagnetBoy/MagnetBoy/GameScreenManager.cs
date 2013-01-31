@@ -56,6 +56,11 @@ namespace MagnetBoy
 
             Game1.CurrentLevel = (Game1.CurrentLevel + 1) % Game1.levelNames.Length;
 
+            if (Game1.CurrentLevel > Game1.MagnetBoySaveData.furthestLevelUnlocked)
+            {
+                Game1.MagnetBoySaveData.furthestLevelUnlocked = Game1.CurrentLevel;
+            }
+
             if (Game1.CurrentLevel != 0)
             {
                 currentNode = new LevelState(manager, Game1.levelFileNames[Game1.CurrentLevel]);

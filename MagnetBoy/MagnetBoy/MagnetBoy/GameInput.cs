@@ -290,5 +290,29 @@ namespace MagnetBoy
                 }
             }
         }
+
+#if XBOX
+        public static string LockedPlayerGamerTag
+        {
+            get
+            {
+                if (!lockMostRecentPad)
+                {
+                    return "Anonymous";
+                }
+                else
+                {
+                    SignedInGamer g = Gamer.SignedInGamers[LockedPlayerIndex];
+
+                    if (g == null)
+                    {
+                        return "Anonymous";
+                    }
+                    
+                    return g.Gamertag;
+                }
+            }
+        }
+#endif
     }
 }
