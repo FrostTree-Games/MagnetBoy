@@ -103,8 +103,8 @@ namespace MagnetBoy
             switch (newType)
             {
                 case BulletPool.BulletType.TestBullet:
-                    width= 16f;
-                    height = 16f;
+                    width= 31.5f;
+                    height = 31.5f;
                     velocity.X = (float)(testBulletVelocity * Math.Cos(direction));
                     velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
                     rotation = direction;
@@ -118,8 +118,8 @@ namespace MagnetBoy
                     rotation = 0.0f;
                     break;
                 case BulletPool.BulletType.Bucket:
-                    width = 31.5f;
-                    height = 31.5f;
+                    width = 16f;
+                    height = 16f;
                     velocity.X = (float)(testBulletVelocity * Math.Cos(direction));
                     velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
                     rotation = direction;

@@ -198,6 +198,12 @@ namespace MagnetBoy
             Monitor.Enter(levelEntities);
             grabbed = true;
 
+            if (Entity.globalEntityList != null)
+            {
+                Entity.globalEntityList.Clear();
+                Entity.globalEntityList.TrimExcess();
+            }
+
             levelMap = contentManager.Load<Map>(levelName);
 
             foreach (ObjectLayer layer in levelMap.ObjectLayers)
@@ -367,6 +373,9 @@ namespace MagnetBoy
                             break;
                         case "walkMarker":
                             levelEntities.Add(new WalkMarker(obj.Bounds.X, obj.Bounds.Y));
+                            break;
+                        case "goomba":
+                            levelEntities.Add(new Goomba(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         default:
                             break;
