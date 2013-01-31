@@ -27,6 +27,10 @@ namespace MagnetBoy
             Cancel,
             StartButton,
             BackButton,
+            XButton,
+            YButton,
+            LBumper,
+            RBumper,
             AnyButton
         }
 
@@ -158,6 +162,30 @@ namespace MagnetBoy
                         break;
                     case PlayerButton.StartButton:
                         if (padStates[i].Buttons.Start == ButtonState.Pressed || kbdState.IsKeyDown(Keys.Escape))
+                        {
+                            return true;
+                        }
+                        break;
+                    case PlayerButton.XButton:
+                        if (padStates[i].Buttons.X == ButtonState.Pressed)
+                        {
+                            return true;
+                        }
+                        break;
+                    case PlayerButton.YButton:
+                        if (padStates[i].Buttons.Y == ButtonState.Pressed)
+                        {
+                            return true;
+                        }
+                        break;
+                    case PlayerButton.LBumper:
+                        if (padStates[i].Buttons.LeftShoulder == ButtonState.Pressed)
+                        {
+                            return true;
+                        }
+                        break;
+                    case PlayerButton.RBumper:
+                        if (padStates[i].Buttons.RightShoulder == ButtonState.Pressed)
                         {
                             return true;
                         }
