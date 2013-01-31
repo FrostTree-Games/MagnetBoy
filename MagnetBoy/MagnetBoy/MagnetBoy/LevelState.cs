@@ -62,6 +62,9 @@ namespace MagnetBoy
         private bool confirmPressed = false;
         private bool backPressed = false;
 
+        private string tagLineA;
+        private string tagLineB;
+
         private bool fadingOut = false;
         private double fadingOutTimer = 0;
         private const double fadingOutDuration = 1000;
@@ -190,6 +193,9 @@ namespace MagnetBoy
                 Entity.globalEntityList.Clear();
                 Entity.globalEntityList.TrimExcess();
             }
+
+            tagLineA = "LEVEL " + (Game1.CurrentLevel + 1);
+            tagLineB = Game1.levelNames[Game1.CurrentLevel];
 
             switch (Game1.CurrentLevel)
             {
@@ -791,6 +797,46 @@ namespace MagnetBoy
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f * (playerStamina / playerStaminaMax), 1.0f), Color.Lerp(Color.DarkBlue, Color.Cyan, (playerStamina / playerStaminaMax)), AnimationFactory.DepthLayer0);
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10f, 1f), Color.Gray, AnimationFactory.DepthLayer1);
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(107, 75), new Vector2(10.1f, 1.1f), Color.Black, AnimationFactory.DepthLayer2);
+
+            if (levelRecordTime < 1500)
+            {
+                Vector2 posA = new Vector2((float)(levelRecordTime / 1500) * 400, 90);
+                Vector2 posB = new Vector2((float)(levelRecordTime / 1500) * 400, 104);
+
+                for (int i = -1; i < 2; i++)
+                {
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                }
+            }
+            else if (levelRecordTime < 5000)
+            {
+                Vector2 posA = new Vector2(400, 90);
+                Vector2 posB = new Vector2(400, 104);
+
+                for (int i = -1; i < 2; i++)
+                {
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                }
+            }
+            else if (levelRecordTime < 7000)
+            {
+                Vector2 posA = new Vector2(400 + (float)((levelRecordTime - 5000) / 2000) * 900, 90);
+                Vector2 posB = new Vector2(400 + (float)((levelRecordTime - 5000) / 2000) * 900, 104);
+
+                for (int i = -1; i < 2; i++)
+                {
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                }
+            }
             spriteBatch.End();
 
             if (paused)
