@@ -262,7 +262,11 @@ namespace MagnetBoy
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
             globalBlackPixel = this.Content.Load<Texture2D>("1x1BlackPixel");
 
+            AudioFactory.pushNewSong("songs/song0");
             AudioFactory.pushNewSong("songs/song1");
+            AudioFactory.pushNewSong("songs/song2");
+            AudioFactory.pushNewSong("songs/song3");
+            AudioFactory.pushNewSong("songs/song4");
             AudioFactory.pushNewSong("songs/introTheme");
 
             AudioFactory.pushNewSFX("sfx/lose");

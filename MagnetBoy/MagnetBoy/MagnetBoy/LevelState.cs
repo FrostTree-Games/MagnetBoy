@@ -78,6 +78,8 @@ namespace MagnetBoy
         private string parallax2 = "testParallax2";
         private string parallax3 = "testParallax3";
 
+        private string levelSong = "songs/introTheme";
+
         public static Map CurrentLevel
         {
             get
@@ -160,25 +162,6 @@ namespace MagnetBoy
 
             Thread.Sleep(50);
 
-            switch (Game1.CurrentLevel)
-            {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    parallax1 = "factoryParallax1";
-                    parallax2 = "factoryParallax2";
-                    parallax3 = "factoryParallax3";
-                    break;
-                case 4:
-                    break;
-                default:
-                    break;
-            }
-
             currentPlayerHealth = Game1.MagnetBoySaveData.defaultStartingHealth;
 
             fadingOut = false;
@@ -202,6 +185,30 @@ namespace MagnetBoy
             {
                 Entity.globalEntityList.Clear();
                 Entity.globalEntityList.TrimExcess();
+            }
+
+            switch (Game1.CurrentLevel)
+            {
+                case 0:
+                    levelSong = "songs/song0";
+                    break;
+                case 1:
+                    levelSong = "songs/song1";
+                    break;
+                case 2:
+                    levelSong = "songs/song2";
+                    break;
+                case 3:
+                    levelSong = "songs/song3";
+                    parallax1 = "factoryParallax1";
+                    parallax2 = "factoryParallax2";
+                    parallax3 = "factoryParallax3";
+                    break;
+                case 4:
+                    levelSong = "songs/song4";
+                    break;
+                default:
+                    break;
             }
 
             levelMap = contentManager.Load<Map>(levelName);
@@ -439,7 +446,7 @@ namespace MagnetBoy
             {
                 musicPlaying = true;
 
-                AudioFactory.playSong("songs/song1");
+                AudioFactory.playSong(levelSong);
             }
 
             if (currentPlayerHealth < 1 && !fadingOut)
@@ -735,17 +742,17 @@ namespace MagnetBoy
             Game1.graphics.GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.Pink, 0.4f));
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
-            AnimationFactory.drawAnimationFrame(spriteBatch, parallax3, 0, new Vector2(-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax3"), 0f), AnimationFactory.DepthLayer3);
-            AnimationFactory.drawAnimationFrame(spriteBatch, parallax3, 0, new Vector2((-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax3")) + (float)AnimationFactory.getAnimationFrameWidth("testParallax3"), 0f), AnimationFactory.DepthLayer3);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax3, 0, new Vector2(-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax3), 0f), AnimationFactory.DepthLayer3);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax3, 0, new Vector2((-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax3)) + (float)AnimationFactory.getAnimationFrameWidth(parallax3), 0f), AnimationFactory.DepthLayer3);
 
-            AnimationFactory.drawAnimationFrame(spriteBatch, parallax2, 0, new Vector2(-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax2"), 0f), AnimationFactory.DepthLayer2);
-            AnimationFactory.drawAnimationFrame(spriteBatch, parallax2, 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax2")) + (float)AnimationFactory.getAnimationFrameWidth("testParallax2"), 0f), AnimationFactory.DepthLayer2);
-            AnimationFactory.drawAnimationFrame(spriteBatch, parallax2, 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax2")) + (float)(2f * AnimationFactory.getAnimationFrameWidth("testParallax2")), 0f), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax2, 0, new Vector2(-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax2), 0f), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax2, 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax2)) + (float)AnimationFactory.getAnimationFrameWidth(parallax2), 0f), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax2, 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax2)) + (float)(2f * AnimationFactory.getAnimationFrameWidth(parallax2)), 0f), AnimationFactory.DepthLayer2);
 
-            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2(-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1"), 0f), AnimationFactory.DepthLayer1);
-            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1")) + (float)AnimationFactory.getAnimationFrameWidth("testParallax1"), 0f), AnimationFactory.DepthLayer1);
-            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1")) + (float)(2f * AnimationFactory.getAnimationFrameWidth("testParallax1")), 0f), AnimationFactory.DepthLayer1);
-            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1")) + (float)(3f * AnimationFactory.getAnimationFrameWidth("testParallax1")), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2(-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax1), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax1)) + (float)AnimationFactory.getAnimationFrameWidth(parallax1), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax1)) + (float)(2f * AnimationFactory.getAnimationFrameWidth(parallax1)), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax1)) + (float)(3f * AnimationFactory.getAnimationFrameWidth(parallax1)), 0f), AnimationFactory.DepthLayer1);
             spriteBatch.End();
 
             // draw map
