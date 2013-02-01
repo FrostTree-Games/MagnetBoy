@@ -29,6 +29,7 @@ namespace MagnetBoy
         public bool removeFromGame = false;
         public bool deathAnimation = false;
         public bool deathAnimationSet = false;
+        public bool killedByBullet = false;
 
         public Vector2 Position
         {

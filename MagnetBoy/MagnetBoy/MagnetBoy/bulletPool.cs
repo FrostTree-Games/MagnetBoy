@@ -28,6 +28,8 @@ namespace MagnetBoy
         int currentFrame = 0;
         double lastFrameIncrement = 0;
 
+        public Vector2 initialBucketVelocity = new Vector2();
+
         float organVelocityX = 0.0f;
         float organVelocityY = 0.0f;
 
@@ -122,7 +124,12 @@ namespace MagnetBoy
                     height = 16f;
                     velocity.X = (float)(testBulletVelocity * Math.Cos(direction));
                     velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
+
+                    initialBucketVelocity.X = velocity.X;
+                    initialBucketVelocity.Y = velocity.Y;
+
                     rotation = direction;
+                    maxLifeTime = 1500;
                     currentAnimation = "bucket";
                     currentFrame = 0;
                     lastFrameIncrement = entryTime.TotalGameTime.Milliseconds;
@@ -222,40 +229,89 @@ namespace MagnetBoy
             }
 
             // damage player
-            foreach (Entity en in globalEntityList)
+            if(!exploding)
             {
-                if (en is Player)
+                foreach (Entity en in globalEntityList)
                 {
-                    if (hitTest(en))
+                    if (en is Player)
                     {
-                        if (type == BulletPool.BulletType.healthItem)
+                        if (hitTest(en))
                         {
-                            if (bulletUsed == false)
+                            if (type == BulletPool.BulletType.healthItem)
                             {
-                                if (LevelState.currentPlayerHealth < 5 && LevelState.currentPlayerHealth > 0)
+                                if (bulletUsed == false)
                                 {
-                                    LevelState.currentPlayerHealth += 1;
-                                    maxLifeTime = 0;
+                                    if (LevelState.currentPlayerHealth < 5 && LevelState.currentPlayerHealth > 0)
+                                    {
+                                        LevelState.currentPlayerHealth += 1;
+                                        maxLifeTime = 0;
+                                    }
+
+                                    bulletUsed = true;
                                 }
 
-                                bulletUsed = true;
-                            }
-
-                        }
-                        else
-                        {
-                            if (en.CenterPosition.X - CenterPosition.X < 0)
-                            {
-                                ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
                             }
                             else
                             {
-                                ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                                if (en.CenterPosition.X - CenterPosition.X < 0)
+                                {
+                                    ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                                }
+                                else
+                                {
+                                    ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                                }
                             }
                         }
                     }
+
+                        //shield dude not getting killed when the shield is down
+                    /*if (en is ShieldDude && type == BulletPool.BulletType.Bucket)
+                    {
+                        ShieldDude dude = (ShieldDude)en;
+
+                        // geometric property of dot product
+                        if (hitTest(en))
+                        {
+                            double angleBetweenBulletAndShield = Math.Acos(Vector2.Dot(dude.ShieldDir, velocity) / (dude.ShieldDir.Length() * velocity.Length()));
+
+                            float dotProduct = Vector2.Dot(velocity, initialBucketVelocity);
+                            float magnitude = (float)(Math.Sqrt((Math.Pow(velocity.X, 2.0) + Math.Pow(velocity.Y, 2.0)) * (Math.Pow(initialBucketVelocity.X, 2.0) + Math.Pow(initialBucketVelocity.Y, 2.0))));
+                            float angleBetween = (float)Math.Acos((dotProduct) / magnitude);
+
+                            Console.WriteLine("angleBetweenBulletAndShield " + angleBetweenBulletAndShield + " Math.PI " + Math.PI/1.5);
+                            if (angleBetweenBulletAndShield < Math.PI / 1.5 && (angleBetween >= Math.PI / 2 && angleBetween != 0 || angleBetween <= Math.PI / 2 && angleBetween != 0))
+                            {
+                                en.deathAnimation = true;
+                            }
+                        }
+                    }*/
+                    if (en is Enemy && type == BulletPool.BulletType.Bucket)
+                    {
+                        if (hitTest(en))
+                        {
+                            float dotProduct = Vector2.Dot(velocity, initialBucketVelocity);
+                            float magnitude = (float)(Math.Sqrt((Math.Pow(velocity.X, 2.0) + Math.Pow(velocity.Y, 2.0)) * (Math.Pow(initialBucketVelocity.X, 2.0) + Math.Pow(initialBucketVelocity.Y, 2.0))));
+                            float angleBetween = (float)Math.Acos((dotProduct) / magnitude);
+
+                            if (angleBetween >= Math.PI / 2 && angleBetween != 0 || angleBetween <= Math.PI / 2 && angleBetween != 0)
+                            {
+                                en.deathAnimation = true;
+                                en.killedByBullet = true;
+                                maxLifeTime = 0;
+                            }
+                        }
+                    }
+                    if (en is Enemy && type == BulletPool.BulletType.LavaBlob)
+                    {
+                        if (hitTest(en))
+                        {
+                            en.deathAnimation = true;
+                            en.killedByBullet = true;
+                        }
+                    }
                 }
-            }
+            }   
 
             horizontal_pos += (float)(velocity.X * delta);
             vertical_pos += (float)(velocity.Y * delta);

@@ -81,7 +81,7 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>60</frameCount>
-      <frameSpeed>50</frameSpeed>
+      <frameSpeed>20</frameSpeed>
     </Item>
 
     <Item>
@@ -93,7 +93,7 @@
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
       <frameCount>60</frameCount>
-      <frameSpeed>50</frameSpeed>
+      <frameSpeed>20</frameSpeed>
     </Item>
 
 

@@ -47,6 +47,13 @@ namespace MagnetBoy
                         }
                     }
                 }
+                if (en is Enemy)
+                {
+                    if (hitTest(en))
+                    {
+                        en.deathAnimation = true;
+                    }
+                }
             }
 
             // update the current frame if needed
