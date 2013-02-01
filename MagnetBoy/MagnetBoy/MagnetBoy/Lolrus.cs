@@ -16,6 +16,7 @@ namespace MagnetBoy
         {
             list.Add(new Walk(this));
             list.Add(new IntervalShoot(this, 3000, BulletPool.BulletType.Bucket));
+            killedByBullet = false;
         }
 
         protected override void enemyUpdate(GameTime currentTime)
@@ -29,7 +30,15 @@ namespace MagnetBoy
                         lastFrameIncrement = 0.0;
                         currentFrame = 0;
                         velocity.X = 0.0f;
+
+                        if(killedByBullet == true)
+                        {
+                            currentAnimation = "lolrusBurnLeft";
+                        }
+                        else
+                        {
                         currentAnimation = "lolrusCrushLeft";
+                        }
                         deathAnimationSet = true;
                     }
                     else
@@ -37,13 +46,20 @@ namespace MagnetBoy
                         lastFrameIncrement = 0.0;
                         currentFrame = 0;
                         velocity.X = 0.0f;
-                        currentAnimation = "lolrusCrushRight";
+                        if (killedByBullet == true)
+                        {
+                            currentAnimation = "lolrusBurnRight";
+                        }
+                        else
+                        {
+                            currentAnimation = "lolrusCrushRight";
+                        }
                         deathAnimationSet = true;
                     }
                 }
 
                 
-                if (deathTimer > 500)
+                if (deathTimer > 1200)
                 {
                     removeFromGame = true;
                     deathAnimationSet = false;

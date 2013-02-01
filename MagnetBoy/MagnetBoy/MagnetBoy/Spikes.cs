@@ -31,6 +31,13 @@ namespace MagnetBoy
                         ((Player)en).knockBack(new Vector2(en.Position.X - horizontal_pos, -5), currentTime.TotalGameTime.TotalMilliseconds);
                     }
                 }
+                if (en is Enemy)
+                {
+                    if (hitTest(en) && en.Position.Y < vertical_pos && en.velocity.Y > 0)
+                    {
+                        en.deathAnimation = true;
+                    }
+                }
             }
         }
 

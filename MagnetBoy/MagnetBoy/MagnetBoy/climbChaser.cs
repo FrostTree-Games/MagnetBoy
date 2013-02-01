@@ -112,7 +112,7 @@ namespace MagnetBoy
                                 parent.velocity.X = 0.0f;
                             }
                             else if (en.horizontal_pos - parent.horizontal_pos > 30 && en.horizontal_pos - parent.horizontal_pos < 500)
-                            {
+                           {
                                 if (walkingLeft == true)
                                 {
                                     walkingLeft = false;
@@ -126,30 +126,8 @@ namespace MagnetBoy
 
                if( chasePlayer == false)
                {
-                  /* temp = parent.onTheGround;
-
-                    if (parent.onTheGround == false)
-                    {
-                        parent.onTheGround = true;
-                    }*/
-
                     walkState.update(parent, currentTime);
-
-                    //parent.onTheGround = temp;
                }
-            
-
-              /*  temp = parent.onTheGround;
-
-                if (parent.onTheGround == false)
-                {
-                    parent.onTheGround = true;
-                }
-
-                walkState.update(parent, currentTime);
-
-                parent.onTheGround = temp;
-                //parent.acceleration.Y = 0.001f;*/
             }
         }
     }

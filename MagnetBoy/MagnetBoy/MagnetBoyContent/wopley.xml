@@ -9,8 +9,8 @@
       <initalY>0</initalY>
       <frameWidth>160</frameWidth>
       <frameHeight>160</frameHeight>
-      <frameCount>1</frameCount>
-      <frameSpeed>1000</frameSpeed>
+      <frameCount>23</frameCount>
+      <frameSpeed>40</frameSpeed>
     </Item>
   </Asset>
 </XnaContent>

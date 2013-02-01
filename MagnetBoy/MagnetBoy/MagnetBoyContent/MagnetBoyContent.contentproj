@@ -87,6 +87,7 @@
       <Name>theLab</Name>
       <Importer>TMXContentImporter</Importer>
       <Processor>TMXContentProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <Compile Include="theLab2.tmx">
       <Name>theLab2</Name>
