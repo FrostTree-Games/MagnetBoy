@@ -196,7 +196,7 @@ namespace MagnetBoy
 
                 //normally I'd check if LevelState.levelParticlePool is null, but right now I want the thing crashing if this updates outside of a game loop
                 double offset = 0.5 - Game1.gameRandom.NextDouble();
-                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.BlueSpark, CenterPosition + new Vector2((float)((width / 2) * Math.Cos(directionAngle)), (float)((width / 2) * Math.Sin(directionAngle))), velocity, (float)(directionAngle + (aimWindow * offset)), (float)directionAngle);
+                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.BlueSpark, CenterPosition + new Vector2((float)((width / 2) * Math.Cos(directionAngle)), (float)((width / 2) * Math.Sin(directionAngle))), velocity, (float)(directionAngle + (aimWindow * offset)), (float)directionAngle, Color.White);
 
                 isPushing = true;
 
@@ -447,9 +447,9 @@ namespace MagnetBoy
                     return;
                 }
 
-                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width/2, vertical_pos), Vector2.Zero, (float)((7 * (Math.PI / 4)) + (direction.X / 10)), 0.0f);
-                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((5.4 * (Math.PI / 4)) + (direction.X / 10)), 0.0f);
-                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((5 * (Math.PI / 4)) + (direction.X / 10)), 0.0f);
+                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((7 * (Math.PI / 4)) + (direction.X / 10)), 0.0f, Color.White);
+                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((5.4 * (Math.PI / 4)) + (direction.X / 10)), 0.0f, Color.White);
+                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((5 * (Math.PI / 4)) + (direction.X / 10)), 0.0f, Color.White);
 
                 isKnockedBack = true;
                 knockBackStartTime = hitTime;
