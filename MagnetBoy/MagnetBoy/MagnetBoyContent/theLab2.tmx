@@ -28,7 +28,7 @@
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object name="flagKey" x="1632" y="1056" width="32" height="32">
+  <object name="flagKey" x="1712" y="1082" width="32" height="32">
    <properties>
     <property name="color" value="blue"/>
    </properties>
@@ -86,7 +86,7 @@
     <property name="color" value="red"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="2096" y="1296" width="160" height="96">
+  <object name="tutorialSign" x="1568" y="1040" width="160" height="96">
    <properties>
     <property name="message" value="message4"/>
    </properties>
