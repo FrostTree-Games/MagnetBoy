@@ -141,6 +141,10 @@ namespace MagnetBoy
 
             //graphics.IsFullScreen = true;
 
+#if XBOX
+            Components.Add(new GamerServicesComponent(this));
+#endif
+
             Content.RootDirectory = "Content";
         }
 
@@ -170,7 +174,6 @@ namespace MagnetBoy
             //FurthestLevelProgressed = 4;
 #endif
 #if XBOX
-            // Xbox gamer services loading code here
             resetSaveData();
 #endif
 
@@ -219,6 +222,7 @@ namespace MagnetBoy
             aFac.pushSheet("testParallaxSheet");
             aFac.pushSheet("xboxButtonsSheet");
             aFac.pushSheet("goombaSheet");
+            aFac.pushSheet("factoryParallaxSheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -248,6 +252,7 @@ namespace MagnetBoy
             aFac.pushAnimation("testParallaxAnims");
             aFac.pushAnimation("xboxButtonsAnims");
             aFac.pushAnimation("goomba");
+            aFac.pushAnimation("factoryParallax");
 
             tintRedEffect = this.Content.Load<Effect>("TintRed");
             tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
@@ -260,7 +265,11 @@ namespace MagnetBoy
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
             globalBlackPixel = this.Content.Load<Texture2D>("1x1BlackPixel");
 
+            AudioFactory.pushNewSong("songs/song0");
             AudioFactory.pushNewSong("songs/song1");
+            AudioFactory.pushNewSong("songs/song2");
+            AudioFactory.pushNewSong("songs/song3");
+            AudioFactory.pushNewSong("songs/song4");
             AudioFactory.pushNewSong("songs/introTheme");
 
             AudioFactory.pushNewSFX("sfx/lose");
@@ -268,6 +277,7 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/explosion");
             AudioFactory.pushNewSFX("sfx/menuOpen");
             AudioFactory.pushNewSFX("sfx/menuClose");
+            AudioFactory.pushNewSFX("sfx/menuDeny");
 
             screenManager = new GameScreenManager(this.Content);
             GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");

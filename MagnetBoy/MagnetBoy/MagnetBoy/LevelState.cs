@@ -54,10 +54,16 @@ namespace MagnetBoy
         private bool startButtonDown;
         private int pausedSelect;
 
+        private static double levelRecordTime;
+        public static double LevelRecordTime { get { return levelRecordTime; } }
+
         private bool downPressed = false;
         private bool upPressed = false;
         private bool confirmPressed = false;
         private bool backPressed = false;
+
+        private string tagLineA;
+        private string tagLineB;
 
         private bool fadingOut = false;
         private double fadingOutTimer = 0;
@@ -73,6 +79,12 @@ namespace MagnetBoy
         private int chaserFrame;
         private double chaserLastUpdateTime;
         private string chaserAnim = "angrySawWalkLeft";
+
+        private string parallax1 = "testParallax1";
+        private string parallax2 = "testParallax2";
+        private string parallax3 = "testParallax3";
+
+        private string levelSong = "songs/introTheme";
 
         public static Map CurrentLevel
         {
@@ -135,6 +147,7 @@ namespace MagnetBoy
             levelBulletPool = new BulletPool();
             levelParticlePool = new ParticlePool(100);
             levelName = levelNameString;
+            levelRecordTime = 0;
 
             paused = false;
             startButtonDown = false;
@@ -169,11 +182,44 @@ namespace MagnetBoy
         private void loadLevelThread()
         {
             #if XBOX
-            Thread.SetProcessorAffinity(3); 
+            //Thread.SetProcessorAffinity(3); 
             #endif
 
             Monitor.Enter(levelEntities);
             grabbed = true;
+
+            if (Entity.globalEntityList != null)
+            {
+                Entity.globalEntityList.Clear();
+                Entity.globalEntityList.TrimExcess();
+            }
+
+            tagLineA = "LEVEL " + (Game1.CurrentLevel + 1);
+            tagLineB = Game1.levelNames[Game1.CurrentLevel];
+
+            switch (Game1.CurrentLevel)
+            {
+                case 0:
+                    levelSong = "songs/song0";
+                    break;
+                case 1:
+                    levelSong = "songs/song1";
+                    break;
+                case 2:
+                    levelSong = "songs/song2";
+                    break;
+                case 3:
+                    levelSong = "songs/song3";
+                    parallax1 = "factoryParallax1";
+                    parallax2 = "factoryParallax2";
+                    parallax3 = "factoryParallax3";
+                    break;
+                case 4:
+                    levelSong = "songs/song4";
+                    break;
+                default:
+                    break;
+            }
 
             levelMap = contentManager.Load<Map>(levelName);
 
@@ -355,8 +401,9 @@ namespace MagnetBoy
             }
 
             //Thread.Sleep(5000);
-            
-            //assetResources.Release();
+
+            levelRecordTime = 0;
+
             Monitor.Exit(levelEntities);
         }
 
@@ -410,7 +457,7 @@ namespace MagnetBoy
             {
                 musicPlaying = true;
 
-                AudioFactory.playSong("songs/song1");
+                AudioFactory.playSong(levelSong);
             }
 
             if (currentPlayerHealth < 1 && !fadingOut)
@@ -531,6 +578,8 @@ namespace MagnetBoy
             }
             else
             {
+                levelRecordTime += currentTime.ElapsedGameTime.Milliseconds;
+
                 if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
                 {
                     startButtonDown = true;
@@ -573,8 +622,14 @@ namespace MagnetBoy
 
                     levelBulletPool.clearPool();
 
-                    //GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
-                    GameScreenManager.nextLevel();
+                    if (currentPlayerHealth < 1)
+                    {
+                        GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, levelName);
+                    }
+                    else
+                    {
+                        GameScreenManager.nextLevel();
+                    }
 
                     endLevelFlag = false;
 
@@ -700,17 +755,17 @@ namespace MagnetBoy
             Game1.graphics.GraphicsDevice.Clear(Color.Lerp(Color.DarkGray, Color.Pink, 0.4f));
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax3", 0, new Vector2(-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax3"), 0f), AnimationFactory.DepthLayer3);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax3", 0, new Vector2((-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax3")) + (float)AnimationFactory.getAnimationFrameWidth("testParallax3"), 0f), AnimationFactory.DepthLayer3);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax3, 0, new Vector2(-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax3), 0f), AnimationFactory.DepthLayer3);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax3, 0, new Vector2((-1 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax3)) + (float)AnimationFactory.getAnimationFrameWidth(parallax3), 0f), AnimationFactory.DepthLayer3);
 
-            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax2", 0, new Vector2(-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax2"), 0f), AnimationFactory.DepthLayer2);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax2", 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax2")) + (float)AnimationFactory.getAnimationFrameWidth("testParallax2"), 0f), AnimationFactory.DepthLayer2);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax2", 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax2")) + (float)(2f* AnimationFactory.getAnimationFrameWidth("testParallax2")), 0f), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax2, 0, new Vector2(-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax2), 0f), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax2, 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax2)) + (float)AnimationFactory.getAnimationFrameWidth(parallax2), 0f), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax2, 0, new Vector2((-2 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax2)) + (float)(2f * AnimationFactory.getAnimationFrameWidth(parallax2)), 0f), AnimationFactory.DepthLayer2);
 
-            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax1", 0, new Vector2(-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1"), 0f), AnimationFactory.DepthLayer1);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax1", 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1")) + (float)AnimationFactory.getAnimationFrameWidth("testParallax1"), 0f), AnimationFactory.DepthLayer1);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax1", 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1")) + (float)(2f * AnimationFactory.getAnimationFrameWidth("testParallax1")), 0f), AnimationFactory.DepthLayer1);
-            AnimationFactory.drawAnimationFrame(spriteBatch, "testParallax1", 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth("testParallax1")) + (float)(3f * AnimationFactory.getAnimationFrameWidth("testParallax1")), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2(-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax1), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax1)) + (float)AnimationFactory.getAnimationFrameWidth(parallax1), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax1)) + (float)(2f * AnimationFactory.getAnimationFrameWidth(parallax1)), 0f), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, parallax1, 0, new Vector2((-3 * (levelCamera.getFocusPosition().X / levelMap.Bounds.Width) * (float)AnimationFactory.getAnimationFrameWidth(parallax1)) + (float)(3f * AnimationFactory.getAnimationFrameWidth(parallax1)), 0f), AnimationFactory.DepthLayer1);
             spriteBatch.End();
 
             // draw map
@@ -742,6 +797,46 @@ namespace MagnetBoy
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f * (playerStamina / playerStaminaMax), 1.0f), Color.Lerp(Color.DarkBlue, Color.Cyan, (playerStamina / playerStaminaMax)), AnimationFactory.DepthLayer0);
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10f, 1f), Color.Gray, AnimationFactory.DepthLayer1);
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(107, 75), new Vector2(10.1f, 1.1f), Color.Black, AnimationFactory.DepthLayer2);
+
+            if (levelRecordTime < 1500)
+            {
+                Vector2 posA = new Vector2((float)(levelRecordTime / 1500) * 400, 90);
+                Vector2 posB = new Vector2((float)(levelRecordTime / 1500) * 400, 104);
+
+                for (int i = -1; i < 2; i++)
+                {
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                }
+            }
+            else if (levelRecordTime < 5000)
+            {
+                Vector2 posA = new Vector2(400, 90);
+                Vector2 posB = new Vector2(400, 104);
+
+                for (int i = -1; i < 2; i++)
+                {
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                }
+            }
+            else if (levelRecordTime < 7000)
+            {
+                Vector2 posA = new Vector2(400 + (float)((levelRecordTime - 5000) / 2000) * 900, 90);
+                Vector2 posB = new Vector2(400 + (float)((levelRecordTime - 5000) / 2000) * 900, 104);
+
+                for (int i = -1; i < 2; i++)
+                {
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
+                }
+            }
             spriteBatch.End();
 
             if (paused)

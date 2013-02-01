@@ -27,6 +27,10 @@ namespace MagnetBoy
             Cancel,
             StartButton,
             BackButton,
+            XButton,
+            YButton,
+            LBumper,
+            RBumper,
             AnyButton
         }
 
@@ -162,6 +166,30 @@ namespace MagnetBoy
                             return true;
                         }
                         break;
+                    case PlayerButton.XButton:
+                        if (padStates[i].Buttons.X == ButtonState.Pressed)
+                        {
+                            return true;
+                        }
+                        break;
+                    case PlayerButton.YButton:
+                        if (padStates[i].Buttons.Y == ButtonState.Pressed)
+                        {
+                            return true;
+                        }
+                        break;
+                    case PlayerButton.LBumper:
+                        if (padStates[i].Buttons.LeftShoulder == ButtonState.Pressed)
+                        {
+                            return true;
+                        }
+                        break;
+                    case PlayerButton.RBumper:
+                        if (padStates[i].Buttons.RightShoulder == ButtonState.Pressed)
+                        {
+                            return true;
+                        }
+                        break;
                     case PlayerButton.AnyButton:
                         if (padStates[i].Buttons.A == ButtonState.Pressed || padStates[i].Buttons.B == ButtonState.Pressed || padStates[i].Buttons.X == ButtonState.Pressed || padStates[i].Buttons.Y == ButtonState.Pressed || padStates[i].Buttons.Back == ButtonState.Pressed || padStates[i].Buttons.Start == ButtonState.Pressed || padStates[i].Buttons.RightShoulder == ButtonState.Pressed || padStates[i].Buttons.LeftShoulder == ButtonState.Pressed || padStates[i].Buttons.RightStick == ButtonState.Pressed || padStates[i].Buttons.LeftStick == ButtonState.Pressed)
                         {
@@ -262,5 +290,29 @@ namespace MagnetBoy
                 }
             }
         }
+
+#if XBOX
+        public static string LockedPlayerGamerTag
+        {
+            get
+            {
+                if (!lockMostRecentPad)
+                {
+                    return "Anonymous";
+                }
+                else
+                {
+                    SignedInGamer g = Gamer.SignedInGamers[LockedPlayerIndex];
+
+                    if (g == null)
+                    {
+                        return "Anonymous";
+                    }
+                    
+                    return g.Gamertag;
+                }
+            }
+        }
+#endif
     }
 }
