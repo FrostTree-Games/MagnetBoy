@@ -122,6 +122,10 @@ namespace MagnetBoy
                 GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu_fromOptions");
                 cancelPressed = false;
 
+#if XBOX
+                SaveGameModule.saveGame();
+#endif
+
                 AudioFactory.playSFX("sfx/menu");
             }
 
