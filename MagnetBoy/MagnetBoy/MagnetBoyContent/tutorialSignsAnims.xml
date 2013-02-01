@@ -60,7 +60,7 @@
       <name>tutorialSign6</name>
       <sheetName>tutorialSignsSheet</sheetName>
       <sheet Type="System.String">foo</sheet>
-      <initalX>320</initalX>
+      <initalX>160</initalX>
       <initalY>96</initalY>
       <frameWidth>160</frameWidth>
       <frameHeight>96</frameHeight>

@@ -17,9 +17,7 @@ namespace MagnetBoy
 
         private LevelState.FlagColor color;
 
-        private string currentAnimation;
-        private int currentFrame;
-        private double lastFrameIncrement;
+        private float rotation;
 
         public FlagKey(float newX, float newY, LevelState.FlagColor newColor)
         {
@@ -37,29 +35,9 @@ namespace MagnetBoy
             pole = Polarity.Neutral;
             magneticMoment = 0.5f;
 
-            currentFrame = 0;
-            lastFrameIncrement = 0;
-
             color = newColor;
 
-            switch (color)
-            {
-                case LevelState.FlagColor.Blue:
-                    currentAnimation = keyAnimationA;
-                    break;
-                case LevelState.FlagColor.Green:
-                    currentAnimation = keyAnimationB;
-                    break;
-                case LevelState.FlagColor.Red:
-                    currentAnimation = keyAnimationC;
-                    break;
-                case LevelState.FlagColor.Yellow:
-                    currentAnimation = keyAnimationD;
-                    break;
-                case LevelState.FlagColor.Purple:
-                    currentAnimation = keyAnimationE;
-                    break;
-            }
+            rotation = 0.0f;
         }
 
         public override void update(GameTime currentTime)
@@ -101,6 +79,8 @@ namespace MagnetBoy
             horizontal_pos = step.X;
             vertical_pos = step.Y;
 
+            rotation += velocity.X;
+
             foreach (Entity en in globalEntityList)
             {
                 if (en is FlagLock)
@@ -120,41 +100,19 @@ namespace MagnetBoy
                     }
                 }
             }
-
-            // if the last frame time hasn't been set, set it now
-            if (lastFrameIncrement == 0)
-            {
-                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
-            }
-
-            // update the current frame if needed
-            if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
-            {
-                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
-
-                currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
-            }
         }
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(sb, "flagKey", 0, Position, new Vector2(32, 32), rotation, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(sb, "flagDoorSymbol", (int)color, Position, new Vector2(32, 32), rotation, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer1 + 0.01f);
         }
     }
 
     class FlagLock : Entity
     {
-        private const string lockAnimationA = "flagLockA";
-        private const string lockAnimationB = "flagLockB";
-        private const string lockAnimationC = "flagLockC";
-        private const string lockAnimationD = "flagLockD";
-        private const string lockAnimationE = "flagLockE";
-
         private LevelState.FlagColor color;
         public LevelState.FlagColor Color { get{ return color; } }
-
-        private string currentAnimation;
-        private int currentFrame;
 
         public FlagLock(float newX, float newY, LevelState.FlagColor newColor)
         {
@@ -166,27 +124,6 @@ namespace MagnetBoy
             height = 29.5f;
 
             color = newColor;
-
-            currentFrame = 0;
-
-            switch (color)
-            {
-                case LevelState.FlagColor.Blue:
-                    currentAnimation = lockAnimationA;
-                    break;
-                case LevelState.FlagColor.Green:
-                    currentAnimation = lockAnimationB;
-                    break;
-                case LevelState.FlagColor.Red:
-                    currentAnimation = lockAnimationC;
-                    break;
-                case LevelState.FlagColor.Yellow:
-                    currentAnimation = lockAnimationD;
-                    break;
-                case LevelState.FlagColor.Purple:
-                    currentAnimation = lockAnimationE;
-                    break;
-            }
         }
 
         public override void update(GameTime currentTime)
@@ -196,13 +133,17 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
+            AnimationFactory.drawAnimationFrame(sb, "flagLock", 0, Position, new Vector2(32, 32), 0.0f, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer3);
+
+            if (!LevelState.getFlag(color))
+            {
+                AnimationFactory.drawAnimationFrame(sb, "flagDoorSymbol", (int)color, Position, new Vector2(32, 32), 0.0f, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
+            }
         }
 
         public void open()
         {
-            currentFrame = 1;
-
+            AudioFactory.playSFX("sfx/unlockDoor");
             LevelState.setFlag(color, true);
         }
     }

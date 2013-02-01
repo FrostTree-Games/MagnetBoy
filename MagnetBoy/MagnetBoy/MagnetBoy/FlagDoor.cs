@@ -60,6 +60,7 @@ namespace MagnetBoy
                         doorClickDelta = 0;
                         doorHeight -= 1;
                         height = 32f + (8f * doorHeight);
+                        AudioFactory.playSFX("sfx/doorClose");
                     }
                 }
             }
@@ -74,7 +75,8 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, "flagDoor", 0, Position, LevelState.getFlagXNAColor(doorColor), AnimationFactory.DepthLayer0);
+            AnimationFactory.drawAnimationFrame(sb, "flagDoor", 0, Position, LevelState.getFlagXNAColor(doorColor), AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(sb, "flagDoorSymbol", (int)doorColor, Position, LevelState.getFlagXNAColor(doorColor), AnimationFactory.DepthLayer0);
 
             for (int i = 0; i < doorHeight; i++)
             {
