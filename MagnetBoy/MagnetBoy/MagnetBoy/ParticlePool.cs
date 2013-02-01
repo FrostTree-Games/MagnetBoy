@@ -17,12 +17,15 @@ namespace MagnetBoy
         private const float sweatDropAccel = 0.019f;
         private const float sweatDropLiveTime = 100;
 
+        private const float colouredSparkVelocity = 0.3f;
+
         string dansAnim = "dansParticle";
 
         public enum ParticleType
         {
             BlueSpark,
-            SweatDrops
+            SweatDrops,
+            ColouredSpark
         }
 
         private struct Particle
@@ -68,7 +71,7 @@ namespace MagnetBoy
             }
         }
 
-        public void pushParticle(ParticleType newType, Vector2 newPos, Vector2 offsetVelocity, float direction, float acceldir)
+        public void pushParticle(ParticleType newType, Vector2 newPos, Vector2 offsetVelocity, float direction, float acceldir, Color tint)
         {
             for (int i = 0; i < pool.Length; i++)
             {
@@ -90,8 +93,6 @@ namespace MagnetBoy
                             pool[i].posPrevD = newPos;
                             pool[i].velocity.X = (float)(blueSparkVelocity * Math.Cos(direction));
                             pool[i].velocity.Y = (float)(blueSparkVelocity * Math.Sin(direction));
-                            //pool[i].accel.X = (float)(blueSparkAccel * Math.Cos(acceldir + 0.7));
-                            //pool[i].accel.Y = (float)(blueSparkAccel * Math.Sin(acceldir + 0.7));
                             pool[i].accel = Vector2.Zero;
                             pool[i].timeActive = 0;
                             pool[i].color = Game1.gameRandom.Next() % 2 == 0 ? Color.Cyan : Color.DarkCyan;
@@ -132,6 +133,19 @@ namespace MagnetBoy
                             {
                                 pool[i].velocity.Y *= -1;
                             }
+                            break;
+                        case ParticleType.ColouredSpark:
+                            pool[i].bounce = false;
+                            pool[i].pos = newPos;
+                            pool[i].color = tint;
+                            pool[i].velocity.X = (float)(colouredSparkVelocity * Math.Cos(direction));
+                            pool[i].velocity.Y = (float)(colouredSparkVelocity * Math.Sin(direction));
+                            pool[i].accel = Vector2.Zero;
+                            pool[i].timeActive = 0;
+                            pool[i].currentFrame = 2;
+                            pool[i].lastFrameIncrement = 0;
+                            pool[i].frameCount = AnimationFactory.getAnimationFrameCount(dansAnim);
+                            pool[i].frameSpeed = AnimationFactory.getAnimationSpeed(dansAnim);
                             break;
                         default:
                             break;
@@ -218,6 +232,9 @@ namespace MagnetBoy
                     case ParticleType.SweatDrops:
                         AnimationFactory.drawAnimationFrame(sb, dansAnim, 0, p.posPrevB - new Vector2(4f, 4f), p.colorPrevB, AnimationFactory.DepthLayer0);
                         AnimationFactory.drawAnimationFrame(sb, dansAnim, 1, p.posPrevA - new Vector2(4f, 4f), p.colorPrevA, AnimationFactory.DepthLayer0);
+                        AnimationFactory.drawAnimationFrame(sb, dansAnim, 2, p.pos - new Vector2(4f, 4f), p.color, AnimationFactory.DepthLayer0);
+                        break;
+                    case ParticleType.ColouredSpark:
                         AnimationFactory.drawAnimationFrame(sb, dansAnim, 2, p.pos - new Vector2(4f, 4f), p.color, AnimationFactory.DepthLayer0);
                         break;
                     default:

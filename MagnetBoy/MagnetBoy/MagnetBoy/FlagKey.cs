@@ -9,12 +9,6 @@ namespace MagnetBoy
 {
     class FlagKey : Entity
     {
-        private const string keyAnimationA = "flagKeyA";
-        private const string keyAnimationB = "flagKeyB";
-        private const string keyAnimationC = "flagKeyC";
-        private const string keyAnimationD = "flagKeyD";
-        private const string keyAnimationE = "flagKeyE";
-
         private LevelState.FlagColor color;
 
         private float rotation;
@@ -143,6 +137,11 @@ namespace MagnetBoy
 
         public void open()
         {
+            for (int i = 0; i < 12; i++)
+            {
+                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.ColouredSpark, CenterPosition, Vector2.Zero, (float)(i * Math.PI/6.0), 0.0f, LevelState.getFlagXNAColor(color));
+            }
+
             AudioFactory.playSFX("sfx/unlockDoor");
             LevelState.setFlag(color, true);
         }
