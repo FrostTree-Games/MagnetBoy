@@ -122,7 +122,7 @@ namespace MagnetBoy
         private GameScreenManager screenManager = null;
 
         // Game Level Information
-        public static readonly string[] levelNames = { "The Lab", "WILSON'S CITY LEVEL", "SEWER - NEED", "ERIC'S FACTORY LEVEL", "BOSS LEVEL - NEED" };
+        public static readonly string[] levelNames = { "Escape the Lab", "WILSON'S CITY LEVEL", "SEWER - NEED", "ERIC'S FACTORY LEVEL", "BOSS LEVEL - NEED" };
         public static readonly string[] levelFileNames = { "theLab2", "WillysMap", "theLab2", "theLab", "theLab2" };
 
         //currentLevel and furthestLevelProgressed start from 0 and go to NumberOfLevels - 1
@@ -278,6 +278,9 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/menuOpen");
             AudioFactory.pushNewSFX("sfx/menuClose");
             AudioFactory.pushNewSFX("sfx/menuDeny");
+            AudioFactory.pushNewSFX("sfx/doorClose");
+            AudioFactory.pushNewSFX("sfx/unlockDoor");
+
 
             screenManager = new GameScreenManager(this.Content);
             GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");

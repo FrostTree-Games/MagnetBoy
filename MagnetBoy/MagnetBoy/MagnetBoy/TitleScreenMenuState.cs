@@ -196,7 +196,7 @@ namespace MagnetBoy
                         case "BEGIN":
                             AudioFactory.stopSong();
                             AudioFactory.playSFX("sfx/menu");
-                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "BetaMenu");
+                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, Game1.levelFileNames[Game1.CurrentLevel]);
                             break;
                         case "CONTINUE":
                             AudioFactory.playSFX("sfx/menu");
