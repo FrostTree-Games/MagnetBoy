@@ -20,14 +20,15 @@ float4 PixelShaderFunction(PixelShaderInput input) : COLOR0
 	float posX = (screenWidth * input.Coords.x);
 	float posY = (screenHeight * input.Coords.y);
 
-	float4 base = tex2D(s0, input.Coords);
-	float4 overlayer = input.Color;
+	float tileCenterX = (floor(posX / 16) * 16) + 8;
+	float tileCenterY = (floor(posY / 16) * 16) + 8;
 
-	float4 tinted = float4(base.rgb * overlayer.rgb, base.a);
-
-	if ((posX % 16) / 16 < time && (posY % 16) / 16 < time)
+	if (sqrt(pow(posX - tileCenterX,2) + pow(posY - tileCenterY,2))/12 > (1.4775 * time - (sqrt(pow(posX - (screenWidth/2),2) + pow(posY - (screenHeight/2),2)))/720))
 	{
-		return tinted;
+		float4 base = tex2D(s0, input.Coords);
+		float4 overlayer = input.Color;
+
+		return float4(base.rgb * overlayer.rgb, base.a);
 	}
 	else
 	{

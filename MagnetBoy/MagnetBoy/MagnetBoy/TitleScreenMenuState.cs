@@ -102,11 +102,13 @@ namespace MagnetBoy
             if (musicAlreadyPlaying)
             {
                 showPressButtonDialog = false;
+                Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 0.0f : (float)(timePassed / 1000));
             }
             else
             {
                 showPressButtonDialog = true;
                 GameInput.LockMostRecentPad = false;
+                Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 1.0f : (float)(timePassed / 1000));
             }
 
             Game1.CurrentLevel = 0;
@@ -276,7 +278,8 @@ namespace MagnetBoy
             Game1.grayCheckerBoard.Parameters["slideX"].SetValue(checkerBoardSlide.X);
             Game1.grayCheckerBoard.Parameters["slideY"].SetValue(checkerBoardSlide.Y);
 
-            Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 0.0f : 1.0f - (float)(timePassed/1000));
+            //Game1.diamondWipe.Parameters["time"].SetValue(Math.Abs(GameInput.P1MouseDirectionNormal.X));
+            Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 1.0f : (float)(timePassed/1000));
         }
 
         public override void draw(SpriteBatch spriteBatch)
