@@ -62,7 +62,7 @@ namespace MagnetBoy
             horizontal_pos = initialx;
             vertical_pos = initialy;
 
-            width = 31.5f;
+            width = 25.5f;
             height = 31.5f;
 
             velocity = Vector2.Zero;
@@ -275,36 +275,65 @@ namespace MagnetBoy
                             Vector2 point = CenterPosition;
                             bool tileFound = false;
 
-                            for (int i = 0; ; i++)
+                            /*for (int j = 0; j < 3; j++)
                             {
-                                int r = i * 4;
-                                double xPos = r * Math.Cos(directionAngle);
-                                double yPos = r * Math.Sin(directionAngle);
-
-                                xPos += CenterPosition.X;
-                                yPos += CenterPosition.Y;
-
-                                if (xPos < 0 || yPos < 0 || xPos / LevelState.CurrentLevel.TileWidth >= LevelState.CurrentLevel.Width || yPos / LevelState.CurrentLevel.TileHeight >= LevelState.CurrentLevel.Height)
+                                point = CenterPosition;
+                                if (j == 1)
                                 {
-                                    break;
+                                    if ((-Math.PI < directionAngle && directionAngle < -Math.PI / 2) || (-Math.PI/2 < directionAngle && directionAngle < 0))
+                                    {
+                                        point.Y = CenterPosition.X - (height/2);
+                                    }
+                                    else if ((Math.PI > directionAngle && directionAngle > Math.PI / 2) || (Math.PI / 2 > directionAngle && directionAngle > 0))
+                                    {
+                                        point.Y = CenterPosition.X + (height/2);
+                                    }
+
                                 }
 
-                                try
+                                if (j == 2)
                                 {
-                                    if (layer.Tiles[(int)(xPos / LevelState.CurrentLevel.TileWidth)][(int)(yPos / LevelState.CurrentLevel.TileHeight)] != null)
+                                    if ((-Math.PI < directionAngle && directionAngle < -Math.PI / 2) || (Math.PI > directionAngle && directionAngle > Math.PI / 2))
                                     {
-                                        tileFound = true;
-                                        point.X = (float)xPos;
-                                        point.Y = (float)yPos;
+                                        point.X = CenterPosition.X - (width / 2);
+                                    }
+                                    else if ((-Math.PI / 2 < directionAngle && directionAngle < 0) || (Math.PI / 2 > directionAngle && directionAngle > 0))
+                                    {
+                                        point.X = CenterPosition.X + (width / 2);
+                                    }
 
+                                }*/
+                                for (int i = 0; ; i++)
+                                {
+                                    int r = i * 4;
+                                    double xPos = r * Math.Cos(directionAngle);
+                                    double yPos = r * Math.Sin(directionAngle);
+                                    
+                                    xPos += CenterPosition.X;
+                                    yPos += CenterPosition.Y;
+
+                                    if (xPos < 0 || yPos < 0 || xPos / LevelState.CurrentLevel.TileWidth >= LevelState.CurrentLevel.Width || yPos / LevelState.CurrentLevel.TileHeight >= LevelState.CurrentLevel.Height)
+                                    {
+                                        break;
+                                    }
+
+                                    try
+                                    {
+                                        if (layer.Tiles[(int)(xPos / LevelState.CurrentLevel.TileWidth)][(int)(yPos / LevelState.CurrentLevel.TileHeight)] != null)
+                                        {
+                                            tileFound = true;
+                                            point.X = (float)xPos;
+                                            point.Y = (float)yPos;
+
+                                            break;
+                                        }
+                                    }
+                                    catch (IndexOutOfRangeException)
+                                    {
                                         break;
                                     }
                                 }
-                                catch (IndexOutOfRangeException)
-                                {
-                                    break;
-                                }
-                            }
+                            //}
 
                             if (tileFound)
                             {
@@ -419,7 +448,7 @@ namespace MagnetBoy
         {
             if (!(playerBlink && ((int)(playerBlinkTimer / 100) % 2 == 0)))
             {
-                AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, HitBox, spin, AnimationFactory.DepthLayer1);
+                AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, new Vector2(32,32), spin, AnimationFactory.DepthLayer1);
             }
 
             if (isPushing)
