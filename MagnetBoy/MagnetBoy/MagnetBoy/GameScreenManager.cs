@@ -23,7 +23,7 @@ namespace MagnetBoy
 
         public enum GameScreenType
         {
-            TitleScreen,
+            SplashScreen,
             Menu,
             Level,
             Credits
@@ -78,7 +78,11 @@ namespace MagnetBoy
                 return;
             }
 
-            if (newType == GameScreenType.Level && levelName != null)
+            if (newType == GameScreenType.SplashScreen)
+            {
+                currentNode = new SplashScreenState(manager);
+            }
+            else if (newType == GameScreenType.Level && levelName != null)
             {
                 currentNode = new LevelState(manager, levelName);
             }

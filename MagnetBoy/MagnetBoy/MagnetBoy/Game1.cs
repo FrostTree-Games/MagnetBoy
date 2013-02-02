@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -131,6 +132,9 @@ namespace MagnetBoy
         public static int FurthestLevelProgressed { get { return MagnetBoySaveData.furthestLevelUnlocked; } set { MagnetBoySaveData.furthestLevelUnlocked = value % Game1.NumberOfLevels; } }
         public static int NumberOfLevels { get { return levelNames.Length; } }
 
+        private static bool assetsLoaded = false;
+        public static bool AssetsLoaded { get { return assetsLoaded; } }
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -194,6 +198,33 @@ namespace MagnetBoy
             aFac = new AnimationFactory(this.Content);
             audFac = new AudioFactory(this.Content);
 
+            globalTestWalrus = this.Content.Load<Texture2D>("walrus");
+            globalTestPositive = this.Content.Load<Texture2D>("posTest");
+            globalTestNegative = this.Content.Load<Texture2D>("negTest");
+            globalBlackPixel = this.Content.Load<Texture2D>("1x1BlackPixel");
+
+            tintRedEffect = this.Content.Load<Effect>("TintRed");
+            tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
+
+            grayCheckerBoard = this.Content.Load<Effect>("GrayCheckerBoard");
+            grayCheckerBoard.CurrentTechnique = grayCheckerBoard.Techniques["Technique1"];
+
+            assetsLoaded = false;
+            //loadGameAssets();
+
+            screenManager = new GameScreenManager(this.Content);
+            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.SplashScreen, null);
+        }
+
+        public static void loadGameAssets()
+        {
+            if (assetsLoaded)
+            {
+                return;
+            }
+
+            AnimationFactory aFac = new AnimationFactory(null);
+
             aFac.pushSheet("actor3"); // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
             aFac.pushSheet("playerSheet");
             aFac.pushSheet("conveyer");
@@ -254,17 +285,6 @@ namespace MagnetBoy
             aFac.pushAnimation("goomba");
             aFac.pushAnimation("factoryParallax");
 
-            tintRedEffect = this.Content.Load<Effect>("TintRed");
-            tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
-
-            grayCheckerBoard = this.Content.Load<Effect>("GrayCheckerBoard");
-            grayCheckerBoard.CurrentTechnique = grayCheckerBoard.Techniques["Technique1"];
-
-            globalTestWalrus = this.Content.Load<Texture2D>("walrus");
-            globalTestPositive = this.Content.Load<Texture2D>("posTest");
-            globalTestNegative = this.Content.Load<Texture2D>("negTest");
-            globalBlackPixel = this.Content.Load<Texture2D>("1x1BlackPixel");
-
             AudioFactory.pushNewSong("songs/song0");
             AudioFactory.pushNewSong("songs/song1");
             AudioFactory.pushNewSong("songs/song2");
@@ -281,9 +301,9 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/doorClose");
             AudioFactory.pushNewSFX("sfx/unlockDoor");
 
+            Thread.Sleep(2000);
 
-            screenManager = new GameScreenManager(this.Content);
-            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
+            assetsLoaded = true;
         }
 
         /// <summary>
