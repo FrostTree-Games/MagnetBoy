@@ -112,6 +112,7 @@ namespace MagnetBoy
 
         public static Effect tintRedEffect = null;
         public static Effect grayCheckerBoard = null;
+        public static Effect diamondWipe = null;
 
         private AnimationFactory aFac = null;
         private AudioFactory audFac = null;
@@ -209,6 +210,9 @@ namespace MagnetBoy
             grayCheckerBoard = this.Content.Load<Effect>("GrayCheckerBoard");
             grayCheckerBoard.CurrentTechnique = grayCheckerBoard.Techniques["Technique1"];
 
+            diamondWipe = this.Content.Load<Effect>("DiamondWipe");
+            diamondWipe.CurrentTechnique = diamondWipe.Techniques["Technique1"];
+
             assetsLoaded = false;
             //loadGameAssets();
 
@@ -301,7 +305,9 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/doorClose");
             AudioFactory.pushNewSFX("sfx/unlockDoor");
 
+#if XBOX
             Thread.Sleep(2000);
+#endif
 
             assetsLoaded = true;
         }
