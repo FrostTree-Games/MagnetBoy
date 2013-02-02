@@ -245,6 +245,11 @@ namespace MagnetBoy
 
                     anyButtonPressed = false;
 
+#if XBOX
+                    SaveGameModule.selectStorageDevice();
+                    SaveGameModule.loadGame();
+#endif
+
                     AudioFactory.playSFX("sfx/menuOpen");
                 }
             }
