@@ -331,6 +331,13 @@ namespace MagnetBoy
         {
             screenManager.CurrentNode.draw(spriteBatch);
 
+            if (SaveGameModule.TouchingStorageDevice)
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(Game1.globalTestWalrus, new Vector2(0, 0), Color.White);
+                spriteBatch.End();
+            }
+
             base.Draw(gameTime);
         }
 

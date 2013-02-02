@@ -112,6 +112,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.IdentityModel.Selectors" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -163,6 +164,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="SaveGameModule.cs" />
     <Compile Include="ShieldDude.cs" />
     <Compile Include="Shooter.cs" />
     <Compile Include="Spikes.cs" />
