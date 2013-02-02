@@ -102,13 +102,14 @@ namespace MagnetBoy
             if (musicAlreadyPlaying)
             {
                 showPressButtonDialog = false;
-                Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 0.0f : (float)(timePassed / 1000));
+                Game1.diamondWipe.Parameters["time"].SetValue(1.0f);
+                timePassed = 1001;
             }
             else
             {
                 showPressButtonDialog = true;
                 GameInput.LockMostRecentPad = false;
-                Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 1.0f : (float)(timePassed / 1000));
+                Game1.diamondWipe.Parameters["time"].SetValue(0.0f);
             }
 
             Game1.CurrentLevel = 0;
