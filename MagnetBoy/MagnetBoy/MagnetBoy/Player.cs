@@ -62,7 +62,7 @@ namespace MagnetBoy
             horizontal_pos = initialx;
             vertical_pos = initialy;
 
-            width = 25.5f;
+            width = 31.5f;
             height = 31.5f;
 
             velocity = Vector2.Zero;
