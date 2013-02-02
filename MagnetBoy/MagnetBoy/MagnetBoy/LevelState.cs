@@ -182,7 +182,7 @@ namespace MagnetBoy
         private void loadLevelThread()
         {
             #if XBOX
-            //Thread.SetProcessorAffinity(3); 
+            Thread.SetProcessorAffinity(Game1.loadThread); 
             #endif
 
             Monitor.Enter(levelEntities);
@@ -400,7 +400,7 @@ namespace MagnetBoy
                 }
             }
 
-            //Thread.Sleep(5000);
+            Thread.Sleep(1500);
 
             levelRecordTime = 0;
 

@@ -30,6 +30,9 @@ namespace MagnetBoy
 
         GameInput gameInput = null;
 
+        // cpu identifiers for setting thread affinity on the Xbox 360
+        public static int[] loadThread = { 3 };
+
         public struct LevelScoreStruct
         {
             public string levelBestTimeOwner;
@@ -222,6 +225,10 @@ namespace MagnetBoy
 
         public static void loadGameAssets()
         {
+#if XBOX
+            Thread.SetProcessorAffinity(Game1.loadThread); 
+#endif
+
             if (assetsLoaded)
             {
                 return;
