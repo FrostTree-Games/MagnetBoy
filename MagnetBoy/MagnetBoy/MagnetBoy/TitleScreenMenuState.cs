@@ -69,15 +69,17 @@ namespace MagnetBoy
         private bool anyButtonPressed = false;
         private bool xButtonPressed = false;
 
-        private bool showPressButtonDialog;
+        public bool showPressButtonDialog;
         private double dialogTimer;
+
+        private double timePassed;
 
         private List<TitleMenuOption> menuList;
         int selectedMenuItem;
 
         public static Vector2 checkerBoardSlide = new Vector2(720 * 100, 480 * 100);
 
-        public TitleScreenMenuState(ContentManager newManager, bool musicAlreadyPlaying)
+        public TitleScreenMenuState(ContentManager newManager, bool musicAlreadyPlaying, bool fade)
         {
             IsUpdateable = true;
 
@@ -95,6 +97,8 @@ namespace MagnetBoy
 
             selectedMenuItem = 0;
 
+            timePassed = 0;
+
             if (musicAlreadyPlaying)
             {
                 showPressButtonDialog = false;
@@ -103,6 +107,16 @@ namespace MagnetBoy
             {
                 showPressButtonDialog = true;
                 GameInput.LockMostRecentPad = false;
+            }
+
+            if (!fade)
+            {
+                Game1.diamondWipe.Parameters["time"].SetValue(1.0f);
+                timePassed = 1001;
+            }
+            else
+            {
+                Game1.diamondWipe.Parameters["time"].SetValue(0.0f);
             }
 
             Game1.CurrentLevel = 0;
@@ -118,6 +132,8 @@ namespace MagnetBoy
 
                 AudioFactory.playSong("songs/introTheme");
             }
+
+            timePassed += currentTime.ElapsedGameTime.Milliseconds;
 
             if (!showPressButtonDialog)
             {
@@ -269,6 +285,9 @@ namespace MagnetBoy
 
             Game1.grayCheckerBoard.Parameters["slideX"].SetValue(checkerBoardSlide.X);
             Game1.grayCheckerBoard.Parameters["slideY"].SetValue(checkerBoardSlide.Y);
+
+            //Game1.diamondWipe.Parameters["time"].SetValue(Math.Abs(GameInput.P1MouseDirectionNormal.X));
+            Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 1.0f : (float)(timePassed/1000));
         }
 
         public override void draw(SpriteBatch spriteBatch)
@@ -300,6 +319,10 @@ namespace MagnetBoy
                     spriteBatch.DrawString(Game1.gameFontText, "PRESS ANY BUTTON", new Vector2(275, 345), Color.Black);
                 }
             }
+            spriteBatch.End();
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, Game1.diamondWipe, Matrix.CreateScale(720, 480, 0));
+            spriteBatch.Draw(Game1.globalBlackPixel, Vector2.Zero, Color.White);
             spriteBatch.End();
         }
     }

@@ -168,6 +168,7 @@
     <Compile Include="ShieldDude.cs" />
     <Compile Include="Shooter.cs" />
     <Compile Include="Spikes.cs" />
+    <Compile Include="SplashScreenState.cs" />
     <Compile Include="TitleScreenMenuState.cs" />
     <Compile Include="TutorialSign.cs" />
     <Compile Include="Walk.cs" />

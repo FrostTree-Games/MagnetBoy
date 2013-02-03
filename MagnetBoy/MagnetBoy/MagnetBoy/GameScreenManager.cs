@@ -23,7 +23,7 @@ namespace MagnetBoy
 
         public enum GameScreenType
         {
-            TitleScreen,
+            SplashScreen,
             Menu,
             Level,
             Credits
@@ -67,7 +67,7 @@ namespace MagnetBoy
             }
             else
             {
-                currentNode = new TitleScreenMenuState(manager, false);
+                currentNode = new TitleScreenMenuState(manager, false, false);
             }
         }
 
@@ -78,7 +78,11 @@ namespace MagnetBoy
                 return;
             }
 
-            if (newType == GameScreenType.Level && levelName != null)
+            if (newType == GameScreenType.SplashScreen)
+            {
+                currentNode = new SplashScreenState(manager);
+            }
+            else if (newType == GameScreenType.Level && levelName != null)
             {
                 currentNode = new LevelState(manager, levelName);
             }
@@ -87,13 +91,17 @@ namespace MagnetBoy
                 switch (levelName)
                 {
                     case "TitleScreenMenu":
-                        currentNode = new TitleScreenMenuState(manager, false);
+                        currentNode = new TitleScreenMenuState(manager, false, true);
                         break;
                     case "TitleScreenMenu_fromOptions":
-                        currentNode = new TitleScreenMenuState(manager, true);
+                        currentNode = new TitleScreenMenuState(manager, true, false);
                         break;
                     case "TitleScreenMenu_fromLevelSelect":
-                        currentNode = new TitleScreenMenuState(manager, true);
+                        currentNode = new TitleScreenMenuState(manager, true, false);
+                        break;
+                    case "TitleScreenMenu_fromPause":
+                        currentNode = new TitleScreenMenuState(manager, false, true);
+                        ((TitleScreenMenuState)currentNode).showPressButtonDialog = false;
                         break;
                     case "GameOptionsMenu":
                         currentNode = new OptionsMenuState(manager);

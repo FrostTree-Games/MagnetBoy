@@ -71,7 +71,7 @@ namespace MagnetBoy
             {
                 if (device != null && device.IsConnected)
                 {
-                    //save current game progress to card
+                    try
                     {
                         IAsyncResult result2 = device.BeginOpenContainer("MagnetBoyTest", null, null);
 
@@ -97,6 +97,15 @@ namespace MagnetBoy
 
                         container.Dispose();
                     }
+                    catch (Exception)
+                    {
+                        saving = false;
+                        return;
+                    }
+                }
+                else
+                {
+                    //Console.WriteLine("No save device detected");
                 }
             }
 
@@ -123,7 +132,7 @@ namespace MagnetBoy
                 {
                     if (device != null && device.IsConnected)
                     {
-                        //save current game progress to card
+                        try
                         {
                             IAsyncResult result2 = device.BeginOpenContainer("MagnetBoyTest", null, null);
 
@@ -136,6 +145,8 @@ namespace MagnetBoy
                             // Check to see whether the save exists.
                             if (!container.FileExists(filename))
                             {
+                                saving = false;
+
                                 container.Dispose();
                                 return;
                             }
@@ -150,12 +161,17 @@ namespace MagnetBoy
 
                             container.Dispose();
                         }
+                        catch (Exception)
+                        {
+                            saving = false;
+                            return;
+                        }
                     }
                 }
             }
             catch (Exception)
             {
-                //
+                saving = false;
             }
 
             saving = false;
