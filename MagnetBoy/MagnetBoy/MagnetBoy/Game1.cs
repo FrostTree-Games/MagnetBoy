@@ -104,6 +104,7 @@ namespace MagnetBoy
         }
 
         public static SaveGameData MagnetBoySaveData;
+        private double onScreenSaveSpin;
 
         public static Texture2D globalTestWalrus = null;
         public static Texture2D globalTestPositive = null;
@@ -172,6 +173,8 @@ namespace MagnetBoy
 
             currentLevel = 0;
 
+            onScreenSaveSpin = 0;
+
 #if WINDOWS
 
             if (Game1.MagnetBoySaveData.loaded == false)
@@ -226,7 +229,7 @@ namespace MagnetBoy
         public static void loadGameAssets()
         {
 #if XBOX
-            Thread.SetProcessorAffinity(Game1.loadThread); 
+            Thread.CurrentThread.SetProcessorAffinity(Game1.loadThread); 
 #endif
 
             if (assetsLoaded)
@@ -342,6 +345,7 @@ namespace MagnetBoy
                 exitGame = true;
             }
 #endif
+            onScreenSaveSpin += gameTime.ElapsedGameTime.Milliseconds;
 
             // Allows the game to exit
             if (exitGame)
@@ -367,7 +371,7 @@ namespace MagnetBoy
             if (SaveGameModule.TouchingStorageDevice)
             {
                 spriteBatch.Begin();
-                spriteBatch.Draw(Game1.globalTestWalrus, new Vector2(0, 0), Color.White);
+                spriteBatch.Draw(Game1.globalTestWalrus, new Vector2(560, 380), null, Color.White, (float)Math.Sin(onScreenSaveSpin / 200), new Vector2(16, 16), 1.0f, SpriteEffects.None, 0.5f);
                 spriteBatch.End();
             }
 

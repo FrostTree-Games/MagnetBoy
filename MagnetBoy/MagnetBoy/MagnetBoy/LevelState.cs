@@ -182,7 +182,7 @@ namespace MagnetBoy
         private void loadLevelThread()
         {
             #if XBOX
-            Thread.SetProcessorAffinity(Game1.loadThread); 
+            Thread.CurrentThread.SetProcessorAffinity(Game1.loadThread); 
             #endif
 
             Monitor.Enter(levelEntities);
@@ -536,14 +536,13 @@ namespace MagnetBoy
                             paused = false;
                             MediaPlayer.Volume = 1.0f;
                             AudioFactory.playSFX("sfx/menuOpen");
-                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
+                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu_fromPause");
                             break;
                         default:
                             break;
                     }
 
                     confirmPressed = false;
-                    //AudioFactory.playSFX("sfx/menu");
                 }
 
                 if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))

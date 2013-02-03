@@ -69,7 +69,7 @@ namespace MagnetBoy
         private bool anyButtonPressed = false;
         private bool xButtonPressed = false;
 
-        private bool showPressButtonDialog;
+        public bool showPressButtonDialog;
         private double dialogTimer;
 
         private double timePassed;
@@ -79,7 +79,7 @@ namespace MagnetBoy
 
         public static Vector2 checkerBoardSlide = new Vector2(720 * 100, 480 * 100);
 
-        public TitleScreenMenuState(ContentManager newManager, bool musicAlreadyPlaying)
+        public TitleScreenMenuState(ContentManager newManager, bool musicAlreadyPlaying, bool fade)
         {
             IsUpdateable = true;
 
@@ -102,13 +102,20 @@ namespace MagnetBoy
             if (musicAlreadyPlaying)
             {
                 showPressButtonDialog = false;
-                Game1.diamondWipe.Parameters["time"].SetValue(1.0f);
-                timePassed = 1001;
             }
             else
             {
                 showPressButtonDialog = true;
                 GameInput.LockMostRecentPad = false;
+            }
+
+            if (!fade)
+            {
+                Game1.diamondWipe.Parameters["time"].SetValue(1.0f);
+                timePassed = 1001;
+            }
+            else
+            {
                 Game1.diamondWipe.Parameters["time"].SetValue(0.0f);
             }
 

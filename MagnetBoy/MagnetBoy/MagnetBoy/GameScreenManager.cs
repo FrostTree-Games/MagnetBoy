@@ -67,7 +67,7 @@ namespace MagnetBoy
             }
             else
             {
-                currentNode = new TitleScreenMenuState(manager, false);
+                currentNode = new TitleScreenMenuState(manager, false, false);
             }
         }
 
@@ -91,13 +91,17 @@ namespace MagnetBoy
                 switch (levelName)
                 {
                     case "TitleScreenMenu":
-                        currentNode = new TitleScreenMenuState(manager, false);
+                        currentNode = new TitleScreenMenuState(manager, false, true);
                         break;
                     case "TitleScreenMenu_fromOptions":
-                        currentNode = new TitleScreenMenuState(manager, true);
+                        currentNode = new TitleScreenMenuState(manager, true, false);
                         break;
                     case "TitleScreenMenu_fromLevelSelect":
-                        currentNode = new TitleScreenMenuState(manager, true);
+                        currentNode = new TitleScreenMenuState(manager, true, false);
+                        break;
+                    case "TitleScreenMenu_fromPause":
+                        currentNode = new TitleScreenMenuState(manager, false, true);
+                        ((TitleScreenMenuState)currentNode).showPressButtonDialog = false;
                         break;
                     case "GameOptionsMenu":
                         currentNode = new OptionsMenuState(manager);
