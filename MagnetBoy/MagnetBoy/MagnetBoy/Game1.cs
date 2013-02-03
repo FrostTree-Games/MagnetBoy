@@ -268,6 +268,7 @@ namespace MagnetBoy
             aFac.pushSheet("xboxButtonsSheet");
             aFac.pushSheet("goombaSheet");
             aFac.pushSheet("factoryParallaxSheet");
+            aFac.pushSheet("wopleyShieldSheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -298,6 +299,7 @@ namespace MagnetBoy
             aFac.pushAnimation("xboxButtonsAnims");
             aFac.pushAnimation("goomba");
             aFac.pushAnimation("factoryParallax");
+            aFac.pushAnimation("wopleyShield");
 
             AudioFactory.pushNewSong("songs/song0");
             AudioFactory.pushNewSong("songs/song1");
