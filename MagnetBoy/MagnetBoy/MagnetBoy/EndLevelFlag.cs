@@ -20,7 +20,7 @@ namespace MagnetBoy
         private double stateTimer;
 
         private const double spinningDuration = 500;
-        private const double waitDuration = 750;
+        private const double waitDuration = 8000;
 
         private string currentAnimation = "endLevelFlag";
         private int currentFrame;
@@ -64,6 +64,8 @@ namespace MagnetBoy
                                 Game1.MagnetBoySaveData[Game1.CurrentLevel] = newHighScore;
                             }
 #endif
+                            AudioFactory.playSFX("sfx/fanfare");
+                            AudioFactory.stopSong();
 
                             state = EndLevelFlagState.Spinning;
                             stateTimer = 0;
@@ -108,7 +110,8 @@ namespace MagnetBoy
             }
             else if (state == EndLevelFlagState.EndGame)
             {
-                LevelState.EndLevelFlag = true;
+                //LevelState.EndLevelFlag = true;
+                LevelState.fadingOut = true;
             }
         }
 
