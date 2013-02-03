@@ -8,7 +8,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="300" height="200">
@@ -173,6 +173,7 @@
   <object name="heartItem" x="5376" y="3936" width="32" height="32"/>
   <object name="bossShield" x="9280" y="4224" width="32" height="32"/>
   <object name="endLevelFlag" x="8832" y="4320" width="32" height="32"/>
+  <object name="player" x="52" y="902" width="32" height="32"/>
   <object name="walkMarker" x="4928" y="672" width="32" height="32"/>
   <object name="walkMarker" x="5056" y="672" width="32" height="32"/>
   <object name="angrySaw" x="6272" y="1984" width="32" height="32"/>
@@ -209,11 +210,7 @@
     <property name="color" value="yellow"/>
    </properties>
   </object>
-  <object name="flagLock" x="3520" y="3712" width="32" height="32">
-   <properties>
-    <property name="color" value="yellow"/>
-   </properties>
-  </object>
+  <object name="flagLock" x="3520" y="3712" width="32" height="32"/>
   <object name="flagKey" x="3424" y="3712" width="32" height="32">
    <properties>
     <property name="color" value="yellow"/>
@@ -309,11 +306,7 @@
   <object name="lavaDumper" x="2400" y="3488" width="32" height="32"/>
   <object name="lavaDumper" x="2464" y="3488" width="32" height="32"/>
   <object name="lavaDumper" x="2432" y="3488" width="32" height="32"/>
-  <object name="flagLock" x="3360" y="5696" width="32" height="32">
-   <properties>
-    <property name="color" value="purple"/>
-   </properties>
-  </object>
+  <object name="flagLock" x="3360" y="5696" width="32" height="32"/>
   <object name="walkMarker" x="2496" y="5632" width="32" height="32"/>
   <object name="lava" x="3168" y="5504" width="32" height="32"/>
   <object name="lava" x="3200" y="5504" width="32" height="32"/>
@@ -354,11 +347,7 @@
     <property name="color" value="purple"/>
    </properties>
   </object>
-  <object name="flagLock" x="3232" y="5888" width="32" height="32">
-   <properties>
-    <property name="color" value="green"/>
-   </properties>
-  </object>
+  <object name="flagLock" x="3232" y="5888" width="32" height="32"/>
   <object name="flagDoor" x="4544" y="4416" width="32" height="32">
    <properties>
     <property name="color" value="green"/>
@@ -435,6 +424,64 @@
   <object name="angrySaw" x="5600" y="4512" width="32" height="32"/>
   <object name="angrySaw" x="5664" y="4512" width="32" height="32"/>
   <object name="angrySaw" x="5856" y="4512" width="32" height="32"/>
-  <object name="player" x="9242" y="4319" width="32" height="32"/>
+  <object name="endLevelFlag" x="9312" y="3904" width="32" height="32"/>
+  <object name="lava" x="7808" y="4288" width="32" height="32"/>
+  <object name="lava" x="7904" y="4288" width="32" height="32"/>
+  <object name="lava" x="7872" y="4288" width="32" height="32"/>
+  <object name="lava" x="7776" y="4288" width="32" height="32"/>
+  <object name="lava" x="7840" y="4288" width="32" height="32"/>
+  <object name="lava" x="7936" y="4288" width="32" height="32"/>
+  <object name="lavaDumper" x="7808" y="3936" width="32" height="32"/>
+  <object name="lavaDumper" x="7776" y="3936" width="32" height="32"/>
+  <object name="lavaDumper" x="7872" y="3968" width="32" height="32"/>
+  <object name="lavaDumper" x="7840" y="3968" width="32" height="32"/>
+  <object name="lavaDumper" x="7936" y="3968" width="32" height="32"/>
+  <object name="lavaDumper" x="7904" y="3968" width="32" height="32"/>
+  <object name="spikes_up" x="7296" y="4352" width="32" height="32"/>
+  <object name="spikes_up" x="7360" y="4352" width="32" height="32"/>
+  <object name="spikes_up" x="7328" y="4352" width="32" height="32"/>
+  <object name="spikes_up" x="7424" y="4352" width="32" height="32"/>
+  <object name="spikes_up" x="7456" y="4352" width="32" height="32"/>
+  <object name="spikes_up" x="7392" y="4352" width="32" height="32"/>
+  <object name="shieldDudeLeft" x="7616" y="3968" width="32" height="32"/>
+  <object name="spikes_up" x="7360" y="3744" width="32" height="32"/>
+  <object name="spikes_up" x="7328" y="3744" width="32" height="32"/>
+  <object name="spikes_up" x="7392" y="3744" width="32" height="32"/>
+  <object name="shieldDudeRight" x="7520" y="3776" width="32" height="32"/>
+  <object name="walkMarker" x="7808" y="3712" width="32" height="32"/>
+  <object name="goomba" x="7936" y="3712" width="32" height="32"/>
+  <object name="spikes_up" x="6784" y="3936" width="32" height="32"/>
+  <object name="spikes_up" x="6848" y="3936" width="32" height="32"/>
+  <object name="spikes_up" x="6720" y="3936" width="32" height="32"/>
+  <object name="spikes_up" x="6816" y="3936" width="32" height="32"/>
+  <object name="spikes_up" x="6752" y="3936" width="32" height="32"/>
+  <object name="spikes_up" x="6880" y="3936" width="32" height="32"/>
+  <object name="spikes_up" x="6912" y="3936" width="32" height="32"/>
+  <object name="walkMarker" x="6848" y="4160" width="32" height="32"/>
+  <object name="walkMarker" x="6944" y="4160" width="32" height="32"/>
+  <object name="lava" x="7072" y="4224" width="32" height="32"/>
+  <object name="lava" x="7104" y="4224" width="32" height="32"/>
+  <object name="lava" x="7040" y="4224" width="32" height="32"/>
+  <object name="lava" x="7008" y="4224" width="32" height="32"/>
+  <object name="lava" x="7136" y="4224" width="32" height="32"/>
+  <object name="lava" x="7168" y="4224" width="32" height="32"/>
+  <object name="lava" x="6976" y="4224" width="32" height="32"/>
+  <object name="lolrus" x="2912" y="5376" width="32" height="32"/>
+  <object name="lolrus" x="3104" y="5376" width="32" height="32"/>
+  <object name="lolrus" x="6656" y="4192" width="32" height="32"/>
+  <object name="lolrus" x="6880" y="4160" width="32" height="32"/>
+  <object name="lavaDumper" x="6880" y="3840" width="32" height="32"/>
+  <object name="lavaDumper" x="6752" y="3840" width="32" height="32"/>
+  <object name="lavaDumper" x="8256" y="3808" width="32" height="32"/>
+  <object name="lavaDumper" x="8288" y="3808" width="32" height="32"/>
+  <object name="spikes_up" x="8000" y="4320" width="32" height="32"/>
+  <object name="spikes_up" x="8032" y="4320" width="32" height="32"/>
+  <object name="wallEntity" x="8797" y="3936" width="32" height="32"/>
+  <object name="wallEntity" x="8797" y="4000" width="32" height="32"/>
+  <object name="angrySaw" x="8736" y="4000" width="32" height="32"/>
+  <object name="angrySaw" x="8672" y="4000" width="32" height="32"/>
+  <object name="wallEntity" x="8797" y="3968" width="32" height="32"/>
+  <object name="wallEntity" x="8608" y="3968" width="32" height="32"/>
+  <object name="wallEntity" x="8608" y="4000" width="32" height="32"/>
  </objectgroup>
 </map>
