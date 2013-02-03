@@ -11,7 +11,7 @@ namespace MagnetBoy
     {
         private LevelState.FlagColor doorColor;
 
-        private const double doorClickDelay = 300;
+        private const double doorClickDelay = 150;
         private double doorClickDelta = 0;
 
         private const float doorMaxHeight = 64.0f;
@@ -59,6 +59,21 @@ namespace MagnetBoy
                     {
                         doorClickDelta = 0;
                         doorHeight -= 1;
+                        height = 32f + (8f * doorHeight);
+                        AudioFactory.playSFX("sfx/doorClose");
+                    }
+                }
+            }
+            else
+            {
+                if (doorHeight < 8)
+                {
+                    doorClickDelta += currentTime.ElapsedGameTime.Milliseconds;
+
+                    if (doorClickDelta >= doorClickDelay)
+                    {
+                        doorClickDelta = 0;
+                        doorHeight += 1;
                         height = 32f + (8f * doorHeight);
                         AudioFactory.playSFX("sfx/doorClose");
                     }

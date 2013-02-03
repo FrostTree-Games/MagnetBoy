@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -28,6 +29,9 @@ namespace MagnetBoy
         SpriteBatch spriteBatch;
 
         GameInput gameInput = null;
+
+        // cpu identifiers for setting thread affinity on the Xbox 360
+        public static int[] loadThread = { 3 };
 
         public struct LevelScoreStruct
         {
@@ -100,6 +104,7 @@ namespace MagnetBoy
         }
 
         public static SaveGameData MagnetBoySaveData;
+        private double onScreenSaveSpin;
 
         public static Texture2D globalTestWalrus = null;
         public static Texture2D globalTestPositive = null;
@@ -111,6 +116,7 @@ namespace MagnetBoy
 
         public static Effect tintRedEffect = null;
         public static Effect grayCheckerBoard = null;
+        public static Effect diamondWipe = null;
 
         private AnimationFactory aFac = null;
         private AudioFactory audFac = null;
@@ -130,6 +136,9 @@ namespace MagnetBoy
         public static int CurrentLevel { get { return currentLevel; } set { currentLevel = value % Game1.NumberOfLevels; } }
         public static int FurthestLevelProgressed { get { return MagnetBoySaveData.furthestLevelUnlocked; } set { MagnetBoySaveData.furthestLevelUnlocked = value % Game1.NumberOfLevels; } }
         public static int NumberOfLevels { get { return levelNames.Length; } }
+
+        private static bool assetsLoaded = false;
+        public static bool AssetsLoaded { get { return assetsLoaded; } }
 
         public Game1()
         {
@@ -164,6 +173,8 @@ namespace MagnetBoy
 
             currentLevel = 0;
 
+            onScreenSaveSpin = 0;
+
 #if WINDOWS
 
             if (Game1.MagnetBoySaveData.loaded == false)
@@ -193,6 +204,40 @@ namespace MagnetBoy
 
             aFac = new AnimationFactory(this.Content);
             audFac = new AudioFactory(this.Content);
+
+            globalTestWalrus = this.Content.Load<Texture2D>("walrus");
+            globalTestPositive = this.Content.Load<Texture2D>("posTest");
+            globalTestNegative = this.Content.Load<Texture2D>("negTest");
+            globalBlackPixel = this.Content.Load<Texture2D>("1x1BlackPixel");
+
+            tintRedEffect = this.Content.Load<Effect>("TintRed");
+            tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
+
+            grayCheckerBoard = this.Content.Load<Effect>("GrayCheckerBoard");
+            grayCheckerBoard.CurrentTechnique = grayCheckerBoard.Techniques["Technique1"];
+
+            diamondWipe = this.Content.Load<Effect>("DiamondWipe");
+            diamondWipe.CurrentTechnique = diamondWipe.Techniques["Technique1"];
+
+            assetsLoaded = false;
+            //loadGameAssets();
+
+            screenManager = new GameScreenManager(this.Content);
+            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.SplashScreen, null);
+        }
+
+        public static void loadGameAssets()
+        {
+#if XBOX
+            Thread.CurrentThread.SetProcessorAffinity(Game1.loadThread); 
+#endif
+
+            if (assetsLoaded)
+            {
+                return;
+            }
+
+            AnimationFactory aFac = new AnimationFactory(null);
 
             aFac.pushSheet("actor3"); // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
             aFac.pushSheet("playerSheet");
@@ -256,17 +301,6 @@ namespace MagnetBoy
             aFac.pushAnimation("factoryParallax");
             aFac.pushAnimation("wopleyShield");
 
-            tintRedEffect = this.Content.Load<Effect>("TintRed");
-            tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
-
-            grayCheckerBoard = this.Content.Load<Effect>("GrayCheckerBoard");
-            grayCheckerBoard.CurrentTechnique = grayCheckerBoard.Techniques["Technique1"];
-
-            globalTestWalrus = this.Content.Load<Texture2D>("walrus");
-            globalTestPositive = this.Content.Load<Texture2D>("posTest");
-            globalTestNegative = this.Content.Load<Texture2D>("negTest");
-            globalBlackPixel = this.Content.Load<Texture2D>("1x1BlackPixel");
-
             AudioFactory.pushNewSong("songs/song0");
             AudioFactory.pushNewSong("songs/song1");
             AudioFactory.pushNewSong("songs/song2");
@@ -283,9 +317,11 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/doorClose");
             AudioFactory.pushNewSFX("sfx/unlockDoor");
 
+#if XBOX
+            Thread.Sleep(2000);
+#endif
 
-            screenManager = new GameScreenManager(this.Content);
-            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
+            assetsLoaded = true;
         }
 
         /// <summary>
@@ -311,6 +347,7 @@ namespace MagnetBoy
                 exitGame = true;
             }
 #endif
+            onScreenSaveSpin += gameTime.ElapsedGameTime.Milliseconds;
 
             // Allows the game to exit
             if (exitGame)
@@ -336,7 +373,7 @@ namespace MagnetBoy
             if (SaveGameModule.TouchingStorageDevice)
             {
                 spriteBatch.Begin();
-                spriteBatch.Draw(Game1.globalTestWalrus, new Vector2(0, 0), Color.White);
+                spriteBatch.Draw(Game1.globalTestWalrus, new Vector2(560, 380), null, Color.White, (float)Math.Sin(onScreenSaveSpin / 200), new Vector2(16, 16), 1.0f, SpriteEffects.None, 0.5f);
                 spriteBatch.End();
             }
 
