@@ -104,7 +104,7 @@ namespace MagnetBoy
         }
 
         public static SaveGameData MagnetBoySaveData;
-        private double onScreenSaveSpin;
+        public static double onScreenSaveSpin;
 
         public static Texture2D globalTestWalrus = null;
         public static Texture2D globalTestPositive = null;
