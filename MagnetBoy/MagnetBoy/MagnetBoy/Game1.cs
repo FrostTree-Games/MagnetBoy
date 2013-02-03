@@ -314,6 +314,7 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/menuDeny");
             AudioFactory.pushNewSFX("sfx/doorClose");
             AudioFactory.pushNewSFX("sfx/unlockDoor");
+            AudioFactory.pushNewSFX("sfx/getHealth");
 
 #if XBOX
             Thread.Sleep(2000);
