@@ -572,8 +572,6 @@ namespace MagnetBoy
 
                     AudioFactory.playSFX("sfx/menuClose");
                 }
-
-                //
             }
             else
             {
