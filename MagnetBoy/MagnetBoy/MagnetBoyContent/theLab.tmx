@@ -173,7 +173,6 @@
   <object name="heartItem" x="5376" y="3936" width="32" height="32"/>
   <object name="bossShield" x="9280" y="4224" width="32" height="32"/>
   <object name="endLevelFlag" x="8832" y="4320" width="32" height="32"/>
-  <object name="player" x="52" y="902" width="32" height="32"/>
   <object name="walkMarker" x="4928" y="672" width="32" height="32"/>
   <object name="walkMarker" x="5056" y="672" width="32" height="32"/>
   <object name="angrySaw" x="6272" y="1984" width="32" height="32"/>
@@ -210,7 +209,11 @@
     <property name="color" value="yellow"/>
    </properties>
   </object>
-  <object name="flagLock" x="3520" y="3712" width="32" height="32"/>
+  <object name="flagLock" x="3520" y="3712" width="32" height="32">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
   <object name="flagKey" x="3424" y="3712" width="32" height="32">
    <properties>
     <property name="color" value="yellow"/>
@@ -306,7 +309,11 @@
   <object name="lavaDumper" x="2400" y="3488" width="32" height="32"/>
   <object name="lavaDumper" x="2464" y="3488" width="32" height="32"/>
   <object name="lavaDumper" x="2432" y="3488" width="32" height="32"/>
-  <object name="flagLock" x="3360" y="5696" width="32" height="32"/>
+  <object name="flagLock" x="3360" y="5696" width="32" height="32">
+   <properties>
+    <property name="color" value="purple"/>
+   </properties>
+  </object>
   <object name="walkMarker" x="2496" y="5632" width="32" height="32"/>
   <object name="lava" x="3168" y="5504" width="32" height="32"/>
   <object name="lava" x="3200" y="5504" width="32" height="32"/>
@@ -347,7 +354,11 @@
     <property name="color" value="purple"/>
    </properties>
   </object>
-  <object name="flagLock" x="3232" y="5888" width="32" height="32"/>
+  <object name="flagLock" x="3232" y="5888" width="32" height="32">
+   <properties>
+    <property name="color" value="green"/>
+   </properties>
+  </object>
   <object name="flagDoor" x="4544" y="4416" width="32" height="32">
    <properties>
     <property name="color" value="green"/>
@@ -424,5 +435,6 @@
   <object name="angrySaw" x="5600" y="4512" width="32" height="32"/>
   <object name="angrySaw" x="5664" y="4512" width="32" height="32"/>
   <object name="angrySaw" x="5856" y="4512" width="32" height="32"/>
+  <object name="player" x="9242" y="4319" width="32" height="32"/>
  </objectgroup>
 </map>

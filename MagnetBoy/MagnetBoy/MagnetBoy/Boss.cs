@@ -211,7 +211,7 @@ namespace MagnetBoy
         protected int currentFrame = 0;
         protected double lastFrameIncrement = 0;
 
-        private string currentAnimation = null;
+        private string currentAnimation = "wopleyShieldIdle";
 
         private float interval = 10000;
         private float timeLastMoved = 0.0f;
@@ -328,7 +328,7 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.Yellow);
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, AnimationFactory.DepthLayer1);
         }
     }
 }

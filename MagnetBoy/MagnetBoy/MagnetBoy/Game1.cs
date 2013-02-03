@@ -223,6 +223,7 @@ namespace MagnetBoy
             aFac.pushSheet("xboxButtonsSheet");
             aFac.pushSheet("goombaSheet");
             aFac.pushSheet("factoryParallaxSheet");
+            aFac.pushSheet("wopleyShieldSheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -253,6 +254,7 @@ namespace MagnetBoy
             aFac.pushAnimation("xboxButtonsAnims");
             aFac.pushAnimation("goomba");
             aFac.pushAnimation("factoryParallax");
+            aFac.pushAnimation("wopleyShield");
 
             tintRedEffect = this.Content.Load<Effect>("TintRed");
             tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
