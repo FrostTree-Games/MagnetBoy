@@ -40,6 +40,8 @@ namespace MagnetBoy
         private string autoSaveText3 = "remove any memory devices";
         private string autoSaveText4 = "while you see this animation.";
 
+        private bool startButtonDown;
+
         public SplashScreenState(ContentManager newManager)
         {
             contentManager = newManager;
@@ -48,6 +50,8 @@ namespace MagnetBoy
 
             calledLoadAssets = false;
             flashOffText = false;
+
+            startButtonDown = false;
 
             state = SplashScreenVisualState.Loading;
             fadeState = FadeState.FadeIn;
@@ -89,8 +93,14 @@ namespace MagnetBoy
             }
             else if (state == SplashScreenVisualState.FrostTreeLogo)
             {
-                if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
+                if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton) && !startButtonDown)
                 {
+                    startButtonDown = true;
+                }
+                else if (startButtonDown && !GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
+                {
+                    startButtonDown = false;
+
                     GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
                 }
 
@@ -109,8 +119,14 @@ namespace MagnetBoy
             }
             else if (state == SplashScreenVisualState.SaveNote)
             {
-                if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
+                if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton) && !startButtonDown)
                 {
+                    startButtonDown = true;
+                }
+                else if (startButtonDown && !GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
+                {
+                    startButtonDown = false;
+
                     GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu");
                 }
 

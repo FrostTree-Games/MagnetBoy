@@ -83,6 +83,12 @@ namespace MagnetBoy
 
         public static Vector2 checkerBoardSlide = new Vector2(720 * 100, 480 * 100);
 
+        private int magnetWopleyFrame;
+        private double magnetWopleyLastUpdateTime;
+        private string magnetWopleyAnim = "playerWalkRight";
+        private Vector2 magnetWopleyPosition = new Vector2(300, 200);
+
+
         public TitleScreenMenuState(ContentManager newManager, bool musicAlreadyPlaying, bool fade)
         {
             IsUpdateable = true;
@@ -103,6 +109,10 @@ namespace MagnetBoy
 
             timePassed = 0;
             fadingOut = false;
+
+            magnetWopleyAnim = "playerWalkRight";
+            magnetWopleyFrame = 0;
+            magnetWopleyLastUpdateTime = 0;
 
             if (musicAlreadyPlaying)
             {
@@ -304,12 +314,25 @@ namespace MagnetBoy
             Game1.grayCheckerBoard.Parameters["slideX"].SetValue(checkerBoardSlide.X);
             Game1.grayCheckerBoard.Parameters["slideY"].SetValue(checkerBoardSlide.Y);
 
-            //Game1.diamondWipe.Parameters["time"].SetValue(Math.Abs(GameInput.P1MouseDirectionNormal.X));
+            // if the last frame time hasn't been set, set it now
+            if (magnetWopleyLastUpdateTime == 0)
+            {
+                magnetWopleyLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            // update the current frame if needed
+            if (currentTime.TotalGameTime.TotalMilliseconds - magnetWopleyLastUpdateTime > AnimationFactory.getAnimationSpeed(magnetWopleyAnim))
+            {
+                magnetWopleyLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+
+                magnetWopleyFrame = (magnetWopleyFrame + 1) % AnimationFactory.getAnimationFrameCount(magnetWopleyAnim);
+            }
+
             if (!fadingOut)
             {
                 Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 1.0f : (float)(timePassed / 1000));
             }
-        }
+        } //doUpdate()
 
         public override void draw(SpriteBatch spriteBatch)
         {
@@ -320,6 +343,9 @@ namespace MagnetBoy
             spriteBatch.End();
 
             spriteBatch.Begin();
+            spriteBatch.Draw(Game1.globalWhitePixel, new Vector2(144, 48), null, Color.LightBlue, 0.0f, Vector2.Zero, new Vector2(448, 240), SpriteEffects.None, AnimationFactory.DepthLayer3);
+            AnimationFactory.drawAnimationFrame(spriteBatch, magnetWopleyAnim, magnetWopleyFrame, magnetWopleyPosition, AnimationFactory.DepthLayer0);
+
             if (!showPressButtonDialog)
             {
                 for (int i = 0; i < menuList.Count; i++)

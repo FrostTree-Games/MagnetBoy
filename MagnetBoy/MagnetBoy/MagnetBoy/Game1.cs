@@ -111,6 +111,7 @@ namespace MagnetBoy
         public static Texture2D globalTestNegative = null;
 
         public static Texture2D globalBlackPixel = null;
+        public static Texture2D globalWhitePixel = null;
 
         public static SpriteFont gameFontText = null;
 
@@ -209,6 +210,7 @@ namespace MagnetBoy
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
             globalBlackPixel = this.Content.Load<Texture2D>("1x1BlackPixel");
+            globalWhitePixel = this.Content.Load<Texture2D>("1x1WhitePixel");
 
             tintRedEffect = this.Content.Load<Effect>("TintRed");
             tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
