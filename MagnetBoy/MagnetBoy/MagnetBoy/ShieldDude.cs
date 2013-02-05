@@ -80,7 +80,7 @@ namespace MagnetBoy
                         lastFrameIncrement = 0.0;
                         currentFrame = 0;
                         velocity.X = 0.0f;
-                        currentAnimation = "shieldGuyDieLeft";
+                        currentAnimation = "shieldGuyDieRight";
                         deathAnimationSet = true;
                     }
                     else
@@ -88,7 +88,7 @@ namespace MagnetBoy
                         lastFrameIncrement = 0.0;
                         currentFrame = 0;
                         velocity.X = 0.0f;
-                        currentAnimation = "shieldGuyDieRight";
+                        currentAnimation = "shieldGuyDieLeft";
                         deathAnimationSet = true;
                     }
                 }
