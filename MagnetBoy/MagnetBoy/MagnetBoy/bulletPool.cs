@@ -454,7 +454,7 @@ namespace MagnetBoy
         {
             if (pool == null)
             {
-                pool = new Bullet[50];
+                pool = new Bullet[150];
 
                 for (int i = 0; i < pool.Length; i++)
                 {
@@ -481,10 +481,22 @@ namespace MagnetBoy
                     count++;
                 }
             }
+
+            if (count == pool.Length)
+            {
+                Console.WriteLine("full2");
+            }
         }
 
         public static void pushBullet(BulletType type, float x, float y, GameTime currentTime, float direction)
         {
+            if (Math.Sqrt(Math.Pow(y - LevelState.levelCamera.getFocusPosition().Y, 2) + Math.Pow(x - LevelState.levelCamera.getFocusPosition().X, 2)) > 1000)
+            {
+                return;
+            }
+
+            bool full = true;
+
             for (int i = 0; i < pool.Length; i++)
             {
                 if (pool[i].InUse)
@@ -493,9 +505,15 @@ namespace MagnetBoy
                 }
                 else
                 {
+                    full = false;
                     pool[i].add(x, y, type, currentTime, direction);
                     break;
                 }
+            }
+
+            if (full)
+            {
+                Console.WriteLine("full");
             }
         }
 

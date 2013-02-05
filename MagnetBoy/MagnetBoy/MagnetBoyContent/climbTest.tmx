@@ -24,14 +24,9 @@
   <object name="wallEntity" x="701" y="512" width="32" height="32"/>
   <object name="wallEntity" x="701" y="576" width="32" height="32"/>
   <object name="lava" x="896" y="640" width="32" height="32"/>
-  <object name="lavaDumper" x="544" y="448" width="32" height="32"/>
   <object name="spikes" x="864" y="640" width="32" height="32"/>
   <object name="lava" x="864" y="640" width="32" height="32"/>
   <object name="goomba" x="800" y="576" width="32" height="32"/>
-  <object name="lavaDumper" x="416" y="448" width="32" height="32"/>
-  <object name="lavaDumper" x="448" y="448" width="32" height="32"/>
-  <object name="lavaDumper" x="480" y="448" width="32" height="32"/>
-  <object name="lavaDumper" x="512" y="448" width="32" height="32"/>
-  <object name="lolrus" x="576" y="576" width="32" height="32"/>
+  <object name="shieldDudeLeft" x="576" y="576" width="32" height="32"/>
  </objectgroup>
 </map>

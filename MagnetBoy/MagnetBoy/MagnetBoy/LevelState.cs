@@ -32,7 +32,7 @@ namespace MagnetBoy
         private bool grabbed;
 
         private List<Entity> levelEntities = null;
-        private Camera levelCamera = null;
+        public static Camera levelCamera = null;
         private BulletPool levelBulletPool = null;
         public static ParticlePool levelParticlePool = null;
         private static Map levelMap = null;
