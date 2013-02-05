@@ -1,3 +1,5 @@
+COPYRIGHT 2012-2013 FROSTTREE GAMES
+
 MagnetBoy
 =========
 
