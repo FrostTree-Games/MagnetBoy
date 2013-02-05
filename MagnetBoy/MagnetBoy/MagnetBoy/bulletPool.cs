@@ -28,7 +28,7 @@ namespace MagnetBoy
         int currentFrame = 0;
         double lastFrameIncrement = 0;
 
-        public Vector2 initialBucketVelocity = new Vector2();
+        public Vector2 initialBucketVelocity = Vector2.Zero;
 
         float organVelocityX = 0.0f;
         float organVelocityY = 0.0f;
@@ -69,6 +69,8 @@ namespace MagnetBoy
             {
                 creation();
             }
+
+            initialBucketVelocity = Vector2.Zero;
 
             inUse = true;
             timePassed = 0;
@@ -122,6 +124,7 @@ namespace MagnetBoy
                 case BulletPool.BulletType.Bucket:
                     width = 16f;
                     height = 16f;
+
                     velocity.X = (float)(testBulletVelocity * Math.Cos(direction));
                     velocity.Y = (float)(testBulletVelocity * Math.Sin(direction));
 
@@ -291,7 +294,8 @@ namespace MagnetBoy
                         if (hitTest(en))
                         {
                             float dotProduct = Vector2.Dot(velocity, initialBucketVelocity);
-                            float magnitude = (float)(Math.Sqrt(velocity.Length()) * Math.Sqrt(initialBucketVelocity.Length()));
+
+                            float magnitude = (float)(Math.Sqrt(Math.Pow(velocity.X,2.0) + Math.Pow(velocity.Y,2.0)) * Math.Sqrt(Math.Pow(initialBucketVelocity.X,2.0)+Math.Pow(initialBucketVelocity.Y, 2.0)));
                             float angleBetween = (float)Math.Acos((dotProduct) / magnitude);
 
                             if (angleBetween >= Math.PI / 2 && angleBetween != 0 || angleBetween <= Math.PI / 2 && angleBetween != 0)

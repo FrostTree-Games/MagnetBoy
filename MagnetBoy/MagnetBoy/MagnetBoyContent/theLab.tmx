@@ -26,7 +26,6 @@
   <object name="lavaDumper" x="672" y="1184" width="32" height="32"/>
   <object name="goomba" x="992" y="1216" width="32" height="32"/>
   <object name="angrySaw" x="1312" y="960" width="32" height="32"/>
-  <object name="spikes_up" x="1824" y="1888" width="32" height="32"/>
   <object name="angrySaw" x="2240" y="1888" width="32" height="32"/>
   <object name="lavaDumper" x="1952" y="1280" width="32" height="32"/>
   <object name="lavaDumper" x="2048" y="1280" width="32" height="32"/>
@@ -65,9 +64,6 @@
   <object name="lava" x="4960" y="736" width="32" height="32"/>
   <object name="lava" x="4992" y="736" width="32" height="32"/>
   <object name="lava" x="5024" y="736" width="32" height="32"/>
-  <object name="lava" x="4960" y="704" width="32" height="32"/>
-  <object name="lava" x="4992" y="704" width="32" height="32"/>
-  <object name="lava" x="5024" y="704" width="32" height="32"/>
   <object name="goomba" x="4800" y="672" width="32" height="32"/>
   <object name="Lolrus" x="5152" y="672" width="32" height="32"/>
   <object name="goomba" x="5216" y="672" width="32" height="32"/>
@@ -102,13 +98,6 @@
   <object name="lavaDumper" x="3744" y="1120" width="32" height="32"/>
   <object name="lavaDumper" x="3616" y="1120" width="32" height="32"/>
   <object name="lava" x="3616" y="1408" width="32" height="32"/>
-  <object name="lava" x="3616" y="1376" width="32" height="32"/>
-  <object name="lava" x="3648" y="1376" width="32" height="32"/>
-  <object name="lava" x="3680" y="1376" width="32" height="32"/>
-  <object name="lava" x="3712" y="1376" width="32" height="32"/>
-  <object name="lava" x="3744" y="1376" width="32" height="32"/>
-  <object name="lava" x="3776" y="1376" width="32" height="32"/>
-  <object name="lava" x="3808" y="1376" width="32" height="32"/>
   <object name="lava" x="3808" y="1408" width="32" height="32"/>
   <object name="lava" x="3776" y="1408" width="32" height="32"/>
   <object name="lava" x="3744" y="1408" width="32" height="32"/>
@@ -137,14 +126,6 @@
   <object name="lava" x="4128" y="2944" width="32" height="32"/>
   <object name="lava" x="4192" y="2944" width="32" height="32"/>
   <object name="lava" x="4160" y="2944" width="32" height="32"/>
-  <object name="lava" x="4192" y="2912" width="32" height="32"/>
-  <object name="lava" x="4160" y="2912" width="32" height="32"/>
-  <object name="lava" x="4096" y="2912" width="32" height="32"/>
-  <object name="lava" x="4128" y="2912" width="32" height="32"/>
-  <object name="lava" x="4128" y="2880" width="32" height="32"/>
-  <object name="lava" x="4096" y="2880" width="32" height="32"/>
-  <object name="lava" x="4192" y="2880" width="32" height="32"/>
-  <object name="lava" x="4161" y="2879" width="32" height="32"/>
   <object name="flagDoor" x="7520" y="480" width="32" height="32">
    <properties>
     <property name="color" value="blue"/>
@@ -405,13 +386,9 @@
   <object name="lavaDumper" x="7232" y="2432" width="32" height="32"/>
   <object name="lavaDumper" x="7264" y="2432" width="32" height="32"/>
   <object name="lavaDumper" x="7296" y="2432" width="32" height="32"/>
-  <object name="lavaDumper" x="6976" y="2432" width="32" height="32"/>
-  <object name="lavaDumper" x="6944" y="2432" width="32" height="32"/>
   <object name="lavaDumper" x="6912" y="2432" width="32" height="32"/>
   <object name="lavaDumper" x="6880" y="2432" width="32" height="32"/>
   <object name="lavaDumper" x="6848" y="2432" width="32" height="32"/>
-  <object name="lavaDumper" x="6816" y="2432" width="32" height="32"/>
-  <object name="lavaDumper" x="6784" y="2432" width="32" height="32"/>
   <object name="lava" x="7200" y="2624" width="32" height="32"/>
   <object name="lava" x="7296" y="2624" width="32" height="32"/>
   <object name="lava" x="7264" y="2624" width="32" height="32"/>
