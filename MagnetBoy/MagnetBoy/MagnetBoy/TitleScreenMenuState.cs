@@ -86,8 +86,19 @@ namespace MagnetBoy
         private int magnetWopleyFrame;
         private double magnetWopleyLastUpdateTime;
         private string magnetWopleyAnim = "playerWalkRight";
-        private Vector2 magnetWopleyPosition = new Vector2(300, 200);
+        private Vector2 magnetWopleyPosition = new Vector2(350, 244);
 
+        private int enemyChaseFrame;
+        private double enemyFrameLastUpdateTime;
+        private string enemyFrameAnim = "angrySawWalkRight";
+        private Vector2 enemyPosition = new Vector2(250, 244);
+
+        private const int numberOfGrassTypes = 12;
+        private int currentSpotInTiles = 0;
+        private int[] grassTiles = { 0, 1, 2, 11, 0, 6, 7, 2, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        private const double grassPixelsPerSecond = 10;
+        private double grassPixelsElapsedTime = 0;
+        private double grassPixelOffset = 0;
 
         public TitleScreenMenuState(ContentManager newManager, bool musicAlreadyPlaying, bool fade)
         {
@@ -113,6 +124,26 @@ namespace MagnetBoy
             magnetWopleyAnim = "playerWalkRight";
             magnetWopleyFrame = 0;
             magnetWopleyLastUpdateTime = 0;
+
+            switch (Game1.gameRandom.Next() % 3)
+            {
+                case 0:
+                    enemyFrameAnim = "angrySawWalkLeft";
+                    break;
+                case 1:
+                    enemyFrameAnim = "lolrusWalkRight";
+                    break;
+                case 2:
+                    enemyFrameAnim = "goombaWalkRight";
+                    break;
+            }
+            enemyChaseFrame = 0;
+            enemyFrameLastUpdateTime = 0;
+
+            for (int i = 0; i < grassTiles.Length; i++)
+            {
+                grassTiles[i] = Game1.gameRandom.Next() % numberOfGrassTypes;
+            }
 
             if (musicAlreadyPlaying)
             {
@@ -328,6 +359,39 @@ namespace MagnetBoy
                 magnetWopleyFrame = (magnetWopleyFrame + 1) % AnimationFactory.getAnimationFrameCount(magnetWopleyAnim);
             }
 
+            grassPixelsElapsedTime += currentTime.ElapsedGameTime.Milliseconds;
+            if (grassPixelsElapsedTime > grassPixelsPerSecond)
+            {
+                grassPixelOffset += grassPixelsElapsedTime / grassPixelsPerSecond;
+                grassPixelsElapsedTime = 0;
+            }
+            if (grassPixelOffset >= 16)
+            {
+                grassPixelOffset -= 16;
+                currentSpotInTiles = (currentSpotInTiles + 1) % grassTiles.Length;
+
+                int nextTile = currentSpotInTiles - 1;
+                if (nextTile < 0)
+                {
+                    nextTile = grassTiles.Length - 1;
+                }
+                grassTiles[nextTile] = Game1.gameRandom.Next() % numberOfGrassTypes;
+            }
+
+            // if the last frame time hasn't been set, set it now
+            if (enemyFrameLastUpdateTime == 0)
+            {
+                enemyFrameLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            // update the current frame if needed
+            if (currentTime.TotalGameTime.TotalMilliseconds - enemyFrameLastUpdateTime > AnimationFactory.getAnimationSpeed(enemyFrameAnim))
+            {
+                enemyFrameLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+
+                enemyChaseFrame = (enemyChaseFrame + 1) % AnimationFactory.getAnimationFrameCount(enemyFrameAnim);
+            }
+
             if (!fadingOut)
             {
                 Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 1.0f : (float)(timePassed / 1000));
@@ -343,8 +407,17 @@ namespace MagnetBoy
             spriteBatch.End();
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Game1.globalWhitePixel, new Vector2(144, 48), null, Color.LightBlue, 0.0f, Vector2.Zero, new Vector2(448, 240), SpriteEffects.None, AnimationFactory.DepthLayer3);
-            AnimationFactory.drawAnimationFrame(spriteBatch, magnetWopleyAnim, magnetWopleyFrame, magnetWopleyPosition, AnimationFactory.DepthLayer0);
+            spriteBatch.Draw(Game1.globalWhitePixel, new Vector2(0, 48), null, Color.LightBlue, 0.0f, Vector2.Zero, new Vector2(720, 240), SpriteEffects.None, AnimationFactory.DepthLayer3);
+            AnimationFactory.drawAnimationFrame(spriteBatch, magnetWopleyAnim, magnetWopleyFrame, magnetWopleyPosition, AnimationFactory.DepthLayer1);
+            AnimationFactory.drawAnimationFrame(spriteBatch, enemyFrameAnim, enemyChaseFrame, enemyPosition, AnimationFactory.DepthLayer2);
+
+            int v = 0;
+            for (int i = currentSpotInTiles; v < grassTiles.Length ; i = (i + 1) % grassTiles.Length)
+            {
+                AnimationFactory.drawAnimationFrame(spriteBatch, "titleScreenGrass", grassTiles[i], new Vector2((v * 16) - (float)grassPixelOffset, 256), AnimationFactory.DepthLayer0);
+
+                v++;
+            }
 
             if (!showPressButtonDialog)
             {
