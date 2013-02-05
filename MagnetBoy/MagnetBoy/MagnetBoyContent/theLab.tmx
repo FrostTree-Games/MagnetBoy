@@ -3,7 +3,7 @@
  <tileset firstgid="1" name="FactoryTileSheet" tilewidth="32" tileheight="32">
   <image source="FactoryTileSheet.png" width="224" height="160"/>
  </tileset>
- <layer name="Tile Layer 1" width="300" height="200" opacity="0.9">
+ <layer name="Tile Layer 1" width="300" height="200">
   <properties>
    <property name="solid" value="1"/>
   </properties>

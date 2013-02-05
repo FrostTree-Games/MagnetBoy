@@ -53,6 +53,13 @@ namespace MagnetBoy
                             LevelState.currentPlayerHealth = LevelState.maxPlayerHealth;
                         }
                     }
+
+                    for (int i = 0; i < 12; i++)
+                    {
+                        LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.ColouredSpark, CenterPosition, Vector2.Zero, (float)(i * Math.PI / 6.0), 0.0f, Color.Red);
+                    }
+
+                    AudioFactory.playSFX("sfx/getHealth");
                 }
             }
         }

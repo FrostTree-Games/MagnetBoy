@@ -175,7 +175,7 @@ namespace MagnetBoy
                     }
 
                     pool[i].timeActive += currentTime.ElapsedGameTime.Milliseconds;
-                    if (pool[i].timeActive > blueSparkLiveTime || (Vector2.Distance(pool[i].pos, pool[i].startPosition) > 128 && pool[i].type == ParticleType.BlueSpark))
+                    if (pool[i].timeActive > ((pool[i].type == ParticleType.BlueSpark) ? blueSparkLiveTime : blueSparkLiveTime/2) || (Vector2.Distance(pool[i].pos, pool[i].startPosition) > 128 && pool[i].type == ParticleType.BlueSpark))
                     {
                         pool[i].active = false;
                         continue;

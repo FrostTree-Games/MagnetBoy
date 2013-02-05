@@ -65,7 +65,7 @@ namespace MagnetBoy
         private string tagLineA;
         private string tagLineB;
 
-        private bool fadingOut = false;
+        public static bool fadingOut = false;
         private double fadingOutTimer = 0;
         private const double fadingOutDuration = 1000;
 
@@ -449,7 +449,6 @@ namespace MagnetBoy
                 return;
             }
             Monitor.Exit(levelEntities);
-            //assetResources.Release();
 
             gameInput.update();
 
@@ -598,6 +597,11 @@ namespace MagnetBoy
                 if (fadingOut)
                 {
                     fadingOutTimer += currentTime.ElapsedGameTime.Milliseconds;
+
+                    if (currentPlayerHealth > 0)
+                    {
+                        Game1.diamondWipe.Parameters["time"].SetValue(1.0f - (float)(fadingOutTimer/fadingOutDuration));
+                    }
 
                     if (fadingOutTimer > fadingOutDuration)
                     {
@@ -866,11 +870,20 @@ namespace MagnetBoy
 
             if (fadingOut)
             {
-                Matrix stretch = Matrix.CreateScale((float)(Game1.mapView.Width), (float)((fadingOutTimer / fadingOutDuration) * (Game1.mapView.Height)), 1.0f);
+                if (currentPlayerHealth < 1)
+                {
+                    Matrix stretch = Matrix.CreateScale((float)(Game1.mapView.Width), (float)((fadingOutTimer / fadingOutDuration) * (Game1.mapView.Height)), 1.0f);
 
-                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, stretch);
-                spriteBatch.Draw(Game1.globalBlackPixel, Vector2.Zero, Color.White);
-                spriteBatch.End();
+                    spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, stretch);
+                    spriteBatch.Draw(Game1.globalBlackPixel, Vector2.Zero, Color.White);
+                    spriteBatch.End();
+                }
+                else
+                {
+                    spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, Game1.diamondWipe, Matrix.CreateScale(720f, 480f, 0f));
+                    spriteBatch.Draw(Game1.globalBlackPixel, Vector2.Zero, Color.White);
+                    spriteBatch.End();
+                }
             }
         }
     }

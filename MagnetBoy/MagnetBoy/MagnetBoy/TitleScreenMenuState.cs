@@ -74,10 +74,20 @@ namespace MagnetBoy
 
         private double timePassed;
 
+        private bool fadingOut;
+        private double fadeTimeElapsed;
+        private const double fadeTimeMax = 1000;
+
         private List<TitleMenuOption> menuList;
         int selectedMenuItem;
 
         public static Vector2 checkerBoardSlide = new Vector2(720 * 100, 480 * 100);
+
+        private int magnetWopleyFrame;
+        private double magnetWopleyLastUpdateTime;
+        private string magnetWopleyAnim = "playerWalkRight";
+        private Vector2 magnetWopleyPosition = new Vector2(300, 200);
+
 
         public TitleScreenMenuState(ContentManager newManager, bool musicAlreadyPlaying, bool fade)
         {
@@ -98,6 +108,11 @@ namespace MagnetBoy
             selectedMenuItem = 0;
 
             timePassed = 0;
+            fadingOut = false;
+
+            magnetWopleyAnim = "playerWalkRight";
+            magnetWopleyFrame = 0;
+            magnetWopleyLastUpdateTime = 0;
 
             if (musicAlreadyPlaying)
             {
@@ -135,6 +150,18 @@ namespace MagnetBoy
 
             timePassed += currentTime.ElapsedGameTime.Milliseconds;
 
+            if (fadingOut)
+            {
+                fadeTimeElapsed += currentTime.ElapsedGameTime.Milliseconds;
+                Game1.diamondWipe.Parameters["time"].SetValue(1.0f - (float)(fadeTimeElapsed / fadeTimeMax));
+
+                if (fadeTimeElapsed > fadeTimeMax)
+                {
+                    AudioFactory.stopSong();
+                    GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, Game1.levelFileNames[Game1.CurrentLevel]);
+                }
+            }
+
             if (!showPressButtonDialog)
             {
                 if (GameInput.isButtonDown(GameInput.PlayerButton.XButton))
@@ -155,7 +182,7 @@ namespace MagnetBoy
                 {
                     downPressed = true;
                 }
-                else if (downPressed == true)
+                else if (downPressed == true && !fadingOut)
                 {
                     selectedMenuItem++;
                     downPressed = false;
@@ -167,7 +194,7 @@ namespace MagnetBoy
                 {
                     upPressed = true;
                 }
-                else if (upPressed == true)
+                else if (upPressed == true && !fadingOut)
                 {
                     selectedMenuItem--;
                     upPressed = false;
@@ -188,7 +215,7 @@ namespace MagnetBoy
                 {
                     backPressed = true;
                 }
-                else if (backPressed == true)
+                else if (backPressed == true && !fadingOut)
                 {
                     showPressButtonDialog = true;
                     GameInput.LockMostRecentPad = false;
@@ -203,16 +230,17 @@ namespace MagnetBoy
                 {
                     confirmPressed = true;
                 }
-                else if (confirmPressed == true)
+                else if (confirmPressed == true && !fadingOut)
                 {
                     confirmPressed = false;
 
                     switch (menuList[selectedMenuItem].text)
                     {
                         case "BEGIN":
-                            AudioFactory.stopSong();
+                            fadingOut = true;
+                            fadeTimeElapsed = 0;
+                            Game1.diamondWipe.Parameters["time"].SetValue(1.0f);
                             AudioFactory.playSFX("sfx/menu");
-                            GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Level, Game1.levelFileNames[Game1.CurrentLevel]);
                             break;
                         case "CONTINUE":
                             AudioFactory.playSFX("sfx/menu");
@@ -286,9 +314,25 @@ namespace MagnetBoy
             Game1.grayCheckerBoard.Parameters["slideX"].SetValue(checkerBoardSlide.X);
             Game1.grayCheckerBoard.Parameters["slideY"].SetValue(checkerBoardSlide.Y);
 
-            //Game1.diamondWipe.Parameters["time"].SetValue(Math.Abs(GameInput.P1MouseDirectionNormal.X));
-            Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 1.0f : (float)(timePassed/1000));
-        }
+            // if the last frame time hasn't been set, set it now
+            if (magnetWopleyLastUpdateTime == 0)
+            {
+                magnetWopleyLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            // update the current frame if needed
+            if (currentTime.TotalGameTime.TotalMilliseconds - magnetWopleyLastUpdateTime > AnimationFactory.getAnimationSpeed(magnetWopleyAnim))
+            {
+                magnetWopleyLastUpdateTime = currentTime.TotalGameTime.TotalMilliseconds;
+
+                magnetWopleyFrame = (magnetWopleyFrame + 1) % AnimationFactory.getAnimationFrameCount(magnetWopleyAnim);
+            }
+
+            if (!fadingOut)
+            {
+                Game1.diamondWipe.Parameters["time"].SetValue(timePassed > 1000 ? 1.0f : (float)(timePassed / 1000));
+            }
+        } //doUpdate()
 
         public override void draw(SpriteBatch spriteBatch)
         {
@@ -299,6 +343,9 @@ namespace MagnetBoy
             spriteBatch.End();
 
             spriteBatch.Begin();
+            spriteBatch.Draw(Game1.globalWhitePixel, new Vector2(144, 48), null, Color.LightBlue, 0.0f, Vector2.Zero, new Vector2(448, 240), SpriteEffects.None, AnimationFactory.DepthLayer3);
+            AnimationFactory.drawAnimationFrame(spriteBatch, magnetWopleyAnim, magnetWopleyFrame, magnetWopleyPosition, AnimationFactory.DepthLayer0);
+
             if (!showPressButtonDialog)
             {
                 for (int i = 0; i < menuList.Count; i++)
