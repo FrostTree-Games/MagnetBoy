@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+  <Asset Type="MagnetBoyDataTypes.Animation[]">
+    <Item>
+      <name>titleScreenGrass</name>
+      <sheetName>titleScreenGrass</sheetName>
+      <sheet Type="System.String">whateverMan</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>16</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>12</frameCount>
+      <frameSpeed>1</frameSpeed>
+    </Item>
+
+  </Asset>
+</XnaContent>
