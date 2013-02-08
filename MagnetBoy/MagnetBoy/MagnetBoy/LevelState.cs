@@ -200,13 +200,22 @@ namespace MagnetBoy
             switch (Game1.CurrentLevel)
             {
                 case 0:
+                    parallax1 = null;
+                    parallax2 = "cityParallax2";
+                    parallax3 = "cityParallax3";
                     levelSong = "songs/song0";
                     break;
                 case 1:
                     levelSong = "songs/song1";
+                    parallax1 = null;
+                    parallax2 = "cityParallax2";
+                    parallax3 = "cityParallax3";
                     break;
                 case 2:
                     levelSong = "songs/song2";
+                    parallax1 = "sewerParallax3";
+                    parallax2 = "sewerParallax2";
+                    parallax3 = "sewerParallax1";
                     break;
                 case 3:
                     levelSong = "songs/song3";

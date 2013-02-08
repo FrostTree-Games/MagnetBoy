@@ -272,6 +272,8 @@ namespace MagnetBoy
             aFac.pushSheet("factoryParallaxSheet");
             aFac.pushSheet("wopleyShieldSheet");
             aFac.pushSheet("titleScreenGrass");
+            aFac.pushSheet("sewerParallaxSheet");
+            aFac.pushSheet("cityParallaxSheet");
 
             aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
@@ -304,6 +306,8 @@ namespace MagnetBoy
             aFac.pushAnimation("factoryParallax");
             aFac.pushAnimation("wopleyShield");
             aFac.pushAnimation("titleScreenGrassAnims");
+            aFac.pushAnimation("sewerParallax");
+            aFac.pushAnimation("cityParallax");
 
             AudioFactory.pushNewSong("songs/song0");
             AudioFactory.pushNewSong("songs/song1");
