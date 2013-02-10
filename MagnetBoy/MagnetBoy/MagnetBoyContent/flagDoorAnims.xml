@@ -13,11 +13,60 @@
       <frameSpeed>25</frameSpeed>
     </Item>
 
+
+
     <Item>
-      <name>flagDoorSymbol</name>
+      <name>flagDoorSymbol1</name>
       <sheetName>flagDoorSheet</sheetName>
       <sheet Type="System.String">whatever</sheet>
       <initalX>32</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>5</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    
+    <Item>
+      <name>flagDoorSymbol2</name>
+      <sheetName>flagDoorSheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>64</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>5</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>flagDoorSymbol3</name>
+      <sheetName>flagDoorSheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>96</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>5</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+
+    <Item>
+      <name>flagDoorSymbol4</name>
+      <sheetName>flagDoorSheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>128</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>5</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+    <Item>
+      <name>flagDoorSymbol5</name>
+      <sheetName>flagDoorSheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>160</initalX>
       <initalY>0</initalY>
       <frameWidth>32</frameWidth>
       <frameHeight>32</frameHeight>
