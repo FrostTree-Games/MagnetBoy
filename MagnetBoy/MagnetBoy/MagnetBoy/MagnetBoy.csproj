@@ -139,6 +139,7 @@
     <Compile Include="climbChaser.cs" />
     <Compile Include="climbWall.cs" />
     <Compile Include="ConveyerBelt.cs" />
+    <Compile Include="CreditsScreenState.cs" />
     <Compile Include="EndLevelFlag.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
