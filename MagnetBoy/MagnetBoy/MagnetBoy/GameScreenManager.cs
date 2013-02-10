@@ -82,6 +82,10 @@ namespace MagnetBoy
             {
                 currentNode = new SplashScreenState(manager);
             }
+            else if (newType == GameScreenType.Credits)
+            {
+                currentNode = new CreditsScreenState(manager);
+            }
             else if (newType == GameScreenType.Level && levelName != null)
             {
                 currentNode = new LevelState(manager, levelName);
