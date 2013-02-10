@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
   <Asset Type="MagnetBoyDataTypes.Animation[]">
+
     <Item>
-      <name>endLevelFlag</name>
+      <name>flagIdle</name>
       <sheetName>endLevelSheet</sheetName>
-      <sheet Type="System.String">whatever</sheet>
+      <sheet Type="System.String">asdfasdf</sheet>
       <initalX>0</initalX>
       <initalY>0</initalY>
-      <frameWidth>48</frameWidth>
-      <frameHeight>48</frameHeight>
-      <frameCount>5</frameCount>
+      <frameWidth>128</frameWidth>
+      <frameHeight>128</frameHeight>
+      <frameCount>30</frameCount>
       <frameSpeed>50</frameSpeed>
     </Item>
-    
 
+     <Item>
+      <name>flagDie</name>
+      <sheetName>endLevelSheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>129</initalY>
+      <frameWidth>128</frameWidth>
+      <frameHeight>127</frameHeight>
+      <frameCount>30</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
+
+
+     <Item>
+      <name>flagMagnetIdle</name>
+      <sheetName>endLevelSheet</sheetName>
+      <sheet Type="System.String">asdfasdf</sheet>
+      <initalX>0</initalX>
+      <initalY>256</initalY>
+      <frameWidth>128</frameWidth>
+      <frameHeight>128</frameHeight>
+      <frameCount>30</frameCount>
+      <frameSpeed>50</frameSpeed>
+    </Item>
 
   </Asset>
 </XnaContent>

@@ -498,20 +498,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="endLevelSheet.png">
-      <Name>endLevelSheet</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="endLevelAnims.xml">
-      <Name>endLevelAnims</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="guiComponentSheet.png">
       <Name>guiComponentSheet</Name>
       <Importer>TextureImporter</Importer>
@@ -708,6 +694,18 @@
     </Compile>
     <Compile Include="cityParallaxSheet.png">
       <Name>cityParallaxSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="endLevelAnims.xml">
+      <Name>endLevelAnims</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+    <Compile Include="endLevelSheet.png">
+      <Name>endLevelSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
