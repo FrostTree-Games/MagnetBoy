@@ -98,8 +98,7 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, "flagKey", 0, Position, new Vector2(32, 32), rotation, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
-            AnimationFactory.drawAnimationFrame(sb, "flagDoorSymbol", (int)color, Position, new Vector2(32, 32), rotation, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer1 + 0.01f);
+            AnimationFactory.drawAnimationFrame(sb, "flagKey", (int)color, Position, new Vector2(32, 32), rotation, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
         }
     }
 
@@ -127,12 +126,7 @@ namespace MagnetBoy
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, "flagLock", 0, Position, new Vector2(32, 32), 0.0f, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer3);
-
-            if (!LevelState.getFlag(color))
-            {
-                AnimationFactory.drawAnimationFrame(sb, "flagDoorSymbol", (int)color, Position, new Vector2(32, 32), 0.0f, LevelState.getFlagXNAColor(color), AnimationFactory.DepthLayer2);
-            }
+            AnimationFactory.drawAnimationFrame(sb, "flagLock", (int)color, Position, new Vector2(32, 32), 0.0f, Microsoft.Xna.Framework.Color.Lerp(Microsoft.Xna.Framework.Color.Black, LevelState.getFlagXNAColor(color), 0.5f), AnimationFactory.DepthLayer3);
         }
 
         public void open()
