@@ -67,6 +67,8 @@ namespace MagnetBoy
                             AudioFactory.playSFX("sfx/fanfare");
                             AudioFactory.stopSong();
 
+                            LevelState.showLevelCompleteText = true;
+
                             state = EndLevelFlagState.Spinning;
                             currentAnimation = "flagDie";
                             currentFrame = 0;

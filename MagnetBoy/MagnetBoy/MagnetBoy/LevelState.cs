@@ -69,6 +69,8 @@ namespace MagnetBoy
         private double fadingOutTimer = 0;
         private const double fadingOutDuration = 1000;
 
+        public static bool showLevelCompleteText = false;
+
         private string[] loadingText = {"L", "O", "A", "D", "I", "N", "G", ".", ".", "."};
         private double loadingAnimTimePassed;
         private const double loadingAnimTime = 2000;
@@ -151,6 +153,8 @@ namespace MagnetBoy
 
             paused = false;
             startButtonDown = false;
+
+            showLevelCompleteText = false;
 
             loadingAnimTimePassed = 0;
             magnetWopleyFrame = 0;
@@ -846,6 +850,11 @@ namespace MagnetBoy
                     spriteBatch.DrawString(Game1.gameFontText, tagLineA, posA + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
                     spriteBatch.DrawString(Game1.gameFontText, tagLineB, posB + new Vector2(-1 * i, i), (i == 0) ? Color.White : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? AnimationFactory.DepthLayer0 : AnimationFactory.DepthLayer3);
                 }
+            }
+
+            if (showLevelCompleteText)
+            {
+                MBQG.drawBlackBorderText(spriteBatch, new Vector2(360 - Game1.gameFontText.MeasureString("LEVEL COMPLETE").X/2, 240), Color.White, "LEVEL COMPLETE",  AnimationFactory.DepthLayer0);
             }
             spriteBatch.End();
 

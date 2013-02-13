@@ -16,6 +16,15 @@ namespace MagnetBoy
         private static string rowMid = "gui_angledBoxB";
         private static string rowBot = "gui_angledBoxC";
 
+        public static void drawBlackBorderText(SpriteBatch sb, Vector2 position, Color clr, string text, float depth)
+        {
+            for (int i = -1; i < 2; i++)
+            {
+                sb.DrawString(Game1.gameFontText, text, position + new Vector2(i, i), (i == 0) ? clr : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? depth: depth + 0.1f);
+                sb.DrawString(Game1.gameFontText, text, position + new Vector2(-1 * i, i), (i == 0) ? clr : Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, (i == 0) ? depth: depth + 0.1f);
+            }
+        }
+
         public static void drawGUIBox(SpriteBatch sb, Vector2 topLeftCorner, int tilesWide, int tilesHigh, Color clr, float depth)
         {
             for (int i = 0; i < tilesWide; i++)
