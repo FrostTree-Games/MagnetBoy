@@ -67,7 +67,7 @@ namespace MagnetBoy
             }
             else
             {
-                currentNode = new TitleScreenMenuState(manager, false, false);
+                currentNode = new CreditsScreenState(manager);
             }
         }
 
