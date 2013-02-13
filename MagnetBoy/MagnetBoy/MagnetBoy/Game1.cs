@@ -110,6 +110,8 @@ namespace MagnetBoy
         public static Texture2D globalTestPositive = null;
         public static Texture2D globalTestNegative = null;
 
+        public static Texture2D globalCreditsList = null;
+
         public static Texture2D globalBlackPixel = null;
         public static Texture2D globalWhitePixel = null;
 
@@ -211,6 +213,7 @@ namespace MagnetBoy
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
             globalBlackPixel = this.Content.Load<Texture2D>("1x1BlackPixel");
             globalWhitePixel = this.Content.Load<Texture2D>("1x1WhitePixel");
+            globalCreditsList = this.Content.Load<Texture2D>("credits");
 
             tintRedEffect = this.Content.Load<Effect>("TintRed");
             tintRedEffect.CurrentTechnique = tintRedEffect.Techniques["Technique1"];
@@ -222,7 +225,6 @@ namespace MagnetBoy
             diamondWipe.CurrentTechnique = diamondWipe.Techniques["Technique1"];
 
             assetsLoaded = false;
-            //loadGameAssets();
 
             screenManager = new GameScreenManager(this.Content);
             GameScreenManager.switchScreens(GameScreenManager.GameScreenType.SplashScreen, null);
@@ -241,7 +243,6 @@ namespace MagnetBoy
 
             AnimationFactory aFac = new AnimationFactory(null);
 
-            aFac.pushSheet("actor3"); // texture stolen from http://www.spriters-resource.com/community/archive/index.php?thread-19817.html
             aFac.pushSheet("playerSheet");
             aFac.pushSheet("conveyer");
             aFac.pushSheet("spikes");
@@ -275,7 +276,6 @@ namespace MagnetBoy
             aFac.pushSheet("sewerParallaxSheet");
             aFac.pushSheet("cityParallaxSheet");
 
-            aFac.pushAnimation("actor3Anims");
             aFac.pushAnimation("playerAnims");
             aFac.pushAnimation("conveyerAnims");
             aFac.pushAnimation("spikesAnim");
