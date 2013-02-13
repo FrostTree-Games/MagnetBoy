@@ -23,7 +23,52 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt3Utqg2AARlH3v5XOakdtZtlYG2ghA39JUh93cC584wjHqBCC12marift42fz795PPA4b+/zFZ323c/jr4F3ufD5P+Pzq5gWf+3NZ57Z0LeHTiU87Pu34tOPTjk87Pu34tOPTjk87Pu34tOPTjk87Pu34tOPTbg+feTA939Y+XLZtKx8u++T+0+5VH9+RY3rFxzXsuEY+bysbPZ89Mz3WyGcLAz7/j087Pu34tOPTjk87Pu34tOPTjk+7kc/e/6vUY/l9oR2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdnza8WnHpx2fdks+t/fzrL0/2I7bvOBjZs/vG7ViV+w=
+   eJztnc1u2zAQBvX+j9L0B2h6antqbnmqRiiKqIJI7fJn92M9A8zFiCyKY9GK4sAv27a9JPl8MmscSJ/Rc4W50kdb+mhLH23poy19tKWPtvTRlj7a0kdb+mhLH22v+vzAotl9vm1Q4/tGH3UiG9GnjahG9GknotEKfT4bzGJ2oxX6ePm01Vt+Gby/mY2y+5TGtRp7oxnX4Zl9Vuny4c2nNz86tvm6rdunt8uvxv3+nWfPXO/bHMdp3W7lPr28Gn9un9vjfB7nzHKc5zaeRuf1rvW+RESfp6197Xre3l/zNc/Pv18j7Mf98/CYp0+pjfc8slI632b36XlvaVkPalj73LWZ0cjax/p6tXrcV8+2Vj3PN2K/PXNTWnvv+mCMx3P4rk/2WB9V+mhr7dPSSR3vOCM6eMfv7bMSj9RnRWb26R2TVUufVbkbf/T50LLPuz7/O719Zq6J9PmX1fpYjyXr8R5HQZ/y4/TRY/Z8qFnqo0r2fNGnTvZ8qfQpdcoe76NJH31XWt9WZ9T5A/PpXd8gBvroQx99vH1oFAt99PH2oVEsLX1oFEdrHzrF0dOHVvMZ1QfnvH7po92JPtqt6KNhrQt98qWPrjXokzf3FjL6gJ0RfWAerX0gBm8fiOM89/z9RwtPH4iHPrpcvbfw+Tcd6KNL6ZqZPvnUfqe56gMxWO4D0CcW730xz/Xb6HtySJ/VVVjfzmOCP6j0gWtq6xvkQx9t6KON9/oNYqGPNnd9aJSLpQ+N8rD2oVMO3j60iqWnz8jvaMD774Hg873a0kdb+mhLH23poy19NOX/s7Slj7b00ZY+2tJHW/poSx9tr/pk37fF9/vX5z6I6Pc35T0pDg==
+  </data>
+ </layer>
+ <objectgroup name="etc" width="104" height="104">
+  <object name="walkMarker" x="1248" y="576" width="32" height="32"/>
+  <object name="walkMarker" x="1504" y="576" width="32" height="32"/>
+  <object name="goomba" x="1376" y="512" width="32" height="32"/>
+  <object name="spikes_up" x="1376" y="704" width="32" height="32"/>
+  <object name="lavaDumper" x="1280" y="640" width="32" height="32"/>
+  <object name="lavaDumper" x="1440" y="640" width="32" height="32"/>
+  <object name="walkMarker" x="1888" y="608" width="32" height="32"/>
+  <object name="walkMarker" x="1632" y="608" width="32" height="32"/>
+  <object name="goomba" x="1696" y="576" width="32" height="32"/>
+  <object name="goomba" x="1824" y="576" width="32" height="32"/>
+  <object name="shieldDudeLeft" x="992" y="832" width="32" height="32"/>
+  <object name="spikes_up" x="1760" y="832" width="32" height="32"/>
+  <object name="spikes_up" x="1792" y="832" width="32" height="32"/>
+  <object name="flagDoor" x="1712" y="1088" width="32" height="32">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object name="flagLock" x="1792" y="1152" width="32" height="32">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object name="flagKey" x="2016" y="1024" width="32" height="32">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object name="heartItem" x="416" y="1152" width="32" height="32"/>
+  <object name="shieldDudeRight" x="608" y="1152" width="32" height="32"/>
+  <object name="goomba" x="992" y="1152" width="32" height="32"/>
+  <object name="walkMarker" x="944" y="1152" width="32" height="32"/>
+  <object name="walkMarker" x="1040" y="1152" width="32" height="32"/>
+  <object name="angrySaw" x="1408" y="1152" width="32" height="32"/>
+  <object name="walkMarker" x="1344" y="1152" width="32" height="32"/>
+  <object name="walkMarker" x="1504" y="1152" width="32" height="32"/>
+  <object name="player" x="416" y="736" width="32" height="32"/>
+  <object name="endLevelFlag" x="3072" y="2656" width="128" height="128"/>
+ </objectgroup>
+ <layer name="criticalPath_DELETEMELATER" width="104" height="104" opacity="0.33">
+  <data encoding="base64" compression="zlib">
+   eJzt10EOgjAQBVDvf1RO4cKFSkoKdMAPvpeYGLVMmV8LPB4AAAAAAAAAfVPjxXFa/e695uM5zmh/R7L9d2k9k8+3tH4szSdtHZ1l7zlt7c/o/rZmnlfOp3rNtcb18tl73LXjr57Pls8/v1+ba8Xe07r3Wzv+rvlUrPsqI/fme54Dqq9hR9RNuuYm1CeXfLLJJ5t8ssnnLeWeZD4nXkaeRStqp62NNNPs/Zk9kkPfPJ/RY535HFpt67yXzqXyPKvzSVW5XpZ+38pvS+3enO6ez9Vryie75uj/UD6/r3lV8slUsSfccT9JoEfZZJNNPtnkk00+2eQDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPfxBNZZLMo=
   </data>
  </layer>
 </map>
