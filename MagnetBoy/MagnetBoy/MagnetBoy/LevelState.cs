@@ -283,7 +283,14 @@ namespace MagnetBoy
                             levelEntities.Add(new Lava(obj.Bounds.X, obj.Bounds.Y));
                             break;
                         case "lavaDumper":
-                            levelEntities.Add(new LavaDumper(obj.Bounds.X, obj.Bounds.Y));
+                            if (obj.Properties.ContainsKey("interval"))
+                            {
+                                levelEntities.Add(new LavaDumper(obj.Bounds.X, obj.Bounds.Y, (double)(obj.Properties["interval"].AsSingle)));
+                            }
+                            else
+                            {
+                                levelEntities.Add(new LavaDumper(obj.Bounds.X, obj.Bounds.Y));
+                            }
                             break;
                         case "endLevelFlag":
                             levelEntities.Add(new EndLevelFlag(obj.Bounds.X, obj.Bounds.Y));

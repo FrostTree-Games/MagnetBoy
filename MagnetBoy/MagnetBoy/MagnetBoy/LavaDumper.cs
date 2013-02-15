@@ -16,10 +16,31 @@ namespace MagnetBoy
         private double interval = 2000; //milliseconds
         private double timeSinceLastInterval = 0;
 
+        public double Interval
+        {
+            get
+            {
+                return interval;
+            }
+
+            set
+            {
+                interval = value;
+            }
+        }
+
         public LavaDumper(float initalX, float initalY)
         {
             horizontal_pos = initalX;
             vertical_pos = initalY;
+        }
+
+        public LavaDumper(float initalX, float initalY, double interval)
+        {
+            horizontal_pos = initalX;
+            vertical_pos = initalY;
+
+            this.interval = interval;
         }
 
         public override void update(GameTime currentTime)
