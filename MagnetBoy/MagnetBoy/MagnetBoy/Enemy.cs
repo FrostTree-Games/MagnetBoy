@@ -70,7 +70,7 @@ namespace MagnetBoy
                 }
             }
 
-            if(deathAnimationSet == true)
+            if(deathAnimationSet == false)
             {
                 foreach (Entity en in Entity.globalEntityList)
                 {
