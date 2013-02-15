@@ -23,7 +23,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztnc1u2zAQBvX+j9L0B2h6antqbnmqRiiKqIJI7fJn92M9A8zFiCyKY9GK4sAv27a9JPl8MmscSJ/Rc4W50kdb+mhLH23poy19tKWPtvTRlj7a0kdb+mhLH22v+vzAotl9vm1Q4/tGH3UiG9GnjahG9GknotEKfT4bzGJ2oxX6ePm01Vt+Gby/mY2y+5TGtRp7oxnX4Zl9Vuny4c2nNz86tvm6rdunt8uvxv3+nWfPXO/bHMdp3W7lPr28Gn9un9vjfB7nzHKc5zaeRuf1rvW+RESfp6197Xre3l/zNc/Pv18j7Mf98/CYp0+pjfc8slI632b36XlvaVkPalj73LWZ0cjax/p6tXrcV8+2Vj3PN2K/PXNTWnvv+mCMx3P4rk/2WB9V+mhr7dPSSR3vOCM6eMfv7bMSj9RnRWb26R2TVUufVbkbf/T50LLPuz7/O719Zq6J9PmX1fpYjyXr8R5HQZ/y4/TRY/Z8qFnqo0r2fNGnTvZ8qfQpdcoe76NJH31XWt9WZ9T5A/PpXd8gBvroQx99vH1oFAt99PH2oVEsLX1oFEdrHzrF0dOHVvMZ1QfnvH7po92JPtqt6KNhrQt98qWPrjXokzf3FjL6gJ0RfWAerX0gBm8fiOM89/z9RwtPH4iHPrpcvbfw+Tcd6KNL6ZqZPvnUfqe56gMxWO4D0CcW730xz/Xb6HtySJ/VVVjfzmOCP6j0gWtq6xvkQx9t6KON9/oNYqGPNnd9aJSLpQ+N8rD2oVMO3j60iqWnz8jvaMD774Hg873a0kdb+mhLH23poy19NOX/s7Slj7b00ZY+2tJHW/poSx9tr/pk37fF9/vX5z6I6Pc35T0pDg==
+   eJztm0tu3DAQRHX/o8T5ALFXSVbxzqeKtRhYUUSyv+xiVAW8zXhINvtRnIFhv27b9lrE84mqOgj9RPeK1EI/2NAPNvSDDf1gQz/Y0A829IMN/WBDP9jQDzb0g82Vn5+kSbWfl43p5cdGP+iZ6Yh+bJnliH7smeFoBT9fBRzzZfDeb4G1ZTtawQ96Mh1V+2nVtVp2Rxnfwyv9rOLl0ztP73xWjPm+Yfvp9dzr5bexpkefNb3exxzrlI5D95OZN+H79t4e+3nsmWSfZzcaR+f7zvp7iSg/T1vO/fS8fZz5Hue19+9w+75/HV7T+Gm50T5H0rSetwg/WZ8flvugF6mfkZsMR1I/0vMq5biWZ6wUzXwR63p607p7R37IHI7P8MhPda13hX6wkfqxeEKPts4ZHrT1a/2slDv5WTGZfrw1SZH4WTWj+mc/D5Y1R37+93j9ZN6J9PN3VvMj3UvV6x6iQj/t1+kHL9n9QKPlBzXV/aKffqr7heKn5am63rtBP/hU32+92jRjpWtp64pM1PMzM3fyczW/xc9sR9b06pU6H/UoO/TTfh/KXmf5OY+V9Cbrfqt6HqzR+rHsBcVPxH2FcM9F+rH21eNolvtZz53Wj/W8aeuIOO+W+T11ZTiz+Ik8a9r9Z5+TyPoinFn9aPve+1k0EUGqyePnqobs/q/ox1NXlB+S44h+sB3RD7Yr+sGg54V+6qEfbOgHG/qp77klEX5G896ViFj9aOe2zJPVl1nzRkTrxzP/eZ6MXnrripzXm3MNWf+/0Jon+rx764qe1xuNn6i1zq9px0f1cMa83sz001qfuc7VWfH8/Zvl3PXuPNRnImNe6VpWP5Z6R59JqJ8pMxy15rb40dY7ep9nz9IeosyrXevKT0TdEfVZx3lry5rXso7GD8pZRSZ6r5rvb9V7vyP0gw3C/cb8G4uf4zi6yU/vfhuNo5v8WP08xtJNbjx+HuPpJi89P+x3fegHOyM/dFQbiR86qovUDz3VROuHrual9/sDggf9YEM/2NAPNvSDDf1gQz+Y8Ps1NvSDDf1gQz/Y0A829IMN/WBDP9ic/RBC9PwBvqZxRQ==
   </data>
  </layer>
  <objectgroup name="etc" width="104" height="104">
@@ -31,12 +31,20 @@
   <object name="walkMarker" x="1504" y="576" width="32" height="32"/>
   <object name="goomba" x="1376" y="512" width="32" height="32"/>
   <object name="spikes_up" x="1376" y="704" width="32" height="32"/>
-  <object name="lavaDumper" x="1280" y="640" width="32" height="32"/>
-  <object name="lavaDumper" x="1440" y="640" width="32" height="32"/>
-  <object name="walkMarker" x="1888" y="608" width="32" height="32"/>
-  <object name="walkMarker" x="1632" y="608" width="32" height="32"/>
-  <object name="goomba" x="1696" y="576" width="32" height="32"/>
-  <object name="goomba" x="1824" y="576" width="32" height="32"/>
+  <object name="lavaDumper" x="1280" y="640" width="32" height="32">
+   <properties>
+    <property name="interval" value="1900"/>
+   </properties>
+  </object>
+  <object name="lavaDumper" x="1440" y="640" width="32" height="32">
+   <properties>
+    <property name="interval" value="1400"/>
+   </properties>
+  </object>
+  <object name="walkMarker" x="1888" y="576" width="32" height="32"/>
+  <object name="walkMarker" x="1632" y="576" width="32" height="32"/>
+  <object name="goomba" x="1696" y="544" width="32" height="32"/>
+  <object name="goomba" x="1824" y="544" width="32" height="32"/>
   <object name="shieldDudeLeft" x="992" y="832" width="32" height="32"/>
   <object name="spikes_up" x="1760" y="832" width="32" height="32"/>
   <object name="spikes_up" x="1792" y="832" width="32" height="32"/>
@@ -45,7 +53,7 @@
     <property name="color" value="yellow"/>
    </properties>
   </object>
-  <object name="flagLock" x="1792" y="1152" width="32" height="32">
+  <object name="flagLock" x="1744" y="1152" width="32" height="32">
    <properties>
     <property name="color" value="yellow"/>
    </properties>
@@ -63,12 +71,91 @@
   <object name="angrySaw" x="1408" y="1152" width="32" height="32"/>
   <object name="walkMarker" x="1344" y="1152" width="32" height="32"/>
   <object name="walkMarker" x="1504" y="1152" width="32" height="32"/>
-  <object name="player" x="416" y="736" width="32" height="32"/>
   <object name="endLevelFlag" x="3072" y="2656" width="128" height="128"/>
+  <object name="spikes_up" x="640" y="1696" width="32" height="32"/>
+  <object name="spikes_up" x="672" y="1696" width="32" height="32"/>
+  <object name="spikes_up" x="704" y="1696" width="32" height="32"/>
+  <object name="lavaDumper" x="656" y="1408" width="32" height="32">
+   <properties>
+    <property name="interval" value="1500"/>
+   </properties>
+  </object>
+  <object name="flagDoor" x="1664" y="1664" width="32" height="32">
+   <properties>
+    <property name="color" value="purple"/>
+   </properties>
+  </object>
+  <object name="flagLock" x="1632" y="1728" width="32" height="32">
+   <properties>
+    <property name="color" value="purple"/>
+   </properties>
+  </object>
+  <object name="flagKey" x="1760" y="1440" width="32" height="32">
+   <properties>
+    <property name="color" value="purple"/>
+   </properties>
+  </object>
+  <object name="shieldDudeLeft" x="592" y="1504" width="32" height="32"/>
+  <object name="shieldDudeLeft" x="2144" y="1600" width="32" height="32"/>
+  <object name="flagDoor" x="2224" y="1472" width="32" height="32">
+   <properties>
+    <property name="color" value="green"/>
+   </properties>
+  </object>
+  <object name="flagLock" x="1856" y="1728" width="32" height="32">
+   <properties>
+    <property name="color" value="green"/>
+   </properties>
+  </object>
+  <object name="shieldDudeRight" x="1920" y="1568" width="32" height="32"/>
+  <object name="flagKey" x="2095" y="1420" width="32" height="32">
+   <properties>
+    <property name="color" value="green"/>
+   </properties>
+  </object>
+  <object name="spikes_up" x="2368" y="1600" width="32" height="32"/>
+  <object name="spikes_up" x="2336" y="1600" width="32" height="32"/>
+  <object name="spikes_up" x="2528" y="1632" width="32" height="32"/>
+  <object name="spikes_up" x="2496" y="1632" width="32" height="32"/>
+  <object name="goomba" x="2432" y="1600" width="32" height="32"/>
+  <object name="walkMarker" x="2400" y="1600" width="32" height="32"/>
+  <object name="walkMarker" x="2480" y="1600" width="32" height="32"/>
+  <object name="goomba" x="2592" y="1632" width="32" height="32"/>
+  <object name="walkMarker" x="2640" y="1632" width="32" height="32"/>
+  <object name="walkMarker" x="2560" y="1632" width="32" height="32"/>
+  <object name="player" x="2682" y="2226" width="32" height="32"/>
+  <object name="lavaDumper" x="2432" y="2048" width="32" height="32">
+   <properties>
+    <property name="interval" value="2367"/>
+   </properties>
+  </object>
+  <object name="lavaDumper" x="2352" y="2048" width="32" height="32">
+   <properties>
+    <property name="interval" value="1500"/>
+   </properties>
+  </object>
+  <object name="lavaDumper" x="2272" y="2048" width="32" height="32">
+   <properties>
+    <property name="interval" value="1283"/>
+   </properties>
+  </object>
+  <object name="walkMarker" x="1760" y="2176" width="32" height="32"/>
+  <object name="angrySaw" x="1664" y="2176" width="32" height="32"/>
+  <object name="walkMarker" x="1536" y="2176" width="32" height="32"/>
+  <object name="wallEntity" x="1469" y="2272" width="32" height="32"/>
+  <object name="wallEntity" x="1533" y="2208" width="32" height="32"/>
+  <object name="wallEntity" x="1501" y="2239" width="32" height="32"/>
+  <object name="wallEntity" x="1437" y="2304" width="32" height="32"/>
+  <object name="wallEntity" x="1888" y="2304" width="32" height="32"/>
+  <object name="wallEntity" x="1824" y="2240" width="32" height="32"/>
+  <object name="wallEntity" x="1792" y="2208" width="32" height="32"/>
+  <object name="wallEntity" x="1856" y="2272" width="32" height="32"/>
+  <object name="shieldDudeRight" x="864" y="2144" width="32" height="32"/>
+  <object name="shieldDudeRight" x="864" y="2048" width="32" height="32"/>
  </objectgroup>
  <layer name="criticalPath_DELETEMELATER" width="104" height="104" opacity="0.33">
   <data encoding="base64" compression="zlib">
-   eJzt10EOgjAQBVDvf1RO4cKFSkoKdMAPvpeYGLVMmV8LPB4AAAAAAAAAfVPjxXFa/e695uM5zmh/R7L9d2k9k8+3tH4szSdtHZ1l7zlt7c/o/rZmnlfOp3rNtcb18tl73LXjr57Pls8/v1+ba8Xe07r3Wzv+rvlUrPsqI/fme54Dqq9hR9RNuuYm1CeXfLLJJ5t8ssnnLeWeZD4nXkaeRStqp62NNNPs/Zk9kkPfPJ/RY535HFpt67yXzqXyPKvzSVW5XpZ+38pvS+3enO6ez9Vryie75uj/UD6/r3lV8slUsSfccT9JoEfZZJNNPtnkk00+2eQDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPfxBNZZLMo=
+   eJzt2VuOgzAQRNHsf6msYj7mYzQWhra72pTJPVKkKPELFzEQfz4AAAAAAAAAAAAAcO84eaHO2Xzfvdr6qJOd30y2385tzsjnP7f56I3H7TxaZfaYRucnu75FxrlDPtlr+Ug/kc8i30XKvSkfZfmRXBXnwdm9X7T+W/NRnPcqmXvzmbVDeQ2rat/pmuvQP3yRjzfy8UY+3sjnj8s9STsm/Mo8iyr6djs33BzN+5VzRA732nyyba16Dq0wOu7esaift8/eZ9tyozxfeuXP8hvp+25Mb89n9z7Jx7vP7O+QfJ7vc1fk40mxJrxxPXHAHHkjG2+75POta+MuxziaT7Sse96RMTlc72f+u4iWbetd/aexWjSfaJ2qe7rZOZ8p2xtHm9sKFflkKfLpzW/0XLhqd3Q8GdHfQqSOaszZfNo6VeuTQz6Kz0cp86nknE/lvcHVupRpR21VPqvvxWbHNNNOpafmx83sPJDPGsr7dPW44Mvx2oAY8vFGPt7Ixxv5eCMfb+TjjXy8kY838vFGPnkr90icVByr6n+uSF3F2Cv2alXzcDTvZ9uI1Btpf2QM2YyU+VQc21UbVXsDvXpP7PGp84mWi5R9cu1VX1Ou1oIV+wuza3jm+508uZ+TXUfYm6rFPHojH2/kAwAAAAAAAAAAAAAAAAAAAADYxQ+5EEkf
   </data>
  </layer>
 </map>
