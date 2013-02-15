@@ -12,9 +12,17 @@ namespace MagnetBoy
 {
     class HealthItem : Entity
     {
+        private enum CheckPointState
+        {
+            Untouched,
+            Touched
+        }
+
         protected string currentAnimation = null;
         protected int currentFrame = 0;
         protected double lastFrameIncrement = 0;
+
+        private CheckPointState state;
 
         public HealthItem(float initialx, float initialy)
         {
@@ -25,8 +33,12 @@ namespace MagnetBoy
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
-            currentAnimation = "heartIdle";
+            currentFrame = 0;
+            lastFrameIncrement = 0;
+            currentAnimation = "heartAnimation";
             removeFromGame = false;
+
+            state = CheckPointState.Untouched;
         }
 
         public override void update(GameTime currentTime)
@@ -43,23 +55,35 @@ namespace MagnetBoy
             {
                 if (en is Player && hitTest(en))
                 {
-                    removeFromGame = true;
-                    if (LevelState.currentPlayerHealth < 5 && LevelState.currentPlayerHealth > 0)
+                    if (state == CheckPointState.Untouched)
                     {
-                        LevelState.currentPlayerHealth = LevelState.currentPlayerHealth + 1;
+                        LevelState.currentPlayerHealth = LevelState.maxPlayerHealth;
 
-                        if (LevelState.currentPlayerHealth > LevelState.maxPlayerHealth)
+                        for (int i = 0; i < 12; i++)
                         {
-                            LevelState.currentPlayerHealth = LevelState.maxPlayerHealth;
+                            LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.ColouredSpark, CenterPosition, Vector2.Zero, (float)(i * Math.PI / 6.0), 0.0f, Color.Red);
                         }
-                    }
 
-                    for (int i = 0; i < 12; i++)
-                    {
-                        LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.ColouredSpark, CenterPosition, Vector2.Zero, (float)(i * Math.PI / 6.0), 0.0f, Color.Red);
-                    }
+                        AudioFactory.playSFX("sfx/getHealth");
 
-                    AudioFactory.playSFX("sfx/getHealth");
+                        LevelState.checkPointTouched = true;
+                        LevelState.respawnPosition = Position;
+
+                        state = CheckPointState.Touched;
+                        currentAnimation = "heartEmpty";
+                    }
+                }
+            }
+
+            if (state == CheckPointState.Touched)
+            {
+                if (LevelState.respawnPosition != Position)
+                {
+                    currentAnimation = "heartAnimation";
+                    currentFrame = 0;
+                    lastFrameIncrement = 0;
+
+                    state = CheckPointState.Untouched;
                 }
             }
         }

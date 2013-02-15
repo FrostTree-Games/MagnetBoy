@@ -88,6 +88,9 @@ namespace MagnetBoy
 
         private string levelSong = "songs/introTheme";
 
+        public static bool checkPointTouched = false;
+        public static Vector2 respawnPosition;
+
         public static Map CurrentLevel
         {
             get
@@ -245,7 +248,14 @@ namespace MagnetBoy
                     switch (obj.Name)
                     {
                         case "player":
-                            en = new Player(obj.Bounds.X, obj.Bounds.Y);
+                            if (checkPointTouched == false)
+                            {
+                                en = new Player(obj.Bounds.X, obj.Bounds.Y);
+                            }
+                            else
+                            {
+                                en = new Player(respawnPosition.X, respawnPosition.Y);
+                            }
                             levelEntities.Add(en);
                             levelCamera.setNewFocus(ref en);
                             break;
@@ -553,6 +563,7 @@ namespace MagnetBoy
                             break;
                         case 1:
                             paused = false;
+                            checkPointTouched = false;
                             MediaPlayer.Volume = 1.0f;
                             AudioFactory.playSFX("sfx/menuOpen");
                             GameScreenManager.switchScreens(GameScreenManager.GameScreenType.Menu, "TitleScreenMenu_fromPause");
