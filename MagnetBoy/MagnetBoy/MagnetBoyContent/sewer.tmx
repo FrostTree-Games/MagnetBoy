@@ -23,7 +23,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="etc" width="104" height="104">
@@ -36,7 +36,7 @@
     <property name="interval" value="1900"/>
    </properties>
   </object>
-  <object name="lavaDumper" x="1440" y="640" width="32" height="32">
+  <object name="lavaDumper" x="1456" y="640" width="32" height="32">
    <properties>
     <property name="interval" value="1400"/>
    </properties>
@@ -96,7 +96,7 @@
    </properties>
   </object>
   <object name="shieldDudeLeft" x="592" y="1504" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="2144" y="1600" width="32" height="32"/>
+  <object name="shieldDudeLeft" x="2128" y="1600" width="32" height="32"/>
   <object name="flagDoor" x="2224" y="1472" width="32" height="32">
    <properties>
     <property name="color" value="green"/>
@@ -123,7 +123,6 @@
   <object name="goomba" x="2592" y="1632" width="32" height="32"/>
   <object name="walkMarker" x="2640" y="1632" width="32" height="32"/>
   <object name="walkMarker" x="2560" y="1632" width="32" height="32"/>
-  <object name="player" x="2682" y="2226" width="32" height="32"/>
   <object name="lavaDumper" x="2432" y="2048" width="32" height="32">
    <properties>
     <property name="interval" value="2367"/>
@@ -152,10 +151,45 @@
   <object name="wallEntity" x="1856" y="2272" width="32" height="32"/>
   <object name="shieldDudeRight" x="864" y="2144" width="32" height="32"/>
   <object name="shieldDudeRight" x="864" y="2048" width="32" height="32"/>
+  <object name="flagDoor" x="1328" y="2720" width="32" height="32">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object name="flagLock" x="1296" y="2784" width="32" height="32">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object name="flagLock" x="1408" y="2624" width="32" height="32">
+   <properties>
+    <property name="color" value="red"/>
+   </properties>
+  </object>
+  <object name="flagDoor" x="1120" y="2496" width="32" height="32">
+   <properties>
+    <property name="color" value="red"/>
+   </properties>
+  </object>
+  <object name="flagKey" x="1072" y="2528" width="32" height="32">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object name="flagKey" x="1600" y="2528" width="32" height="32">
+   <properties>
+    <property name="color" value="red"/>
+   </properties>
+  </object>
+  <object name="player" x="160" y="800" width="32" height="32"/>
+  <object name="goomba" x="1856" y="2496" width="32" height="32"/>
+  <object name="walkMarker" x="1936" y="2496" width="32" height="32"/>
+  <object name="walkMarker" x="1776" y="2496" width="32" height="32"/>
+  <object name="lolrus" x="2144" y="2784" width="32" height="32"/>
  </objectgroup>
  <layer name="criticalPath_DELETEMELATER" width="104" height="104" opacity="0.33">
   <data encoding="base64" compression="zlib">
-   eJzt2VuOgzAQRNHsf6msYj7mYzQWhra72pTJPVKkKPELFzEQfz4AAAAAAAAAAAAAcO84eaHO2Xzfvdr6qJOd30y2385tzsjnP7f56I3H7TxaZfaYRucnu75FxrlDPtlr+Ug/kc8i30XKvSkfZfmRXBXnwdm9X7T+W/NRnPcqmXvzmbVDeQ2rat/pmuvQP3yRjzfy8UY+3sjnj8s9STsm/Mo8iyr6djs33BzN+5VzRA732nyyba16Dq0wOu7esaift8/eZ9tyozxfeuXP8hvp+25Mb89n9z7Jx7vP7O+QfJ7vc1fk40mxJrxxPXHAHHkjG2+75POta+MuxziaT7Sse96RMTlc72f+u4iWbetd/aexWjSfaJ2qe7rZOZ8p2xtHm9sKFflkKfLpzW/0XLhqd3Q8GdHfQqSOaszZfNo6VeuTQz6Kz0cp86nknE/lvcHVupRpR21VPqvvxWbHNNNOpafmx83sPJDPGsr7dPW44Mvx2oAY8vFGPt7Ixxv5eCMfb+TjjXy8kY838vFGPnkr90icVByr6n+uSF3F2Cv2alXzcDTvZ9uI1Btpf2QM2YyU+VQc21UbVXsDvXpP7PGp84mWi5R9cu1VX1Ou1oIV+wuza3jm+508uZ+TXUfYm6rFPHojH2/kAwAAAAAAAAAAAAAAAAAAAADYxQ+5EEkf
+   eJztmVmOwyAQBXP/6+RWOcV8zEdmLANNL/BIqiRLkcPSULiN7ccDAAAAAAAAAAAAAAAAAGDM6+aAOu7me3R46oOPFXOHp3vU1jZ+/qM2H6141NZRJr1xeMc0Oz/ee9dMnCf48dyvvf1Yzln+s5T7JD+Z5WfWeUbu6a2l2bqKePxkrPss7vzM1M04IrFXtK90z1XoH3TBjzb40QY/2uDnjcqe5BoT/BJ5Fs3oW21tqHF9z7RyjvAw5uon2taq59AKZuNujSX7efvud7QtNTLXS6v8nb+Zvkcxfbqf0/vEj3af0esQP/v7PBX8aJKREz4xnyjAHGmDG21O8fOtufGUMc76sZZV922JSeF+73l3YS17rdd7p7Eaqx9rnao9nXfOPWVbcVy9raDCT5QMP635ta6FXruz8USwXguWOlkxR/1c61TlJwU/GednyfRTibKfyr1BLy9F2slmlZ/VezFvTJ52Ktk1P2p45wE/a8jcp2fHBboo3hvABn60wY82+NEGP9rgRxv8aIMfbfCjDX60wU+cld9IlKgYa9Z7LkvdjNgrvtVmzcPr8tvbhqXeTPszMUQdZfqpGFuvjapvA616O77xZfuxlrOU3Zl7s+8pvVyw4vuCN4dH/j+Jnd9zonmEb1O1MI/a4Ecb/GiDH20U98HsOd7s9hM5/w0+V47BOn8zfkb9nc4J10/LJ3769aJ5ZeRn1Jb3OrS0p5IjK979ZfiZicvrx+Jit6cqP9axZ+Btf3YN7PDkzVOe3BFtI7v9rPeOu8j2kzW2rOszY253+6l8tvDkyNn9R+b+YdSH4v4iwqpxfeLcAQAAAAAAAOzguTsAaPL8c4AeT8MB+8GRJlw/2uBBH9zs4weulgkk
   </data>
  </layer>
 </map>
