@@ -36,25 +36,6 @@ namespace MagnetBoy
 
         private const float magnetForceValue = 1.0f;
 
-        /*
-        public Player()
-        {
-            creation();
-
-            horizontal_pos = 0.0f;
-            vertical_pos = 0.0f;
-
-            velocity = Vector2.Zero;
-            acceleration = Vector2.Zero;
-            conveyer = Vector2.Zero;
-
-            acceleration.Y = 0.001f;
-
-            solid = true;
-
-            currentAnimation = "playerWalkRight";
-        } */
-
         public Player(float initialx, float initialy)
         {
             creation();
@@ -213,6 +194,13 @@ namespace MagnetBoy
                     }
 
                     double enAngle = Math.Atan2(en.CenterPosition.Y - vertical_pos, en.CenterPosition.X - horizontal_pos);
+
+                    if (en is Enemy)
+                    {
+                        Enemy em = (Enemy)en;
+
+                        em.PushTime = 500;
+                    }
 
                     if ((enAngle > aAngle && enAngle < bAngle) || distance < 32.0f && distance > 8.0f)
                     {

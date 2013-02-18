@@ -19,6 +19,20 @@ namespace MagnetBoy
         public bool dying = false;
         public double deathTimer = 0.0;
 
+        protected double pushTime;
+        public double PushTime
+        {
+            get
+            {
+                return pushTime;
+            }
+            set
+            {
+                pushTime = value;
+            }
+
+        }
+
         public Enemy()
         {
             creation();
@@ -30,6 +44,8 @@ namespace MagnetBoy
             acceleration = Vector2.Zero;
 
             acceleration.Y = 0.001f;
+
+            pushTime = 0;
         }
 
         public Enemy(float initialx, float initialy)
@@ -50,6 +66,8 @@ namespace MagnetBoy
             pole = Polarity.Neutral;
             magneticMoment = 0.5f;
 
+            pushTime = 0;
+
             list = new List<Attribute>();
 
         }
@@ -61,6 +79,11 @@ namespace MagnetBoy
             //reset the acceleration vector and recompute it
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
+
+            if (pushTime > 0)
+            {
+                pushTime -= delta;
+            }
 
             if (!deathAnimation)
             {

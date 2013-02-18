@@ -85,7 +85,7 @@ namespace MagnetBoy
                 {
                     if (en is Player)
                     {
-                        if (en.horizontal_pos - parent.horizontal_pos > -100 && en.horizontal_pos - parent.horizontal_pos < 100 && en.vertical_pos - parent.vertical_pos > -100 && en.vertical_pos - parent.vertical_pos < 5)
+                        if (parent.PushTime < 1 && en.horizontal_pos - parent.horizontal_pos > -100 && en.horizontal_pos - parent.horizontal_pos < 100 && en.vertical_pos - parent.vertical_pos > -100 && en.vertical_pos - parent.vertical_pos < 5)
                         {
                             chasePlayer = true;
                         }

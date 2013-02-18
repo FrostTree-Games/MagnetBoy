@@ -181,7 +181,7 @@
     <property name="color" value="red"/>
    </properties>
   </object>
-  <object name="player" x="160" y="800" width="32" height="32"/>
+  <object name="player" x="2104" y="2234" width="32" height="32"/>
   <object name="goomba" x="1856" y="2496" width="32" height="32"/>
   <object name="walkMarker" x="1936" y="2496" width="32" height="32"/>
   <object name="walkMarker" x="1776" y="2496" width="32" height="32"/>
