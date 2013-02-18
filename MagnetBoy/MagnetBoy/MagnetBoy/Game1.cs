@@ -106,6 +106,8 @@ namespace MagnetBoy
         public static SaveGameData MagnetBoySaveData;
         public static double onScreenSaveSpin;
 
+        public static Texture2D globalGameLogo = null;
+
         public static Texture2D globalTestWalrus = null;
         public static Texture2D globalTestPositive = null;
         public static Texture2D globalTestNegative = null;
@@ -208,6 +210,7 @@ namespace MagnetBoy
             aFac = new AnimationFactory(this.Content);
             audFac = new AudioFactory(this.Content);
 
+            globalGameLogo = this.Content.Load<Texture2D>("ZippyPushKidLogo");
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");

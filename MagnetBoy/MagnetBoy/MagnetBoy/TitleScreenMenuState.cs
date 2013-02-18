@@ -100,6 +100,8 @@ namespace MagnetBoy
         private double grassPixelsElapsedTime = 0;
         private double grassPixelOffset = 0;
 
+        private double elapsedScreenTime = 0;
+
         public TitleScreenMenuState(ContentManager newManager, bool musicAlreadyPlaying, bool fade)
         {
             IsUpdateable = true;
@@ -120,6 +122,8 @@ namespace MagnetBoy
 
             timePassed = 0;
             fadingOut = false;
+
+            elapsedScreenTime = 0;
 
             magnetWopleyAnim = "playerWalkRight";
             magnetWopleyFrame = 0;
@@ -179,6 +183,7 @@ namespace MagnetBoy
                 AudioFactory.playSong("songs/introTheme");
             }
 
+            elapsedScreenTime += currentTime.ElapsedGameTime.Milliseconds;
             timePassed += currentTime.ElapsedGameTime.Milliseconds;
 
             if (fadingOut)
@@ -418,6 +423,8 @@ namespace MagnetBoy
 
                 v++;
             }
+
+            spriteBatch.Draw(Game1.globalGameLogo, new Vector2((720 / 2 - Game1.globalGameLogo.Bounds.Width / 2), 50f), null, Color.White, 0.0f, new Vector2(0.0f, 0.0f), new Vector2(1.0f + (float)Math.Sin(elapsedScreenTime / 1000f) / 25f, 1.0f + (float)Math.Sin(elapsedScreenTime / 1000f + Math.PI) / 25f), SpriteEffects.None, AnimationFactory.DepthLayer0);
 
             if (!showPressButtonDialog)
             {
