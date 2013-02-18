@@ -8,7 +8,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   eJzt3N2ynLgZBdBOcsNLJM/KoyeeCeU+mB8BordEr121yvbpRtr64IKKPRler9cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAypfZ66aTnCgB8rym112sp6RkDAN9lSu31lnL2upI1zu4LAFDblNrrLaX3s9WeR42knx8A4E9Taq+3lN7PVnseNZJ+fgCAP02pvV7NNVs529V53JH0jAGAP02pvd5Sej9b7XnUSPr5AQD+NKX2ekvp/Wy155FM+rkDgCebcte6tdLS2ZJzqJX0cwf8YdyQ7gYcNKXWOnclebaW53Il6WcPAJ5qytXr9/Kv//nH/y1l+uyfK58nzlZzvrW73JH0swgATzHl6vVLeX+n+vXdfxf4z8paibNdME6unuHK/I8m/SwCwFNMuXr9PP/Y+fwbc+f9u7Lnnf0A4BtNqbmWLOfue3h2v7v7AcC3mXL1elnOcP9/AzSu3YdPPQMAwE935GyXrX//frVDzZSul76XR69LP4sA8BR3J32+O+e2NccW7ufRa9IzBX4YG+gAnHR30uf79NzSva6cJd0DAJ6iZtJnaWFu6V5XzpLuAQBPsZb5d9auSfdveW696Lk7APSiJOmOaU+axxPOAACtK0m6Y9qRObQ+zxY6AABMKflOSVo/CwDA3WqnhbOkZwoAfLcz2bq2hbOkZwoAUGotW5/VTkm/9JwAAEqtZeuz2inpl54TAEANn0pJh/QsAABq+URK9k/PAQCgtk9nvm/6/AAAd/hk5numzw4A8GlnsrXO2p8BADhmytqfAQA4ZsranwEAOGYt6V4AAL1aS7oXAMBTTEn3AAB4iinpHgAATzEl3QMA4CmmpHsAADzFlHQPAICnmJLuAQDwFFPSPQCAc2Q9Pc0r/RwBAL/JenqaV/o5AgB+k/W0Mq+SfdPPEQDwW2lqrXNlj9pnuiupe5V+lgCAv23lf5+Pb06vU5K3tYr3vKvL1STu1d17AwDlSlNrnTNr33Wmu9L6vQIA7lWaWnvsfHdccevZaqWVe9VidwD4MuPcayFX9qi1zpV993LkuvTZ7kgDzyEAPEZp0j2Tcxlmv2+h01bOrJOeNwA8SWnSPZNzGWa/b6HTWs6uk543ADzJWoZK/waK++/VlCvrpM8GAE9SmnRP3B8A6Mg47Pzb9le+I2s3xv0BgOa8Z7jpvx+k/r1yTwCgXSVJd2T/XqW7AQC/7SXdj7J7le4GAPy2lXQ33CsA6NFS0p0ov1dT0t0AgB/GX79upYGOuEcA0KWtpLt1Ztz5c9V74/4AQLsSSZ/5BuOKS2t84RwB4FHkfIYD70SV9wUA2jW+5HQG71cAwAFHU3OtXjIc/zu9cdj+O8Si9dLPBgBwTmk21hjnDizbRUrPtjSLPTvrAQD8UJpa65zN3p7Dsfeh8YijvQAASlJjjSvZ23N4+7u+o+ts+GvNiusBAF+iJHeufXbP2XfHocL/39XMuHeG9L0DANpUkjvXPrvn7LvjDbP5teZ4pSMA8J3mSfc503u45/3qr3UXRtTdrACAzypJuuNe78H7FQDQkJKkO+71HrxfAQANKUm6417vwfsVANC4edJ99joO3q8AgIaUJN1xr/fg/QoAaEhJ0h33eg/erwCAhpQk3XGv9+D9CgBoyDzpPmd6D96vAICGlCTdca/34P0KAGjMXtL99voO3q8AgAb1nBvnMob2BQAeotfcOJMxtC8A8DC9ZfD3gwBAB5Yy/P0e88PKV09laf2SPW6awe7e6XsEAMSMV659bWTv86PXHF3vE3ML7g8AtGd8c3qN10aGE/8b1tb3dz5LzG/vLADAs4wLqu+zlcH7FQBAb8b03ltpYD4AAD0Zf/26lQY6AgD0ZPz161Ya6AgA0JPx169baaAjAEBPxl+/bqWBjgAAPRkH//+iAAC1ja+NNNAPAKA342sjDfQDAOjN+NpIA/0AAHozvjbSQD8A4E1J0h1b0HLSswEAfmohTz7bJ5J+hgCAn3pNC2c726Hke0fWTD9DAMBP0n/SzxAA8NNSSr+3lrv7yc+knyEA4KellH5vLXf2O9plqdOTk36eAIDlpDtt9VvrvJeze5XMq6Wk7xcAsJx0p7O9t3J03aMdSn5eYebj/8XnDwCsW0q6UwvzODq7kp9XmPk4LL9fLf0MAAhZSrpTL9ZmtjfLCzMfB+9SANC8paQ79WJtZjfOchy8YwFA85aS7sSqcfBuBQC3uyPpM7FqHNb//dXSzwGAE+5I+kysGgfvUQBwuzuSPhOrxsE7FgDcrkbSZ6DYOHi3AoDbzbP2862kz0CxcfB+BQC3m2frs9fKZ+kzAAC0ZJ7Sz7euAQD4ZvPsfWfrZwAA/Jl0HwCA3s2T7gMA0Lt50n0AAHo3T7oPAEDv5kn3AQDo3TzpPgAAvZsn3QcAoHfzpPsAAPRunnQfAIDezZPuAwDQu3nSfQAAejdPug8AQO/mSfcBAOjdPOk+AAC9myfdBwCgd/Ok+wAA9G6edB/o2VLSnQD4vHnSfaA3dyR9JgCumSfdB3ryiaTPCMBxU9I9oDefTvq8AJSbku4BLWsl6TkAUGYp6U7QgpaTng0A25aS7gQtaDmtnzF97wDSlpLuBEk1cseaW+snz3pnP4DevSfdBZKOZOmaK+u9r1Gy7yfPeiTpewjQiveku/B9jqa1Hmvdrp7lzDV3nvdI0s8UQND4WkgDvXi4O/OJjsPs92fPebbDN90HgA6Nr4U00IuOvVZ+9qnUPMfWHkf2O9uz56SfQ4CEpaQ78QzfkGH2+zNzefoc088hQMJa0r3o31NSes6z8zk7w15mnH4OAT5tL+l+9O0pOXLWM3M5OsPeZpx+DgE+7T3zP79e2W70r9Uc6XnmrEfnMMx+v3ftHXNOPysAT/KerZ9BbUsp+axknaXvl6xV+zwlOXP92t4l8yhdE4BrtpLuxnMtpeSzvXVK9vzEec6cfyu1+tRaH4Bte0n3gz3vqfG9qx1K1j+aO7sAcJ+1pHvBnvfU+N7aNUdSe+2zfdP3BuDbzZPuA3N7uXp9jdQ+U+m6NboAcI8p6R4wOZKaa11N7fMdXSN93wD4bSnpTnyvo6m9XmspOVP6ngHwp6WkO/HdSlJzraX1Sr77iZR0St8vAJbNk+7Dd5iy9vOtfKrb1t7ppO8fAPvek+5C35ay9b2S69+/u7ZeK2ctOfORHJkpAG1YSroTfVvK1vdKrl9bI20vW+fduqblMwOwbynpTvTtrqTPVeOsR9dNnw+Ac+ZJ96F/dyR9phpnTXcF4HPek+7C5+51b0nPDgCOWEq6E/Xv69q9vjNbz9jRNQCgJ0tJd+Ke+3o1a3vsPUd76x3ZEwB6MU+6D/Xv6dmU7HG2z9pn6dkBQC3vSXfh8/d8niPXn91r7bP0XACglqWkO9H2PT9zDQB8k62ku5G59+leANC7vaT7PcHds62d9LwAoHdyT47Md+t+fPLepZ9FAHgqqZOj8/zU/NPPFwCwTPZzZlZ3zzb93AAA66S/pJ8ZAGDbp1Kyf0+zODO7HmYAAFz3iZTunZ7F3bMrWSd9JgDguqupvW56Hul7kO4CAFx3JZ9cEwCgFy0lPQsAgIS7kj4XAEDCnUmfDQDgTnckfSYAgJQ7kz4bAEBCq0nPBQDgrFaTngsAwFm1U2u/K+ukZwoAfLdaSexZowsAwB2uJrl37T4AAEcdSYudWukMADApTcvdWuwOAHyv0vTQscXuAMD3mSfd50jf0u+mOwMA32Up6U6lfc+crTTpcwIA/XtPussdZzqTdH8AoE9LSXdqZQ7fPA8A4Lx50n1amYOZAABnvafGGmdzZo+j16x9vneG9D0CAPoypcYaV/KJPbb23vscAKDUXmqsUZJP7FG699FuAADv9lJjjZJ8Yo+zSd8jAKBPa7ly7ZF8Yo+zSd8bAKBPd+Tu9T+V9L0BAPp2Na3scXeP9H0CAPpxNa3scXeP9H0CAPrynnSXVsyT7gMA0Lt50n0AAJ7gPekuAABP8J50FwCAXsyz9nm6JwBAL0qT7gkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGf8FzK70JE=
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="600" height="400">
@@ -86,209 +86,6 @@
   <object name="spikes_up" x="2880" y="1728" width="32" height="32"/>
   <object name="spikes_up" x="3040" y="1728" width="32" height="32"/>
   <object name="spikes_up" x="2912" y="1728" width="32" height="32"/>
-  <object name="angrySaw" x="14496" y="2336" width="32" height="32"/>
-  <object name="lavaDumper" x="16032" y="256" width="32" height="32"/>
-  <object name="spikes_top" x="12800" y="768" width="32" height="32"/>
-  <object name="spikes_up" x="14304" y="352" width="32" height="32"/>
-  <object name="lavaDumper" x="14560" y="2048" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="16448" y="1792" width="32" height="32"/>
-  <object name="heartItem" x="17232" y="352" width="32" height="32"/>
-  <object name="lava" x="11362" y="3167" width="32" height="32"/>
-  <object name="heartItem" x="13248" y="2304" width="32" height="32"/>
-  <object name="spikes_top" x="16000" y="448" width="32" height="32"/>
-  <object name="lolrus" x="11936" y="3200" width="32" height="32"/>
-  <object name="wallEntity" x="14624" y="2336" width="32" height="32"/>
-  <object name="spikes_up" x="16288" y="2176" width="32" height="32"/>
-  <object name="flagKey" x="12160" y="3712" width="32" height="32">
-   <properties>
-    <property name="color" value="green"/>
-   </properties>
-  </object>
-  <object name="spikes_top" x="16064" y="448" width="32" height="32"/>
-  <object name="spikes_up" x="16832" y="2144" width="32" height="32"/>
-  <object name="lavaDumper" x="16704" y="1792" width="32" height="32"/>
-  <object name="spikes_up" x="14048" y="2368" width="32" height="32"/>
-  <object name="walkMarker" x="10144" y="3520" width="32" height="32"/>
-  <object name="spikes_top" x="15552" y="480" width="32" height="32"/>
-  <object name="angrySaw" x="17568" y="1824" width="32" height="32"/>
-  <object name="shieldDudeRight" x="16352" y="1600" width="32" height="32"/>
-  <object name="goomba" x="10208" y="3520" width="32" height="32"/>
-  <object name="spikes_top" x="15616" y="480" width="32" height="32"/>
-  <object name="lolrus" x="15488" y="2016" width="32" height="32"/>
-  <object name="spikes_up" x="13088" y="2656" width="32" height="32"/>
-  <object name="lavaDumper" x="16672" y="1792" width="32" height="32"/>
-  <object name="spikes_up" x="14368" y="352" width="32" height="32"/>
-  <object name="walkMarker" x="15776" y="1984" width="32" height="32"/>
-  <object name="lavaDumper" x="11360" y="2976" width="32" height="32"/>
-  <object name="angrySaw" x="13408" y="320" width="32" height="32"/>
-  <object name="spikes_up" x="16128" y="2176" width="32" height="32"/>
-  <object name="angrySaw" x="17504" y="1824" width="32" height="32"/>
-  <object name="wallEntity" x="17440" y="1824" width="32" height="32"/>
-  <object name="flagDoor" x="10880" y="3136" width="32" height="32">
-   <properties>
-    <property name="color" value="yellow"/>
-   </properties>
-  </object>
-  <object name="lava" x="16704" y="2112" width="32" height="32"/>
-  <object name="lava" x="15872" y="2048" width="32" height="32"/>
-  <object name="spikes_up" x="15552" y="1760" width="32" height="32"/>
-  <object name="wallEntity" x="14557" y="2272" width="32" height="32"/>
-  <object name="lava" x="14496" y="1824" width="32" height="32"/>
-  <object name="lava" x="15808" y="2048" width="32" height="32"/>
-  <object name="heartItem" x="10976" y="3200" width="32" height="32"/>
-  <object name="wallEntity" x="14557" y="2304" width="32" height="32"/>
-  <object name="lava" x="14720" y="1824" width="32" height="32"/>
-  <object name="spikes_up" x="15680" y="1760" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="14848" y="2208" width="32" height="32"/>
-  <object name="lava" x="14688" y="1824" width="32" height="32"/>
-  <object name="lava" x="11328" y="3168" width="32" height="32"/>
-  <object name="spikes_up" x="16192" y="2176" width="32" height="32"/>
-  <object name="lava" x="14752" y="1824" width="32" height="32"/>
-  <object name="spikes_up" x="10016" y="3552" width="32" height="32"/>
-  <object name="spikes_top" x="12992" y="768" width="32" height="32"/>
-  <object name="walkMarker" x="11328" y="3456" width="32" height="32"/>
-  <object name="spikes_up" x="16224" y="2176" width="32" height="32"/>
-  <object name="lavaDumper" x="16096" y="256" width="32" height="32"/>
-  <object name="lavaDumper" x="13120" y="2464" width="32" height="32">
-   <properties>
-    <property name="interval" value="2300"/>
-   </properties>
-  </object>
-  <object name="spikes_top" x="12864" y="768" width="32" height="32"/>
-  <object name="lava" x="12032" y="3328" width="32" height="32"/>
-  <object name="spikes_up" x="16256" y="2176" width="32" height="32"/>
-  <object name="lavaDumper" x="14592" y="2048" width="32" height="32"/>
-  <object name="spikes_up" x="15200" y="416" width="32" height="32"/>
-  <object name="flagDoor" x="13376" y="2240" width="32" height="32">
-   <properties>
-    <property name="color" value="green"/>
-   </properties>
-  </object>
-  <object name="spikes_top" x="16032" y="448" width="32" height="32"/>
-  <object name="spikes_up" x="15712" y="1760" width="32" height="32"/>
-  <object name="lava" x="16672" y="2112" width="32" height="32"/>
-  <object name="spikes_top" x="15584" y="480" width="32" height="32"/>
-  <object name="endLevelFlag" x="16320" y="352" width="32" height="32"/>
-  <object name="spikes_up" x="14339" y="351" width="32" height="32"/>
-  <object name="lavaDumper" x="17088" y="1632" width="32" height="32"/>
-  <object name="lavaDumper" x="16608" y="1760" width="32" height="32"/>
-  <object name="spikes_up" x="10112" y="3552" width="32" height="32"/>
-  <object name="spikes_top" x="16128" y="448" width="32" height="32"/>
-  <object name="lavaDumper" x="15712" y="1664" width="32" height="32"/>
-  <object name="lava" x="16608" y="2112" width="32" height="32"/>
-  <object name="walkMarker" x="11968" y="3200" width="32" height="32"/>
-  <object name="spikes_top" x="15776" y="480" width="32" height="32"/>
-  <object name="lava" x="15840" y="2048" width="32" height="32"/>
-  <object name="spikes_up" x="13056" y="2656" width="32" height="32"/>
-  <object name="spikes_up" x="15616" y="1760" width="32" height="32"/>
-  <object name="lolrus" x="11744" y="3200" width="32" height="32"/>
-  <object name="flagDoor" x="14112" y="2176" width="32" height="32">
-   <properties>
-    <property name="color" value="purple"/>
-   </properties>
-  </object>
-  <object name="wallEntity" x="17629" y="1824" width="32" height="32"/>
-  <object name="spikes_up" x="16160" y="2176" width="32" height="32"/>
-  <object name="lava" x="15968" y="2048" width="32" height="32"/>
-  <object name="lava" x="12064" y="3328" width="32" height="32"/>
-  <object name="spikes_up" x="16224" y="1568" width="32" height="32"/>
-  <object name="lavaDumper" x="11328" y="2976" width="32" height="32"/>
-  <object name="lava" x="15936" y="2048" width="32" height="32"/>
-  <object name="walkMarker" x="11872" y="3456" width="32" height="32"/>
-  <object name="spikes_up" x="15648" y="1760" width="32" height="32"/>
-  <object name="lava" x="16640" y="2112" width="32" height="32"/>
-  <object name="lava" x="14464" y="1824" width="32" height="32"/>
-  <object name="shieldDudeRight" x="11200" y="3104" width="32" height="32"/>
-  <object name="spikes_up" x="15584" y="1760" width="32" height="32"/>
-  <object name="wallEntity" x="14557" y="2336" width="32" height="32"/>
-  <object name="flagLock" x="12192" y="3520" width="32" height="32">
-   <properties>
-    <property name="color" value="purple"/>
-   </properties>
-  </object>
-  <object name="lavaDumper" x="16736" y="1792" width="32" height="32"/>
-  <object name="lava" x="14528" y="1824" width="32" height="32"/>
-  <object name="lolrus" x="11840" y="3456" width="32" height="32"/>
-  <object name="spikes_up" x="10080" y="3552" width="32" height="32"/>
-  <object name="angrySaw" x="14432" y="2336" width="32" height="32"/>
-  <object name="lava" x="14784" y="1824" width="32" height="32"/>
-  <object name="spikes_top" x="13024" y="768" width="32" height="32"/>
-  <object name="lava" x="12000" y="3328" width="32" height="32"/>
-  <object name="spikes_up" x="14400" y="352" width="32" height="32"/>
-  <object name="spikes_up" x="16192" y="1568" width="32" height="32"/>
-  <object name="lavaDumper" x="15584" y="256" width="32" height="32">
-   <properties>
-    <property name="1786" value=""/>
-   </properties>
-  </object>
-  <object name="spikes_top" x="12832" y="768" width="32" height="32"/>
-  <object name="lolrus" x="11584" y="3456" width="32" height="32"/>
-  <object name="lavaDumper" x="13088" y="2464" width="32" height="32">
-   <properties>
-    <property name="interval" value="1300"/>
-   </properties>
-  </object>
-  <object name="spikes_up" x="14080" y="2368" width="32" height="32"/>
-  <object name="wallEntity" x="17440" y="1792" width="32" height="32"/>
-  <object name="lava" x="16768" y="2112" width="32" height="32"/>
-  <object name="wallEntity" x="14624" y="2272" width="32" height="32"/>
-  <object name="flagLock" x="12064" y="3712" width="32" height="32">
-   <properties>
-    <property name="color" value="green"/>
-   </properties>
-  </object>
-  <object name="spikes_top" x="16096" y="448" width="32" height="32"/>
-  <object name="lolrus" x="15712" y="1984" width="32" height="32"/>
-  <object name="spikes_up" x="16160" y="1568" width="32" height="32"/>
-  <object name="goomba" x="11392" y="3456" width="32" height="32"/>
-  <object name="flagDoor" x="9952" y="2656" width="32" height="32">
-   <properties>
-    <property name="color" value="purple"/>
-   </properties>
-  </object>
-  <object name="spikes_top" x="15744" y="480" width="32" height="32"/>
-  <object name="lavaDumper" x="15584" y="1664" width="32" height="32"/>
-  <object name="walkMarker" x="16640" y="1536" width="32" height="32"/>
-  <object name="goomba" x="10496" y="3520" width="32" height="32"/>
-  <object name="lavaDumper" x="15776" y="256" width="32" height="32">
-   <properties>
-    <property name="1786" value=""/>
-   </properties>
-  </object>
-  <object name="walkMarker" x="15680" y="1984" width="32" height="32"/>
-  <object name="lavaDumper" x="16768" y="1792" width="32" height="32"/>
-  <object name="spikes_top" x="15808" y="480" width="32" height="32"/>
-  <object name="shieldDudeRight" x="14432" y="288" width="32" height="32"/>
-  <object name="spikes_up" x="16864" y="2144" width="32" height="32"/>
-  <object name="heartItem" x="14208" y="1760" width="32" height="32"/>
-  <object name="spikes_up" x="15232" y="416" width="32" height="32"/>
-  <object name="spikes_up" x="13120" y="2656" width="32" height="32"/>
-  <object name="goomba" x="16768" y="1536" width="32" height="32"/>
-  <object name="lava" x="16000" y="2048" width="32" height="32"/>
-  <object name="lava" x="11296" y="3168" width="32" height="32"/>
-  <object name="wallEntity" x="17629" y="1792" width="32" height="32"/>
-  <object name="lava" x="16736" y="2112" width="32" height="32"/>
-  <object name="lava" x="15904" y="2048" width="32" height="32"/>
-  <object name="heartItem" x="11072" y="3040" width="32" height="32"/>
-  <object name="wallEntity" x="14624" y="2304" width="32" height="32"/>
-  <object name="spikes_up" x="15744" y="1760" width="32" height="32"/>
-  <object name="lavaDumper" x="11296" y="2976" width="32" height="32"/>
-  <object name="lavaDumper" x="17120" y="1632" width="32" height="32"/>
-  <object name="angrySaw" x="14688" y="2336" width="32" height="32"/>
-  <object name="lava" x="14656" y="1824" width="32" height="32"/>
-  <object name="lava" x="14432" y="1824" width="32" height="32"/>
-  <object name="lavaDumper" x="16640" y="1760" width="32" height="32"/>
-  <object name="goomba" x="11744" y="3456" width="32" height="32"/>
-  <object name="wallEntity" x="17629" y="1760" width="32" height="32"/>
-  <object name="lava" x="14560" y="1824" width="32" height="32"/>
-  <object name="endLevelFlag" x="18144" y="1728" width="32" height="32"/>
-  <object name="flagKey" x="11520" y="3456" width="32" height="32">
-   <properties>
-    <property name="color" value="purple"/>
-   </properties>
-  </object>
-  <object name="spikes_up" x="10048" y="3552" width="32" height="32"/>
-  <object name="spikes_top" x="12960" y="768" width="32" height="32"/>
   <object name="spikes_up" x="4384" y="2464" width="32" height="32"/>
   <object name="Lolrus" x="1888" y="2432" width="32" height="32"/>
   <object name="wallEntity" x="2592" y="3744" width="32" height="32"/>
@@ -296,7 +93,6 @@
   <object name="spikes_top" x="1792" y="2496" width="32" height="32"/>
   <object name="shieldDudeRight" x="2496" y="3616" width="32" height="32"/>
   <object name="wallEntity" x="2976" y="3744" width="32" height="32"/>
-  <object name="spikes_up" x="1536" y="3712" width="32" height="32"/>
   <object name="lavaDumper" x="1056" y="2528" width="32" height="32"/>
   <object name="wallEntity" x="2784" y="3136" width="32" height="32"/>
   <object name="wallEntity" x="2941" y="3744" width="32" height="32"/>
@@ -309,7 +105,6 @@
   <object name="angrySaw" x="3072" y="3168" width="32" height="32"/>
   <object name="walkMarker" x="1824" y="2432" width="32" height="32"/>
   <object name="angrySaw" x="3040" y="3744" width="32" height="32"/>
-  <object name="spikes_up" x="1601" y="3712" width="32" height="32"/>
   <object name="wallEntity" x="2592" y="3712" width="32" height="32"/>
   <object name="goomba" x="2848" y="2496" width="32" height="32"/>
   <object name="spikes_up" x="4512" y="2656" width="32" height="32"/>
@@ -344,20 +139,212 @@
   <object name="goomba" x="2784" y="2496" width="32" height="32"/>
   <object name="spikes_up" x="3200" y="2560" width="32" height="32"/>
   <object name="spikes_top" x="1760" y="2496" width="32" height="32"/>
-  <object name="spikes_up" x="1568" y="3712" width="32" height="32"/>
   <object name="wallEntity" x="2976" y="3712" width="32" height="32"/>
   <object name="spikes_up" x="3232" y="2560" width="32" height="32"/>
   <object name="wallEntity" x="2976" y="3680" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="1760" y="3040" width="32" height="32"/>
+  <object name="shieldDudeLeft" x="1568" y="3040" width="32" height="32"/>
   <object name="heartItem" x="3488" y="3680" width="32" height="32"/>
   <object name="spikes_up" x="4352" y="2464" width="32" height="32"/>
   <object name="wallEntity" x="3261" y="3136" width="32" height="32"/>
   <object name="wallEntity" x="2941" y="3712" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="1824" y="3008" width="32" height="32"/>
+  <object name="shieldDudeLeft" x="1632" y="3008" width="32" height="32"/>
   <object name="flagKey" x="3424" y="3040" width="32" height="32">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
+  <object name="spikes_up" x="2304" y="4288" width="32" height="32"/>
+  <object name="spikes_top" x="4000" y="4384" width="32" height="32"/>
+  <object name="spikes_top" x="736" y="4704" width="32" height="32"/>
+  <object name="spikes_top" x="960" y="4704" width="32" height="32"/>
+  <object name="spikes_top" x="3520" y="4416" width="32" height="32"/>
+  <object name="spikes_top" x="896" y="4704" width="32" height="32"/>
+  <object name="spikes_top" x="928" y="4704" width="32" height="32"/>
+  <object name="angrySaw" x="1344" y="4256" width="32" height="32"/>
+  <object name="spikes_top" x="4032" y="4384" width="32" height="32"/>
+  <object name="lavaDumper" x="4032" y="4192" width="32" height="32"/>
+  <object name="spikes_top" x="3712" y="4416" width="32" height="32"/>
+  <object name="lavaDumper" x="3968" y="4192" width="32" height="32"/>
+  <object name="lavaDumper" x="3712" y="4192" width="32" height="32">
+   <properties>
+    <property name="1786" value=""/>
+   </properties>
+  </object>
+  <object name="spikes_top" x="768" y="4704" width="32" height="32"/>
+  <object name="spikes_top" x="3552" y="4416" width="32" height="32"/>
+  <object name="spikes_up" x="3168" y="4352" width="32" height="32"/>
+  <object name="spikes_top" x="3744" y="4416" width="32" height="32"/>
+  <object name="heartItem" x="4608" y="4288" width="32" height="32"/>
+  <object name="lavaDumper" x="3520" y="4192" width="32" height="32">
+   <properties>
+    <property name="1786" value=""/>
+   </properties>
+  </object>
+  <object name="spikes_up" x="3136" y="4352" width="32" height="32"/>
+  <object name="spikes_top" x="3936" y="4384" width="32" height="32"/>
+  <object name="spikes_top" x="3968" y="4384" width="32" height="32"/>
+  <object name="spikes_top" x="4064" y="4384" width="32" height="32"/>
+  <object name="shieldDudeRight" x="2368" y="4224" width="32" height="32"/>
+  <object name="spikes_up" x="2336" y="4288" width="32" height="32"/>
+  <object name="spikes_up" x="2275" y="4287" width="32" height="32"/>
+  <object name="spikes_top" x="3680" y="4416" width="32" height="32"/>
+  <object name="spikes_top" x="3488" y="4416" width="32" height="32"/>
+  <object name="spikes_top" x="800" y="4704" width="32" height="32"/>
+  <object name="endLevelFlag" x="4256" y="4288" width="32" height="32"/>
+  <object name="spikes_up" x="2240" y="4288" width="32" height="32"/>
+  <object name="lavaDumper" x="2400" y="6944" width="32" height="32">
+   <properties>
+    <property name="interval" value="2032"/>
+   </properties>
+  </object>
+  <object name="goomba" x="2464" y="7424" width="32" height="32"/>
+  <object name="walkMarker" x="1216" y="7488" width="32" height="32"/>
+  <object name="goomba" x="2816" y="7424" width="32" height="32"/>
+  <object name="goomba" x="1280" y="7488" width="32" height="32"/>
+  <object name="lavaDumper" x="2368" y="6944" width="32" height="32">
+   <properties>
+    <property name="interval" value="1024"/>
+   </properties>
+  </object>
+  <object name="flagKey" x="3232" y="7680" width="32" height="32">
+   <properties>
+    <property name="color" value="green"/>
+   </properties>
+  </object>
+  <object name="shieldDudeRight" x="2272" y="7072" width="32" height="32"/>
+  <object name="lolrus" x="2656" y="7424" width="32" height="32"/>
+  <object name="walkMarker" x="3040" y="7168" width="32" height="32"/>
+  <object name="spikes_up" x="1120" y="7520" width="32" height="32"/>
+  <object name="goomba" x="1568" y="7488" width="32" height="32"/>
+  <object name="spikes_up" x="1152" y="7520" width="32" height="32"/>
+  <object name="spikes_up" x="1184" y="7520" width="32" height="32"/>
+  <object name="lolrus" x="3008" y="7168" width="32" height="32"/>
+  <object name="lolrus" x="2912" y="7424" width="32" height="32"/>
+  <object name="flagLock" x="3136" y="7680" width="32" height="32">
+   <properties>
+    <property name="color" value="green"/>
+   </properties>
+  </object>
+  <object name="walkMarker" x="2944" y="7424" width="32" height="32"/>
+  <object name="lavaDumper" x="2432" y="6944" width="32" height="32">
+   <properties>
+    <property name="interval" value="3044"/>
+   </properties>
+  </object>
+  <object name="lolrus" x="2816" y="7168" width="32" height="32"/>
+  <object name="walkMarker" x="2400" y="7424" width="32" height="32"/>
+  <object name="spikes_top" x="2368" y="7136" width="32" height="32"/>
+  <object name="heartItem" x="2144" y="7008" width="32" height="32"/>
+  <object name="flagDoor" x="3312" y="6496" width="32" height="32">
+   <properties>
+    <property name="color" value="green"/>
+   </properties>
+  </object>
+  <object name="spikes_top" x="2400" y="7136" width="32" height="32"/>
+  <object name="spikes_top" x="2432" y="7136" width="32" height="32"/>
+  <object name="spikes_top" x="3072" y="7296" width="32" height="32"/>
+  <object name="spikes_top" x="3104" y="7296" width="32" height="32"/>
+  <object name="spikes_top" x="3136" y="7296" width="32" height="32"/>
+  <object name="lava" x="5504" y="5792" width="32" height="32"/>
+  <object name="lavaDumper" x="7744" y="5760" width="32" height="32"/>
+  <object name="lavaDumper" x="7712" y="5760" width="32" height="32"/>
+  <object name="wallEntity" x="5565" y="6240" width="32" height="32"/>
+  <object name="spikes_up" x="7840" y="6112" width="32" height="32"/>
+  <object name="spikes_up" x="6752" y="5728" width="32" height="32"/>
+  <object name="lava" x="7616" y="6080" width="32" height="32"/>
+  <object name="wallEntity" x="5565" y="6304" width="32" height="32"/>
+  <object name="lava" x="7744" y="6080" width="32" height="32"/>
+  <object name="spikes_up" x="6592" y="5728" width="32" height="32"/>
+  <object name="lavaDumper" x="7616" y="5728" width="32" height="32"/>
+  <object name="lolrus" x="6496" y="5984" width="32" height="32"/>
+  <object name="lava" x="5472" y="5792" width="32" height="32"/>
+  <object name="lava" x="7648" y="6080" width="32" height="32"/>
+  <object name="endLevelFlag" x="9152" y="5696" width="32" height="32"/>
+  <object name="wallEntity" x="8448" y="5792" width="32" height="32"/>
+  <object name="lava" x="5568" y="5792" width="32" height="32"/>
+  <object name="spikes_up" x="6656" y="5728" width="32" height="32"/>
+  <object name="lava" x="6880" y="6016" width="32" height="32"/>
+  <object name="wallEntity" x="8637" y="5728" width="32" height="32"/>
+  <object name="lava" x="6944" y="6016" width="32" height="32"/>
+  <object name="heartItem" x="5216" y="5728" width="32" height="32"/>
+  <object name="lavaDumper" x="7648" y="5728" width="32" height="32"/>
+  <object name="spikes_up" x="7264" y="6144" width="32" height="32"/>
+  <object name="lavaDumper" x="7776" y="5760" width="32" height="32"/>
+  <object name="lavaDumper" x="4128" y="6432" width="32" height="32">
+   <properties>
+    <property name="interval" value="2300"/>
+   </properties>
+  </object>
+  <object name="spikes_up" x="7232" y="6144" width="32" height="32"/>
+  <object name="spikes_up" x="4064" y="6624" width="32" height="32"/>
+  <object name="walkMarker" x="6688" y="5952" width="32" height="32"/>
+  <object name="spikes_up" x="6624" y="5728" width="32" height="32"/>
+  <object name="shieldDudeLeft" x="7456" y="5760" width="32" height="32"/>
+  <object name="lavaDumper" x="4096" y="6432" width="32" height="32">
+   <properties>
+    <property name="interval" value="1300"/>
+   </properties>
+  </object>
+  <object name="lavaDumper" x="5568" y="6016" width="32" height="32"/>
+  <object name="walkMarker" x="7648" y="5504" width="32" height="32"/>
+  <object name="lavaDumper" x="6592" y="5632" width="32" height="32"/>
+  <object name="lava" x="5760" y="5792" width="32" height="32"/>
+  <object name="shieldDudeRight" x="7360" y="5568" width="32" height="32"/>
+  <object name="spikes_up" x="7168" y="5536" width="32" height="32"/>
+  <object name="spikes_up" x="7200" y="5536" width="32" height="32"/>
+  <object name="shieldDudeLeft" x="5856" y="6176" width="32" height="32"/>
+  <object name="lavaDumper" x="7680" y="5760" width="32" height="32"/>
+  <object name="angrySaw" x="8512" y="5792" width="32" height="32"/>
+  <object name="lava" x="5792" y="5792" width="32" height="32"/>
+  <object name="lava" x="7712" y="6080" width="32" height="32"/>
+  <object name="angrySaw" x="5440" y="6304" width="32" height="32"/>
+  <object name="spikes_up" x="6560" y="5728" width="32" height="32"/>
+  <object name="wallEntity" x="5632" y="6272" width="32" height="32"/>
+  <object name="lavaDumper" x="6720" y="5632" width="32" height="32"/>
+  <object name="lava" x="6912" y="6016" width="32" height="32"/>
+  <object name="lavaDumper" x="8096" y="5600" width="32" height="32"/>
+  <object name="wallEntity" x="8637" y="5760" width="32" height="32"/>
+  <object name="spikes_up" x="7296" y="6144" width="32" height="32"/>
+  <object name="lava" x="7008" y="6016" width="32" height="32"/>
+  <object name="lava" x="7680" y="6080" width="32" height="32"/>
+  <object name="wallEntity" x="5632" y="6304" width="32" height="32"/>
+  <object name="goomba" x="7776" y="5504" width="32" height="32"/>
+  <object name="spikes_up" x="6720" y="5728" width="32" height="32"/>
+  <object name="spikes_up" x="4128" y="6624" width="32" height="32"/>
+  <object name="spikes_up" x="7232" y="5536" width="32" height="32"/>
+  <object name="heartItem" x="4256" y="6272" width="32" height="32"/>
+  <object name="spikes_up" x="7872" y="6112" width="32" height="32"/>
+  <object name="lava" x="6976" y="6016" width="32" height="32"/>
+  <object name="lavaDumper" x="5600" y="6016" width="32" height="32"/>
+  <object name="spikes_up" x="7168" y="6144" width="32" height="32"/>
+  <object name="wallEntity" x="8637" y="5792" width="32" height="32"/>
+  <object name="flagDoor" x="5120" y="6144" width="32" height="32">
+   <properties>
+    <property name="color" value="purple"/>
+   </properties>
+  </object>
+  <object name="spikes_up" x="4096" y="6624" width="32" height="32"/>
+  <object name="walkMarker" x="6784" y="5952" width="32" height="32"/>
+  <object name="wallEntity" x="5632" y="6240" width="32" height="32"/>
+  <object name="spikes_up" x="7136" y="6144" width="32" height="32"/>
+  <object name="lava" x="7776" y="6080" width="32" height="32"/>
+  <object name="wallEntity" x="8448" y="5760" width="32" height="32"/>
+  <object name="spikes_up" x="5088" y="6336" width="32" height="32"/>
+  <object name="spikes_up" x="7200" y="6144" width="32" height="32"/>
+  <object name="lava" x="5696" y="5792" width="32" height="32"/>
+  <object name="lolrus" x="6720" y="5952" width="32" height="32"/>
+  <object name="spikes_up" x="6688" y="5728" width="32" height="32"/>
+  <object name="lava" x="5728" y="5792" width="32" height="32"/>
+  <object name="wallEntity" x="5565" y="6272" width="32" height="32"/>
+  <object name="angrySaw" x="5504" y="6304" width="32" height="32"/>
+  <object name="angrySaw" x="8576" y="5792" width="32" height="32"/>
+  <object name="lava" x="5440" y="5792" width="32" height="32"/>
+  <object name="lava" x="6848" y="6016" width="32" height="32"/>
+  <object name="lava" x="5664" y="5792" width="32" height="32"/>
+  <object name="angrySaw" x="5696" y="6304" width="32" height="32"/>
+  <object name="lava" x="6816" y="6016" width="32" height="32"/>
+  <object name="lava" x="5536" y="5792" width="32" height="32"/>
+  <object name="spikes_up" x="5056" y="6336" width="32" height="32"/>
+  <object name="lavaDumper" x="8128" y="5600" width="32" height="32"/>
  </objectgroup>
 </map>
