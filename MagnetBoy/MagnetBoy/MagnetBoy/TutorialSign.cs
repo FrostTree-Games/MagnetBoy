@@ -19,7 +19,7 @@ namespace MagnetBoy
             JumpBadGuys = 6
         }
 
-        private const string messageAnimation1 = "tutorialSign1";
+        private const string messageAnimation1 = "RSTutorial";
         private const string messageAnimation2 = "tutorialSign2";
         private const string messageAnimation3 = "tutorialSign3";
         private const string messageAnimation4 = "tutorialSign4";
@@ -33,6 +33,8 @@ namespace MagnetBoy
         private const double lightValueMax = 1.0;
 
         private string currentAnimation;
+        private int currentFrame;
+        private double lastFrameIncrement = 0;
 
         public TutorialSign(float newX, float newY, TutorialSign.SignMessage messageType)
         {
@@ -44,6 +46,9 @@ namespace MagnetBoy
 
             playerClose = false;
             lightValue = 0;
+
+            currentFrame = 0;
+            lastFrameIncrement = 0;
 
             switch (messageType)
             {
@@ -112,11 +117,33 @@ namespace MagnetBoy
                     }
                 }
             }
+
+            // if the last frame time hasn't been set, set it now
+            if (lastFrameIncrement == 0)
+            {
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            if (Math.Abs(lightValue - lightValueMax) < 0.5f)
+            {
+                // update the current frame if needed
+                if (currentTime.TotalGameTime.TotalMilliseconds - lastFrameIncrement > AnimationFactory.getAnimationSpeed(currentAnimation))
+                {
+                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+
+                    currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
+                }
+            }
+            else
+            {
+                currentFrame = 0;
+                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+            }
         }
 
         public override void draw(SpriteBatch sb)
         {
-            AnimationFactory.drawAnimationFrame(sb, currentAnimation, 0, Position, Color.Lerp(Color.Lerp(Color.Black, Color.DarkGray, 0.5f), Color.White, (float)lightValue), AnimationFactory.DepthLayer3);
+            AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, Color.Lerp(Color.Lerp(Color.Black, Color.DarkGray, 0.5f), Color.White, (float)lightValue), AnimationFactory.DepthLayer3);
         }
     }
 }
