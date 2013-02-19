@@ -195,16 +195,16 @@ namespace MagnetBoy
 
                     double enAngle = Math.Atan2(en.CenterPosition.Y - vertical_pos, en.CenterPosition.X - horizontal_pos);
 
-                    if (en is Enemy)
-                    {
-                        Enemy em = (Enemy)en;
-
-                        em.PushTime = 500;
-                    }
-
                     if ((enAngle > aAngle && enAngle < bAngle) || distance < 32.0f && distance > 8.0f)
                     {
                         bool flip = false;
+
+                        if (en is Enemy)
+                        {
+                            Enemy em = (Enemy)en;
+
+                            em.PushTime = 500;
+                        }
 
                         if (en is ShieldDude)
                         {

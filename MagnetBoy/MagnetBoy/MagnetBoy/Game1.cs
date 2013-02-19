@@ -280,6 +280,7 @@ namespace MagnetBoy
             aFac.pushSheet("titleScreenGrass");
             aFac.pushSheet("sewerParallaxSheet");
             aFac.pushSheet("cityParallaxSheet");
+            aFac.pushSheet("RSTutSheet");
 
             aFac.pushAnimation("playerAnims");
             aFac.pushAnimation("conveyerAnims");

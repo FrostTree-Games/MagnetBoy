@@ -1,6 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
   <Asset Type="MagnetBoyDataTypes.Animation[]">
+
+ 
+     <Item>
+      <name>RSTutorial</name>
+      <sheetName>RSTutSheet</sheetName>
+      <sheet Type="System.String">foo</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>160</frameWidth>
+      <frameHeight>90</frameHeight>
+      <frameCount>11</frameCount>
+      <frameSpeed>150</frameSpeed>
+    </Item>
+
+
+
+    
     <Item>
       <name>tutorialSign1</name>
       <sheetName>tutorialSignsSheet</sheetName>
