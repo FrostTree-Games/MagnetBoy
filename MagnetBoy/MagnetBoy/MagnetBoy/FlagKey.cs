@@ -51,6 +51,24 @@ namespace MagnetBoy
                 velocity.X *= 0.9f;
             }
 
+            if (velocity.X > 2)
+            {
+                velocity.X = 2;
+            }
+            else if (velocity.X < -2)
+            {
+                velocity.X = -2;
+            }
+
+            if (velocity.Y > 2)
+            {
+                velocity.Y = 2;
+            }
+            else if (velocity.Y < -2)
+            {
+                velocity.Y = -2;
+            }
+
             //reset the acceleration vector and recompute it
             acceleration = Vector2.Zero;
             acceleration.Y = 0.001f;
