@@ -35,7 +35,7 @@ namespace MagnetBoy
             {
                 if (en is Player)
                 {
-                    if (hitTest(en))
+                    if (hitTestPlayerVitals((Player)en))
                     {
                         if (en.CenterPosition.X - CenterPosition.X < 0)
                         {
@@ -68,6 +68,22 @@ namespace MagnetBoy
         public override void draw(SpriteBatch sb)
         {
             AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, AnimationFactory.DepthLayer0);
+        }
+
+        private bool hitTestPlayerVitals(Player pl)
+        {
+            Vector2 vitalsPos = pl.Position;
+            vitalsPos.X += (pl.HitBox.X - pl.VitalsBox.X) / 2;
+            vitalsPos.Y += (pl.HitBox.Y - pl.VitalsBox.Y) / 2;
+
+            if (horizontal_pos > vitalsPos.X + pl.VitalsBox.X || horizontal_pos + width < vitalsPos.X || vertical_pos > vitalsPos.Y + pl.VitalsBox.Y || vertical_pos + height < vitalsPos.Y)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

@@ -36,6 +36,15 @@ namespace MagnetBoy
 
         private const float magnetForceValue = 1.0f;
 
+        private Vector2 vitals = new Vector2(4.0f, 8.0f);
+        public Vector2 VitalsBox
+        {
+            get
+            {
+                return vitals;
+            }
+        }
+
         public Player(float initialx, float initialy)
         {
             creation();

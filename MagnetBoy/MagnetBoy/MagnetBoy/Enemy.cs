@@ -99,7 +99,7 @@ namespace MagnetBoy
                 {
                     if (en is Player)
                     {
-                        if (hitTest(en))
+                        if (hitTestPlayerVitals((Player)en))
                         {
                             if (!(!en.onTheGround && en.velocity.Y > 0.001f && en.Position.Y < vertical_pos))
                             {
@@ -152,9 +152,26 @@ namespace MagnetBoy
             sb.Draw(Game1.globalTestWalrus, new Vector2(horizontal_pos, vertical_pos), Color.Yellow);
         }
 
+        //this method is interesting
         public void addAttribute(Attribute attr)
         {
             list.Add(new Walk(this));
         }
-    }
+
+        private bool hitTestPlayerVitals(Player pl)
+        {
+            Vector2 vitalsPos = pl.Position;
+            vitalsPos.X += (pl.HitBox.X - pl.VitalsBox.X) / 2;
+            vitalsPos.Y += (pl.HitBox.Y - pl.VitalsBox.Y) / 2;
+
+            if (horizontal_pos > vitalsPos.X + pl.VitalsBox.X || horizontal_pos + width < vitalsPos.X || vertical_pos > vitalsPos.Y + pl.VitalsBox.Y || vertical_pos + height < vitalsPos.Y)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    } 
 }

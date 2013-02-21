@@ -13,6 +13,8 @@ namespace MagnetBoy
 
         private float rotation;
 
+        private Vector2 originalPosition;
+
         public FlagKey(float newX, float newY, LevelState.FlagColor newColor)
         {
             creation();
@@ -30,6 +32,8 @@ namespace MagnetBoy
             magneticMoment = 0.5f;
 
             color = newColor;
+
+            originalPosition = new Vector2(horizontal_pos, vertical_pos);
 
             rotation = 0.0f;
         }
@@ -108,6 +112,16 @@ namespace MagnetBoy
                             lk.open();
                             removeFromGame = true;
                             break;
+                        }
+                        else if (lk.CenterPosition.Y + 8 < CenterPosition.Y)
+                        {
+                            for (int i = 0; i < 8; i++)
+                            {
+                                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.ColouredSpark, CenterPosition, Vector2.Zero, (float)(i * Math.PI / 4.0), 0.0f, LevelState.getFlagXNAColor(color));
+                            }
+
+                            horizontal_pos = originalPosition.X;
+                            vertical_pos = originalPosition.Y;
                         }
                     }
                 }
