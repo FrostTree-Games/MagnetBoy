@@ -134,7 +134,7 @@ namespace MagnetBoy
         private GameScreenManager screenManager = null;
 
         // Game Level Information
-        public static readonly string[] levelNames = { "Escape the Lab", "WILSON'S CITY LEVEL", "SEWER - NEED", "ERIC'S FACTORY LEVEL", "BOSS LEVEL - NEED" };
+        public static readonly string[] levelNames = { "Leave the Lab", "Cut the City", "Scrape the Sewer", "Fight the Factory", "WOPLEY" };
         public static readonly string[] levelFileNames = { "theLab2", "WillysMap", "sewer", "theLab", "theLab2" };
 
         //currentLevel and furthestLevelProgressed start from 0 and go to NumberOfLevels - 1
@@ -407,8 +407,40 @@ namespace MagnetBoy
             for (int i = 0; i < NumberOfLevels; i++)
             {
                 LevelScoreStruct s;
+
                 s.levelBestTime = 100000;
-                s.levelBestTimeOwner = "Anonymous";
+                s.levelBestTimeOwner = "NOTFILLED";
+
+                switch (i)
+                {
+                    case 0:
+                        s.levelBestTime = 120.0;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Dan";
+                        break;
+                    case 1:
+                        s.levelBestTime = 240;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Wilson";
+                        break;
+                    case 2:
+                        s.levelBestTime = 300;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Eric";
+                        break;
+                    case 3:
+                        s.levelBestTime = 1000;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Wopley";
+                        break;
+                    case 4:
+                        s.levelBestTime = 1200;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Zippy";
+                        break;
+                    default:
+                        break;
+                }
 
                 MagnetBoySaveData[i] = s;
             }
