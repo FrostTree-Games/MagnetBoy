@@ -618,7 +618,7 @@ namespace MagnetBoy
                 {
                     startButtonDown = false;
 
-                    if (!fadingOut)
+                    if (!fadingOut && !showLevelCompleteText)
                     {
                         MediaPlayer.Volume = 0.25f;
                         pausedSelect = 0;
