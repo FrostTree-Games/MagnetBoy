@@ -128,6 +128,11 @@ namespace MagnetBoy
                             currentAnimation = "shieldGuyRaiseShieldLeft";
                         }
                     }
+
+                    if (pushTime > 0 && Math.Abs(velocity.X) < 0.01f)
+                    {
+                        LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.RedSpark, Position + new Vector2(facingRight ? width : 0, height / 2), Vector2.Zero, facingRight ? (float)((Math.PI/2) + (Game1.gameRandom.NextDouble() * Math.PI)) : (float)(-(Math.PI/2) + (Game1.gameRandom.NextDouble() * Math.PI)), 0.0f, Color.White);
+                    }
                 } //DownShield
                 else if (state == ShieldDudeState.UpShield)
                 {
