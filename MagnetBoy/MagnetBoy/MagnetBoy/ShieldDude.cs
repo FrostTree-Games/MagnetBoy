@@ -111,7 +111,7 @@ namespace MagnetBoy
                 {
                     stateTimePassed += currentTime.ElapsedGameTime.Milliseconds;
 
-                    if (stateTimePassed > 3000)
+                    if (stateTimePassed > 3000 && pushTime <= 0)
                     {
                         stateTimePassed = 0;
 
