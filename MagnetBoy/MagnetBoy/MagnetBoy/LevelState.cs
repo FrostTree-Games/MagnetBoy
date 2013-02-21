@@ -605,7 +605,10 @@ namespace MagnetBoy
             }
             else
             {
-                levelRecordTime += currentTime.ElapsedGameTime.Milliseconds;
+                if (!showLevelCompleteText)
+                {
+                    levelRecordTime += currentTime.ElapsedGameTime.Milliseconds;
+                }
 
                 if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
                 {
@@ -829,6 +832,12 @@ namespace MagnetBoy
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f * (playerStamina / playerStaminaMax), 1.0f), Color.Lerp(Color.DarkBlue, Color.Cyan, (playerStamina / playerStaminaMax)), AnimationFactory.DepthLayer0);
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10f, 1f), Color.Gray, AnimationFactory.DepthLayer1);
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(107, 75), new Vector2(10.1f, 1.1f), Color.Black, AnimationFactory.DepthLayer2);
+
+            if (Game1.MagnetBoySaveData.showInGameTimer)
+            {
+                MBQG.drawBlackBorderText(spriteBatch, new Vector2(108, 120), Color.LightGray,  "Time: " + (levelRecordTime / 1000), AnimationFactory.DepthLayer3 + 0.1f);
+                MBQG.drawBlackBorderText(spriteBatch, new Vector2(108, 136), Color.LightGray, "Record: " + (Game1.MagnetBoySaveData[Game1.CurrentLevel].levelBestTime / 1000), AnimationFactory.DepthLayer3 + 0.1f);
+            }
 
             if (levelRecordTime < 1500)
             {

@@ -36,7 +36,7 @@ namespace MagnetBoy
         public struct LevelScoreStruct
         {
             public string levelBestTimeOwner;
-            public uint levelBestTime;
+            public double levelBestTime;
         }
 
         // this struct is serialized into Xbox 360 save data; it is global for all users

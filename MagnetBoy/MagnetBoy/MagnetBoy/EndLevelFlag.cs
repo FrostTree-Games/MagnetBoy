@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Security;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -54,15 +55,23 @@ namespace MagnetBoy
                     {
                         if (hitTest(en))
                         {
-#if XBOX
-                            if ((uint)(LevelState.LevelRecordTime / 1000) < Game1.MagnetBoySaveData[Game1.CurrentLevel].levelBestTime)
+                            if ((uint)(LevelState.LevelRecordTime) < Game1.MagnetBoySaveData[Game1.CurrentLevel].levelBestTime)
                             {
                                 Game1.LevelScoreStruct newHighScore;
-                                newHighScore.levelBestTime = (uint)(LevelState.LevelRecordTime / 1000);
+                                newHighScore.levelBestTime = LevelState.LevelRecordTime;
+#if WINDOWS
+                                newHighScore.levelBestTimeOwner = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+#endif
+#if XBOX
                                 newHighScore.levelBestTimeOwner = GameInput.LockedPlayerGamerTag;
+#endif
 
                                 Game1.MagnetBoySaveData[Game1.CurrentLevel] = newHighScore;
                             }
+
+                            
+#if XBOX
+                            SaveGameModule.saveGame();
 #endif
                             AudioFactory.playSFX("sfx/fanfare");
                             AudioFactory.stopSong();
