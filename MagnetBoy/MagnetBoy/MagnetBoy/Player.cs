@@ -131,7 +131,7 @@ namespace MagnetBoy
             Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);
 
-            if ((ks.IsKeyDown(Keys.Right) || GameInput.isButtonDown(GameInput.PlayerButton.RightDirection)) && !isKnockedBack)
+            if ((ks.IsKeyDown(Keys.Right) || GameInput.isButtonDown(GameInput.PlayerButton.RightDirection)) && !isKnockedBack && !LevelState.showLevelCompleteText)
             {
                 currentAnimation = "playerWalkRight";
 
@@ -140,7 +140,7 @@ namespace MagnetBoy
                     keyAcceleration.X = 0.001f;
                 }
             }
-            else if ((ks.IsKeyDown(Keys.Left) || GameInput.isButtonDown(GameInput.PlayerButton.LeftDirection)) && !isKnockedBack)
+            else if ((ks.IsKeyDown(Keys.Left) || GameInput.isButtonDown(GameInput.PlayerButton.LeftDirection)) && !isKnockedBack && !LevelState.showLevelCompleteText)
             {
                 currentAnimation = "playerWalkLeft";
 
@@ -176,7 +176,7 @@ namespace MagnetBoy
             }
             */
 
-            if ((GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)) && LevelState.playerStamina > 0.0f)
+            if ((GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)) && LevelState.playerStamina > 0.0f && !LevelState.showLevelCompleteText)
             {
                 LevelState.playerStamina -= LevelState.playerStaminaDepleteRate;
                 if (LevelState.playerStamina < 0.0f)
