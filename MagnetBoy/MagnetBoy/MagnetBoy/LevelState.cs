@@ -742,9 +742,9 @@ namespace MagnetBoy
         {
             Game1.graphics.GraphicsDevice.Clear(Color.Black);
 
-            Vector2 loadPos = new Vector2(350, 300);
-            Vector2 wopleyPos = new Vector2(300, 300);
-            Vector2 chaserPos = new Vector2(500, 300);
+            Vector2 loadPos = new Vector2(300, 300);
+            Vector2 wopleyPos = new Vector2(250, 300);
+            Vector2 chaserPos = new Vector2(450, 300);
 
             spriteBatch.Begin();
             for (int i = 0; i < loadingText.Length; i++)
