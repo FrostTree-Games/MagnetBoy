@@ -424,6 +424,28 @@ namespace MagnetBoy
                         case "goomba":
                             levelEntities.Add(new Goomba(obj.Bounds.X, obj.Bounds.Y));
                             break;
+                        case "flagCloseSwitch":
+                            if (obj.Properties["color"].Value == "blue")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            }
+                            else if (obj.Properties["color"].Value == "yellow")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Yellow));
+                            }
+                            else if (obj.Properties["color"].Value == "red")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Red));
+                            }
+                            else if (obj.Properties["color"].Value == "purple")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Purple));
+                            }
+                            else if (obj.Properties["color"].Value == "green")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Green));
+                            }
+                            break;
                         default:
                             break;
                     }

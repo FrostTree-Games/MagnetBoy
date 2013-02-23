@@ -172,4 +172,38 @@ namespace MagnetBoy
             LevelState.setFlag(color, true);
         }
     }
+
+    class FlagCloseSwitch : Entity
+    {
+        private LevelState.FlagColor color;
+
+        public FlagCloseSwitch(float newX, float newY, LevelState.FlagColor color)
+        {
+            horizontal_pos = newX;
+            vertical_pos = newY;
+
+            width = 32f;
+            height = 128f;
+
+            LevelState.setFlag(color, true);
+
+            this.color = color;
+        }
+
+        public override void update(GameTime currentTime)
+        {
+            foreach (Entity en in globalEntityList)
+            {
+                if (en is Player && hitTest(en))
+                {
+                    LevelState.setFlag(color, false);
+                }
+            }
+        }
+
+        public override void draw(SpriteBatch sb)
+        {
+            //AnimationFactory.drawAnimationFrame(sb, "flagLock", (int)color, Position, new Vector2(32, 32), 0.0f, Microsoft.Xna.Framework.Color.Lerp(Microsoft.Xna.Framework.Color.Black, LevelState.getFlagXNAColor(color), 0.5f), AnimationFactory.DepthLayer3);
+        }
+    }
 }
