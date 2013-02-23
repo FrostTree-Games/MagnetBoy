@@ -135,7 +135,7 @@ namespace MagnetBoy
 
         // Game Level Information
         public static readonly string[] levelNames = { "Leave the Lab", "Cut the City", "Scrape the Sewer", "Fight the Factory", "WOPLEY" };
-        public static readonly string[] levelFileNames = { "theLab2", "WillysMap", "sewer", "theLab", "theLab2" };
+        public static readonly string[] levelFileNames = { "theLab2", "WillysMap", "sewer", "theLab", "climbTest" };
 
         //currentLevel and furthestLevelProgressed start from 0 and go to NumberOfLevels - 1
         private static int currentLevel;
