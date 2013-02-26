@@ -424,6 +424,28 @@ namespace MagnetBoy
                         case "goomba":
                             levelEntities.Add(new Goomba(obj.Bounds.X, obj.Bounds.Y));
                             break;
+                        case "flagCloseSwitch":
+                            if (obj.Properties["color"].Value == "blue")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Blue));
+                            }
+                            else if (obj.Properties["color"].Value == "yellow")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Yellow));
+                            }
+                            else if (obj.Properties["color"].Value == "red")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Red));
+                            }
+                            else if (obj.Properties["color"].Value == "purple")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Purple));
+                            }
+                            else if (obj.Properties["color"].Value == "green")
+                            {
+                                levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Green));
+                            }
+                            break;
                         default:
                             break;
                     }
@@ -605,7 +627,10 @@ namespace MagnetBoy
             }
             else
             {
-                levelRecordTime += currentTime.ElapsedGameTime.Milliseconds;
+                if (!showLevelCompleteText)
+                {
+                    levelRecordTime += currentTime.ElapsedGameTime.Milliseconds;
+                }
 
                 if (GameInput.isButtonDown(GameInput.PlayerButton.StartButton))
                 {
@@ -615,7 +640,7 @@ namespace MagnetBoy
                 {
                     startButtonDown = false;
 
-                    if (!fadingOut)
+                    if (!fadingOut && !showLevelCompleteText)
                     {
                         MediaPlayer.Volume = 0.25f;
                         pausedSelect = 0;
@@ -742,9 +767,9 @@ namespace MagnetBoy
         {
             Game1.graphics.GraphicsDevice.Clear(Color.Black);
 
-            Vector2 loadPos = new Vector2(350, 300);
-            Vector2 wopleyPos = new Vector2(300, 300);
-            Vector2 chaserPos = new Vector2(500, 300);
+            Vector2 loadPos = new Vector2(300, 300);
+            Vector2 wopleyPos = new Vector2(250, 300);
+            Vector2 chaserPos = new Vector2(450, 300);
 
             spriteBatch.Begin();
             for (int i = 0; i < loadingText.Length; i++)
@@ -829,6 +854,12 @@ namespace MagnetBoy
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10.0f * (playerStamina / playerStaminaMax), 1.0f), Color.Lerp(Color.DarkBlue, Color.Cyan, (playerStamina / playerStaminaMax)), AnimationFactory.DepthLayer0);
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(108, 76), new Vector2(10f, 1f), Color.Gray, AnimationFactory.DepthLayer1);
             AnimationFactory.drawAnimationFrame(spriteBatch, "gui_angledBoxB", 1, new Vector2(107, 75), new Vector2(10.1f, 1.1f), Color.Black, AnimationFactory.DepthLayer2);
+
+            if (Game1.MagnetBoySaveData.showInGameTimer)
+            {
+                MBQG.drawBlackBorderText(spriteBatch, new Vector2(108, 120), Color.LightGray,  "Time: " + (levelRecordTime / 1000), AnimationFactory.DepthLayer3 + 0.1f);
+                MBQG.drawBlackBorderText(spriteBatch, new Vector2(108, 136), Color.LightGray, "Record: " + (Game1.MagnetBoySaveData[Game1.CurrentLevel].levelBestTime / 1000), AnimationFactory.DepthLayer3 + 0.1f);
+            }
 
             if (levelRecordTime < 1500)
             {

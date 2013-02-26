@@ -107,7 +107,7 @@ namespace MagnetBoy
 
                         touchingWalkMarker = true;
 
-                        if (!onWalkMarker && !((Vector2.Distance(en.CenterPosition, player.CenterPosition) < 134) && GameInput.isButtonDown(GameInput.PlayerButton.Push)))
+                        if (!onWalkMarker && parent.PushTime <= 0)
                         {
                             onWalkMarker = true;
 

@@ -21,8 +21,15 @@ namespace MagnetBoy
 
         string dansAnim = "dansParticle";
 
+        private static Color blueSparkColorA = Color.Cyan;
+        private static Color blueSparkColorB = Color.DarkCyan;
+
+        private static Color redSparkColorA = Color.Red;
+        private static Color redSparkColorB = Color.DarkRed;
+
         public enum ParticleType
         {
+            RedSpark,
             BlueSpark,
             SweatDrops,
             ColouredSpark
@@ -65,6 +72,8 @@ namespace MagnetBoy
         {
             pool = new Particle[size];
 
+            setBlueSparkColor(Color.Cyan, Color.DarkCyan);
+
             for (int i = 0; i < pool.Length; i++)
             {
                 pool[i].active = false;
@@ -84,6 +93,31 @@ namespace MagnetBoy
 
                     switch (newType)
                     {
+                        case ParticleType.RedSpark:
+                            pool[i].bounce = true;
+                            pool[i].pos = newPos;
+                            pool[i].posPrevA = newPos;
+                            pool[i].posPrevB = newPos;
+                            pool[i].posPrevC = newPos;
+                            pool[i].posPrevD = newPos;
+                            pool[i].velocity.X = (float)(blueSparkVelocity * Math.Cos(direction));
+                            pool[i].velocity.Y = (float)(blueSparkVelocity * Math.Sin(direction));
+                            pool[i].accel = Vector2.Zero;
+                            pool[i].timeActive = 0;
+                            pool[i].color = Game1.gameRandom.Next() % 2 == 0 ? redSparkColorA : redSparkColorB;
+                            pool[i].colorPrevA = pool[i].color;
+                            pool[i].colorPrevB = pool[i].color;
+                            pool[i].colorPrevC = pool[i].color;
+                            pool[i].colorPrevD = pool[i].color;
+                            pool[i].currentFrame = 0;
+                            pool[i].lastFrameIncrement = 0;
+                            pool[i].frameCount = AnimationFactory.getAnimationFrameCount(dansAnim);
+                            pool[i].frameSpeed = AnimationFactory.getAnimationSpeed(dansAnim);
+                            if (pool[i].velocity.X * offsetVelocity.X >= 0)
+                            {
+                                pool[i].velocity.X += offsetVelocity.X;
+                            }
+                            break;
                         case ParticleType.BlueSpark:
                             pool[i].bounce = true;
                             pool[i].pos = newPos;
@@ -95,7 +129,7 @@ namespace MagnetBoy
                             pool[i].velocity.Y = (float)(blueSparkVelocity * Math.Sin(direction));
                             pool[i].accel = Vector2.Zero;
                             pool[i].timeActive = 0;
-                            pool[i].color = Game1.gameRandom.Next() % 2 == 0 ? Color.Cyan : Color.DarkCyan;
+                            pool[i].color = Game1.gameRandom.Next() % 2 == 0 ? blueSparkColorA : blueSparkColorB;
                             pool[i].colorPrevA = pool[i].color;
                             pool[i].colorPrevB = pool[i].color;
                             pool[i].colorPrevC = pool[i].color;
@@ -222,6 +256,7 @@ namespace MagnetBoy
 
                 switch (p.type)
                 {
+                    case ParticleType.RedSpark:
                     case ParticleType.BlueSpark:
                         AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevD - new Vector2(4f, 4f), p.colorPrevD, AnimationFactory.DepthLayer0);
                         AnimationFactory.drawAnimationFrame(sb, dansAnim, p.currentFrame, p.posPrevC - new Vector2(4f, 4f), p.colorPrevC, AnimationFactory.DepthLayer0);
@@ -241,6 +276,24 @@ namespace MagnetBoy
                         break;
                 }
             }
+        }
+
+        public static void setBlueSparkColor(Color color1, Color color2)
+        {
+            blueSparkColorA = color1;
+            blueSparkColorB = color2;
+
+            redSparkColorA = XboxListTools.rotateHueYIQ(blueSparkColorA, (float)Math.PI);
+            redSparkColorB = XboxListTools.rotateHueYIQ(blueSparkColorB, (float)Math.PI);
+        }
+
+        public static void rotateBlueSparkColor(float rotation)
+        {
+            blueSparkColorA = XboxListTools.rotateHueYIQ(blueSparkColorA, (float)Math.PI * rotation);
+            blueSparkColorB = XboxListTools.rotateHueYIQ(blueSparkColorB, (float)Math.PI * rotation);
+
+            redSparkColorA = XboxListTools.rotateHueYIQ(blueSparkColorA, (float)Math.PI);
+            redSparkColorB = XboxListTools.rotateHueYIQ(blueSparkColorB, (float)Math.PI);
         }
     }
 }

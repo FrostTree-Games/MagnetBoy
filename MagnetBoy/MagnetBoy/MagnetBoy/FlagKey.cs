@@ -13,6 +13,8 @@ namespace MagnetBoy
 
         private float rotation;
 
+        private Vector2 originalPosition;
+
         public FlagKey(float newX, float newY, LevelState.FlagColor newColor)
         {
             creation();
@@ -30,6 +32,8 @@ namespace MagnetBoy
             magneticMoment = 0.5f;
 
             color = newColor;
+
+            originalPosition = new Vector2(horizontal_pos, vertical_pos);
 
             rotation = 0.0f;
         }
@@ -49,6 +53,24 @@ namespace MagnetBoy
             if (onTheGround)
             {
                 velocity.X *= 0.9f;
+            }
+
+            if (velocity.X > 2)
+            {
+                velocity.X = 2;
+            }
+            else if (velocity.X < -2)
+            {
+                velocity.X = -2;
+            }
+
+            if (velocity.Y > 2)
+            {
+                velocity.Y = 2;
+            }
+            else if (velocity.Y < -2)
+            {
+                velocity.Y = -2;
             }
 
             //reset the acceleration vector and recompute it
@@ -90,6 +112,16 @@ namespace MagnetBoy
                             lk.open();
                             removeFromGame = true;
                             break;
+                        }
+                        else if (lk.CenterPosition.Y + 8 < CenterPosition.Y)
+                        {
+                            for (int i = 0; i < 8; i++)
+                            {
+                                LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.ColouredSpark, CenterPosition, Vector2.Zero, (float)(i * Math.PI / 4.0), 0.0f, LevelState.getFlagXNAColor(color));
+                            }
+
+                            horizontal_pos = originalPosition.X;
+                            vertical_pos = originalPosition.Y;
                         }
                     }
                 }
@@ -138,6 +170,40 @@ namespace MagnetBoy
 
             AudioFactory.playSFX("sfx/unlockDoor");
             LevelState.setFlag(color, true);
+        }
+    }
+
+    class FlagCloseSwitch : Entity
+    {
+        private LevelState.FlagColor color;
+
+        public FlagCloseSwitch(float newX, float newY, LevelState.FlagColor color)
+        {
+            horizontal_pos = newX;
+            vertical_pos = newY;
+
+            width = 32f;
+            height = 128f;
+
+            LevelState.setFlag(color, true);
+
+            this.color = color;
+        }
+
+        public override void update(GameTime currentTime)
+        {
+            foreach (Entity en in globalEntityList)
+            {
+                if (en is Player && hitTest(en))
+                {
+                    LevelState.setFlag(color, false);
+                }
+            }
+        }
+
+        public override void draw(SpriteBatch sb)
+        {
+            //AnimationFactory.drawAnimationFrame(sb, "flagLock", (int)color, Position, new Vector2(32, 32), 0.0f, Microsoft.Xna.Framework.Color.Lerp(Microsoft.Xna.Framework.Color.Black, LevelState.getFlagXNAColor(color), 0.5f), AnimationFactory.DepthLayer3);
         }
     }
 }

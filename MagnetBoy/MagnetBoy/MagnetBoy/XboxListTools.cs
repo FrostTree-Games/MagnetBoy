@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace MagnetBoy
 {
@@ -63,6 +64,33 @@ namespace MagnetBoy
         public static bool isShouldBeRemoved(Entity en)
         {
             return en.removeFromGame;
+        }
+
+        /// <summary> 
+        /// Takes an XNA Color and rotates it along the YIQ color space. Rotating will desaturate the color a little.
+        /// The algorithm was stolen from:
+        /// http://beesbuzz.biz/code/hsv_color_transforms.php
+        /// </summary> 
+        /// <param name="en">Color you want to modify</param> 
+        /// <param name="en">the value in radians to rotate by</param> 
+        public static Color rotateHueYIQ(Color original, float rotation)
+        {
+            float VSU = (float)Math.Cos(rotation);
+            float VSW = (float)Math.Sin(rotation);
+
+            Vector3 ret = new Vector3();
+
+            ret.X = (.299f + .701f * VSU + .168f * VSW) * (original.R/255.0f)
+                + (.587f - .587f * VSU + .330f * VSW) * (original.G/255.0f)
+                + (.114f - .114f * VSU - .497f * VSW) * (original.B/255.0f);
+            ret.Y = (.299f - .299f * VSU - .328f * VSW) * (original.R/255.0f)
+                + (.587f +.413f *VSU +.035f * VSW) * (original.G/255.0f)
+                + (.114f -.114f *VSU +.292f * VSW) * (original.B/255.0f);
+            ret.Z = (.299f - .3f * VSU + 1.25f * VSW) * (original.R/255.0f)
+                + (.587f - .588f * VSU - 1.05f * VSW) * (original.G/255.0f)
+                + (.114f + .886f * VSU - .203f * VSW) * (original.B/255.0f);
+
+            return new Color(ret);
         }
     }
 }
