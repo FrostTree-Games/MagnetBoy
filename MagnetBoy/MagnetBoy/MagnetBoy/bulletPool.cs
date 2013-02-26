@@ -268,27 +268,6 @@ namespace MagnetBoy
                         }
                     }
 
-                        //shield dude not getting killed when the shield is down
-                    /*if (en is ShieldDude && type == BulletPool.BulletType.Bucket)
-                    {
-                        ShieldDude dude = (ShieldDude)en;
-
-                        // geometric property of dot product
-                        if (hitTest(en))
-                        {
-                            double angleBetweenBulletAndShield = Math.Acos(Vector2.Dot(dude.ShieldDir, velocity) / (dude.ShieldDir.Length() * velocity.Length()));
-
-                            float dotProduct = Vector2.Dot(velocity, initialBucketVelocity);
-                            float magnitude = (float)(Math.Sqrt((Math.Pow(velocity.X, 2.0) + Math.Pow(velocity.Y, 2.0)) * (Math.Pow(initialBucketVelocity.X, 2.0) + Math.Pow(initialBucketVelocity.Y, 2.0))));
-                            float angleBetween = (float)Math.Acos((dotProduct) / magnitude);
-
-                            Console.WriteLine("angleBetweenBulletAndShield " + angleBetweenBulletAndShield + " Math.PI " + Math.PI/1.5);
-                            if (angleBetweenBulletAndShield < Math.PI / 1.5 && (angleBetween >= Math.PI / 2 && angleBetween != 0 || angleBetween <= Math.PI / 2 && angleBetween != 0))
-                            {
-                                en.deathAnimation = true;
-                            }
-                        }
-                    }*/
                     if (en is Enemy && type == BulletPool.BulletType.Bucket)
                     {
                         if (hitTest(en))
@@ -386,6 +365,13 @@ namespace MagnetBoy
                 }
                 else
                 {
+                    if (type == BulletPool.BulletType.LavaBlob)
+                    {
+                        LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((7 * (Math.PI / 4))), 0.0f, Color.Lerp(Color.Yellow, Color.Red, (float)(Game1.gameRandom.NextDouble())));
+                        LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((5.4 * (Math.PI / 4))), 0.0f, Color.Lerp(Color.Yellow, Color.Red, (float)(Game1.gameRandom.NextDouble())));
+                        LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((5 * (Math.PI / 4))), 0.0f, Color.Lerp(Color.Yellow, Color.Red, (float)(Game1.gameRandom.NextDouble())));
+                    }
+
                     removeFromGame = true;
                     death();
                     inUse = false;
