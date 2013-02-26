@@ -73,7 +73,7 @@ namespace MagnetBoy
                 {
                     try
                     {
-                        IAsyncResult result2 = device.BeginOpenContainer("MagnetBoyTest", null, null);
+                        IAsyncResult result2 = device.BeginOpenContainer("zippy Push Kid", null, null);
 
                         result2.AsyncWaitHandle.WaitOne();
 
@@ -134,7 +134,7 @@ namespace MagnetBoy
                     {
                         try
                         {
-                            IAsyncResult result2 = device.BeginOpenContainer("MagnetBoyTest", null, null);
+                            IAsyncResult result2 = device.BeginOpenContainer("Zippy Push Kid", null, null);
 
                             result2.AsyncWaitHandle.WaitOne();
 

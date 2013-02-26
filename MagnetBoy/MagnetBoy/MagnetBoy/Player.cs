@@ -365,6 +365,8 @@ namespace MagnetBoy
                         {
                             if (!en.deathAnimation)
                             {
+                                AudioFactory.playSFX("sfx/hurtGoomba");
+
                                 velocity.Y *= -1.1f;
                                 en.deathAnimation = true;
                             }
@@ -450,6 +452,8 @@ namespace MagnetBoy
         {
             if (playerBlink == false)
             {
+                AudioFactory.playSFX("sfx/getHurt");
+
                 if (isKnockedBack)
                 {
                     if (velocity.X < 0)

@@ -281,6 +281,9 @@ namespace MagnetBoy
             aFac.pushSheet("sewerParallaxSheet");
             aFac.pushSheet("cityParallaxSheet");
             aFac.pushSheet("RSTutSheet");
+            aFac.pushSheet("pushTutSheet");
+            aFac.pushSheet("killTutSheet");
+            aFac.pushSheet("enemyTutSheet");
 
             aFac.pushAnimation("playerAnims");
             aFac.pushAnimation("conveyerAnims");
@@ -332,6 +335,8 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/unlockDoor");
             AudioFactory.pushNewSFX("sfx/getHealth");
             AudioFactory.pushNewSFX("sfx/fanfare");
+            AudioFactory.pushNewSFX("sfx/getHurt");
+            AudioFactory.pushNewSFX("sfx/hurtGoomba");
 
 #if XBOX
             Thread.Sleep(2000);

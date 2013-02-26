@@ -186,6 +186,8 @@
   <object name="walkMarker" x="1776" y="2496" width="32" height="32"/>
   <object name="lolrus" x="2144" y="2784" width="32" height="32"/>
   <object name="player" x="142" y="754" width="32" height="32"/>
+  <object name="heartItem" x="2080" y="1216" width="32" height="32"/>
+  <object name="heartItem" x="2912" y="1824" width="32" height="32"/>
  </objectgroup>
  <layer name="paint" width="104" height="104">
   <properties>

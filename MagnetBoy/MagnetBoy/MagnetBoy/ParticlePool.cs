@@ -154,7 +154,7 @@ namespace MagnetBoy
                             pool[i].velocity.Y = (float)(sweatDropVelocity * Math.Sin(direction));
                             pool[i].accel = new Vector2(0, sweatDropAccel);
                             pool[i].timeActive = 0;
-                            pool[i].color = Color.White;
+                            pool[i].color = tint;
                             pool[i].colorPrevA = pool[i].color;
                             pool[i].colorPrevB = pool[i].color;
                             pool[i].colorPrevC = pool[i].color;
