@@ -281,6 +281,9 @@ namespace MagnetBoy
             aFac.pushSheet("sewerParallaxSheet");
             aFac.pushSheet("cityParallaxSheet");
             aFac.pushSheet("RSTutSheet");
+            aFac.pushSheet("pushTutSheet");
+            aFac.pushSheet("killTutSheet");
+            aFac.pushSheet("enemyTutSheet");
 
             aFac.pushAnimation("playerAnims");
             aFac.pushAnimation("conveyerAnims");
