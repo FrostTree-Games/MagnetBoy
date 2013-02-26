@@ -1,6 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
   <Asset Type="MagnetBoyDataTypes.Animation[]">
+
+ 
+     <Item>
+      <name>RSTutorial</name>
+      <sheetName>RSTutSheet</sheetName>
+      <sheet Type="System.String">foo</sheet>
+      <initalX>0</initalX>
+      <initalY>0</initalY>
+      <frameWidth>160</frameWidth>
+      <frameHeight>90</frameHeight>
+      <frameCount>11</frameCount>
+      <frameSpeed>150</frameSpeed>
+    </Item>
+
+
+
+    
     <Item>
       <name>tutorialSign1</name>
       <sheetName>tutorialSignsSheet</sheetName>
@@ -10,7 +27,7 @@
       <frameWidth>160</frameWidth>
       <frameHeight>96</frameHeight>
       <frameCount>1</frameCount>
-      <frameSpeed>1</frameSpeed>
+      <frameSpeed>150</frameSpeed>
     </Item>
     <Item>
       <name>tutorialSign2</name>
@@ -21,40 +38,40 @@
       <frameWidth>160</frameWidth>
       <frameHeight>96</frameHeight>
       <frameCount>1</frameCount>
-      <frameSpeed>1</frameSpeed>
+      <frameSpeed>150</frameSpeed>
     </Item>
     <Item>
       <name>tutorialSign3</name>
-      <sheetName>tutorialSignsSheet</sheetName>
+      <sheetName>pushTutSheet</sheetName>
       <sheet Type="System.String">foo</sheet>
-      <initalX>320</initalX>
+      <initalX>0</initalX>
       <initalY>0</initalY>
       <frameWidth>160</frameWidth>
-      <frameHeight>96</frameHeight>
-      <frameCount>1</frameCount>
-      <frameSpeed>1</frameSpeed>
+      <frameHeight>90</frameHeight>
+      <frameCount>8</frameCount>
+      <frameSpeed>150</frameSpeed>
     </Item>
     <Item>
       <name>tutorialSign4</name>
-      <sheetName>tutorialSignsSheet</sheetName>
+      <sheetName>enemyTutSheet</sheetName>
       <sheet Type="System.String">foo</sheet>
-      <initalX>480</initalX>
+      <initalX>0</initalX>
       <initalY>0</initalY>
       <frameWidth>160</frameWidth>
       <frameHeight>96</frameHeight>
-      <frameCount>1</frameCount>
-      <frameSpeed>1</frameSpeed>
+      <frameCount>12</frameCount>
+      <frameSpeed>150</frameSpeed>
     </Item>
     <Item>
       <name>tutorialSign5</name>
-      <sheetName>tutorialSignsSheet</sheetName>
+      <sheetName>killTutSheet</sheetName>
       <sheet Type="System.String">foo</sheet>
       <initalX>0</initalX>
-      <initalY>96</initalY>
+      <initalY>0</initalY>
       <frameWidth>160</frameWidth>
       <frameHeight>96</frameHeight>
-      <frameCount>1</frameCount>
-      <frameSpeed>1</frameSpeed>
+      <frameCount>11</frameCount>
+      <frameSpeed>150</frameSpeed>
     </Item>
     <Item>
       <name>tutorialSign6</name>
@@ -65,7 +82,7 @@
       <frameWidth>160</frameWidth>
       <frameHeight>96</frameHeight>
       <frameCount>1</frameCount>
-      <frameSpeed>1</frameSpeed>
+      <frameSpeed>150</frameSpeed>
     </Item>
   </Asset>
 </XnaContent>

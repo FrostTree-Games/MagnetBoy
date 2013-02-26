@@ -36,24 +36,14 @@ namespace MagnetBoy
 
         private const float magnetForceValue = 1.0f;
 
-        /*
-        public Player()
+        private Vector2 vitals = new Vector2(4.0f, 8.0f);
+        public Vector2 VitalsBox
         {
-            creation();
-
-            horizontal_pos = 0.0f;
-            vertical_pos = 0.0f;
-
-            velocity = Vector2.Zero;
-            acceleration = Vector2.Zero;
-            conveyer = Vector2.Zero;
-
-            acceleration.Y = 0.001f;
-
-            solid = true;
-
-            currentAnimation = "playerWalkRight";
-        } */
+            get
+            {
+                return vitals;
+            }
+        }
 
         public Player(float initialx, float initialy)
         {
@@ -141,7 +131,7 @@ namespace MagnetBoy
             Vector2 keyAcceleration = Vector2.Zero;
             Vector2 step = new Vector2(horizontal_pos, vertical_pos);
 
-            if ((ks.IsKeyDown(Keys.Right) || GameInput.isButtonDown(GameInput.PlayerButton.RightDirection)) && !isKnockedBack)
+            if ((ks.IsKeyDown(Keys.Right) || GameInput.isButtonDown(GameInput.PlayerButton.RightDirection)) && !isKnockedBack && !LevelState.showLevelCompleteText)
             {
                 currentAnimation = "playerWalkRight";
 
@@ -150,7 +140,7 @@ namespace MagnetBoy
                     keyAcceleration.X = 0.001f;
                 }
             }
-            else if ((ks.IsKeyDown(Keys.Left) || GameInput.isButtonDown(GameInput.PlayerButton.LeftDirection)) && !isKnockedBack)
+            else if ((ks.IsKeyDown(Keys.Left) || GameInput.isButtonDown(GameInput.PlayerButton.LeftDirection)) && !isKnockedBack && !LevelState.showLevelCompleteText)
             {
                 currentAnimation = "playerWalkLeft";
 
@@ -176,17 +166,7 @@ namespace MagnetBoy
                 }
             }
 
-            /*
-            if (ks.IsKeyDown(Keys.Up) || GameInput.isButtonDown(GameInput.PlayerButton.Jump))
-            {
-                if (onTheGround)
-                {
-                    velocity.Y = -0.5f;
-                }
-            }
-            */
-
-            if ((GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)) && LevelState.playerStamina > 0.0f)
+            if ((GameInput.P1MouseDown == true || GameInput.isButtonDown(GameInput.PlayerButton.Push)) && LevelState.playerStamina > 0.0f && !LevelState.showLevelCompleteText)
             {
                 LevelState.playerStamina -= LevelState.playerStaminaDepleteRate;
                 if (LevelState.playerStamina < 0.0f)
@@ -217,6 +197,13 @@ namespace MagnetBoy
                     if ((enAngle > aAngle && enAngle < bAngle) || distance < 32.0f && distance > 8.0f)
                     {
                         bool flip = false;
+
+                        if (en is Enemy)
+                        {
+                            Enemy em = (Enemy)en;
+
+                            em.PushTime = 500;
+                        }
 
                         if (en is ShieldDude)
                         {
@@ -378,6 +365,8 @@ namespace MagnetBoy
                         {
                             if (!en.deathAnimation)
                             {
+                                AudioFactory.playSFX("sfx/hurtGoomba");
+
                                 velocity.Y *= -1.1f;
                                 en.deathAnimation = true;
                             }
@@ -463,6 +452,8 @@ namespace MagnetBoy
         {
             if (playerBlink == false)
             {
+                AudioFactory.playSFX("sfx/getHurt");
+
                 if (isKnockedBack)
                 {
                     if (velocity.X < 0)

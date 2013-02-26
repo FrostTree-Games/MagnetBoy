@@ -159,7 +159,7 @@ namespace MagnetBoy
             }
             else if (state == SplashScreenVisualState.FrostTreeLogo)
             {
-                spriteBatch.DrawString(Game1.gameFontText, "frosttree logo plz", new Vector2(360, 240), FadeAmount);
+                spriteBatch.Draw(Game1.globalCompanyLogo, new Vector2(720/2 - Game1.globalCompanyLogo.Bounds.Width/2, 480/2 - Game1.globalCompanyLogo.Bounds.Height/2), FadeAmount);
             }
             else if (state == SplashScreenVisualState.SaveNote)
             {

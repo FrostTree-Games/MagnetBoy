@@ -1,125 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="120" height="100" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="labSheetA" tilewidth="32" tileheight="32">
   <image source="LabSheet.png" width="640" height="400"/>
  </tileset>
- <layer name="background walls" width="100" height="100">
+ <layer name="background walls" width="120" height="100">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
- <layer name="background objects" width="100" height="100">
+ <layer name="background objects" width="120" height="100">
   <data encoding="base64" compression="zlib">
-   eJztwzEJAAAIADD75zCE8fz9RPw2WAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFe5yL9aBAAAAAAAAAAAAAAAmBp7zw71
+   eJzty8EJACAIQFH3PzlEQzReHUO8dIt4Dz4KYgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3MndaGZXlr889ih33jAvAgAAAAAAAAAAAAAAAADgTwvx7xGJ
   </data>
  </layer>
- <layer name="solid" width="100" height="100">
+ <layer name="solid" width="120" height="100">
   <properties>
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
- <layer name="wall blobs" width="100" height="100">
+ <layer name="wall blobs" width="120" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt3FlOxDAMgOEAEpxgGIntHTgDcAsOgRBX4Dock0YQ0YlausUZx/4/KRLtQ2amboLjLiEAAAAAAAAAAFp0mrWzgn2fCPRp3WXW9gX73gn0ad1D1h4L9n0v0CcAAJgv5apj+fBT15679jKyLSF9RmpTnxV/Q55r19gnIeWqkvmwpHicvsJhbldjn5SUq47lwzXGw1rWYtG6eC7lx6nGPikl5sSbrt0V+C7YHvs4l73+tiXz2VC9Kz83prZRzlB9JeYVF+Evvzsf2G4lx7Agxeiqt+86yNXcMM+u9zfj4fi0xaO/NtWY80vTFg/vvMRjaJ0d1w634XD9MFWvkq5neYnHkPfws3b4OPYX6WktHprrSSX062nktz5wP4wuaU5sYT70wMr9MJ5rehrnuJrXArSJvz3W1pjj9PB8PgKAR0uvBXvOI2uI67/9hm3rap+fxON/ed44tb0V8dDFSjys/F+zEI8YCyv3PLUejxSLSNP3Wqv1eHCNDgAAAACQWKllWaGthuAd8ZC3ZA4iHvKWHGPiIW/JMe5fQ/X+jKMUznldiMd6Es+pcX/wfBqfN/Asf8ew9ec4tZN85zP50Txpjvrs2lto5715VtV6DzrjYx7eS68L40MXK89FAxJaz6HmzoPMl/CI8QGMY3wAAAAAAAAAAICavgEWCjnd
+   eJzt3Vtu00AUAFBDJVhBW4nXP3QN0F2wCITYAkuARfDBMvGIWrXdieKJH/UdnyONUvvDiXM9k7m3E6dpAAAAAAAAoNzLUbta8NgvVjgmZW5G7XbBY1+vcEzKfBq1uwWP/XGFYwIARNXlNqfyp89t+9K2+xPba+ieo2vnniudwzg322JfBF1us2b+tKb0vv9thnP3LfZF0eU2p/KnLfrrpcS2bunaHL/vW+yLYonPlHdt+7DAa2F5c6/NNHZ/fWgl43euXj2+1s5ts1+5emaa571uHufvrzLbUeZ8PNXF/E1v39tmvZo5z+O697f+Wp+9xbdfa9ljjhjN3uLLssT3Mrk6VMpd3zfD/PVcvXntenS/nmY+Nc/35n/u+uO5X0hge67fQo2s96xbN4czf6uT9Z55R67xH2FMj/y/0LnSuafauDG9Xke+vgGgVOnanyPnCRGlesbtjG32TXy3tfX4KL7bGueR57bnEt+8WuYZ4vtUim0ta47Fd6iLbVLDeYrvkDVQAAAAQI1qqUWTV3vN7ujEN56SMVd84ymJmfjGUxKz/poK9xzJ+9W235nH3L70+Gf0mNs3hz5ZN/G9XIT7Mvi+1HRH+H7okY1/4ylC/2W6SL/hZf47TTcm/2zbtybOfe2ZJlKf7dN/p4kaX6aJGl/9dxr3UYK4zJGHpo77Ph9gf/RfiEv/BQAAAAAAALjcP+o4RZo=
   </data>
  </layer>
- <objectgroup name="game objects" width="100" height="100">
-  <object name="lava" x="2016" y="608" width="32" height="32"/>
-  <object name="flagDoor" x="1856" y="1312" width="32" height="32">
+ <objectgroup name="game objects" width="120" height="100">
+  <object name="lava" x="2336" y="608" width="32" height="32"/>
+  <object name="flagDoor" x="2176" y="1312" width="32" height="32">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object name="flagKey" x="1712" y="1082" width="32" height="32">
+  <object name="flagKey" x="2032" y="1082" width="32" height="32">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object name="flagLock" x="1920" y="1376" width="32" height="32">
+  <object name="flagLock" x="2240" y="1376" width="32" height="32">
    <properties>
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="288" y="528" width="160" height="96">
+  <object name="tutorialSign" x="608" y="528" width="160" height="96">
    <properties>
     <property name="message" value="message1"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="544" y="912" width="160" height="96">
+  <object name="tutorialSign" x="864" y="912" width="160" height="96">
    <properties>
     <property name="message" value="message3"/>
    </properties>
   </object>
-  <object name="spikes_up" x="2496" y="544" width="32" height="32"/>
-  <object name="spikes_up" x="2464" y="544" width="32" height="32"/>
-  <object name="lava" x="2048" y="608" width="32" height="32"/>
-  <object name="lava" x="2144" y="608" width="32" height="32"/>
-  <object name="lava" x="2176" y="608" width="32" height="32"/>
-  <object name="spikes_up" x="2400" y="1248" width="32" height="32"/>
-  <object name="spikes_up" x="2368" y="1248" width="32" height="32"/>
-  <object name="flagDoor" x="1056" y="1280" width="32" height="32">
+  <object name="spikes_up" x="2816" y="544" width="32" height="32"/>
+  <object name="spikes_up" x="2784" y="544" width="32" height="32"/>
+  <object name="lava" x="2368" y="608" width="32" height="32"/>
+  <object name="lava" x="2464" y="608" width="32" height="32"/>
+  <object name="lava" x="2496" y="608" width="32" height="32"/>
+  <object name="spikes_up" x="2720" y="1248" width="32" height="32"/>
+  <object name="spikes_up" x="2688" y="1248" width="32" height="32"/>
+  <object name="flagDoor" x="1376" y="1280" width="32" height="32">
    <properties>
     <property name="color" value="purple"/>
    </properties>
   </object>
-  <object name="flagDoor" x="1312" y="1376" width="32" height="32">
+  <object name="flagDoor" x="1632" y="1408" width="32" height="32">
    <properties>
     <property name="color" value="red"/>
    </properties>
   </object>
-  <object name="flagKey" x="1366" y="1423" width="32" height="32">
+  <object name="flagKey" x="1728" y="1472" width="32" height="32">
    <properties>
     <property name="color" value="purple"/>
    </properties>
   </object>
-  <object name="flagLock" x="1120" y="1440" width="32" height="32">
+  <object name="flagLock" x="1440" y="1472" width="32" height="32">
    <properties>
     <property name="color" value="purple"/>
    </properties>
   </object>
-  <object name="flagKey" x="768" y="1280" width="32" height="32">
+  <object name="flagKey" x="1664" y="1216" width="32" height="32">
    <properties>
     <property name="color" value="red"/>
    </properties>
   </object>
-  <object name="flagLock" x="672" y="1280" width="32" height="32">
+  <object name="flagLock" x="1728" y="1216" width="32" height="32">
    <properties>
     <property name="color" value="red"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="1568" y="1040" width="160" height="96">
+  <object name="tutorialSign" x="1888" y="1040" width="160" height="96">
    <properties>
     <property name="message" value="message4"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="544" y="2352" width="160" height="96">
+  <object name="tutorialSign" x="864" y="2352" width="160" height="96">
    <properties>
     <property name="message" value="message5"/>
    </properties>
   </object>
-  <object name="spikes_up" x="1120" y="2496" width="32" height="32"/>
-  <object name="spikes_up" x="1152" y="2496" width="32" height="32"/>
-  <object name="spikes_up" x="1216" y="2496" width="32" height="32"/>
-  <object name="goomba" x="992" y="2432" width="32" height="32"/>
-  <object name="goomba" x="1920" y="2464" width="32" height="32"/>
-  <object name="tutorialSign" x="1568" y="2352" width="160" height="96">
+  <object name="spikes_up" x="1440" y="2496" width="32" height="32"/>
+  <object name="spikes_up" x="1472" y="2496" width="32" height="32"/>
+  <object name="spikes_up" x="1536" y="2496" width="32" height="32"/>
+  <object name="goomba" x="1312" y="2432" width="32" height="32"/>
+  <object name="goomba" x="2240" y="2464" width="32" height="32"/>
+  <object name="tutorialSign" x="1888" y="2352" width="160" height="96">
    <properties>
     <property name="message" value="message6"/>
    </properties>
   </object>
-  <object name="goomba" x="2240" y="2304" width="32" height="32"/>
-  <object name="endLevelFlag" x="3072" y="2048" width="128" height="128"/>
-  <object name="tutorialSign" x="192" y="912" width="160" height="96">
+  <object name="goomba" x="2560" y="2304" width="32" height="32"/>
+  <object name="endLevelFlag" x="3392" y="2048" width="128" height="128"/>
+  <object name="tutorialSign" x="512" y="912" width="160" height="96">
    <properties>
     <property name="message" value="message2"/>
    </properties>
   </object>
-  <object name="spikes_up" x="1184" y="2496" width="32" height="32"/>
-  <object name="walkMarker" x="1088" y="2432" width="32" height="32"/>
-  <object name="walkMarker" x="2144" y="2304" width="32" height="32"/>
-  <object name="player" x="605" y="525" width="32" height="32"/>
+  <object name="spikes_up" x="1504" y="2496" width="32" height="32"/>
+  <object name="walkMarker" x="1408" y="2432" width="32" height="32"/>
+  <object name="walkMarker" x="2464" y="2304" width="32" height="32"/>
+  <object name="player" x="876" y="480" width="32" height="32"/>
  </objectgroup>
 </map>

@@ -26,5 +26,17 @@
       <frameSpeed>25</frameSpeed>
     </Item>
 
+    <Item>
+      <name>flagDoorSymbol</name>
+      <sheetName>flagDoorSheet</sheetName>
+      <sheet Type="System.String">whatever</sheet>
+      <initalX>32</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>32</frameHeight>
+      <frameCount>5</frameCount>
+      <frameSpeed>25</frameSpeed>
+    </Item>
+
   </Asset>
 </XnaContent>

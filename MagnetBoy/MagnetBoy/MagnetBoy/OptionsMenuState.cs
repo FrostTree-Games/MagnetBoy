@@ -37,10 +37,10 @@ namespace MagnetBoy
                         description = "Confirm this to erase all previous save data.";
                         break;
                     case "Show Timer":
-                        description = "Show a timer onscreen to see how long you've been playing the level for.";
+                        description = "Show a timer onscreen\nto see how long you've\nbeen playing a level.";
                         break;
                     case "Show Record":
-                        description = "Show a fixed timer onscreen to see the top record for completing a level.";
+                        description = "Show a fixed timer onscreen\nto see the top record for completing a level.";
                         break;
                     case "Mute Music":
                         description = "Turn the music off if\nyou don't like it.";
@@ -107,6 +107,7 @@ namespace MagnetBoy
 
             menuList.Add(new OptionsMenuOption("Starting Health"));
             menuList.Add(new OptionsMenuOption("Mute Music"));
+            menuList.Add(new OptionsMenuOption("Show Timer"));
         }
 
         protected override void doUpdate(GameTime currentTime)
@@ -191,6 +192,9 @@ namespace MagnetBoy
                             Game1.MagnetBoySaveData.defaultStartingHealth = LevelState.maxPlayerHealth;
                         }
                         break;
+                    case "Show Timer":
+                        Game1.MagnetBoySaveData.showInGameTimer = !(Game1.MagnetBoySaveData.showInGameTimer);
+                        break;
                     case "Mute Music":
                         AudioFactory.Mute = !AudioFactory.Mute;
                         break;
@@ -217,6 +221,9 @@ namespace MagnetBoy
                         {
                             Game1.MagnetBoySaveData.defaultStartingHealth = 1;
                         }
+                        break;
+                    case "Show Timer":
+                        Game1.MagnetBoySaveData.showInGameTimer = !(Game1.MagnetBoySaveData.showInGameTimer);
                         break;
                     case "Mute Music":
                         AudioFactory.Mute = !AudioFactory.Mute;
@@ -269,7 +276,7 @@ namespace MagnetBoy
             spriteBatch.DrawString(Game1.gameFontText, "Back", new Vector2(450, 401), Color.Black);
 
             spriteBatch.DrawString(Game1.gameFontText, menuList[selectedMenuItem].description, optionDescriptionText, Color.Black, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, AnimationFactory.DepthLayer0);
-            MBQG.drawGUIBox(spriteBatch, optionDescriptionText - new Vector2(14, 8), 16, 4, Color.Purple, AnimationFactory.DepthLayer1);
+            MBQG.drawGUIBox(spriteBatch, optionDescriptionText - new Vector2(14, 8), 16, 6, Color.Purple, AnimationFactory.DepthLayer1);
 
             switch (menuList[selectedMenuItem].title)
             {
@@ -278,11 +285,11 @@ namespace MagnetBoy
                     {
                         if (i < Game1.MagnetBoySaveData.defaultStartingHealth)
                         {
-                            AnimationFactory.drawAnimationFrame(spriteBatch, "heartIdle", 0, new Vector2(432 + (i * 32), 193), new Vector2(0.8f, 0.8f), Color.White, AnimationFactory.DepthLayer0);
+                            AnimationFactory.drawAnimationFrame(spriteBatch, "heartIdle", 0, new Vector2(432 + (i * 32), 224), new Vector2(0.8f, 0.8f), Color.White, AnimationFactory.DepthLayer0);
                         }
                         else
                         {
-                            AnimationFactory.drawAnimationFrame(spriteBatch, "heartEmpty", 0, new Vector2(432 + (i * 32), 193), new Vector2(0.8f, 0.8f), Color.White, AnimationFactory.DepthLayer0);
+                            AnimationFactory.drawAnimationFrame(spriteBatch, "heartEmpty", 0, new Vector2(432 + (i * 32), 224), new Vector2(0.8f, 0.8f), Color.White, AnimationFactory.DepthLayer0);
                         }
                     }
                     break;
@@ -291,6 +298,12 @@ namespace MagnetBoy
                     MBQG.drawGUIBox(spriteBatch, optionDescriptionText + new Vector2(14, 8) + new Vector2(132, 100), 4, 2, Color.Purple, AnimationFactory.DepthLayer3);
                     spriteBatch.DrawString(Game1.gameFontText, "ON", optionDescriptionText + new Vector2(32, 12) + new Vector2(16, 100), AudioFactory.Mute ? Color.Black : Color.White);
                     spriteBatch.DrawString(Game1.gameFontText, "OFF", optionDescriptionText + new Vector2(28, 12) + new Vector2(132, 100), AudioFactory.Mute ? Color.White : Color.Black);
+                    break;
+                case "Show Timer":
+                    MBQG.drawGUIBox(spriteBatch, optionDescriptionText + new Vector2(14, 8) + new Vector2(16, 100), 4, 2, Color.Purple, AnimationFactory.DepthLayer3);
+                    MBQG.drawGUIBox(spriteBatch, optionDescriptionText + new Vector2(14, 8) + new Vector2(132, 100), 4, 2, Color.Purple, AnimationFactory.DepthLayer3);
+                    spriteBatch.DrawString(Game1.gameFontText, "ON", optionDescriptionText + new Vector2(32, 12) + new Vector2(16, 100), Game1.MagnetBoySaveData.showInGameTimer ? Color.White : Color.Black);
+                    spriteBatch.DrawString(Game1.gameFontText, "OFF", optionDescriptionText + new Vector2(28, 12) + new Vector2(132, 100), Game1.MagnetBoySaveData.showInGameTimer ? Color.Black : Color.White);
                     break;
                 default:
                     break;

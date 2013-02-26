@@ -36,7 +36,7 @@ namespace MagnetBoy
         public struct LevelScoreStruct
         {
             public string levelBestTimeOwner;
-            public uint levelBestTime;
+            public double levelBestTime;
         }
 
         // this struct is serialized into Xbox 360 save data; it is global for all users
@@ -106,6 +106,9 @@ namespace MagnetBoy
         public static SaveGameData MagnetBoySaveData;
         public static double onScreenSaveSpin;
 
+        public static Texture2D globalCompanyLogo = null;
+        public static Texture2D globalGameLogo = null;
+
         public static Texture2D globalTestWalrus = null;
         public static Texture2D globalTestPositive = null;
         public static Texture2D globalTestNegative = null;
@@ -131,8 +134,8 @@ namespace MagnetBoy
         private GameScreenManager screenManager = null;
 
         // Game Level Information
-        public static readonly string[] levelNames = { "Escape the Lab", "WILSON'S CITY LEVEL", "SEWER - NEED", "ERIC'S FACTORY LEVEL", "BOSS LEVEL - NEED" };
-        public static readonly string[] levelFileNames = { "theLab2", "WillysMap", "sewer", "theLab", "theLab2" };
+        public static readonly string[] levelNames = { "Leave the Lab", "Cut the City", "Scrape the Sewer", "Fight the Factory", "WOPLEY" };
+        public static readonly string[] levelFileNames = { "theLab2", "WillysMap", "sewer", "theLab", "climbTest" };
 
         //currentLevel and furthestLevelProgressed start from 0 and go to NumberOfLevels - 1
         private static int currentLevel;
@@ -208,6 +211,8 @@ namespace MagnetBoy
             aFac = new AnimationFactory(this.Content);
             audFac = new AudioFactory(this.Content);
 
+            globalCompanyLogo = this.Content.Load<Texture2D>("FrostTreeLogo");
+            globalGameLogo = this.Content.Load<Texture2D>("ZippyPushKidLogo");
             globalTestWalrus = this.Content.Load<Texture2D>("walrus");
             globalTestPositive = this.Content.Load<Texture2D>("posTest");
             globalTestNegative = this.Content.Load<Texture2D>("negTest");
@@ -275,6 +280,10 @@ namespace MagnetBoy
             aFac.pushSheet("titleScreenGrass");
             aFac.pushSheet("sewerParallaxSheet");
             aFac.pushSheet("cityParallaxSheet");
+            aFac.pushSheet("RSTutSheet");
+            aFac.pushSheet("pushTutSheet");
+            aFac.pushSheet("killTutSheet");
+            aFac.pushSheet("enemyTutSheet");
 
             aFac.pushAnimation("playerAnims");
             aFac.pushAnimation("conveyerAnims");
@@ -326,6 +335,8 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/unlockDoor");
             AudioFactory.pushNewSFX("sfx/getHealth");
             AudioFactory.pushNewSFX("sfx/fanfare");
+            AudioFactory.pushNewSFX("sfx/getHurt");
+            AudioFactory.pushNewSFX("sfx/hurtGoomba");
 
 #if XBOX
             Thread.Sleep(2000);
@@ -401,8 +412,40 @@ namespace MagnetBoy
             for (int i = 0; i < NumberOfLevels; i++)
             {
                 LevelScoreStruct s;
+
                 s.levelBestTime = 100000;
-                s.levelBestTimeOwner = "Anonymous";
+                s.levelBestTimeOwner = "NOTFILLED";
+
+                switch (i)
+                {
+                    case 0:
+                        s.levelBestTime = 120.0;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Dan";
+                        break;
+                    case 1:
+                        s.levelBestTime = 240;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Wilson";
+                        break;
+                    case 2:
+                        s.levelBestTime = 300;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Eric";
+                        break;
+                    case 3:
+                        s.levelBestTime = 1000;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Wopley";
+                        break;
+                    case 4:
+                        s.levelBestTime = 1200;
+                        s.levelBestTime *= 1000;
+                        s.levelBestTimeOwner = "Zippy";
+                        break;
+                    default:
+                        break;
+                }
 
                 MagnetBoySaveData[i] = s;
             }
