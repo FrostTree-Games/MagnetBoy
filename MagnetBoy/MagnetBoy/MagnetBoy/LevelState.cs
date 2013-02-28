@@ -858,7 +858,7 @@ namespace MagnetBoy
             if (Game1.MagnetBoySaveData.showInGameTimer)
             {
                 MBQG.drawBlackBorderText(spriteBatch, new Vector2(108, 120), Color.LightGray,  "Time: " + (levelRecordTime / 1000), AnimationFactory.DepthLayer3 + 0.1f);
-                MBQG.drawBlackBorderText(spriteBatch, new Vector2(108, 136), Color.LightGray, "Record: " + (Game1.MagnetBoySaveData[Game1.CurrentLevel].levelBestTime / 1000), AnimationFactory.DepthLayer3 + 0.1f);
+                MBQG.drawBlackBorderText(spriteBatch, new Vector2(108, 136), Color.LightGray, "Record: " + (Game1.MagnetBoySaveData.levelBestTime(Game1.CurrentLevel) / 1000), AnimationFactory.DepthLayer3 + 0.1f);
             }
 
             if (levelRecordTime < 1500)
