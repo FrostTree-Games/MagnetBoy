@@ -50,55 +50,81 @@ namespace MagnetBoy
             public bool showInGameTimer;
             public bool showInGameTopTime;
 
-            private LevelScoreStruct level1;
-            private LevelScoreStruct level2;
-            private LevelScoreStruct level3;
-            private LevelScoreStruct level4;
-            private LevelScoreStruct level5;
+            public double levelBestTime_1;
+            public string levelBestOwner_1;
+            public double levelBestTime_2;
+            public string levelBestOwner_2;
+            public double levelBestTime_3;
+            public string levelBestOwner_3;
+            public double levelBestTime_4;
+            public string levelBestOwner_4;
+            public double levelBestTime_5;
+            public string levelBestOwner_5;
 
-            public LevelScoreStruct this[int index]
+            public double levelBestTime(int index)
             {
-                get
+                switch (index)
                 {
-                    switch (index)
-                    {
-                        case 0:
-                            return level1;
-                        case 1:
-                            return level2;
-                        case 2:
-                            return level3;
-                        case 3:
-                            return level4;
-                        case 4:
-                            return level5;
-                        default:
-                            throw new IndexOutOfRangeException();
-                    }
+                    case 0:
+                        return levelBestTime_1;
+                    case 1:
+                        return levelBestTime_2;
+                    case 2:
+                        return levelBestTime_3;
+                    case 3:
+                        return levelBestTime_4;
+                    case 4:
+                        return levelBestTime_5;
+                    default:
+                        return 99999999999;
                 }
+            }
 
-                set
+            public string levelBestOwner(int index)
+            {
+                switch (index)
                 {
-                    switch (index)
-                    {
-                        case 0:
-                            level1 = value;
-                            break;
-                        case 1:
-                            level2 = value;
-                            break;
-                        case 2:
-                            level3 = value;
-                            break;
-                        case 3:
-                            level4 = value;
-                            break;
-                        case 4:
-                            level5 = value;
-                            break;
-                        default:
-                            throw new IndexOutOfRangeException();
-                    }
+                    case 0:
+                        return levelBestOwner_1;
+                    case 1:
+                        return levelBestOwner_2;
+                    case 2:
+                        return levelBestOwner_3;
+                    case 3:
+                        return levelBestOwner_4;
+                    case 4:
+                        return levelBestOwner_5;
+                    default:
+                        return "";
+                }
+            }
+
+            public void setLevelRecord(int index, double time, string owner)
+            {
+                switch (index)
+                {
+                    case 0:
+                        levelBestTime_1 = time;
+                        levelBestOwner_1 = owner;
+                        break;
+                    case 1:
+                        levelBestTime_2 = time;
+                        levelBestOwner_2 = owner;
+                        break;
+                    case 2:
+                        levelBestTime_3 = time;
+                        levelBestOwner_3 = owner;
+                        break;
+                    case 3:
+                        levelBestTime_4 = time;
+                        levelBestOwner_4 = owner;
+                        break;
+                    case 4:
+                        levelBestTime_5 = time;
+                        levelBestOwner_5 = owner;
+                        break;
+                    default:
+                        return;
                 }
             }
         }
@@ -411,43 +437,26 @@ namespace MagnetBoy
 
             for (int i = 0; i < NumberOfLevels; i++)
             {
-                LevelScoreStruct s;
-
-                s.levelBestTime = 100000;
-                s.levelBestTimeOwner = "NOTFILLED";
-
                 switch (i)
                 {
                     case 0:
-                        s.levelBestTime = 120.0;
-                        s.levelBestTime *= 1000;
-                        s.levelBestTimeOwner = "Dan";
+                        MagnetBoySaveData.setLevelRecord(i, 120 * 1000, "Dan");
                         break;
                     case 1:
-                        s.levelBestTime = 240;
-                        s.levelBestTime *= 1000;
-                        s.levelBestTimeOwner = "Wilson";
+                        MagnetBoySaveData.setLevelRecord(i, 400 * 1000, "Wilson");
                         break;
                     case 2:
-                        s.levelBestTime = 300;
-                        s.levelBestTime *= 1000;
-                        s.levelBestTimeOwner = "Eric";
+                        MagnetBoySaveData.setLevelRecord(i, 350 * 1000, "Eric");
                         break;
                     case 3:
-                        s.levelBestTime = 1000;
-                        s.levelBestTime *= 1000;
-                        s.levelBestTimeOwner = "Wopley";
+                        MagnetBoySaveData.setLevelRecord(i, 1000 * 1000, "Wopley");
                         break;
                     case 4:
-                        s.levelBestTime = 1200;
-                        s.levelBestTime *= 1000;
-                        s.levelBestTimeOwner = "Zippy";
+                        MagnetBoySaveData.setLevelRecord(i, 1200 * 1000, "Zippy");
                         break;
                     default:
                         break;
                 }
-
-                MagnetBoySaveData[i] = s;
             }
         }
     }
