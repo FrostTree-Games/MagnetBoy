@@ -57,7 +57,7 @@ namespace MagnetBoy
 
             pole = Polarity.Neutral;
 
-            bossHealth = 30;
+            bossHealth = 1;
 
             solid = true;
         }
@@ -91,7 +91,7 @@ namespace MagnetBoy
                     BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
 
-                if (Game1.gameRandom.Next() % 10 == 0)
+                if (Game1.gameRandom.Next() % 15 == 0)
                 {
                     BulletPool.pushBullet(healthItem, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
@@ -231,13 +231,13 @@ namespace MagnetBoy
         {
             creation();
 
-            shieldHealth = 21;
+            shieldHealth = 1;
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
 
             width = 31.5f;
-            height = 31.5f;
+            height = 127.5f;
 
             yPosDisplacement = 0f;
 
@@ -275,6 +275,23 @@ namespace MagnetBoy
 
             foreach(Entity b in globalEntityList)
             {
+                if (b is Player)
+                {
+                    if (hitTest(b))
+                    {
+                        if (!(!b.onTheGround && b.velocity.Y > 0.001f && b.Position.Y < vertical_pos))
+                        {
+                            if (b.Position.X - Position.X < 0)
+                            {
+                                ((Player)b).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
+                            else
+                            {
+                                ((Player)b).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                            }
+                        }
+                    }
+                }
                 
                 if (b is Bullet)
                 {
@@ -308,7 +325,27 @@ namespace MagnetBoy
                 }
             }
 
-            if (shieldHealth == 0)
+            if (shieldHealth == 16)
+            {
+                currentAnimation = "wopleyShieldHurt1";
+            }
+
+            else if (shieldHealth == 12)
+            {
+                currentAnimation = "wopleyShieldHurt2";
+            }
+
+            else if (shieldHealth == 8)
+            {
+                currentAnimation = "wopleyShieldHurt3";
+            }
+
+            else if (shieldHealth == 4)
+            {
+                currentAnimation = "wopleyShieldHurt4";
+            }
+
+            else if (shieldHealth == 0)
             {
                 removeFromGame = true;
             }

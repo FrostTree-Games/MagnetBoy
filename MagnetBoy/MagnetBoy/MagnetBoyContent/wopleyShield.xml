@@ -7,10 +7,61 @@
       <sheet Type="System.String">spikes</sheet>
       <initalX>0</initalX>
       <initalY>0</initalY>
-      <frameWidth>128</frameWidth>
+      <frameWidth>32</frameWidth>
       <frameHeight>128</frameHeight>
-      <frameCount>6</frameCount>
+      <frameCount>1</frameCount>
       <frameSpeed>30</frameSpeed>
     </Item>
+    
+     <Item>
+      <name>wopleyShieldHurt1</name>
+      <sheetName>wopleyShieldSheet</sheetName>
+      <sheet Type="System.String">spikes</sheet>
+      <initalX>32</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>128</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>30</frameSpeed>
+    </Item>
+
+    
+     <Item>
+      <name>wopleyShieldHurt2</name>
+      <sheetName>wopleyShieldSheet</sheetName>
+      <sheet Type="System.String">spikes</sheet>
+      <initalX>64</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>128</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>30</frameSpeed>
+    </Item>
+
+     <Item>
+      <name>wopleyShieldHurt3</name>
+      <sheetName>wopleyShieldSheet</sheetName>
+      <sheet Type="System.String">spikes</sheet>
+      <initalX>64</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>128</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>30</frameSpeed>
+    </Item>
+
+     <Item>
+      <name>wopleyShieldHurt4</name>
+      <sheetName>wopleyShieldSheet</sheetName>
+      <sheet Type="System.String">spikes</sheet>
+      <initalX>96</initalX>
+      <initalY>0</initalY>
+      <frameWidth>32</frameWidth>
+      <frameHeight>128</frameHeight>
+      <frameCount>1</frameCount>
+      <frameSpeed>30</frameSpeed>
+    </Item>
+
+
   </Asset>
 </XnaContent>

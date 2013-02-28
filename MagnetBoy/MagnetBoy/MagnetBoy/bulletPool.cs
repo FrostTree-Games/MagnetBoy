@@ -119,6 +119,7 @@ namespace MagnetBoy
                     velocity.X = 0.0f;
                     velocity.Y = 0.375f;
                     currentAnimation = "fireball";
+                    maxLifeTime = 1500;
                     rotation = 0.0f;
                     break;
                 case BulletPool.BulletType.Bucket:
@@ -225,9 +226,18 @@ namespace MagnetBoy
             {
                 if (playerEnact == true)
                 {
-                    velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
-                    velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
-                    playerEnact = false;
+                    if (type == BulletPool.BulletType.Heart || type == BulletPool.BulletType.Lung || type == BulletPool.BulletType.Brain)
+                    {
+                        velocity.X = 1.2f*(float)(testBulletVelocity * Math.Cos(rotation));
+                        velocity.Y = 1.2f*(float)(testBulletVelocity * Math.Sin(rotation));
+                        playerEnact = false;
+                    }
+                    else
+                    {
+                        velocity.X = (float)(testBulletVelocity * Math.Cos(rotation));
+                        velocity.Y = (float)(testBulletVelocity * Math.Sin(rotation));
+                        playerEnact = false;
+                    }
                 }
             }
 

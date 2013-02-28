@@ -61,10 +61,8 @@ namespace MagnetBoy
 
             if (hittingWall && chasePlayer)
             {
-                Console.WriteLine("Temp: " + temp);
                 if (temp > 0)
                 {
-                    Console.WriteLine("ARG");
                     parent.currentAnimation = "angrySawWalkLeft";
                 }
                 else
@@ -85,7 +83,7 @@ namespace MagnetBoy
                 {
                     if (en is Player)
                     {
-                        if (parent.PushTime < 1 && en.horizontal_pos - parent.horizontal_pos > -100 && en.horizontal_pos - parent.horizontal_pos < 100 && en.vertical_pos - parent.vertical_pos > -100 && en.vertical_pos - parent.vertical_pos < 5)
+                        if (parent.PushTime < 1 && en.horizontal_pos - parent.horizontal_pos > -200 && en.horizontal_pos - parent.horizontal_pos < 200 && en.vertical_pos - parent.vertical_pos > -160 && en.vertical_pos - parent.vertical_pos < 160)
                         {
                             chasePlayer = true;
                         }
@@ -96,7 +94,7 @@ namespace MagnetBoy
 
                         if (chasePlayer == true)
                         {
-                            if (en.horizontal_pos - parent.horizontal_pos > -500 && en.horizontal_pos - parent.horizontal_pos < -30 )
+                            if (en.horizontal_pos - parent.horizontal_pos > -1000 && en.horizontal_pos - parent.horizontal_pos < -30 )
                             {
                                 
                                 if (walkingLeft == false)
@@ -104,20 +102,20 @@ namespace MagnetBoy
                                     walkingLeft = true;
                                 }
 
-                                parent.velocity.X = -2 * walkerSpeed;
+                                parent.velocity.X = -2.5f * walkerSpeed;
                                 temp = parent.velocity.X;
                             }
                             else if (en.horizontal_pos - parent.horizontal_pos > -16 && en.horizontal_pos - parent.horizontal_pos < 16)
                             {
                                 parent.velocity.X = 0.0f;
                             }
-                            else if (en.horizontal_pos - parent.horizontal_pos > 30 && en.horizontal_pos - parent.horizontal_pos < 500)
+                            else if (en.horizontal_pos - parent.horizontal_pos > 30 && en.horizontal_pos - parent.horizontal_pos < 1000)
                            {
                                 if (walkingLeft == true)
                                 {
                                     walkingLeft = false;
                                 }
-                                parent.velocity.X = 2 * walkerSpeed;
+                                parent.velocity.X = 2.5f * walkerSpeed;
                                 temp = parent.velocity.X;
                             }
                         }
