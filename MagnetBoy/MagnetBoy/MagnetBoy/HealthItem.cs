@@ -67,6 +67,7 @@ namespace MagnetBoy
                         AudioFactory.playSFX("sfx/getHealth");
 
                         LevelState.checkPointTouched = true;
+                        LevelState.checkPointTime = LevelState.LevelRecordTime;
                         LevelState.respawnPosition = Position;
 
                         state = CheckPointState.Touched;
