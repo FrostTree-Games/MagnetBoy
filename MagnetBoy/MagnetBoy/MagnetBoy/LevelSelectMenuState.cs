@@ -188,7 +188,7 @@ namespace MagnetBoy
                 spriteBatch.DrawString(Game1.gameFontText, Game1.levelNames[i], new Vector2((float)(152 + (25 * menuList[i].distanceOut)), 85 + i * 64), Color.Lerp(Color.Black, Color.White, (float)menuList[i].distanceOut));
                 if (i <= Game1.MagnetBoySaveData.furthestLevelUnlocked)
                 {
-                    spriteBatch.DrawString(Game1.gameFontText, "Completed in " + (Game1.MagnetBoySaveData.levelBestTime(i) / 1000) + " by " + Game1.MagnetBoySaveData.levelBestOwner(i), new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 106 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
+                    spriteBatch.DrawString(Game1.gameFontText, "BEST TIME COMPLETED IN " + (Game1.MagnetBoySaveData.levelBestTime(i) / 1000) , new Vector2((float)(168 + (25 * menuList[i].distanceOut)), 106 + i * 64), Color.Lerp(new Color(40, 40, 40), Color.DarkGray, (float)menuList[i].distanceOut));
                 }
                 else
                 {
