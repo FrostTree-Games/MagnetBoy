@@ -159,6 +159,8 @@ namespace MagnetBoy
 
         private GameScreenManager screenManager = null;
 
+        public static ContentManager levelLoader = null;
+
         // Game Level Information
         public static readonly string[] levelNames = { "Leave the Lab", "Cut the City", "Scrape the Sewer", "Fight the Factory", "WOPLEY" };
         public static readonly string[] levelFileNames = { "theLab2", "WillysMap", "sewer", "theLab", "climbTest" };
@@ -187,6 +189,9 @@ namespace MagnetBoy
 #endif
 
             Content.RootDirectory = "Content";
+
+            levelLoader = new ContentManager(Services);
+            levelLoader.RootDirectory = "Content";
         }
 
         /// <summary>
