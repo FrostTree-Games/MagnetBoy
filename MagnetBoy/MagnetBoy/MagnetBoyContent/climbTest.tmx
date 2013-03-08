@@ -11,7 +11,7 @@
    <property name="solid" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1EEOQDAABdEehh1WuP/RVMJSTLU00pnk74R6i44hhNE551wTu2s4npvAs29V4gxa8bTiacXTiqcVTyueVjyteFrxtOJpxdOKpxVPK55WPK14WvG04mnF04qnFU8rnlY8rXha8bTiacXTiteK1Ry3xK0Z72jFqkS5TuT/tfqPVRfXJ+yqFqzO7+feKV9YlbhXn7af8U9WtdPqebWs9qXcmzVW4h+dc845597YBuw6ROI=
+   eJzt1E0OQDAABeEehh1WuP/RVMJSTLX+0pnk7YT6Fu1DCL1zzrkqdla3PTeAZ++qxBm04mnF04qnFU8rnlY8rXha8bTiacXTiqcVTyueVjyteFrxtOJpxdOKpxVPK55WPK14WvG04mnF04qnFa8WqzFuipsz3lGLVYlyncj/a/UfqyauTdhRNVjt38+9U56wKnGvXm0945+s3k4r3les1qXcm2+sxD8655xzzt2xBcenRZU=
   </data>
  </layer>
  <objectgroup name="obj" width="75" height="50">
@@ -31,16 +31,6 @@
   <object name="flagCloseSwitch" x="544" y="1216" width="32" height="128">
    <properties>
     <property name="color" value="yellow"/>
-   </properties>
-  </object>
-  <object name="flagKey" x="1504" y="1312" width="32" height="32">
-   <properties>
-    <property name="color" value="blue"/>
-   </properties>
-  </object>
-  <object name="flagLock" x="1568" y="1312" width="32" height="32">
-   <properties>
-    <property name="color" value="blue"/>
    </properties>
   </object>
   <object name="endLevelFlag" x="1888" y="1216" width="128" height="128"/>

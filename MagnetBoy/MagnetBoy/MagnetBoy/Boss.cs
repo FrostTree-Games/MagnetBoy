@@ -57,7 +57,7 @@ namespace MagnetBoy
 
             pole = Polarity.Neutral;
 
-            bossHealth = 1;
+            bossHealth = 30;
 
             solid = true;
         }
@@ -144,7 +144,9 @@ namespace MagnetBoy
 
             if (bossHealth == 0)
             {
+                LevelState.setFlag(LevelState.FlagColor.Blue, true);
                 removeFromGame = true;
+                bossShield.shieldHealth = 0;
                 death();
             }
             // if the last frame time hasn't been set, set it now
@@ -218,6 +220,7 @@ namespace MagnetBoy
         public static float yPosDisplacement = 0.0f;
 
         public static int shieldHealth = 0;
+        public static int maxShieldHealth = 0;
 
         public bossShield()
         {
@@ -231,7 +234,8 @@ namespace MagnetBoy
         {
             creation();
 
-            shieldHealth = 1;
+            shieldHealth = 20;
+            maxShieldHealth = 20;
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
@@ -325,27 +329,27 @@ namespace MagnetBoy
                 }
             }
 
-            if (shieldHealth == 16)
+            if (shieldHealth == maxShieldHealth * 0.8)
             {
                 currentAnimation = "wopleyShieldHurt1";
             }
 
-            else if (shieldHealth == 12)
+            else if (shieldHealth == maxShieldHealth * 0.6)
             {
                 currentAnimation = "wopleyShieldHurt2";
             }
 
-            else if (shieldHealth == 8)
+            else if (shieldHealth == maxShieldHealth * 0.4)
             {
                 currentAnimation = "wopleyShieldHurt3";
             }
 
-            else if (shieldHealth == 4)
+            else if (shieldHealth == maxShieldHealth * 0.2)
             {
                 currentAnimation = "wopleyShieldHurt4";
             }
 
-            else if (shieldHealth == 0)
+            else if (shieldHealth ==  0)
             {
                 removeFromGame = true;
             }
