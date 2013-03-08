@@ -12,5 +12,20 @@
       <frameCount>23</frameCount>
       <frameSpeed>40</frameSpeed>
     </Item>
+
+    <Item>
+      <name>wopleyDie</name>
+      <sheetName>wopleySheet</sheetName>
+      <sheet Type="System.String">spikes</sheet>
+      <initalX>0</initalX>
+      <initalY>160</initalY>
+      <frameWidth>160</frameWidth>
+      <frameHeight>160</frameHeight>
+      <frameCount>23</frameCount>
+      <frameSpeed>40</frameSpeed>
+    </Item>
+
+    
+
   </Asset>
 </XnaContent>
