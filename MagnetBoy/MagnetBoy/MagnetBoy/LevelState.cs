@@ -750,12 +750,12 @@ namespace MagnetBoy
                         }
                         else
                         {
-                            return false;
+                            continue;
                         }
                     }
                     catch (IndexOutOfRangeException)
                     {
-                        return false;
+                        continue;
                     }
                 }
             }
