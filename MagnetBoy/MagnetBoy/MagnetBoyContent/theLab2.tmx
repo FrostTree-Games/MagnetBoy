@@ -3,9 +3,17 @@
  <tileset firstgid="1" name="labSheetA" tilewidth="32" tileheight="32">
   <image source="LabSheet.png" width="640" height="400"/>
  </tileset>
+ <tileset firstgid="241" name="black" tilewidth="32" tileheight="32">
+  <image source="factoryPaint.png" width="224" height="160"/>
+ </tileset>
  <layer name="background walls" width="120" height="100">
   <data encoding="base64" compression="zlib">
    eJztnFly1DAQhvVOWC/AhCUXAALhgVf2XCAU2wVIsdwfqxJVFKVtS21J3er5v6q/JmTGHqk/S5bNTJwDAAAAAABS3FGQB8YjibRby341IO0Wftsi7RZ+2yLt1rJfDY6l3cJvW6Tdwm9bajl6OGXH3Daux+MpdzPyxMn42le/x1MOGNul9bhH/I5KzuvmjpVex4YGavk9dLr8nky572iXL10f3xqYq/uLKbeS7Nz1uTh+vD3l+cL+avt9nfEav6/UJeUz9z1HdJzrwfv2DnfuYpw+cxc+wyNn7G7xu2WMp79fe8/cNQF17EiTu27yj7HP9HVcv6ljjt+nl8n1m459aozHeVXQlvg9NRA7pGofj9UlR/416Xyexo9/f05cquXa83GO3JUfarsSLzXnjFATDcQOKSecc+pc/Bp77rwZ5kDK01H0upPk3y3m9S2J5zENbJ1bOXPxm+jn1I8fi5z1rAa/aS01sOS3xXtRCdcyYbzGcwbHbw/m+qLNrye0qTWH7up8X+s8EJzG834P4Pc64fqq9jmdGss9gN/r5Jzn3crzOY571ZVqR7iGhF99NShlbexq6Vvr9dVS/7XUgIMFv9xQ76G1/1ys+6XWwGuZW1eNCNUPf49o53T1K7Qr/P9QuIZZc1lzDczldMO2c2zti8b1c3z8hWuYVi5r+T3NTCmW/focu+191OS31DPVPmpOo6L1+qg1NXymlPrNdZ22Nb4vU7q+AHx6+Q2fTXlEPNdiXhqZLU5SPzX2QUGNXe76Y9/Q5HfOcepoy72BfaCW0xZ+Kdfwm0cLr0vjbmsbAqmj9HMtO+I1++C3pU+u37RdPzL2ueasZDxbQqvfuG1/pny8zPeF/cPvTTT7pdr3KfO9LPnd0tZcJz2Pg6Ws+Q1zuRW/uW3e2v5Qv29TfroyJ//c1fyamxK/8f4/Rz9z78Vroqdf7/avkx2/8bmYStq+XvVpBaf9nLpqcMvJvvr1vkrmy9puQR5zDtc+pyE1FkEZc25z1hNwqx/KW+m915bA6za0+wXbgV/bwK9t4Nc26do5/D2Vkf1+qBArxK7CZ6FHvN9awymV0eqQMvr83MprqV8NtaAY1W9rrxy/Gh2P5reXV/jtS2+vVvx6OH57IuWW41ejY81+Jd1aGcOlfqka1ETap2W/6ffRc9xajyW/wTH1uX3pOsMvj7l2xmNZusZa/VLfA9fGUvv9+Vi6vtJZcnvgbjrWxpLfd06+vhI5m/L2Mkt/2zrcrz+Iop24nxb8xq5ycx5tTx334Xvg4Xv+o/hNa2PBb40+jLq2SrHm14/d9+762PzC2A/86sxvog/cPo3sNWDNL9WHX2753Pt1Zj+ju/VY8+vn5/NK+xrVaYwlvzXdBr+jk/bJz2Wc9cgZczutbi1BOeZcP3K2q5Wabq373fdYRLqmmmIR6ZpqimWka6sh1pGuL9y2R7rO8NsW6TrDb3ukaw2/7ZGuN9z2Qbr2cNseaQdw2xdpL/AKAAAAAAAAAAAAAAAAAJTxH6jZkT4=
+  </data>
+ </layer>
+ <layer name="tileBlackening" width="120" height="100" opacity="0.26">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6Hz77YO9pkMSFg1VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf0HgDsjdQ==
   </data>
  </layer>
  <layer name="background objects" width="120" height="100">
@@ -43,12 +51,12 @@
     <property name="color" value="blue"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="608" y="528" width="160" height="96">
+  <object name="tutorialSign" x="672" y="912" width="160" height="96">
    <properties>
     <property name="message" value="message1"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="864" y="912" width="160" height="96">
+  <object name="tutorialSign" x="1888" y="1024" width="160" height="96">
    <properties>
     <property name="message" value="message3"/>
    </properties>
@@ -90,12 +98,12 @@
     <property name="color" value="red"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="1888" y="1040" width="160" height="96">
+  <object name="tutorialSign" x="928" y="2336" width="160" height="96">
    <properties>
     <property name="message" value="message4"/>
    </properties>
   </object>
-  <object name="tutorialSign" x="864" y="2352" width="160" height="96">
+  <object name="tutorialSign" x="1856" y="2336" width="160" height="96">
    <properties>
     <property name="message" value="message5"/>
    </properties>
@@ -105,18 +113,8 @@
   <object name="spikes_up" x="1536" y="2496" width="32" height="32"/>
   <object name="goomba" x="1312" y="2432" width="32" height="32"/>
   <object name="goomba" x="2240" y="2464" width="32" height="32"/>
-  <object name="tutorialSign" x="1888" y="2352" width="160" height="96">
-   <properties>
-    <property name="message" value="message6"/>
-   </properties>
-  </object>
   <object name="goomba" x="2560" y="2304" width="32" height="32"/>
   <object name="endLevelFlag" x="3392" y="2048" width="128" height="128"/>
-  <object name="tutorialSign" x="512" y="912" width="160" height="96">
-   <properties>
-    <property name="message" value="message2"/>
-   </properties>
-  </object>
   <object name="spikes_up" x="1504" y="2496" width="32" height="32"/>
   <object name="walkMarker" x="1408" y="2432" width="32" height="32"/>
   <object name="walkMarker" x="2464" y="2304" width="32" height="32"/>
