@@ -89,6 +89,7 @@ namespace MagnetBoy
         private string levelSong = "songs/introTheme";
 
         public static bool checkPointTouched = false;
+        public static double checkPointTime = 0.0f;
         public static Vector2 respawnPosition;
 
         public static Map CurrentLevel
@@ -251,10 +252,13 @@ namespace MagnetBoy
                             if (checkPointTouched == false)
                             {
                                 en = new Player(obj.Bounds.X, obj.Bounds.Y);
+                                checkPointTime = 0.0f;
+                                levelRecordTime = 0;
                             }
                             else
                             {
                                 en = new Player(respawnPosition.X, respawnPosition.Y);
+                                levelRecordTime = checkPointTime;
                             }
                             levelEntities.Add(en);
                             levelCamera.setNewFocus(ref en);
@@ -453,8 +457,6 @@ namespace MagnetBoy
             }
 
             Thread.Sleep(1500);
-
-            levelRecordTime = 0;
 
             Monitor.Exit(levelEntities);
         }

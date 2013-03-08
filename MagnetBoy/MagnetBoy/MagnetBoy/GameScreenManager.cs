@@ -65,7 +65,8 @@ namespace MagnetBoy
 
             if (Game1.CurrentLevel != 0)
             {
-                currentNode = new LevelState(manager, Game1.levelFileNames[Game1.CurrentLevel]);
+                Game1.levelLoader.Unload();
+                currentNode = new LevelState(Game1.levelLoader, Game1.levelFileNames[Game1.CurrentLevel]);
             }
             else
             {
@@ -90,7 +91,8 @@ namespace MagnetBoy
             }
             else if (newType == GameScreenType.Level && levelName != null)
             {
-                currentNode = new LevelState(manager, levelName);
+                Game1.levelLoader.Unload();
+                currentNode = new LevelState(Game1.levelLoader, levelName);
             }
             else if (newType == GameScreenType.Menu)
             {
