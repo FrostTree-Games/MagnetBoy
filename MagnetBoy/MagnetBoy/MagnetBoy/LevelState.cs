@@ -233,6 +233,9 @@ namespace MagnetBoy
                     break;
                 case 4:
                     levelSong = "songs/song4";
+                    parallax1 = "factoryParallax1";
+                    parallax2 = "factoryParallax2";
+                    parallax3 = "sewerParallax1";
                     break;
                 default:
                     break;
