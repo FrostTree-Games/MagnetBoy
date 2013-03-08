@@ -1,304 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="280" height="45" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="test tileset" tilewidth="32" tileheight="32">
-  <properties>
-   <property name="solid" value="1"/>
-  </properties>
-  <image source="terribleTileSheet.png" width="96" height="160"/>
-  <tile id="0">
-   <properties>
-    <property name="solid" value="1"/>
-   </properties>
-  </tile>
-  <tile id="7">
-   <properties>
-    <property name="solid" value="1"/>
-   </properties>
-  </tile>
- </tileset>
- <tileset firstgid="16" name="FactoryTileSheet" tilewidth="32" tileheight="32">
-  <image source="FactoryTileSheet.png" width="224" height="160"/>
- </tileset>
- <tileset firstgid="51" name="cityPaint" tilewidth="32" tileheight="32">
-  <image source="cityPaint.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="115" name="cityDecor" tilewidth="32" tileheight="32">
-  <image source="cityDecor.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="179" name="citySolid" tilewidth="32" tileheight="32">
-  <image source="citySolid.png" width="384" height="256"/>
- </tileset>
- <tileset firstgid="275" name="genericBlock" tilewidth="32" tileheight="32">
-  <image source="genericBlock.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="339" name="cityTexture" tilewidth="32" tileheight="32">
-  <image source="cityTexture.png" width="96" height="96"/>
- </tileset>
- <tileset firstgid="348" name="mapBorder" tilewidth="32" tileheight="32">
-  <image source="mapBorder.png" width="32" height="32"/>
- </tileset>
- <layer name="block" width="280" height="45">
-  <properties>
-   <property name="solid" value="0"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztnE1v4yAQQOPfkEY5JNlLd0977LH//39tIyUq9WKYgRkM4T3JSiu5MIbhefyRHg4AAAAAAAAAACDluBwOb5HttOwdGQCMzuXLI9fIdsMvAFAJfgGYk61rl6vh9Qt+AZiTrbVvuf7xi5wt3898v8rr/t263Vx73EfU4+2XY6J9yxrpVWjh+9HwOj+t2821l5qbkjxOnUukW6v1o3XxE+98TrU/85rZoqVfcvndi/tH8EtJLLm1IdlarR/JWMXyyTt2/KKjpV96npswVy3jS7Vb45eSGubV/KI9HvzSnp78co2cj1rVN5LYrGuGVHu56/xwvO7jIqkNR/DL8zi2fCo5D+CXfmjhl1TO9JLbPfildO3cBO6Q7LPnHByXvANrjwG/tGfP53m95LY0xly9sfXehbS90nF6Bb9cBDHil/EYyS/XyPrVXDOlnvfW+EV6LYNftsEvr0mtX1pd99fOZ8oB0rzd6qvGC1bt4Bf8sge59+dq/dIqr2vn0yJv8Uv9+kldR+KX8aiZL/wS309zj0UT+wx+qc3HV/fL3b/nR16Fn728G7amdj5r6h/LvC6dT8mzK61fvGLHL/jlY0l/9obnfLbM69L5tPQGfpH7vPR6fHa/3Ns/P9oKP7XtWn53rfS5CH7RxYhf6sa7Rb7VxC5hlPrl/Wv/35HtT0F8W8fsPZ/4xTZ2/IJfvOsXzfvxuXsL+AW/WMeOX3z7kNYvqWuWVu9j4Rf8Yh37rH7RfMel5rty0vrlvt+vyFYzRvjFNt+1MeKXef2i7be0L2n9UnpPxDIf8Qt+sY4dv/j2lapf/j5+Pi/f9ct19YlfbLdwTLT/b0gbI37BL959peoX7xzFL+kx8VyfHseCX+zzrSb20uOy7CtVv3ws1C9eeS0ZE/ziHzt+8e2L+mWfvJaMCX7xjx2/+PZF/bJPXkvGBL/4x45ffPuiftknryVjgl/8Y8cvvn1Rv+yT15IxwS/+seMX376oX/bJa8mY4Bf/2K38EnuXoOf/7039op8P/KKLcTa/PB1wSsSsWYdhDLH9bpH+LMd/BL9Qv/jndemY4Be72I/B/rdEzJp1KPHLuj/L8R/BL/d+nu+FPuuXt+X/+uVzoX6xyAnNmNScn/HLz+2y/PTLaYnHrFmHt2DMc36J1TGz+CX8+/D3te+3xhC/2G01fonNXctjGckv4dovXYfa+mVdx8zgFwAvevJL6brJ+SVHqm8AAAAAAAAAAAAAgNb8Ay3Rmgg=
-  </data>
- </layer>
- <layer name="borders" width="280" height="45">
-  <properties>
-   <property name="solid" value="1"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt1EEKwkAUBUE9hZfz/qdwIS4EEUQw6US/VfC2IRMyfT4eDmczs2gAa9MXoKIvQEVfgIq+ABV9ASr6AlT0BajoC1DRF6CiL0BFX4CKvgAVfQEq+gJU9AWo6AtQ0Regoi9ARV+Air4AFX0BKvoCVPQFqOgLUNEXoKIvQEVfgIq+ABV9ASr6AlT0BajoC1DRF9jW/c49b6LJZ4NPlff+VV8m3sWJZ4Il6vuuL0w39X9eQ3Xn33VlYmcmnWW6Nf+94llT6Mt6ppwDvsUl2K+69aX4HmZLt8Se77T3dzMzMzMzMzMz++edHrb3u2y1K5gd+Vw=
-  </data>
- </layer>
- <layer name="paint" width="280" height="45">
-  <properties>
-   <property name="solid" value="0"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt2e1OgzAUgGEvyq8Z7/+6jFlM5kZbxjmUAs+bNMQ/m1D6eBJfXiRJkiRJkiRJkiRJR+qzsSRpaXwZq7fGOmOvlRXpfWLV+qgsTceXseLLY3vwZYkxU9+/ZPXoMrHmxJex6ulL67yM8neZL/vwpWUJX7aPL9dqpkR8iZzV7OfFF/VuNF+28mc0X559LnN+9z34MuXK7VpiCl+2q4cvGa6cwZfIc+ELX0aML9eivmScVb7w5WjtzZeIOdHzWfIl66zyhS9HK+rLnPdxBF8yzidf+KL/fTUWX/jCFy2NL9eyfMk6o3yZ7uy+1O59xKK+ZLyPW/qSeT75wpe1uzSuo8UXvvT05buxWvElZ36pnflnq+0nX/jCl335UrvOjS984ctjfMmZXzL2trWXfOELX/bnS+36V+0es/aWL3zhy/F8mTO/8IUvfOHLs5lf+MKXcnyJlXHvfFnHl7XPJ1/4sna1+YUvfOELXyKZX/jCl3J8iWV+4QtfyvEllvmFL3wpx5dY5he+8KUcX2KZX/jCl3J8iWV+4Qtfys31pfQ+8sX8wpdz+HL7+b18aTlzBl/ur3zhy9F8uf/83r78fudZfTG/HMOX2+fEl/aeZfjSeh9bc8yZfLn/mS984QtfpBFb05deRf9/JEmSJEmSJEnSSP0ADvuBQQ==
-  </data>
- </layer>
- <layer name="paint2" width="280" height="45">
-  <properties>
-   <property name="solid" value="0"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-<<<<<<< HEAD
-<<<<<<< HEAD
-   eJzt3UFqwlAUhtEswVkd2Vn3v4MsKWZcB1VQCOG1NI/oyx/PgTsJFO8D6UdLjH3XdeeF81ExS1/jGTvU7pJ+3nc5c+IZt77fK993l9kM9+tj4ZrJnz28v7c2fQcAJNNzAMin5wCQb/p/98/GuwAAdfQcAPLpOQDkm/b8eJ1D23UAgArzz64BAHn0HADylZ4vAwBk0XMAyKfnAJBPzwEgn54DQL5Hw0+dngNAqvnf5l9t1wEAKsx77pmvAJBHzwEgn54DQD49B4B8eg4A2UqfPddzAMii5wCQT88BIJ+eA0C+Us+PTTcCAJYq9dzz2wEgi54DQD49B4B8eg4A+6DnAJBPzwEgn54DQD49B4B8eg4A+fQcAPLpOQDkS+v5cJ2x9RIAsDG3fp8XzlDxM2vNZTaPXcbCNZM/NbawA8Cr3Xret14CCr5bLwAQRM8BIJ+eA0A+PQeAfP+5H+6372H7a9a+J6lmh9I+ezrLM18v8czvcs7puDfVmPVmD79DfgDoy1fU
-=======
-   eJzt2TGOwjAURVEWNWKa2f+6EBLFCAwJGMz7X+dIr0hKF1excjgAAAAAAAAAAADV/GwM4FX6QqLjYNSjLyTSlx70hUT60oO+kGTUFY2pS19Ioi+96AtJ9KUXfSGJvvSiLyTRl170hST60ou+kERfetEXkuhLL/pCEn3pRV9Ioi+96AtJ9OU9ts5x1fnqC0n0ZZ/fB3u1LfpCd/qyj77A8/RlH32B5+nLfY+aoi+wLb0vf5d9g77AnCp9+b9V9AXmVOzLqt7oC8yp3pdP0heYU7UvK+gLzKnalxWN0ReYU6Uv18/uR2P6QpIKfRm905cxfSFRal9G/D+6T19IVKkvZysaoy/wXlX6cub75Za+kKxSXwAAAAAAAGCvEyhivqQ=
->>>>>>> origin/wilson-dev
-=======
-   eJzt1LEJgEAQRUGtwuau/yoMxMxcn4c4Az9fNnhjXZZhZhYN4Gn6AlT0BajoC1DRF6CiL0BFX4CKvgAVfQEq+gJU9AWo6AtQ0Regoi9ARV+Air4AFX0BKvoCVPQFqOgLUNEXoKIvQEVfgIq+ABV9ASr6AlT0BajoC1DRF6CiL0BFX4CKvgAVfQEq+gJU9AWo6AtQ0Regoi9ARVvgWXuwrzr7UvzD7O7umHnT7L+ZmZmZmZmZmf1522Wzb3lrB8A+3no=
->>>>>>> 78fe55e80cbbc77e87d49982f6ac3c016d860522
-  </data>
- </layer>
- <layer name="texture" width="280" height="45">
-  <properties>
-   <property name="solid" value="0"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt1UFugzAQQNFwxrT3v0oXEVKqYDDMYIzzvsSyYojHr4+HJEmSJEmSJEmSJGmkntP6I0lH40tfOY/PfqbyE+l3+nyumGPk7HNfOY/P7uDLkVmW3n/kadHR99rnvmp5Hlvv6uX8+XIPX2r2qcf9+qb48mrrLp91p6MzZc7CF2XXmy9X7UdvvtTOMz81v90dfNl6d6/7o+VanEeGK9/gy15TRvJl/g6+jBVfXkV9ybirfOHLaN3Nl8iMkfu75kvWXeULX0Yreh41+9iDLxm28IUv+t/Z58EXvuxp6zv4cq/48irLl6w7yhe+LLX3f9vVRc8jYx+v9CXLFb7wpUV84Qtfju8bX9bL8iXTqeje8YUvfOkjvvCFL+X4EivLhVb7yBe+8GU8X84659pZ+FL/G/GFL73EF77wpRxfYvGFL3wpx5dYGXeZL+f4km0JX/jSOr7whS/l+BKLL3zhSzm+xOILX/hSji+x+MIXvpTjSyy+8IUv5fgSiy984Us5vsTiC1/4Uq7Wl6Mz8oUvfBnDl9J3rxX1ZWtWvvCFL/f35TmVv3stvsTiyzi+LO09X5Z9ef/7tbLPli984Qtf5vgi9dmZvrQqOscejyVJkiRJkiRJOrs/5Zgzrw==
-  </data>
- </layer>
- <layer name="decor" width="280" height="45">
-  <properties>
-   <property name="solid" value="0"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt3M2OgjAUBtA+9Wgyxp8Nm1nqcna+6NgosSGlM8pUEM5Jbq4NpBKMN98GQgAAAAAAAAAAAAAAAAAAAAAAAAAAAIBl+7zU6tZD0gEApmqK+eXc04HlWT9ZwLxNKb90r2EK1wTUd85U6yvpj3wG5k1+AcbwfavoFK5z6JSsW/ILkCO/AGOQX4Ah5BdgDPILMIT8AoxBfoHfbXsK+QWop+npkfwCf3NM+rF04sJswnVubJJ10396VfILtaw7ndfKzRT55X34/5TF5+WaUO9dH7n8IsfcfRSO7QbsVdq35NHvXLo4Vw7BfMlp78mus/7PvaN95rjfBAAAAAAAgLn7AaxbdXM=
-  </data>
- </layer>
- <layer name="decor2" width="280" height="45">
-  <properties>
-   <property name="solid" value="0"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt1rEKgCAARVH/uRpr679rKGgQScxMOgfeaInTDQEAAAAAAAAAAAAAAAAAAAAAAAAAAAD+bY4MAODL9AsA0Bv9AgD05m6/rJEBPGGJDCBFvwCt6Rcgl34BWtMvQC79ArSmX4Bc+gVoTb8AuVL9cu0U/QLUol8A+jHsG49NBd8pORtz3qv2f95Q6849vgUAAAAAAADUsAGg/Dnp
-  </data>
- </layer>
-<<<<<<< HEAD
-<<<<<<< HEAD
- <objectgroup name="objects" width="500" height="45">
-  <object name="shieldDudeLeft" x="1600" y="256" width="32" height="32"/>
-  <object name="spikes_up" x="1440" y="864" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="8224" y="576" width="32" height="32"/>
-=======
-=======
->>>>>>> 78fe55e80cbbc77e87d49982f6ac3c016d860522
- <objectgroup name="objects" width="280" height="45">
-  <object name="angrySaw" x="1352" y="675" width="57" height="46"/>
-  <object name="spikes_up" x="512" y="608" width="32" height="32"/>
-  <object name="spikes_up" x="480" y="608" width="32" height="32"/>
-  <object name="spikes_up" x="917" y="927" width="32" height="32"/>
-  <object name="endLevelFlag" x="7936" y="160" width="32" height="32"/>
-<<<<<<< HEAD
->>>>>>> origin/wilson-dev
-=======
->>>>>>> 78fe55e80cbbc77e87d49982f6ac3c016d860522
-  <object name="lolrus" x="863" y="1158" width="56" height="33"/>
-  <object name="lolrus" x="704" y="1137" width="56" height="33"/>
-  <object name="spikes_up" x="128" y="800" width="32" height="32"/>
-  <object name="spikes_up" x="673" y="1214" width="32" height="32"/>
-  <object name="heartItem" x="1228" y="575" width="26" height="29"/>
-  <object name="shieldDudeLeft" x="1792" y="1056" width="32" height="32"/>
-  <object name="heartItem" x="2112" y="224" width="26" height="29"/>
-  <object name="spikes_up" x="6688" y="1248" width="32" height="32"/>
-  <object name="spikes_up" x="6720" y="1248" width="32" height="32"/>
-<<<<<<< HEAD
-  <object name="spikes_up" x="6899" y="1323" width="32" height="32"/>
-  <object name="spikes_up" x="6867" y="1323" width="32" height="32"/>
-  <object name="spikes_up" x="6963" y="1323" width="32" height="32"/>
-  <object name="spikes_up" x="6931" y="1323" width="32" height="32"/>
-  <object name="spikes_up" x="6995" y="1323" width="32" height="32"/>
-  <object name="player" x="128" y="1216" width="34" height="31"/>
-  <object name="endLevelFlag" x="15872" y="640" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="3040" y="768" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="4800" y="320" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="5280" y="224" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="8224" y="288" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="11904" y="160" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="11648" y="672" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="12896" y="576" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="13600" y="512" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="13888" y="96" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="14464" y="480" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="15296" y="480" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="15200" y="192" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="9664" y="704" width="32" height="32"/>
-  <object name="wallEntity" x="8160" y="928" width="32" height="32"/>
-  <object name="wallEntity" x="8480" y="928" width="32" height="32"/>
-  <object name="goomba" x="8288" y="928" width="32" height="32"/>
-  <object name="wallEntity" x="7712" y="928" width="32" height="32"/>
-  <object name="wallEntity" x="7296" y="704" width="32" height="32"/>
-  <object name="goomba" x="7392" y="704" width="32" height="32"/>
-  <object name="goomba" x="8448" y="928" width="32" height="32"/>
-  <object name="wallEntity" x="9984" y="320" width="32" height="32"/>
-  <object name="lolrus" x="10112" y="320" width="32" height="32"/>
-  <object name="goomba" x="9088" y="224" width="32" height="32"/>
-  <object name="wallEntity" x="8960" y="224" width="32" height="32"/>
-  <object name="goomba" x="8832" y="640" width="32" height="32"/>
-  <object name="wallEntity" x="8864" y="640" width="32" height="32"/>
-  <object name="wallEntity" x="8512" y="640" width="32" height="32"/>
-  <object name="goomba" x="8608" y="640" width="32" height="32"/>
-  <object name="lolrus" x="7840" y="928" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="7488" y="1056" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="4896" y="576" width="32" height="32"/>
-  <object name="spikes_up" x="6624" y="896" width="32" height="32"/>
-  <object name="spikes_up" x="6560" y="768" width="32" height="32"/>
-  <object name="spikes_up" x="6688" y="768" width="32" height="32"/>
-  <object name="spikes_up" x="9696" y="352" width="32" height="32"/>
-  <object name="spikes_up" x="11776" y="1152" width="32" height="32"/>
-  <object name="spikes_up" x="12960" y="672" width="32" height="32"/>
-  <object name="spikes_up" x="13696" y="192" width="32" height="32"/>
-  <object name="spikes_up" x="14656" y="512" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="9312" y="512" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="9056" y="1056" width="32" height="32"/>
-  <object name="spikes_up" x="8992" y="1152" width="32" height="32"/>
-  <object name="spikes_up" x="12224" y="544" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="13600" y="800" width="32" height="32"/>
-  <object name="shieldDudeRight" x="608" y="448" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="1728" y="544" width="32" height="32"/>
-  <object name="wallEntity" x="3872" y="448" width="32" height="32"/>
-  <object name="goomba" x="3968" y="448" width="32" height="32"/>
-  <object name="wallEntity" x="4640" y="640" width="32" height="32"/>
-  <object name="wallEntity" x="4800" y="640" width="32" height="32"/>
-  <object name="lolrus" x="4736" y="640" width="32" height="32"/>
-  <object name="wallEntity" x="5056" y="896" width="32" height="32"/>
-  <object name="lolrus" x="4960" y="896" width="32" height="32"/>
-  <object name="wallEntity" x="4832" y="896" width="32" height="32"/>
-  <object name="goomba" x="4896" y="896" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="10400" y="480" width="32" height="32"/>
-  <object name="spikes_up" x="10560" y="384" width="32" height="32"/>
-  <object name="spikes_up" x="10368" y="544" width="32" height="32"/>
-  <object name="spikes_up" x="9024" y="1152" width="32" height="32"/>
-  <object name="wallEntity" x="5312" y="1216" width="32" height="32"/>
-  <object name="wallEntity" x="4832" y="1216" width="32" height="32"/>
-  <object name="goomba" x="5244" y="1199" width="32" height="32"/>
-  <object name="goomba" x="5120" y="1184" width="32" height="32"/>
-  <object name="wallEntity" x="4608" y="1216" width="32" height="32"/>
-  <object name="goomba" x="4544" y="1216" width="32" height="32"/>
-  <object name="goomba" x="3897" y="1196" width="32" height="32"/>
-  <object name="goomba" x="3619" y="1191" width="32" height="32"/>
-  <object name="goomba" x="4165" y="1186" width="32" height="32"/>
-  <object name="goomba" x="4394" y="1197" width="32" height="32"/>
-  <object name="wallEntity" x="5216" y="1024" width="32" height="32"/>
-  <object name="lolrus" x="5295" y="1020" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="5344" y="832" width="32" height="32"/>
-  <object name="heartItem" x="3936" y="736" width="26" height="29"/>
-  <object name="heartItem" x="11552" y="192" width="26" height="29"/>
-  <object name="heartItem" x="13216" y="64" width="26" height="29"/>
-  <object name="shieldDudeLeft" x="6816" y="576" width="32" height="32"/>
-  <object name="heartItem" x="6624" y="1024" width="26" height="29"/>
-  <object name="wallEntity" x="10720" y="1152" width="32" height="32"/>
-  <object name="goomba" x="10656" y="1152" width="32" height="32"/>
-  <object name="lolrus" x="13696" y="1184" width="32" height="32"/>
-  <object name="lolrus" x="12992" y="1184" width="32" height="32"/>
-  <object name="lolrus" x="13319" y="1149" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="14848" y="640" width="32" height="32"/>
-  <object name="spikes_up" x="14912" y="736" width="32" height="32"/>
-  <object name="spikes_up" x="14944" y="736" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="14496" y="224" width="32" height="32"/>
-  <object name="heartItem" x="9312" y="1056" width="32" height="32"/>
-  <object name="wallEntity" x="8032" y="1024" width="32" height="32"/>
-  <object name="wallEntity" x="8192" y="1024" width="32" height="32"/>
-  <object name="goomba" x="8096" y="1024" width="32" height="32"/>
-  <object name="lolrus" x="8532" y="1181" width="32" height="32"/>
-  <object name="lolrus" x="8089" y="1181" width="32" height="32"/>
-  <object name="lolrus" x="7712" y="1181" width="32" height="32"/>
-  <object name="goomba" x="9299" y="776" width="32" height="32"/>
-  <object name="goomba" x="9427" y="767" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="12480" y="736" width="32" height="32"/>
-  <object name="goomba" x="12169" y="786" width="32" height="32"/>
-  <object name="goomba" x="12297" y="777" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="12416" y="224" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="13952" y="704" width="32" height="32"/>
-  <object name="goomba" x="13792" y="768" width="32" height="32"/>
-  <object name="wallEntity" x="13856" y="768" width="32" height="32"/>
-  <object name="wallEntity" x="14016" y="320" width="32" height="32"/>
-  <object name="lolrus" x="14112" y="320" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="10880" y="544" width="32" height="32"/>
-  <object name="heartItem" x="11488" y="256" width="26" height="29"/>
-  <object name="heartItem" x="11353" y="594" width="26" height="29"/>
-  <object name="heartItem" x="11523" y="1082" width="26" height="29"/>
-  <object name="heartItem" x="11101" y="1086" width="26" height="29"/>
-  <object name="spikes_up" x="13152" y="992" width="32" height="32"/>
-  <object name="spikes_up" x="11936" y="384" width="32" height="32"/>
-  <object name="spikes_up" x="14080" y="512" width="32" height="32"/>
-  <object name="spikes_up" x="14208" y="1152" width="32" height="32"/>
-  <object name="spikes_up" x="14176" y="1152" width="32" height="32"/>
-  <object name="spikes_up" x="14144" y="1152" width="32" height="32"/>
-  <object name="spikes_up" x="10016" y="928" width="32" height="32"/>
-  <object name="goomba" x="7744" y="544" width="32" height="32"/>
-  <object name="wallEntity" x="7680" y="544" width="32" height="32"/>
-  <object name="wallEntity" x="7872" y="544" width="32" height="32"/>
-  <object name="goomba" x="7808" y="512" width="32" height="32"/>
-  <object name="goomba" x="5894" y="1140" width="32" height="32"/>
-  <object name="goomba" x="6018" y="1155" width="32" height="32"/>
-  <object name="wallEntity" x="5760" y="1216" width="32" height="32"/>
-  <object name="goomba" x="5429" y="1180" width="32" height="32"/>
-  <object name="goomba" x="5553" y="1195" width="32" height="32"/>
-  <object name="goomba" x="6140" y="618" width="32" height="32"/>
-  <object name="wallEntity" x="6048" y="640" width="32" height="32"/>
-=======
-  <object name="endLevelFlag" x="7968" y="1216" width="32" height="32"/>
-  <object name="player" x="128" y="1216" width="34" height="31"/>
-  <object name="angrySaw" x="2395" y="989" width="57" height="46"/>
-  <object name="angrySaw" x="3696" y="1184" width="57" height="46"/>
-  <object name="angrySaw" x="5396" y="1219" width="57" height="46"/>
-  <object name="angrySaw" x="4450" y="1161" width="57" height="46"/>
-  <object name="angrySaw" x="6546" y="1229" width="57" height="46"/>
-  <object name="angrySaw" x="7822" y="1109" width="57" height="46"/>
-  <object name="shieldDudeLeft" x="4013" y="1146" width="32" height="32"/>
-  <object name="shieldDudeRight" x="4065" y="1147" width="32" height="32"/>
-  <object name="shieldDudeRight" x="6365" y="1087" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="7004" y="1146" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="4507" y="765" width="32" height="32"/>
-  <object name="shieldDudeLeft" x="7751" y="153" width="32" height="32"/>
-  <object name="lolrus" x="3851" y="1192" width="56" height="33"/>
-  <object name="lolrus" x="4857" y="1157" width="56" height="33"/>
-  <object name="lolrus" x="7549" y="1140" width="56" height="33"/>
-  <object name="lolrus" x="8144" y="1105" width="56" height="33"/>
->>>>>>> origin/wilson-dev
- </objectgroup>
- <layer name="Eric" width="280" height="45">
-  <properties>
-   <property name="solid" value="1"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-<<<<<<< HEAD
-<<<<<<< HEAD
-   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
-=======
-   eJztnU1yFDEMRuf+1wmsCdkOsA3cggOwYLqgKeNp/0uy3P1elatSk4zH45Y/ybbs3G4AAAAAAAAAAAAAAAAAAHAmXh7le6J8nNguAFib90f5nPn9m1VD4B/o/TOpPhntj7jeUn1a7TgzOQ1BX+zheTyT+t6j/RG/v1Rf6vf3W5/GvHS+bwatWryDPfvC8nnkYiVPftm7vvS25dOjfLn56usUtX21zYlCG/raUCfoY6kvI+NJm1D7Ujb6Tbjekf7oiWHC+u433zrTqsU9dYI+nvRlt/kZ8Y2W7fX276ZLOV+8sffXj8Lf7T7+qL7euZYWux7Hbd3aWfqeJXr8A4xhoS8pm2lF0//M0JecvVuOBQ9+XcpGwBcWNi5lv571JbW2tMJ4iePG0TihBw8aB2siZTtH86eWsZBbXx7RgffB9wP6AsfE6/dHJZfzZEXNesYZCDXU07pKCfRlTXI+2yoO9mA7HtqwET4Pjf5/S/y8f+6MuU9Iyh9dQfvPiIdxdZY2SGi1Rl+EYzYcp/fE62ckpVuz9fTstNpzbr7T+6xm6ktub7a1Hss6Us/BYs7TmzsL1+MssQP8oTbnZYT4eYVxUOvnas8HIU3so3r7Pxe3e1hbvYq+HMUcnseUxVqI5LM/snNiK316c7isGLGxlHZqjFvm8PJI6stRXVfxXVqU4ssVci9GNA77qSPWxtivW+9bp9a99tdLbTjS+tT5hiv6AKm7O64yvjTzXzXjai/7vjFxLmLYjx5sKmwfc5x2JM74l+7jWp3Uvqokqby60TEmtS/VioSeSZwVjBmZW2q05+xI3SHiwdesTO6OphXXV7CHa1J7z03rWoSH3JEWf1Q6L6A5lmvn7L31WeoQea4gSY891Zz9Wck3gx7cswzwjNaesWV+rEZOdCvSd+GBDpJzhlmxReke3Cv7Oe/rG/Gzq7GhmrPj3r83rEOvLVnd992rYxJxgte9jNr73XrXoNAXkMKLvmjd039GtPuEfBTfHPlij35wo9dWR++Pq23HVfUlF39Z7ht5OFMC/9M7JqzOxFnkstV8ds2YkdaxFizPOwHU4i1PhTHRzgpnuSzZtPbDjfmSJeQ9HTMzFw3k2bTl9W858xkVAC3wz2m2/yX7GhT6CK6ApCbsY0jCP6/0v+NriPWFGGaMnxSKw9LLzHbN7jOPBcAjvwbKzDYBAAAAAAAAAMAcrrpO8xvR4F5G
->>>>>>> origin/wilson-dev
-=======
-   eJzt3Etu6zAMheHsfztdWDPPpAg6aGpYL4qkjuz/AwzktqnsuuYJJSf38QAAAAAAAAAAAAAAXMl3YwMAq1qGkC/5vhrbHUWdj9HxXpUN58gXLbVr/M75MvJ167g9+VL6uiVjdsom69yGfNGSmS+tXkklz9TzpfW92s/s0gMds6CUDSM5RL7ky86Xme9H6sk5y/HVxp3Nl9GMeB0eK+dMb77MjIl4avmyqr+JGtt6fntqvzcjas9Ty5hSH+Jx/4d8yZeRL57ro1EU8yWLQr5wD/masvJFaZyIsdXXlGoU7k+RK7CK6IMs9Rs191KbY+yIfMGZnjUThddwleOItroPsSJf9qRQ9wp1rXAMb9Hn/3iP6POxQubw3v1rUairqxxDKaNH6jYqU87yY9dexoLcWmP0eo7od1Te1+IxTtYYKz8boLDeiz1cpXfAr4yaP479/ndvP8Dnl3V49ger11hqFI4hg+r5L9nt85Nk1hqZ78G1mDmGzNxUzmicZwn5Mqd1ne9w/c/mC9paPYhKfzI7z7KOdzVer4V3qa/I3iGyJ1HtcWp5ozD/YY4zp3S9kS9/MuYgtb7PY9zsv49HD7K6hzkiY8aRLxpqfwfFvqNFKReQp7f/3ilfLPOK1r2syN/He38r13l3u7cDbZZ67Knl3V6fEaOWV2QW7ioqN1Xue2fVdm0/rH/o8J4zrNDb96gcbyb139HSe/Q8j3yBF2sNedeed455ZKNqjlr+L8yRDCJf4EUpXzL2cwXR8yjej6Jtp/mEd3/gfRyq5y2ayhos+aJHpWZ795NpdM6yMqvvvPaU6VnYcG7l9UdN+OCc/RdZ92fjkjPUcgnn41o+6zwqX3r2DeyKLCx7Hh571Xtvj0LGYAXPexzkS9nZ3CViXK/nqiutN7GxrdysVh7X6nOmuAGKFK9p6gkAAAAAAABqfgCpXVUk
->>>>>>> 78fe55e80cbbc77e87d49982f6ac3c016d860522
-  </data>
- </layer>
+  <tileset firstgid="1" name="test tileset" tilewidth="32" tileheight="32">
+    <properties>
+      <property name="solid" value="1"/>
+    </properties>
+    <image source="terribleTileSheet.png" width="96" height="160"/>
+    <tile id="0">
+      <properties>
+        <property name="solid" value="1"/>
+      </properties>
+    </tile>
+    <tile id="7">
+      <properties>
+        <property name="solid" value="1"/>
+      </properties>
+    </tile>
+  </tileset>
+  <tileset firstgid="16" name="FactoryTileSheet" tilewidth="32" tileheight="32">
+    <image source="FactoryTileSheet.png" width="224" height="160"/>
+  </tileset>
+  <tileset firstgid="51" name="cityPaint" tilewidth="32" tileheight="32">
+    <image source="cityPaint.png" width="256" height="256"/>
+  </tileset>
+  <tileset firstgid="115" name="cityDecor" tilewidth="32" tileheight="32">
+    <image source="cityDecor.png" width="256" height="256"/>
+  </tileset>
+  <tileset firstgid="179" name="citySolid" tilewidth="32" tileheight="32">
+    <image source="citySolid.png" width="384" height="256"/>
+  </tileset>
+  <tileset firstgid="275" name="genericBlock" tilewidth="32" tileheight="32">
+    <image source="genericBlock.png" width="256" height="256"/>
+  </tileset>
+  <tileset firstgid="339" name="cityTexture" tilewidth="32" tileheight="32">
+    <image source="cityTexture.png" width="96" height="96"/>
+  </tileset>
+  <tileset firstgid="348" name="mapBorder" tilewidth="32" tileheight="32">
+    <image source="mapBorder.png" width="32" height="32"/>
+  </tileset>
+  <layer name="block" width="280" height="45">
+    <data encoding="base64" compression="zlib">
+      eJztnEFu4zAMAOM3JEEOiffS7mmPPfb//9oGiFHXlSlKIiXZngGE9GAoNEVN6MTu6QQAAAAAAAAAAAAAAAAAAHviPJxOl8B4fI3r0Do6ANgy95dLQmPEL9VZ8/3lwL5fy0lpPpbzxubzimPP4Je+YD1+s5aT0nws543NJ61NjmOkzxLtqOW2VBdPUM99UXM9YvXdy+fyFvySE4s0n3bU2qOaXIXqqYfY4ZuafonVd8v1PytqNCc+ad4Sv+T0MHvzS+r54Jf69NS/tOzNNbVq3TNI852Ve2bKi6Y33IJfpvNY86nmcwC/9EMNv0g100t99OCX3L0zKtyhOablGpyHuANLzwG/1KeGXyzqune/SPddaOfLzdMe/HJXxIhftseW/PII7N+Uaybp994Sv2ivZfDLOvhln5T6pdZ1f2nNSA7Q1u3ae5V4wWoe/IJfWhC7f67UL7XqurRmLOoWv5TvUek6Er9sj5L1wi/h41K+Y8EvdutwBL88/Xt71dX8tZd7w5aUrmdJ/2NZ17k1o/ntKtUvXrHjF/zyMcivveG5njXrOrdmLL2BX/Q+z70eP7pfnud3e8U7f02N3fLZtdzfRfBLWoz4pfyZBvwiY9W/vH0d/x4YfzNyID0v03q98Ys+dvyCX7z7l5T742PfLeAX/GIdO37xRdu/SNcste7Hwi/4xTp2/OKLtn95HvcnMEpyhF9s6z01RvyCX7zR9i+534lY1iN+wS/WseMXX6T+5d/r79vw3b88Fq/4xXbMcxL6n2faOfBLXsyh/dGy3kpi7wGpf/GuUfwi52T5PmPCHPglL+YlreutJPYekPqXj4H+xauuNTnBL/6x4xdf6F/a1LUmJ/jFP3b84gv9S5u61uQEv/jHjl98oX9pU9eanOAX/9jxiy/0L23qWpMT/OIfO37xhf6lTV1rcoJf/GO38kvo/nb+vzf9S6u61uQEv9jGPjngupgntj80MYSOGwPvZ5n/LfiF/sW/rnNzgl/sYj/Pjh8X80iU+kVatyP45Xl+0zPLU/9yGX73L58D/YtFTaTkJNUv889n/PJz3IeffrkO4ZhD+0OKYcp5zC+hPuYofpnHeg+c+5SntRziF7tR4pfQ2tU8ly35Zb73NfsjFoOmf1mu3xH8AuBFT37J3aMxv8SQ3hsAAAAAAAAAAAAAoDb/ATf/b9Y=
+    </data>
+  </layer>
+  <layer name="borders" width="280" height="45">
+    <properties>
+      <property name="solid" value="1"/>
+    </properties>
+    <data encoding="base64" compression="zlib">
+      eJztwTEBAAAAwqD1T20KP6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAlwHE4AAB
+    </data>
+  </layer>
+  <layer name="paint" width="280" height="45">
+    <data encoding="base64" compression="zlib">
+      eJzt21lOwzAUQFEWxVTE/teFUIVU2nhInuM68bmSFfHTNoNPnwS8vEiSJEmSJEmSJEmSztRnYUnS1vgyVm+FNWOvmRXpfWHl+sgsLceXseLLY0fwZYsxS++/ZfXosrBq4stY9fTlu2KNEF+O4UvJEr48P75cy5kS8SWyV0u+rDWGL+pdT19q9kvr7+zaRvNl7XWp+exH8GXJldu1xRS+PK8evrRwZQZfIteFL3wZMb5ci/rSYq/yhS9n62i+RMyJ7s+UL632Kl/4craivtQ8jyP40mJ/8oUv+t9XYfGFL3zR1vhyrZUvrfYoX5ab3ZfcuY9Y1JcWz+MzfWm5P/nCl727FI6jxRe+9PQl+veTfGkzv+T2/Npy95MvfOHLsXzJHWvjC1/48hhf2swvLe5tzf/z8IUvfDmWL7njX7lzbHVv+cIXvpzPl5r5hS984Qtf1mZ+4Qtf0vElVotz58s+vuy9P/nCl73LzS984Qtf+BLJ/MIXvqTjSyzzC1/4ko4vscwvfOFLOr7EMr/whS/p+BLL/MIXvqTjSyzzC1/4kq7Wl9TzyBfzC1/m8OX29Xv5UnJmBl/uj3zhy9l8uX/93r78vuesvphfzuHL7XXiS/metfCl9DyW5piZfLn/mS984QtfpBHb05deRX9/JEmSJEmSJEnSSP0An5+Bmw==
+    </data>
+  </layer>
+  <layer name="paint2" width="280" height="45">
+    <data encoding="base64" compression="zlib">
+      eJzt1LsNw0AQQ0EVZdj9d+bQgbT63cGgFjMAG2DwlgUAAAAAAAAAAHia18EA7tIXEr03xvPoC4n0pQd9IZG+9KAvJNnqisY8l76QRF960ReS6Esv+kISfelFX0iiL73oC0n0pRd9IYm+9KIvJNGXXvSFJPrSi76QRF960ReS6MscRz/+6199IYm+nPPZ2d226Avd6cs5+gLX6cs5+gLX6Uttryn6Asf0paYvMEZfavoCY/Slpi8wRl9q+gJj9KWmLzBGX2r6AmP0paYvMEZfavoCc+jLmr7AHPqypi8wl7786AvMpS8AAAAAAAB09AXU7rFI
+    </data>
+  </layer>
+  <layer name="texture" width="280" height="45">
+    <data encoding="base64" compression="zlib">
+      eJzt1UFugzAQQNFwxrT3v0oXUaRWwWA8gzHu+xLLKEM8fnk8JEmSJEmSJEmSJEkz9Vy2H0lqjS9j5Tw++1rKT6Tv5fO5Yo6Zs89j5Tw+u4MvLbOsfX/L06PW77XPY9XzPPbuyyj/y3y5hy97u8uX6+NL/Wxn3OnoTJmz8EXZ9TyPln3otR+j+VI7z/up+e3u4Mved4+6P1qvx3lkuPIffDlqyky+vN+DL3PFl1dRXzLuKl/4Mlt38yUyY+T+bvmSdVf5wpfZip5HzT6O4EuGLXzhi/529nnwhS9H2nsPvtwrvrzK8iXrjvKFL2sd/W+7uuh5ZOzjlb5kucIXvvSIL3zhS/u+8WW7LF8ynYruHV/4wpcx4gtf+FKOL7GyXOi1j3zhC1/m8+Wsc66dhS/1vxFf+DJKfOELX8rxJRZf+MKXcnyJlXGX+XKOL9mW8IUvveMLX/hSji+x+MIXvpTjSyy+8IUv5fgSiy984Us5vsTiC1/4Uo4vsfjCF76U40ssvvCFL+VqfWmdkS984cscvpTee6uoL3uz8oUvfLm/L8+l/N5b8SUWX+bxZW3v+bLuy+/Pb5V9tnzhC1/48o4v0pid6UuvonMc8ViSJEmSJEmSpLP7AWj1M8E=
+    </data>
+  </layer>
+  <layer name="decor" width="280" height="45">
+    <data encoding="base64" compression="zlib">
+      eJzt3d1u2yAYgGGuuonUaGm1qifL2XK2nvlGW+QhEcKHwWDA+H0ki7g/qWfZ5LUztUoBAAAAAAAAAAAAAAAAcf4IIwBgLL+F5ci22h+TMy75EkbI6Je+ML88G3V//MscgVQ9zC/vP8u58s8Mab0/DPolzNco9EtfephfeiDth9z90VML0C+oreb88vf/subx1nLml1/CUtMWc2MLd894tz7/4Tz+sD4mraOdEY7JEtbOL0vzSEoLvGY8jtl2+gW15cwv0uu2+xq+tln20i892PO229b0y8VZp1/6McIxWULu/HKPeOxbt43eLz1cR6Ku3PnlvDBqF2ss/TjWqzAaMfNLz+fGkfvFfOyi6Jfa9PXFu5KvOVLPJ/fcugeWPenh+mj0ftF4//hYapxPo/SLFnMdtPb6KEfrubGUo79/pI/Lk5KP097k9Iv2JSwG/VIO/YLR0C8z+qUMe/+ueQ1O6Zebeu6Vi6JfSpuEUaNf4tAv9MsoziuXLdAvM/qljJr9wv2X7bclNGr0Sxz6hX7Zk8mzGPa+TXm8haP0yxL6pQz6JQ/90me/LP3ft1LXR1uiXxBin3v6/Dqp5/lYo1/ol9Jaz41Gi365Oev0S7ltCY3aUfpFC70m0i/0y97RL370i7xeSuu50eD+S57R+mUJ/UK/0C99oF/86Bd5vZTWc6NBv+QZrV+4/zKjX+iX3tEvfvSLvF5K67nRiOmXpd/34Y5r++Wm6JfcbQmNGv0yo1/66BeEfQqjRr/40S/yeimt50Yj9v7L0vsNR73/oo/rk3o81j/lL98U/fKIfinTL5rv95yiHt+cQr/49dgv7vlDvzya1HyMT4nfl9MvUseE+sW+xzJCvxgvgc9dM54r9LwhqT/TiD0mY55/7TYYb5nfn7INel6x/y6t++9/Uenn6DXh55dWcn4x++TqrKc6BZ5be/N8vre/FQyMLuY1p9X9FgAAAAAAAAAARvUNIBCcgw==
+    </data>
+  </layer>
+  <layer name="decor2" width="280" height="45">
+    <data encoding="base64" compression="zlib">
+      eJzt2c0KgkAUgFHfuVoWtPB9e4RaGONi0FumM13OgQuC+INw4QOHAQAAAAAAAAAAAAAAgDW3wAAA9GbeKZ8eAwAc6dtm0S8AQCu/6BddA/3xLxjITL9AzLUyPdMvQGb6BWJ66ZfojukXIDP9AjG99EuUfgEy0y8QE+2XsTIt6BfIx04X+gVi9AvQmp0u9AvE6BegNTtd6BeI0S9Aa3a60C8Qo1+A1ux0oV8gZqlf5p2iX4C92OlCv0B+95VzS+d7cHrNeZrLhvtsubbm/V57P+cIe73zP34LILfHNAAAAAAAcLQncha7yg==
+    </data>
+  </layer>
+  <objectgroup name="objects" width="280" height="45">
+    <object name="angrySaw" x="1536" y="640" width="32" height="32"/>
+    <object name="spikes_up" x="512" y="608" width="32" height="32"/>
+    <object name="spikes_up" x="480" y="608" width="32" height="32"/>
+    <object name="spikes_up" x="917" y="927" width="32" height="32"/>
+    <object name="endLevelFlag" x="7872" y="64" width="128" height="128"/>
+    <object name="lolrus" x="864" y="1152" width="32" height="32"/>
+    <object name="lolrus" x="1056" y="1024" width="32" height="32"/>
+    <object name="spikes_up" x="768" y="1216" width="32" height="32"/>
+    <object name="heartItem" x="1248" y="704" width="26" height="29"/>
+    <object name="shieldDudeLeft" x="1792" y="1056" width="32" height="32"/>
+    <object name="heartItem" x="2112" y="224" width="26" height="29"/>
+    <object name="spikes_up" x="6688" y="1248" width="32" height="32"/>
+    <object name="spikes_up" x="6720" y="1248" width="32" height="32"/>
+    <object name="endLevelFlag" x="8000" y="1120" width="128" height="128"/>
+    <object name="player" x="128" y="1216" width="34" height="31"/>
+    <object name="angrySaw" x="2395" y="989" width="57" height="46"/>
+    <object name="angrySaw" x="3696" y="1184" width="57" height="46"/>
+    <object name="angrySaw" x="5396" y="1219" width="57" height="46"/>
+    <object name="angrySaw" x="4450" y="1161" width="57" height="46"/>
+    <object name="angrySaw" x="6546" y="1229" width="57" height="46"/>
+    <object name="angrySaw" x="7822" y="1109" width="57" height="46"/>
+    <object name="shieldDudeLeft" x="4013" y="1146" width="32" height="32"/>
+    <object name="shieldDudeRight" x="4065" y="1147" width="32" height="32"/>
+    <object name="shieldDudeRight" x="6365" y="1087" width="32" height="32"/>
+    <object name="shieldDudeLeft" x="7004" y="1146" width="32" height="32"/>
+    <object name="shieldDudeLeft" x="4507" y="765" width="32" height="32"/>
+    <object name="shieldDudeLeft" x="7751" y="153" width="32" height="32"/>
+    <object name="lolrus" x="3851" y="1192" width="56" height="33"/>
+    <object name="lolrus" x="4857" y="1157" width="56" height="33"/>
+    <object name="lolrus" x="7549" y="1140" width="56" height="33"/>
+    <object name="lolrus" x="8144" y="1105" width="56" height="33"/>
+    <object name="walkMarker" x="1120" y="1056" width="32" height="32"/>
+    <object name="walkMarker" x="960" y="1056" width="32" height="32"/>
+  </objectgroup>
+  <layer name="Eric" width="280" height="45">
+    <properties>
+      <property name="solid" value="1"/>
+    </properties>
+    <data encoding="base64" compression="zlib">
+      eJztnElu3DAQRZVT5HK+pZF1EG87ydbJLXKALNJCIIAmOBaril/kf0ABhgc2TRUfB1F6+XQcLwwGg2EUhBByoukD+oUQEkK/EEKsoF8IIVbQL4QQK+gXQkjM6zN+ZeJLRzn0CyEk5P0Z3wo/f+soi37RQcv3K5Frk9H2iMutlWdVj5UpOYR+8UfreqxE7v8ebY/472vl5X7+OGSOeRX+3Qx6XXxBv2Dh6ZfSXAlpXEb3i7QuX5/x/cBq6xytbXWuicIc+tFRZgn6RQdPv4z0J2tC9+Vy9KdyuSPtIZnDhOU9DmzP9LpYUmYJ+kUHJL9cOT9jfmPlNmn7nl4qjcUnV3v9rvzeNcanypOutay4fBzX9axn7f+s0TM+0C86ePgllzO9WM5vZvillO+SuZIUhH02rRzRgn7RwSPHtfIX2S+5vSWU/lIinjeOzhMkIDguhH65D1q5k1o/9fSF0v7yiAfeB/+e0C8kTbx/n4rSmScvWvYzViB0KNK+Sg365Z6UxmyveTBC7iDU4SS8Hhbt/5b5+vrcGWufkNx4hOZ++qUNhH61Sh00XG3RFmGfDfvpI/P9Fcl5S+pT+qWN3nwurXek12qmX0r3ZnvL8Swjdx081jzSs7MrQb+0scrcgfyn9czLCPH1CudBvZ9rvR60YgW/xGOUtP1L83aEvdVd/JKacyD3KY+9EM1rn8pzq7nVCn7RQnqGy4uRHMu506Lfaq/hia5fUmVZjV27+KU2v7zD2YsRx+0y9xkldmM8rnvft87te13fr9Uh5frc8w0WYwC6X7Te3bFL/7I8/2o5r0a57xsTn0UM2xEhp8L6Ie4fo/tF4xn/2vu47k7uvqomuXN1o31M675ULxo+03hWMGZkbWlRn1F28Ivk98lHSu9ouuP+CvPBBzS/tL7npncvAuHsSM94VHtewLIvt67ZpeV5eugu51xXBc0vo0jyqeXZnzuNzcQOvme5j9X8QtJY3TP2PB9rcSa6F+134a3OLL9orhlmzS1q78HdeZxD39+Ir11LDrU8O47+f3vD+YscaS55ve9b6jGNeQLivYyT1ve7Sfeg6JeP0C9yUPxi9Z7+FbFuE/TzKN6g+SU1FiOOgyfSXB19f1xrPXb1S2n+5XnfCOGZktmg+UXaJ7yeifM4y9by2S19RttjPXg+77QzV5+LA4VV/KIB2v7xXbnDs1yeWPb7nF9QPIN0/4jnnuaeRSP6WPd3+oWsDlI+o2HV52teQfEM/bInmrlnUdYq0C+6Zf05GAy8kDKzXrPbDC1Ov/w9GAy8kOb0zHrNbjMGg8FgMBgMBoPBYDAYjN3jcxCz6+IV/wBoNjaS
+    </data>
+  </layer>
 </map>
