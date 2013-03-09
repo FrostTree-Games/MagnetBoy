@@ -205,6 +205,11 @@ namespace MagnetBoy
                             em.PushTime = 500;
                         }
 
+                        if (en is EasterEgg)
+                        {
+                            ((EasterEgg)en).clocked = true;
+                        }
+
                         if (en is ShieldDude)
                         {
                             Vector2 pushDir = new Vector2((float)Math.Cos(directionAngle), (float)Math.Sin(directionAngle));

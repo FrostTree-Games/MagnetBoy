@@ -455,6 +455,9 @@ namespace MagnetBoy
                                 levelEntities.Add(new FlagCloseSwitch(obj.Bounds.X, obj.Bounds.Y, FlagColor.Green));
                             }
                             break;
+                        case "easterEgg":
+                            levelEntities.Add(new EasterEgg(obj.Bounds.X, obj.Bounds.Y));
+                            break;
                         default:
                             break;
                     }

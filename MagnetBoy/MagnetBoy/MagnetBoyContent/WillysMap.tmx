@@ -77,11 +77,11 @@
  </layer>
  <objectgroup name="objects" width="280" height="45">
   <object name="angrySaw" x="1536" y="640" width="32" height="32"/>
-  <object name="spikes_up" x="917" y="927" width="32" height="32"/>
-  <object name="endLevelFlag" x="7872" y="64" width="128" height="128"/>
+  <object name="spikes_up" x="1440" y="864" width="32" height="32"/>
+  <object name="easterEgg" x="7904" y="160" width="32" height="32"/>
   <object name="lolrus" x="864" y="1152" width="32" height="32"/>
   <object name="lolrus" x="1056" y="1024" width="32" height="32"/>
-  <object name="spikes_up" x="768" y="1216" width="32" height="32"/>
+  <object name="spikes_up" x="1408" y="864" width="32" height="32"/>
   <object name="heartItem" x="1248" y="704" width="26" height="29"/>
   <object name="shieldDudeLeft" x="1792" y="1056" width="32" height="32"/>
   <object name="heartItem" x="2112" y="224" width="26" height="29"/>

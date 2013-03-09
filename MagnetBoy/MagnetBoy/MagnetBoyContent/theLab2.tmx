@@ -118,6 +118,7 @@
   <object name="spikes_up" x="1504" y="2496" width="32" height="32"/>
   <object name="walkMarker" x="1408" y="2432" width="32" height="32"/>
   <object name="walkMarker" x="2464" y="2304" width="32" height="32"/>
-  <object name="player" x="876" y="480" width="32" height="32"/>
+  <object name="player" x="832" y="448" width="32" height="32"/>
+  <object name="easterEgg" x="1280" y="320" width="32" height="32"/>
  </objectgroup>
 </map>

@@ -206,4 +206,61 @@ namespace MagnetBoy
             //AnimationFactory.drawAnimationFrame(sb, "flagLock", (int)color, Position, new Vector2(32, 32), 0.0f, Microsoft.Xna.Framework.Color.Lerp(Microsoft.Xna.Framework.Color.Black, LevelState.getFlagXNAColor(color), 0.5f), AnimationFactory.DepthLayer3);
         }
     }
+
+    class EasterEgg : Entity
+    {
+        private bool clicked;
+        public bool clocked;
+
+        public EasterEgg(float newX, float newY)
+        {
+            horizontal_pos = newX;
+            vertical_pos = newY;
+
+            width = 32;
+            height = 32;
+
+            velocity = Vector2.Zero;
+            acceleration = Vector2.Zero;
+
+            clicked = false;
+            clocked = false;
+
+            globalEntityList.Add(this);
+        }
+
+        public override void draw(SpriteBatch sb)
+        {
+            sb.Draw(clicked ? Game1.globalTestNegative : Game1.globalTestPositive, Position, null, Color.White, (float)Math.Sin(Game1.onScreenSaveSpin / 200), new Vector2(16, 16), 1.0f, SpriteEffects.None, 0.5f);
+        }
+
+        public override void update(GameTime currentTime)
+        {
+            if (!clicked && clocked)
+            {
+                clicked = true;
+
+                switch (Game1.CurrentLevel)
+                {
+                    case 1:
+                        ParticlePool.rotateBlueSparkColor((float)Math.PI);
+                        break;
+                    case 2:
+                        ParticlePool.rotateBlueSparkColor(0.15f);
+                        break;
+                    case 3:
+                        ParticlePool.rotateBlueSparkColor(7f);
+                        break;
+                    case 4:
+                        ParticlePool.rotateBlueSparkColor(4.6f);
+                        break;
+                    default:
+                        ParticlePool.rotateBlueSparkColor(0.5f);
+                        break;
+                }
+
+                AudioFactory.playSFX("sfx/unlockDoor");
+            }
+        }
+    }
 }
