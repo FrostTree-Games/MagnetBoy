@@ -258,6 +258,13 @@ namespace MagnetBoy
                                     {
                                         LevelState.currentPlayerHealth += 1;
                                         maxLifeTime = 0;
+
+                                        for (int i = 0; i < 12; i++)
+                                        {
+                                            LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.ColouredSpark, Position, Vector2.Zero, (float)(i * Math.PI / 6.0), 0.0f, Color.Red);
+                                        }
+
+                                        AudioFactory.playSFX("sfx/getHealth");
                                     }
 
                                     bulletUsed = true;
