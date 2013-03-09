@@ -102,15 +102,65 @@ namespace MagnetBoy
             {
                 stateTimer += currentTime.ElapsedGameTime.Milliseconds;
 
+                if (stateTimer % 1000 < 12)
+                {
+                    Color clr = Color.HotPink;
+
+                    switch (Game1.gameRandom.Next() % 6)
+                    {
+                        case 0:
+                            clr = Color.Violet;
+                            break;
+                        case 1:
+                            clr = Color.Crimson;
+                            break;
+                        case 2:
+                            clr = Color.LimeGreen;
+                            break;
+                        case 3:
+                            clr = Color.Linen;
+                            break;
+                        case 4:
+                            clr = Color.CornflowerBlue;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    Vector2 randPos = new Vector2(width / 2 + (float)((Game1.gameRandom.NextDouble() * width) - (width / 2)), height / -2 + (float)((Game1.gameRandom.NextDouble() * width) - (width / 2)));
+
+                    for (int i = 0; i < 12; i++)
+                    {
+                        LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.ColouredSpark, Position + randPos, Vector2.Zero, (float)(i * Math.PI / 6.0), 0.0f, clr);
+                    }
+
+                    switch (Game1.gameRandom.Next() % 3)
+                    {
+                        case 0:
+                            AudioFactory.playSFX("sfx/firework");
+                            break;
+                        case 1:
+                            AudioFactory.playSFX("sfx/firework2");
+                            break;
+                        default:
+                            AudioFactory.playSFX("sfx/firework3");
+                            break;
+                    }
+                    
+                }
+
                 if (stateTimer > waitDuration)
                 {
                     state = EndLevelFlagState.EndGame;
+                    stateTimer = 0;
                 }
             }
             else if (state == EndLevelFlagState.EndGame)
             {
                 //LevelState.EndLevelFlag = true;
                 LevelState.fadingOut = true;
+
+                stateTimer += currentTime.ElapsedGameTime.Milliseconds;
             }
 
             // if the last frame time hasn't been set, set it now

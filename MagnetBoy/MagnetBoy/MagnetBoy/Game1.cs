@@ -373,6 +373,9 @@ namespace MagnetBoy
             AudioFactory.pushNewSFX("sfx/getHurt");
             AudioFactory.pushNewSFX("sfx/hurtGoomba");
             AudioFactory.pushNewSFX("sfx/wopleyDeath");
+            AudioFactory.pushNewSFX("sfx/firework");
+            AudioFactory.pushNewSFX("sfx/firework2");
+            AudioFactory.pushNewSFX("sfx/firework3");
 
 #if XBOX
             Thread.Sleep(2000);
