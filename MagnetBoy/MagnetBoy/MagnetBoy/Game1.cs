@@ -219,6 +219,8 @@ namespace MagnetBoy
                 resetSaveData();
             }
 
+            MediaPlayer.Volume = 1.0f;
+
             //FurthestLevelProgressed = 4;
 #endif
 #if XBOX

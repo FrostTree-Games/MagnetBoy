@@ -184,6 +184,8 @@ namespace MagnetBoy
 
             IsUpdateable = true;
 
+            MediaPlayer.Volume = 1.0f;
+
             GC.Collect();
         }
 

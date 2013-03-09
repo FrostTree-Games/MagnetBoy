@@ -125,6 +125,8 @@ namespace MagnetBoy
 
             elapsedScreenTime = 0;
 
+            MediaPlayer.Volume = 1.0f;
+
             magnetWopleyAnim = "playerWalkRight";
             magnetWopleyFrame = 0;
             magnetWopleyLastUpdateTime = 0;
