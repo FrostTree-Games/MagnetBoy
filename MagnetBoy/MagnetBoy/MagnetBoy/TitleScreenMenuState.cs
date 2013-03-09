@@ -450,6 +450,8 @@ namespace MagnetBoy
                     spriteBatch.DrawString(Game1.gameFontText, "PRESS ANY BUTTON", new Vector2(275, 345), Color.Black);
                 }
             }
+
+            spriteBatch.Draw(Game1.copyright, new Vector2(450, 400), Color.White);
             spriteBatch.End();
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, Game1.diamondWipe, Matrix.CreateScale(720, 480, 0));
