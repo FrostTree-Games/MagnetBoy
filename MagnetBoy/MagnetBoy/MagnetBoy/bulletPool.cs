@@ -299,6 +299,7 @@ namespace MagnetBoy
                                 en.deathAnimation = true;
                                 en.killedByBullet = true;
                                 maxLifeTime = 0;
+                                AudioFactory.playSFX("sfx/hurtGoomba");
                             }
                         }
                     }
@@ -308,6 +309,7 @@ namespace MagnetBoy
                         {
                             en.deathAnimation = true;
                             en.killedByBullet = true;
+                            AudioFactory.playSFX("sfx/hurtGoomba");
                         }
                     }
                 }

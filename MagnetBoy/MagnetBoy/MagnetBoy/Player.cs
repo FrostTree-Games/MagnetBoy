@@ -457,8 +457,6 @@ namespace MagnetBoy
         {
             if (playerBlink == false)
             {
-                AudioFactory.playSFX("sfx/getHurt");
-
                 if (isKnockedBack)
                 {
                     if (velocity.X < 0)
@@ -471,6 +469,8 @@ namespace MagnetBoy
                     }
                     return;
                 }
+
+                AudioFactory.playSFX("sfx/getHurt");
 
                 LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((7 * (Math.PI / 4)) + (direction.X / 10)), 0.0f, Color.White);
                 LevelState.levelParticlePool.pushParticle(ParticlePool.ParticleType.SweatDrops, new Vector2(horizontal_pos + width / 2, vertical_pos), Vector2.Zero, (float)((5.4 * (Math.PI / 4)) + (direction.X / 10)), 0.0f, Color.White);

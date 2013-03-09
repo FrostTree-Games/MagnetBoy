@@ -36,6 +36,8 @@ namespace MagnetBoy
                     if (hitTest(en) && en.Position.Y < vertical_pos && en.velocity.Y > 0)
                     {
                         en.deathAnimation = true;
+
+                        AudioFactory.playSFX("sfx/hurtGoomba");
                     }
                 }
             }
