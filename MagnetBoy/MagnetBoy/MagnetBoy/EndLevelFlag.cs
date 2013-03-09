@@ -21,7 +21,7 @@ namespace MagnetBoy
         private double stateTimer;
 
         private const double spinningDuration = 1400;
-        private const double waitDuration = 8000;
+        private const double waitDuration = 5000;
 
         private string currentAnimation = "flagIdle";
         private int currentFrame;

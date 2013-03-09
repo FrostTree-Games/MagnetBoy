@@ -185,7 +185,7 @@
   <object name="walkMarker" x="1936" y="2496" width="32" height="32"/>
   <object name="walkMarker" x="1776" y="2496" width="32" height="32"/>
   <object name="lolrus" x="2144" y="2784" width="32" height="32"/>
-  <object name="player" x="1184" y="2272" width="32" height="32"/>
+  <object name="player" x="128" y="800" width="32" height="32"/>
   <object name="easterEgg" x="880" y="1872" width="32" height="32"/>
  </objectgroup>
  <layer name="paint" width="104" height="104">
