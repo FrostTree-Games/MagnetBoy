@@ -72,7 +72,7 @@
  </layer>
  <layer name="decor2" width="280" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt2c0KgkAUgFHfuVoWtPB9e4RaGONi0FumM13OgQuC+INw4QOHAQAAAAAAAAAAAAAAgDW3wAAA9GbeKZ8eAwAc6dtm0S8AQCu/6BddA/3xLxjITL9AzLUyPdMvQGb6BWJ66ZfojukXIDP9AjG99EuUfgEy0y8QE+2XsTIt6BfIx04X+gVi9AvQmp0u9AvE6BegNTtd6BeI0S9Aa3a60C8Qo1+A1ux0oV8gZqlf5p2iX4C92OlCv0B+95VzS+d7cHrNeZrLhvtsubbm/V57P+cIe73zP34LILfHNAAAAAAAcLQncha7yg==
+   eJzt2U1OwkAYgOFe2qUmLjyRegG3ilvhFh5BJkKmaeow2Jb5yfMkk0CBtiH9ypswDAAAAAAAAAAAAAAAAFzykLEAAGoz7pRrHwMA3NJ/m0W/AAClrNEvugbq479goGf6BfLcz6ya6RegZ/oF8tTSL7kzpl+AnukXyFNLv+TSL0DP9Avkye2Xp5lVgn6B/pjpSL9AHv0ClGamI/0CefQLUJqZjvQL5NEvQGlmOtIvkEe/wDLPx7WfrNeiZ9QeMx3pl/ac7wFbzP3bzLb3DY/XklS/jDtFv9CqcG/ZnR7P3QuWSu1zi+P1yExHNfZLmKGXwe/lnPGMh65Y6zs6N9Eu8R4d067HC6+lXq/B1/B77R2O627BfsJnw3X8MaSv9WvO6/DHcVoTzvlzsm36fK39pqxxTICU79MCAAAAAIBb+wH4YtpS
   </data>
  </layer>
  <objectgroup name="objects" width="280" height="45">
@@ -101,7 +101,7 @@
   <object name="shieldDudeLeft" x="7751" y="153" width="32" height="32"/>
   <object name="lolrus" x="3851" y="1192" width="56" height="33"/>
   <object name="lolrus" x="4672" y="1184" width="32" height="32"/>
-  <object name="lolrus" x="7168" y="1152" width="56" height="33"/>
+  <object name="lolrus" x="7136" y="1024" width="32" height="32"/>
   <object name="walkMarker" x="1120" y="1056" width="32" height="32"/>
   <object name="walkMarker" x="960" y="1056" width="32" height="32"/>
   <object name="walkMarker" x="7296" y="704" width="32" height="32"/>
@@ -148,6 +148,8 @@
   <object name="walkMarker" x="2224" y="224" width="32" height="32"/>
   <object name="angrySaw" x="2176" y="224" width="32" height="32"/>
   <object name="walkMarker" x="2096" y="224" width="32" height="32"/>
+  <object name="walkMarker" x="7200" y="1056" width="32" height="32"/>
+  <object name="walkMarker" x="7040" y="1056" width="32" height="32"/>
  </objectgroup>
  <layer name="Eric" width="280" height="45">
   <properties>
