@@ -28,7 +28,7 @@ namespace MagnetBoy
 
         //after he walks into the scene, enabled becomes true
         private double interval = 500;
-        private double timeSinceLastShot= 0.0;
+        private double timeSinceLastShot = 0.0;
 
         public int bossHealth = 0;
 
@@ -57,7 +57,7 @@ namespace MagnetBoy
 
             pole = Polarity.Neutral;
 
-            bossHealth = 30;
+            bossHealth = 15;
 
             solid = true;
         }
@@ -66,10 +66,10 @@ namespace MagnetBoy
         {
             timeSinceLastShot += currentTime.ElapsedGameTime.Milliseconds;
 
-            if( timeSinceLastShot > interval )
+            if (timeSinceLastShot > interval)
             {
                 float direction = 0.0f;
-                
+
                 direction += (float)(-0.75 * Math.PI);
 
                 Vector2 bulletPosition = Position;
@@ -95,7 +95,7 @@ namespace MagnetBoy
                 {
                     BulletPool.pushBullet(healthItem, bulletPosition.X, bulletPosition.Y, currentTime, direction);
                 }
-             
+
                 timeSinceLastShot = 0;
             }
 
@@ -118,7 +118,7 @@ namespace MagnetBoy
                         }
                     }
                 }
-                
+
                 if (en is Bullet)
                 {
                     if (hitTest(en))
@@ -139,7 +139,7 @@ namespace MagnetBoy
                         }
                     }
                 }
-                
+
             }
 
             if (bossHealth == 0)
@@ -234,8 +234,8 @@ namespace MagnetBoy
         {
             creation();
 
-            shieldHealth = 20;
-            maxShieldHealth = 20;
+            shieldHealth = 10;
+            maxShieldHealth = 10;
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
@@ -277,7 +277,7 @@ namespace MagnetBoy
                 }
             }
 
-            foreach(Entity b in globalEntityList)
+            foreach (Entity b in globalEntityList)
             {
                 if (b is Player)
                 {
@@ -296,7 +296,7 @@ namespace MagnetBoy
                         }
                     }
                 }
-                
+
                 if (b is Bullet)
                 {
                     if (hitTest(b))
@@ -349,7 +349,7 @@ namespace MagnetBoy
                 currentAnimation = "wopleyShieldHurt4";
             }
 
-            else if (shieldHealth ==  0)
+            else if (shieldHealth == 0)
             {
                 removeFromGame = true;
             }
