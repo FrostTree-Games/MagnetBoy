@@ -28,7 +28,9 @@ namespace MagnetBoy
 
         //after he walks into the scene, enabled becomes true
         private double interval = 500;
-        private double timeSinceLastShot= 0.0;
+        private double timeSinceLastShot = 0.0;
+
+        private double deathTimer = 0.0;
 
         public int bossHealth = 0;
 
@@ -57,102 +59,128 @@ namespace MagnetBoy
 
             pole = Polarity.Neutral;
 
-            bossHealth = 30;
+            bossHealth = 15;
 
             solid = true;
+
+            deathTimer = 0.0;
         }
 
         public override void update(GameTime currentTime)
         {
             timeSinceLastShot += currentTime.ElapsedGameTime.Milliseconds;
 
-            if( timeSinceLastShot > interval )
+            if (deathAnimation == true)
             {
-                float direction = 0.0f;
-                
-                direction += (float)(-0.75 * Math.PI);
-
-                Vector2 bulletPosition = Position;
-
-                bulletPosition.Y += 4;
-
-                if (Game1.gameRandom.Next() % 7 == 0)
+                if (deathAnimationSet == false)
                 {
-                    BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                    lastFrameIncrement = 0.0;
+                    currentFrame = 0;
+                    currentAnimation = "wopleyDie";
+                    deathAnimationSet = true;
                 }
 
-                if (Game1.gameRandom.Next() % 6 == 0)
+                if (deathTimer > 500)
                 {
-                    BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                    removeFromGame = true;
+                    deathAnimationSet = false;
+                    deathTimer = 0.0f;
                 }
-
-                if (Game1.gameRandom.Next() % 8 == 0)
+                else
                 {
-                    BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                    deathTimer += currentTime.ElapsedGameTime.Milliseconds;
                 }
-
-                if (Game1.gameRandom.Next() % 15 == 0)
-                {
-                    BulletPool.pushBullet(healthItem, bulletPosition.X, bulletPosition.Y, currentTime, direction);
-                }
-             
-                timeSinceLastShot = 0;
             }
-
-            foreach (Entity en in Entity.globalEntityList)
+            else
             {
-                if (en is Player)
+                if (timeSinceLastShot > interval)
                 {
-                    if (hitTest(en))
+                    float direction = 0.0f;
+
+                    direction += (float)(-0.75 * Math.PI);
+
+                    Vector2 bulletPosition = Position;
+
+                    bulletPosition.Y += 4;
+
+                    if (Game1.gameRandom.Next() % 7 == 0)
                     {
-                        if (!(!en.onTheGround && en.velocity.Y > 0.001f && en.Position.Y < vertical_pos))
+                        BulletPool.pushBullet(Heart, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                    }
+
+                    if (Game1.gameRandom.Next() % 6 == 0)
+                    {
+                        BulletPool.pushBullet(Brain, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                    }
+
+                    if (Game1.gameRandom.Next() % 8 == 0)
+                    {
+                        BulletPool.pushBullet(Lung, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                    }
+
+                    if (Game1.gameRandom.Next() % 15 == 0)
+                    {
+                        BulletPool.pushBullet(healthItem, bulletPosition.X, bulletPosition.Y, currentTime, direction);
+                    }
+
+                    timeSinceLastShot = 0;
+                }
+
+                foreach (Entity en in Entity.globalEntityList)
+                {
+                    if (en is Player)
+                    {
+                        if (hitTest(en))
                         {
-                            if (en.Position.X - Position.X < 0)
+                            if (!(!en.onTheGround && en.velocity.Y > 0.001f && en.Position.Y < vertical_pos))
                             {
-                                ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
-                            }
-                            else
-                            {
-                                ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                                if (en.Position.X - Position.X < 0)
+                                {
+                                    ((Player)en).knockBack(new Vector2(-1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                                }
+                                else
+                                {
+                                    ((Player)en).knockBack(new Vector2(1, -5), currentTime.TotalGameTime.TotalMilliseconds);
+                                }
                             }
                         }
                     }
-                }
-                
-                if (en is Bullet)
-                {
-                    if (hitTest(en))
+
+                    if (en is Bullet)
                     {
-                        if (((Bullet)en).velocity.X > 0)
+                        if (hitTest(en))
                         {
-                            if (((Bullet)en).bulletUsed == false)
+                            if (((Bullet)en).velocity.X > 0)
                             {
-                                bossHealth -= 1;
-                                ((Bullet)en).bulletUsed = true;
+                                if (((Bullet)en).bulletUsed == false)
+                                {
+                                    bossHealth -= 1;
+                                    ((Bullet)en).bulletUsed = true;
+                                }
+                                ((Bullet)en).deathAnimationSet = true;
+                                ((Bullet)en).velocity.X = 0;
+                                ((Bullet)en).velocity.Y = 0;
+                                ((Bullet)en).acceleration.Y = 0;
+                                ((Bullet)en).maxLifeTime = 0;
+                                break;
                             }
-                            ((Bullet)en).deathAnimationSet = true;
-                            ((Bullet)en).velocity.X = 0;
-                            ((Bullet)en).velocity.Y = 0;
-                            ((Bullet)en).acceleration.Y = 0;
-                            ((Bullet)en).maxLifeTime = 0;
-                            break;
                         }
                     }
-                }
-                
-            }
 
-            if (bossHealth == 0)
-            {
-                LevelState.setFlag(LevelState.FlagColor.Blue, true);
-                removeFromGame = true;
-                bossShield.shieldHealth = 0;
-                death();
-            }
-            // if the last frame time hasn't been set, set it now
-            if (lastFrameIncrement == 0)
-            {
-                lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+                }
+
+                if (bossHealth == 0)
+                {
+                    LevelState.setFlag(LevelState.FlagColor.Blue, true);
+                    bossShield.shieldHealth = 0;
+                    deathAnimation = true;
+                    AudioFactory.playSFX("sfx/wopleyDeath");
+                }
+                // if the last frame time hasn't been set, set it now
+                if (lastFrameIncrement == 0)
+                {
+                    lastFrameIncrement = currentTime.TotalGameTime.TotalMilliseconds;
+                }
             }
 
             // update the current frame if needed
@@ -162,8 +190,6 @@ namespace MagnetBoy
 
                 currentFrame = (currentFrame + 1) % AnimationFactory.getAnimationFrameCount(currentAnimation);
             }
-
-            return;
         }
 
         public override void draw(SpriteBatch sb)
@@ -171,40 +197,6 @@ namespace MagnetBoy
             AnimationFactory.drawAnimationFrame(sb, currentAnimation, currentFrame, Position, AnimationFactory.DepthLayer1);
 
             return;
-        }
-
-        private void walk(GameTime currentTime)
-        {
-            if (walkSwitchTimer == 0)
-            {
-                walkSwitchTimer = currentTime.TotalGameTime.TotalMilliseconds;
-            }
-
-            if (onTheGround)
-            {
-                if (Math.Abs(velocity.X) < 0.01f)
-                {
-                    walkingLeft = !walkingLeft;
-                }
-
-                if (walkingLeft && velocity.X > -walkerSpeed)
-                {
-                    acceleration.X = -0.001f;
-                }
-                else if (velocity.X < walkerSpeed)
-                {
-                    acceleration.X = 0.001f;
-                }
-                else if (velocity.X < -walkerSpeed)
-                {
-                    velocity.X = -walkerSpeed;
-                }
-                else if (velocity.X > walkerSpeed)
-                {
-                    velocity.X = walkerSpeed;
-
-                }
-            }
         }
     }
 
@@ -234,8 +226,8 @@ namespace MagnetBoy
         {
             creation();
 
-            shieldHealth = 20;
-            maxShieldHealth = 20;
+            shieldHealth = 10;
+            maxShieldHealth = 10;
 
             horizontal_pos = initialx;
             vertical_pos = initialy;
@@ -277,7 +269,7 @@ namespace MagnetBoy
                 }
             }
 
-            foreach(Entity b in globalEntityList)
+            foreach (Entity b in globalEntityList)
             {
                 if (b is Player)
                 {
@@ -296,7 +288,7 @@ namespace MagnetBoy
                         }
                     }
                 }
-                
+
                 if (b is Bullet)
                 {
                     if (hitTest(b))
@@ -349,7 +341,7 @@ namespace MagnetBoy
                 currentAnimation = "wopleyShieldHurt4";
             }
 
-            else if (shieldHealth ==  0)
+            else if (shieldHealth == 0)
             {
                 removeFromGame = true;
             }
