@@ -59,7 +59,7 @@ namespace MagnetBoy
 
             pole = Polarity.Neutral;
 
-            bossHealth = 1;
+            bossHealth = 15;
 
             solid = true;
 
