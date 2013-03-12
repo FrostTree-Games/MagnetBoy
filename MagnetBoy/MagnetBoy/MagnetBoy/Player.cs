@@ -227,7 +227,7 @@ namespace MagnetBoy
                         }
 
                         double force = (magneticMoment * en.MagneticValue.Value) / (4 * Math.PI * Math.Pow(distance, 2));
-                        double angle = Math.Atan2(en.Position.X - horizontal_pos, vertical_pos - en.Position.Y);
+                        double angle = Math.Atan2(en.CenterPosition.X - CenterPosition.X, CenterPosition.Y - en.CenterPosition.Y);
 
                         Vector2 newForce = new Vector2((float)(force * Math.Cos(angle - (Math.PI / 2))), (float)(force * Math.Sin(angle - (Math.PI / 2))));
 
