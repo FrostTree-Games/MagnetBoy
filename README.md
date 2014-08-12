@@ -1,13 +1,28 @@
-COPYRIGHT 2012-2013 FROSTTREE GAMES
+# Zippy Push Kid
 
-DO NOT REPUBLISH OR REDISTRIBUTE
+## About
 
-MagnetBoy
-=========
+A game project by Eric Chan, Wilson Chung, and Daniel Savage developed between September 2012 and March 2013.
 
-A game project for Eric, Wilson, and Dan during Fall 2012.
+## Software License
+Software Copyright (C) 2012-2014 FrostTree Games
 
-MagnetBoy uses the XTiled library for loading and rendering of TMX maps. The licensing information for XTiled is provided below:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+Using this software entitles Daniel Savage, Wilson Chung, or Eric Chan to sleep on your couch while travelling.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Art Assets License
+All tiles, sprites, and sound effects are given under the CC BY-SA 4.0. This DOES NOT include background music, typefaces, or fonts. You can see the license below:
+
+http://creativecommons.org/licenses/by-sa/4.0/
+
+# XTiled Library
+
+This project uses uses the XTiled library for loading and rendering of TMX maps. The licensing information for XTiled is provided below:
 
 Copyright (c) 2012, FuncWorks, LLC All rights reserved
 
